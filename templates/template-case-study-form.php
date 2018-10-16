@@ -1,37 +1,49 @@
-<?php 
+<?php
 /*
 Template Name: Case study form
 Template Post Type: page
 */
 
+/*
+** ACF filter to customize Open Government form
+*/
+// give value to case type taxonomy field
+function bs_case_study_form_taxonomy_field($field) {
+	$field['value'] = 890;
+  return $field;
+}
+add_filter('acf/prepare_field/key=field_5bc60b5d239b4', 'bs_case_study_form_taxonomy_field', 20);
+
 	acf_form_head();
 	get_header();
 
+	?> <style>#acf-field_5ae7ab3b5dd80-, .acf-field-5bc60b5d239b4 {display: none;}</style> <?php
+
     global $post, $bp;
-	
+
 	if ( isset( $_GET['edit'] ) && intval( $_GET['edit'] ) > 0 && !can_edit_acf_form( intval( $_GET['edit'] ) ) ) {
 		?>
 		<div class="col-sm-12">
 			<div class="alert alert-warning text-center">
 				<h3><?php echo __( 'Sorry, you cannot edit a case study that was submitted by someone else or a case study that has already been published. If you need to make changes to a published case study, please contact the OPSI team at', 'opsi' ); ?> <a href="mailto:opsi@oecd.org">opsi@oecd.org</a></h3>
 			</div>
-			
+
 			<br />
 			<a href="<?php echo $bp->loggedin_user->domain . 'innovations/'; ?>" title="<?php echo __( 'Back', 'opsi' ); ?>" class="button btn btn-default flipicon">
-            <i class="fa fa-chevron-left" aria-hidden="true"></i>  <?php echo __( 'Back', 'opsi' ); ?> 
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>  <?php echo __( 'Back', 'opsi' ); ?>
 			</a>
-			
+
 		</div>
 		<?php
 		get_footer();
 		return;
 	}
-	
-	
+
+
 	if ( isset( $_GET['delete'] ) && intval( $_GET['delete'] ) > 0 ) {
-		
+
 		$can_delete_cs = can_delete_cs( intval( $_GET['delete'] ) );
-		
+
 		if ( !can_delete_cs( intval( $_GET['delete'] ) ) ) {
 			?>
 			<div class="col-sm-12">
@@ -44,17 +56,17 @@ Template Post Type: page
 			return;
 		} else {
 			if ( isset( $_GET['confirm'] ) && intval( $_GET['confirm'] ) == 1 ) {
-				
+
 				if ( $can_delete_cs == 'delete' ) {
 					wp_delete_post( intval( $_GET['delete'] ) );
 				}
-				
+
 				if ( $can_delete_cs == 'request' ) {
 					 wp_update_post( array( 'ID' => intval( $_GET['delete'] ), 'post_status' => 'pending_deletion' ) );
 				}
-				wp_safe_redirect( get_bloginfo('url') . '/members/'. $current_user->user_login . '/profile/'); 
+				wp_safe_redirect( get_bloginfo('url') . '/members/'. $current_user->user_login . '/profile/');
 				exit();
-				
+
 			} else {
 			?>
 				<div class="col-sm-12">
@@ -68,20 +80,20 @@ Template Post Type: page
 		get_footer();
 		return;
 	}
-    
+
     $has_sidebar = 0;
     $layout = get_post_meta($post->ID, 'layout', true);
     if($layout != 'fullpage' && is_active_sidebar( 'sidebar' )) {
       $has_sidebar = 3;
     }
-    
+
   ?>
 
 
 	<div class="col-sm-3 dont-col-sm-push--9">
 		<ul id="acf_steps">
 		</ul>
-		
+
 		<?php if ( is_active_sidebar( 'casestudyformsidebar' )) { dynamic_sidebar( 'casestudyformsidebar' ); } ?>
 	</div>
     <div class="col-sm-9 dont-col-sm-pull--3">
@@ -90,10 +102,10 @@ Template Post Type: page
           <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<div id="formtop"></div>
 			<div id="case_form" class="stepform">
-            <?php 
-			
+            <?php
+
 				$group = get_page_by_title('Case Studies', OBJECT, 'acf-field-group');
-			
+
 				$form_params = array(
 					'field_groups' 	=> array( $group->ID ),
 					'new_post'		=> array(
@@ -110,27 +122,27 @@ Template Post Type: page
 					//'return' => '',
 					'html_before_fields' => '<input type="hidden" id="csf_action" name="csf_action" value="" style="display:none;"><input type="hidden" id="form_step_field" name="form_step" value="0" style="display:none;">',
 				);
-				
+
 				if ( isset( $_GET['edit'] ) && intval( $_GET['edit'] ) > 0 ) {
-					
+
 					$form_params['post_id'] 		= $_GET['edit'];
 					$form_params['new_post'] 		= false;
 					$form_params['submit_value'] 	= __( 'Save your case study', 'opsi' );
-					
-					
+
+
 				}
-				
-				acf_form( $form_params ); 
-				
-			
+
+				acf_form( $form_params );
+
+
 			?>
-			</div>			
+			</div>
           </article>
       <?php // comments_template(); ?>
       <?php endwhile; ?>
-      
+
 	  <?php echo get_options_acf_fields_by_group_key(); ?>
-	  
+
     </div>
 
   <?php wp_reset_query(); ?>

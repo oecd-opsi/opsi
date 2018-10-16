@@ -3,6 +3,33 @@
     "title": "Case Studies",
     "fields": [
         {
+            "key": "field_5bc60b5d239b4",
+            "label": "Case type",
+            "name": "case_type",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "taxonomy": "case_type",
+            "field_type": "checkbox",
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "id",
+            "show_column": 0,
+            "show_column_weight": 1000,
+            "allow_quickedit": 1,
+            "allow_bulkedit": 1,
+            "multiple": 0,
+            "allow_null": 0
+        },
+        {
             "key": "field_5af38eeb63c46",
             "label": "Before You Begin",
             "name": "submit_an_innovation",
@@ -341,7 +368,7 @@
                         "id": ""
                     },
                     "display_order": "",
-                    "message": "<div class=\"col-md-12 layout_hero_block \"><div class=\"hb_inner text-left\">\r\nUsing the “save” option will save the data you have entered and allow you to return to data entry immediately or at a later time. You can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href=\"mailto:opsi@oecd.org\" title=\"contact OPSI\">opsi@oecd.org</a> (include a screenshot if possible).\r\n\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-0\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-info big saveform\" title=\"Save\" href=\"#step-1\">Save <i class=\"fa fa-floppy-o\" aria-hidden=\"true\"><\/i><\/a><a class=\"button btn btn-default big gonext\" title=\"Next\" href=\"#step-2\">Next <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"><\/i><\/a> <span class=\"acf-spinner\"><\/span>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
+                    "message": "<div class=\"col-md-12 layout_hero_block \"><div class=\"hb_inner text-left\">\r\nUsing the “save” option will save the data you have entered and allow you to return to data entry immediately or at a later time. You can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href=\"mailto:opsi@oecd.org\" title=\"contact OPSI\">opsi@oecd.org<\/a> (include a screenshot if possible).\r\n\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-0\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-info big saveform\" title=\"Save\" href=\"#step-1\">Save <i class=\"fa fa-floppy-o\" aria-hidden=\"true\"><\/i><\/a><a class=\"button btn btn-default big gonext\" title=\"Next\" href=\"#step-2\">Next <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"><\/i><\/a> <span class=\"acf-spinner\"><\/span>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
                     "new_lines": "wpautop",
                     "esc_html": 0
                 }
@@ -512,7 +539,7 @@
                         "id": ""
                     },
                     "display_order": "",
-                    "message": "<div class=\"col-md-12 layout_hero_block \"><div class=\"hb_inner text-left\">\r\nUsing the “save” option will save the data you have entered and allow you to return to data entry immediately or at a later time. You can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href=\"mailto:opsi@oecd.org\" title=\"contact OPSI\">opsi@oecd.org</a> (include a screenshot if possible).\r\n\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-1\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-info big saveform\" title=\"Save\" href=\"#step-2\">Save <i class=\"fa fa-floppy-o\" aria-hidden=\"true\"><\/i><\/a><a class=\"button btn btn-default big gonext\" title=\"Next\" href=\"#step-3\">Next <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"><\/i><\/a> <span class=\"acf-spinner\"><\/span>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
+                    "message": "<div class=\"col-md-12 layout_hero_block \"><div class=\"hb_inner text-left\">\r\nUsing the “save” option will save the data you have entered and allow you to return to data entry immediately or at a later time. You can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href=\"mailto:opsi@oecd.org\" title=\"contact OPSI\">opsi@oecd.org<\/a> (include a screenshot if possible).\r\n\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-1\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-info big saveform\" title=\"Save\" href=\"#step-2\">Save <i class=\"fa fa-floppy-o\" aria-hidden=\"true\"><\/i><\/a><a class=\"button btn btn-default big gonext\" title=\"Next\" href=\"#step-3\">Next <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"><\/i><\/a> <span class=\"acf-spinner\"><\/span>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
                     "new_lines": "wpautop",
                     "esc_html": 0
                 }
@@ -603,8 +630,8 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "min": 2010,
-                    "max": 2019,
+                    "min": 2000,
+                    "max": 2018,
                     "step": 1,
                     "show_column": 0,
                     "show_column_sortable": 0,
@@ -612,7 +639,7 @@
                     "allow_quickedit": 0,
                     "allow_bulkedit": 0
                 },
-				{
+                {
                     "key": "field_5b35686af240c",
                     "label": "Short and Simple Explanation",
                     "name": "short_and_simple_explanation",
@@ -636,7 +663,7 @@
                     "allow_quickedit": 0,
                     "allow_bulkedit": 0
                 },
-				{
+                {
                     "key": "field_5b356b96dbd0c",
                     "label": "Would you like to receive peer feedback on your explanation?",
                     "name": "receive_feedback",
@@ -749,7 +776,7 @@
                         "id": ""
                     },
                     "display_order": "",
-                    "message": "<div class=\"col-md-12 layout_hero_block \"><div class=\"hb_inner text-left\">\r\nUsing the “save” option will save the data you have entered and allow you to return to data entry immediately or at a later time. You can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href=\"mailto:opsi@oecd.org\" title=\"contact OPSI\">opsi@oecd.org</a> (include a screenshot if possible).\r\n\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-2\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-info big saveform\" title=\"Save\" href=\"#step-3\">Save <i class=\"fa fa-floppy-o\" aria-hidden=\"true\"><\/i><\/a><a class=\"button btn btn-default big gonext\" title=\"Next\" href=\"#step-4\">Next <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"><\/i><\/a> <span class=\"acf-spinner\"><\/span>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
+                    "message": "<div class=\"col-md-12 layout_hero_block \"><div class=\"hb_inner text-left\">\r\nUsing the “save” option will save the data you have entered and allow you to return to data entry immediately or at a later time. You can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href=\"mailto:opsi@oecd.org\" title=\"contact OPSI\">opsi@oecd.org<\/a> (include a screenshot if possible).\r\n\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-2\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-info big saveform\" title=\"Save\" href=\"#step-3\">Save <i class=\"fa fa-floppy-o\" aria-hidden=\"true\"><\/i><\/a><a class=\"button btn btn-default big gonext\" title=\"Next\" href=\"#step-4\">Next <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"><\/i><\/a> <span class=\"acf-spinner\"><\/span>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
                     "new_lines": "wpautop",
                     "esc_html": 0
                 }
@@ -799,7 +826,7 @@
                     "label": "Innovation Status",
                     "name": "innovation_status",
                     "type": "checkbox",
-                    "instructions": "First choose the current status of your innovation, then in 1-2 paragraphs, describe what is happening with your project right now (maximum 1,000 characters). Check all that apply and feel free to elaborate below if you feel the innovations phases below do not accurately describe your innovation's current status.",
+                    "instructions": "<b>First<\/b> choose the current status of your innovation.\r\n<br>\r\n<b>Then<\/b> in 1-2 paragraphs, describe what is happening with your project right now (maximum 1,000 characters). Check all that apply and feel free to elaborate below if you feel the innovations phases below do not accurately describe your innovation's current status.\r\n<br \/>\r\n<label>Innovation Status Details<\/label>",
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -807,6 +834,7 @@
                         "class": "pack",
                         "id": ""
                     },
+                    "display_order": "",
                     "choices": {
                         "identifying_problems": "Identifying or Discovering Problems or Opportunities - <i>learning where and how an innovative response is needed<\/i>",
                         "generating_ideas": "Generating Ideas or Designing Solutions - <i>finding and filtering ideas to respond to the problem or opportunity<\/i>",
@@ -816,7 +844,6 @@
                         "diffusing": "Diffusing Lessons - <i>using what was learnt to inform other projects and understanding how the innovation can be applied in other ways<\/i>"
                     },
                     "allow_custom": 0,
-                    "save_custom": 0,
                     "default_value": [],
                     "layout": "vertical",
                     "toggle": 0,
@@ -824,11 +851,12 @@
                     "show_column": 0,
                     "show_column_weight": 1000,
                     "allow_quickedit": 0,
-                    "allow_bulkedit": 0
+                    "allow_bulkedit": 0,
+                    "save_custom": 0
                 },
                 {
                     "key": "field_5ae77cd92bcf8",
-                    "label": "Innovation Status Details",
+                    "label": "Innovation Status Text",
                     "name": "status_description",
                     "type": "textarea",
                     "instructions": "<p><a data-fancybox data-src=\"#innovation_status_sample\" data-options='{\"touch\" : false}' href=\"javascript:;\">Click here for example of a Status Description<\/a><\/p>",
@@ -836,7 +864,7 @@
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "",
-                        "class": "",
+                        "class": "removelabel",
                         "id": ""
                     },
                     "default_value": "",
@@ -863,7 +891,7 @@
                         "id": ""
                     },
                     "display_order": "",
-                    "message": "<div class=\"col-md-12 layout_hero_block \"><div class=\"hb_inner text-left\">\r\nUsing the “save” option will save the data you have entered and allow you to return to data entry immediately or at a later time. You can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href=\"mailto:opsi@oecd.org\" title=\"contact OPSI\">opsi@oecd.org</a> (include a screenshot if possible).\r\n\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-3\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-info big saveform\" title=\"Save\" href=\"#step-4\">Save <i class=\"fa fa-floppy-o\" aria-hidden=\"true\"><\/i><\/a><a class=\"button btn btn-default big gonext\" title=\"Next\" href=\"#step-5\">Next <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"><\/i><\/a> <span class=\"acf-spinner\"><\/span>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
+                    "message": "<div class=\"col-md-12 layout_hero_block \"><div class=\"hb_inner text-left\">\r\nUsing the “save” option will save the data you have entered and allow you to return to data entry immediately or at a later time. You can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href=\"mailto:opsi@oecd.org\" title=\"contact OPSI\">opsi@oecd.org<\/a> (include a screenshot if possible).\r\n\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-3\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-info big saveform\" title=\"Save\" href=\"#step-4\">Save <i class=\"fa fa-floppy-o\" aria-hidden=\"true\"><\/i><\/a><a class=\"button btn btn-default big gonext\" title=\"Next\" href=\"#step-5\">Next <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"><\/i><\/a> <span class=\"acf-spinner\"><\/span>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
                     "new_lines": "wpautop",
                     "esc_html": 0
                 }
@@ -944,7 +972,7 @@
                         "id": ""
                     },
                     "display_order": "",
-                    "message": "<div class=\"col-md-12 layout_hero_block \"><div class=\"hb_inner text-left\">\r\nUsing the “save” option will save the data you have entered and allow you to return to data entry immediately or at a later time. You can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href=\"mailto:opsi@oecd.org\" title=\"contact OPSI\">opsi@oecd.org</a> (include a screenshot if possible).\r\n\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-4\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-info big saveform\" title=\"Save\" href=\"#step-5\">Save <i class=\"fa fa-floppy-o\" aria-hidden=\"true\"><\/i><\/a><a class=\"button btn btn-default big gonext\" title=\"Next\" href=\"#step-6\">Next <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"><\/i><\/a> <span class=\"acf-spinner\"><\/span>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
+                    "message": "<div class=\"col-md-12 layout_hero_block \"><div class=\"hb_inner text-left\">\r\nUsing the “save” option will save the data you have entered and allow you to return to data entry immediately or at a later time. You can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href=\"mailto:opsi@oecd.org\" title=\"contact OPSI\">opsi@oecd.org<\/a> (include a screenshot if possible).\r\n\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-4\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-info big saveform\" title=\"Save\" href=\"#step-5\">Save <i class=\"fa fa-floppy-o\" aria-hidden=\"true\"><\/i><\/a><a class=\"button btn btn-default big gonext\" title=\"Next\" href=\"#step-6\">Next <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"><\/i><\/a> <span class=\"acf-spinner\"><\/span>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
                     "new_lines": "wpautop",
                     "esc_html": 0
                 }
@@ -970,7 +998,7 @@
                     "label": "Results, Outcomes & Impacts",
                     "name": "results_impact",
                     "type": "textarea",
-                    "instructions": "Describe the results, outcomes and Impacts of the innovation (maximum 1,000 characters).\r\n\r\n<ul class=\"dotted\">\r\n<li>What results and impacts have been observed from the innovation so far?<\/li>\r\n<li>What results and impacts do you expect in the future?<\/li>\r\n<\/ul>\r\n<p><a data-fancybox data-src=\"#results_outcomes_and_impact_sample\" data-options='{\"touch\" : false}' href=\"javascript:;\">Click here for example Results, Outcomes & Impact<\/a><\/p>",
+                    "instructions": "Describe the results, outcomes and Impacts of the innovation (maximum 1,000 characters).\r\n\r\n<ul class=\"dotted\">\r\n<li>What results and impacts have been observed from the innovation so far?<\/li>\r\n<li>How have the results and impacts been measured (e.g., methodologies used)?<\/li>\r\n<li>What results and impacts do you expect in the future?<\/li>\r\n<li>To the extent possible, please indicate the tangible or numeric results.<\/li>\r\n<\/ul>\r\n<p><a data-fancybox data-src=\"#results_outcomes_and_impact_sample\" data-options='{\"touch\" : false}' href=\"javascript:;\">Click here for example Results, Outcomes & Impact<\/a><\/p>",
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -978,6 +1006,7 @@
                         "class": "",
                         "id": ""
                     },
+                    "display_order": "",
                     "default_value": "",
                     "placeholder": "",
                     "maxlength": 1000,
@@ -1039,7 +1068,7 @@
                     "label": "Replication",
                     "name": "potential_to_be_replicated",
                     "type": "textarea",
-                    "instructions": "How has the innovation been replicated to address similar problems? In your opinion, what is the potential for the innovation to be further replicated in the future? (maximum 1,000 characters)\r\n\r\nYou may wish to discuss how the innovation has already been used by others, as well as how you believe your innovation can be used by others in the future. These others may be in:\r\n\r\n<ul class=\"dotted\">\r\n<li>Other organisations<\/li>\r\n<li>Within your organisation<\/li>\r\n<li>Larger or smaller agencies, organisations or governments<\/li>\r\n<\/ul>\r\n<p><a data-fancybox data-src=\"#replication_sample\" data-options='{\"touch\" : false}' href=\"javascript:;\">Click here for example of Replication<\/a><\/p>",
+                    "instructions": "Has the innovation been replicated to address similar problems? If so, how? In your opinion, what is the potential for the innovation to be further replicated in the future? (maximum 1,000 characters)\r\n\r\nYou may wish to discuss how the innovation has already been used by others, as well as how you believe your innovation could be used by others in the future. These others may be in:\r\n\r\n<ul class=\"dotted\">\r\n<li>Other organisations<\/li>\r\n<li>Within your organisation<\/li>\r\n<li>Larger or smaller agencies, organisations or governments<\/li>\r\n<\/ul>\r\n<p><a data-fancybox data-src=\"#replication_sample\" data-options='{\"touch\" : false}' href=\"javascript:;\">Click here for example of Replication<\/a><\/p>",
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -1047,6 +1076,7 @@
                         "class": "with_top_hr",
                         "id": ""
                     },
+                    "display_order": "",
                     "default_value": "",
                     "placeholder": "",
                     "maxlength": 1000,
@@ -1113,7 +1143,7 @@
                         "id": ""
                     },
                     "display_order": "",
-                    "message": "<div class=\"col-md-12 layout_hero_block \"><div class=\"hb_inner text-left\">\r\nUsing the “save” option will save the data you have entered and allow you to return to data entry immediately or at a later time. You can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href=\"mailto:opsi@oecd.org\" title=\"contact OPSI\">opsi@oecd.org</a> (include a screenshot if possible).\r\n\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-5\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-info big saveform\" title=\"Save\" href=\"#step-6\">Save <i class=\"fa fa-floppy-o\" aria-hidden=\"true\"><\/i><\/a><a class=\"button btn btn-default big gonext\" title=\"Next\" href=\"#step-7\">Next <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"><\/i><\/a> <span class=\"acf-spinner\"><\/span>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
+                    "message": "<div class=\"col-md-12 layout_hero_block \"><div class=\"hb_inner text-left\">\r\nUsing the “save” option will save the data you have entered and allow you to return to data entry immediately or at a later time. You can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href=\"mailto:opsi@oecd.org\" title=\"contact OPSI\">opsi@oecd.org<\/a> (include a screenshot if possible).\r\n\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-5\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-info big saveform\" title=\"Save\" href=\"#step-6\">Save <i class=\"fa fa-floppy-o\" aria-hidden=\"true\"><\/i><\/a><a class=\"button btn btn-default big gonext\" title=\"Next\" href=\"#step-7\">Next <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"><\/i><\/a> <span class=\"acf-spinner\"><\/span>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
                     "new_lines": "wpautop",
                     "esc_html": 0
                 }
@@ -1299,7 +1329,7 @@
                         "id": ""
                     },
                     "display_order": "",
-                    "message": "<div class=\"col-md-12 layout_hero_block \"><div class=\"hb_inner text-left\">\r\nUsing the “save” option will save the data you have entered and allow you to return to data entry immediately or at a later time. You can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href=\"mailto:opsi@oecd.org\" title=\"contact OPSI\">opsi@oecd.org</a> (include a screenshot if possible).\r\n\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-6\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-info big saveform\" title=\"Save\" href=\"#step-7\">Save <i class=\"fa fa-floppy-o\" aria-hidden=\"true\"><\/i><\/a><a class=\"button btn btn-default big gonext\" title=\"Next\" href=\"#step-8\">Next <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"><\/i><\/a> <span class=\"acf-spinner\"><\/span>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
+                    "message": "<div class=\"col-md-12 layout_hero_block \"><div class=\"hb_inner text-left\">\r\nUsing the “save” option will save the data you have entered and allow you to return to data entry immediately or at a later time. You can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href=\"mailto:opsi@oecd.org\" title=\"contact OPSI\">opsi@oecd.org<\/a> (include a screenshot if possible).\r\n\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-6\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-info big saveform\" title=\"Save\" href=\"#step-7\">Save <i class=\"fa fa-floppy-o\" aria-hidden=\"true\"><\/i><\/a><a class=\"button btn btn-default big gonext\" title=\"Next\" href=\"#step-8\">Next <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"><\/i><\/a> <span class=\"acf-spinner\"><\/span>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
                     "new_lines": "wpautop",
                     "esc_html": 0
                 }
@@ -1415,7 +1445,7 @@
                         "id": ""
                     },
                     "display_order": "",
-                    "message": "<div class=\"col-md-12 layout_hero_block \"><div class=\"hb_inner text-left\">\r\nUsing the “save” option will save the data you have entered and allow you to return to data entry immediately or at a later time. You can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href=\"mailto:opsi@oecd.org\" title=\"contact OPSI\">opsi@oecd.org</a> (include a screenshot if possible).\r\n\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-8\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-info big saveform\" title=\"Save\" href=\"#step-9\">Save <i class=\"fa fa-floppy-o\" aria-hidden=\"true\"><\/i><\/a><a class=\"button btn btn-default big submitform\" id=\"submitcasestudy\" title=\"Submit\" href=\"#step-6\">Submit <i class=\"fa fa-check-square-o\" aria-hidden=\"true\"><\/i><\/a> <span class=\"acf-spinner\"><\/span>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
+                    "message": "<div class=\"col-md-12 layout_hero_block \"><div class=\"hb_inner text-left\">\r\nUsing the “save” option will save the data you have entered and allow you to return to data entry immediately or at a later time. You can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href=\"mailto:opsi@oecd.org\" title=\"contact OPSI\">opsi@oecd.org<\/a> (include a screenshot if possible).\r\n\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-8\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-info big saveform\" title=\"Save\" href=\"#step-9\">Save <i class=\"fa fa-floppy-o\" aria-hidden=\"true\"><\/i><\/a><a class=\"button btn btn-default big submitform\" id=\"submitcasestudy\" title=\"Submit\" href=\"#step-6\">Submit <i class=\"fa fa-check-square-o\" aria-hidden=\"true\"><\/i><\/a> <span class=\"acf-spinner\"><\/span>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
                     "new_lines": "wpautop",
                     "esc_html": 0
                 }

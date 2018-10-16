@@ -2,3 +2,7 @@
 body.wp-admin .acf-fields .hidden {
 	display: block;
 }
+
+body.wp-admin.post-type-case #tagsdiv-case_type {
+	display: none;
+}

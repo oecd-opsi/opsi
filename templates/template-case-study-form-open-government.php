@@ -7,20 +7,26 @@ Template Post Type: page
 /*
 ** ACF filter to customize Open Government form
 */
+// give value to case type taxonomy field
+function bs_case_study_form_taxonomy_field($field) {
+	$field['value'] = 891;
+  return $field;
+}
+add_filter('acf/prepare_field/key=field_5bc60b5d239b4', 'bs_case_study_form_taxonomy_field', 20);
 
 // Hide fields
 function bs_case_study_open_gov_hide_fields($field) {
-if( !is_admin() ) {
-	  $fields_hidden = array(
-			'public_employee_involved',
-			'public_official_involved',
-			'cs_user_name',
-			'cs_user_organization',
-			'cs_user_email',
-			'tel',
-		);
-	  if( in_array( $field['name'], $fields_hidden ) ) return false;
-	}
+
+  $fields_hidden = array(
+		'public_employee_involved',
+		'public_official_involved',
+		'cs_user_name',
+		'cs_user_organization',
+		'cs_user_email',
+		'tel',
+	);
+  if( in_array( $field['name'], $fields_hidden ) ) return false;
+
 	return $field;
 }
 add_filter('acf/load_field', 'bs_case_study_open_gov_hide_fields', 20);
@@ -74,7 +80,7 @@ add_filter( 'acf/load_field/key=field_5ae78006a1e79', 'bs_case_study_form_lesson
 	acf_form_head();
 	get_header();
 
-	?> <style>#acf-field_5ae7ab3b5dd80- {display: none;}</style> <?php
+	?> <style>#acf-field_5ae7ab3b5dd80-, .acf-field-5bc60b5d239b4 {display: none;}</style> <?php
 
     global $post, $bp;
 
