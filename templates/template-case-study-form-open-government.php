@@ -80,8 +80,6 @@ add_filter( 'acf/load_field/key=field_5ae78006a1e79', 'bs_case_study_form_lesson
 	acf_form_head();
 	get_header();
 
-	?> <style>#acf-field_5ae7ab3b5dd80-, .acf-field-5bc60b5d239b4 {display: none;}</style> <?php
-
     global $post, $bp;
 
 	if ( isset( $_GET['edit'] ) && intval( $_GET['edit'] ) > 0 && !can_edit_acf_form( intval( $_GET['edit'] ) ) ) {

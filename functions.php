@@ -165,6 +165,11 @@ function opsi_load_admin_style() {
     wp_enqueue_style( 'genstyle' );
     wp_enqueue_style( 'google-font' );
 
+    if ( is_page_template('templates/template-case-study-form-open-government.php') ) {
+      $custom_css = "#acf-field_5ae7ab3b5dd80-, .acf-field-5bc60b5d239b4 {display: none;}";
+    	wp_add_inline_style( 'genstyle', $custom_css );
+    }
+
     // fancybox
     wp_register_style('fancybox_css', get_template_directory_uri() . '/css/jquery.fancybox.min.css', array(), false, 'screen');
     wp_enqueue_style( 'fancybox_css' );
