@@ -3489,7 +3489,10 @@ h2.view-all-link {
   margin-bottom: 4em;
 }
 
-
+/* CODE FOR OPEN GOVERNMENT FORM PAGE */
+.open-government-branding-container {
+  padding: 60px 0;
+}
 
 /* FOR MOBILE SCREENS, TOOLKIT SPECIFIC */
 @media only screen and (max-width: 767px) {
@@ -3597,8 +3600,7 @@ h2.view-all-link {
   display: none;
 }
 
-
-/* } end 600 media query */
+} /* end 600 media query */
 
 
 

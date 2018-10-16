@@ -81,14 +81,11 @@ add_filter( 'acf/load_field/key=field_5ae78006a1e79', 'bs_case_study_form_lesson
 	get_header();
 
 	?>
-	<div class="open-government-branding-container row">
-		<div class="col-sm-4">
+	<div class="open-government-branding-container">
+		<div class="col-sm-3 dont-col-sm-push--9">
 			<?php dynamic_sidebar('sidebar_case_study_open_gov_left') ?>
 		</div>
-		<div class="col-sm-4">
-			<?php dynamic_sidebar('sidebar_case_study_open_gov_center') ?>
-		</div>
-		<div class="col-sm-4">
+		<div class="col-sm-9 dont-col-sm-pull--3">
 			<?php dynamic_sidebar('sidebar_case_study_open_gov_right') ?>
 		</div>
 	</div>
