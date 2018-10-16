@@ -1,0 +1,563 @@
+{
+    "key": "group_597ebdb66a7e1",
+    "title": "Opsi Settings",
+    "fields": [
+        {
+            "key": "field_597ebe1c94320",
+            "label": "Top header line",
+            "name": "top_header_line",
+            "type": "wysiwyg",
+            "instructions": "Leave this empty to remove the top header line",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5b3d757d1841f",
+            "label": "Case Study Form Page",
+            "name": "case_study_form_page",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page"
+            ],
+            "taxonomy": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "id",
+            "ui": 1
+        },
+        {
+            "key": "field_5af3adc54e893",
+            "label": "Case Study Form First Page",
+            "name": "case_study_form_first_page",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page"
+            ],
+            "taxonomy": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "id",
+            "ui": 1
+        },
+        {
+            "key": "field_5af3adf34e894",
+            "label": "Case Study Form Thank You Page (Submit)",
+            "name": "case_study_form_thankyou_page_submit",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page"
+            ],
+            "taxonomy": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "id",
+            "ui": 1
+        },
+        {
+            "key": "field_5b3ffd24bfca3",
+            "label": "Case Study Add Collaborator Page",
+            "name": "case_study_add_collaborator_page",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [],
+            "taxonomy": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "id",
+            "ui": 1
+        },
+        {
+            "key": "field_5b40cc902bdd7",
+            "label": "Collaborators email subject",
+            "name": "collaborators_email_subject",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "You have been invited to join OPSI",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5b40bbad89b5b",
+            "label": "Collaborators email",
+            "name": "collaborators_email",
+            "type": "textarea",
+            "instructions": "This is the content of the email, when a user invites a collaborator to join the OPSI website. Useful shortcodes:\r\n[invited_by_name]\r\n[innovation_name]\r\n[signup_link text=\"Sign up now\"]",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Hello,\r\n\r\n[invited_by_name] is inviting you to join the OPSI (Observatory of Public Sector Innovation) website as you were marked as a Collaborator on the [innovation_name] innovation.\r\n[signup_link text=\"Sign up now\"] .\r\n\r\nThe OPSI team",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_5b46a14d9849a",
+            "label": "Author Published Notification Subject",
+            "name": "author_published_notification_subject",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Your Study Case has been published",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "show_column": 0,
+            "show_column_sortable": 0,
+            "show_column_weight": 1000,
+            "allow_quickedit": 0,
+            "allow_bulkedit": 0
+        },
+        {
+            "key": "field_5b46a1779849b",
+            "label": "Author Published Notification Mail",
+            "name": "author_published_notification_mail",
+            "type": "wysiwyg",
+            "instructions": "Tags:<br \/>\r\nCase study link: %casestudylink%<br \/>\r\nCase study title: %casestudytitle%<br \/>\r\nAuthor name: %authorname%",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Hi %authorname%,\r\n\r\nGreat news! You case study <a href=\"%casestudytitle%\">%casestudytitle%<\/a> has been published.\r\n\r\nBest regards,\r\nThe OPSI team",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+		{
+            "key": "field_5b500a5a9e019",
+            "label": "Emails to get pending user notification",
+            "name": "emails_to_get_pending_user_notification",
+            "type": "text",
+            "instructions": "Comma separated email adresses, for example user@oecd.org,any@oecd.org",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "show_column": 0,
+            "show_column_sortable": 0,
+            "show_column_weight": 1000,
+            "allow_quickedit": 0,
+            "allow_bulkedit": 0
+        },
+        {
+            "key": "field_5b43d1f9786f7",
+            "label": "Google maps API Key",
+            "name": "google_maps_api_key",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "show_column": 0,
+            "show_column_sortable": 0,
+            "show_column_weight": 1000,
+            "allow_quickedit": 0,
+            "allow_bulkedit": 0
+        },
+        {
+            "key": "field_5b43572ca3310",
+            "label": "Case study Form Examples",
+            "name": "case_study_form_example",
+            "type": "divider",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "custom_css": "",
+            "font_size": 14
+        },
+        {
+            "key": "field_5b435749a3311",
+            "label": "Executive Summary Example",
+            "name": "executive_summary_example",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "csform_example",
+                "id": "executive_summary_example"
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5b435859fbd50",
+            "label": "Innovation description sample",
+            "name": "innovation_description_sample",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "csform_example",
+                "id": "innovation_description_sample"
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5b4ada6a1c2e2",
+            "label": "What Makes Your Project Innovative Sample",
+            "name": "what_makes_your_project_innovative_sample",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "csform_example",
+                "id": "what_makes_your_project_innovative_sample"
+            },
+            "display_order": "",
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5b43588efbd51",
+            "label": "Innovation status sample",
+            "name": "innovation_status_sample",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "csform_example",
+                "id": "innovation_status_sample"
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5b4358acfbd52",
+            "label": "Collaboration and partnerships description sample",
+            "name": "collaboration_and_partnerships_description_sample",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "csform_example",
+                "id": "collaboration_and_partnerships_description_sample"
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5b4358c6fbd53",
+            "label": "Users, stakeholders and beneficiaries sample",
+            "name": "users_stakeholders_and_beneficiaries_sample",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "csform_example",
+                "id": "users_stakeholders_and_beneficiaries_sample"
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5b4358dbfbd54",
+            "label": "Results, outcomes and impact sample",
+            "name": "results_outcomes_and_impact_sample",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "csform_example",
+                "id": "results_outcomes_and_impact_sample"
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5b4358ecfbd55",
+            "label": "Challenges sample",
+            "name": "challenges_sample",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "csform_example",
+                "id": "challenges_sample"
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5b4358fdfbd56",
+            "label": "Conditions for success sample",
+            "name": "conditions_for_success_sample",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "csform_example",
+                "id": "conditions_for_success_sample"
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5b43590dfbd57",
+            "label": "Replication sample",
+            "name": "replication_sample",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "csform_example",
+                "id": "replication_sample"
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5b43591cfbd58",
+            "label": "Lessons learned sample",
+            "name": "lessons_learned_sample",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "csform_example",
+                "id": "lessons_learned_sample"
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5b435934fbd59",
+            "label": "Short explanation sample",
+            "name": "short_explanation_sample",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "csform_example",
+                "id": "short_explanation_sample"
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5b445fc02f724",
+            "label": "Crons Options",
+            "name": "crons_options",
+            "type": "divider",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "custom_css": "",
+            "font_size": 14
+        },
+        {
+            "key": "field_5b44643185841",
+            "label": "Case studies pending notification email subject",
+            "name": "case_studies_pending_notification_email_subject",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Pending case studies submissions reminder",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "show_column": 0,
+            "show_column_sortable": 0,
+            "show_column_weight": 1000,
+            "allow_quickedit": 0,
+            "allow_bulkedit": 0
+        },
+        {
+            "key": "field_5b445fd62f725",
+            "label": "Case studies pending notification email",
+            "name": "case_studies_pending_notification_email",
+            "type": "wysiwyg",
+            "instructions": "Tags:<br \/>\r\ncase studies list: %postlist%<br \/>\r\nauthor name: %author%<br \/>\r\nmy innovations link : %myinnovations%",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "theme-general-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1531632678
+}

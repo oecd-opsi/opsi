@@ -1,0 +1,48 @@
+{
+    "key": "group_5b41866e0225e",
+    "title": "Countries taxonomy fields",
+    "fields": [
+        {
+            "key": "field_5b41867891420",
+            "label": "ISO Alpha-2 code",
+            "name": "iso_code",
+            "type": "text",
+            "instructions": "The ISO code has to be 2 letters and in CAPITALS. The icon has to be uploaded in wp-content\/themes\/opsi\/images\/flags and it has to be 96x96 pixels.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": 2,
+            "show_column": 1,
+            "show_column_sortable": 1,
+            "show_column_weight": 1000,
+            "allow_quickedit": 1,
+            "allow_bulkedit": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "country"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1531060333
+}

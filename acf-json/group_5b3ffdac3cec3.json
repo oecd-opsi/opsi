@@ -1,0 +1,88 @@
+{
+    "key": "group_5b3ffdac3cec3",
+    "title": "Case Study Collaborators",
+    "fields": [
+        {
+            "key": "field_5b4f3f838f021",
+            "label": "Search for existing users",
+            "name": "search_for_existing_users",
+            "type": "user",
+            "instructions": "Type the email or name of the collaborator",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "role": "",
+            "allow_null": 1,
+            "multiple": 1,
+            "return_format": "id"
+        },
+        {
+            "key": "field_5b3ffdbdd0c3d",
+            "label": "Collaborators by email",
+            "name": "collaborators",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "Add Collaborator",
+            "sub_fields": [
+                {
+                    "key": "field_5b3ffdd3d0c3e",
+                    "label": "Collaborator Email Address",
+                    "name": "collaborator_email_address",
+                    "type": "email",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "show_column": 0,
+                    "show_column_sortable": 0,
+                    "show_column_weight": 1000,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "case"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1531967925
+}

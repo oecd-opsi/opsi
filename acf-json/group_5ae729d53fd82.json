@@ -1,0 +1,1443 @@
+{
+    "key": "group_5ae729d53fd82",
+    "title": "Case Studies",
+    "fields": [
+        {
+            "key": "field_5af38eeb63c46",
+            "label": "Before You Begin",
+            "name": "submit_an_innovation",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "headertitle notinform removetitle stepgroup",
+                "id": ""
+            },
+            "display_order": -1,
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5af38f0363c47",
+                    "label": "Page ID to pull content",
+                    "name": "",
+                    "type": "message",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "new_lines": "wpautop",
+                    "esc_html": 0
+                }
+            ]
+        },
+        {
+            "key": "field_5ae7ab3b5dd80",
+            "label": "Innovation Owner",
+            "name": "personal_details",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "stepgroup",
+                "id": ""
+            },
+            "display_order": -1,
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5ae73520af4f8",
+                    "label": "Are you a public-sector employee involved with the innovation that you are submitting?",
+                    "name": "public_employee_involved",
+                    "type": "radio",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "yesno",
+                        "id": ""
+                    },
+                    "choices": {
+                        "yes": "Yes",
+                        "no": "No"
+                    },
+                    "allow_null": 0,
+                    "other_choice": 0,
+                    "save_other_choice": 0,
+                    "default_value": "yes",
+                    "layout": "horizontal",
+                    "return_format": "value"
+                },
+                {
+                    "key": "field_5ae7357caf4f9",
+                    "label": "Do  you know the name and\/or contact information for the public employee involved with the innovation?",
+                    "name": "public_official_involved",
+                    "type": "radio",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5ae73520af4f8",
+                                "operator": "==",
+                                "value": "no"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "yesno",
+                        "id": ""
+                    },
+                    "choices": {
+                        "yes": "Yes",
+                        "no": "No"
+                    },
+                    "allow_null": 0,
+                    "other_choice": 0,
+                    "save_other_choice": 0,
+                    "default_value": "yes",
+                    "layout": "horizontal",
+                    "return_format": "value"
+                },
+                {
+                    "key": "field_5ae73601af4fa",
+                    "label": "Name of Public Official",
+                    "name": "their_name",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5ae73520af4f8",
+                                "operator": "==",
+                                "value": "no"
+                            },
+                            {
+                                "field": "field_5ae7357caf4f9",
+                                "operator": "==",
+                                "value": "yes"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5ae7360eaf4fb",
+                    "label": "Name of Their Organisation",
+                    "name": "their_organisation",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5ae73520af4f8",
+                                "operator": "==",
+                                "value": "no"
+                            },
+                            {
+                                "field": "field_5ae7357caf4f9",
+                                "operator": "==",
+                                "value": "yes"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5ae73652af4fe",
+                    "label": "Their Email Address",
+                    "name": "their_email",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5ae73520af4f8",
+                                "operator": "==",
+                                "value": "no"
+                            },
+                            {
+                                "field": "field_5ae7357caf4f9",
+                                "operator": "==",
+                                "value": "yes"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5ae73496af4f4",
+                    "label": "Your Name",
+                    "name": "cs_user_name",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "hidden",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5ae734afaf4f5",
+                    "label": "Your Organization",
+                    "name": "cs_user_organization",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "hidden",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5ae734c3af4f6",
+                    "label": "Your Email Address",
+                    "name": "cs_user_email",
+                    "type": "email",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "hidden",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_5ae7350faf4f7",
+                    "label": "Your Telephone Number",
+                    "name": "tel",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "hidden",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5b1acbfb8eb5c",
+                    "label": "Notice!",
+                    "name": "",
+                    "type": "message",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5ae73520af4f8",
+                                "operator": "==",
+                                "value": "no"
+                            },
+                            {
+                                "field": "field_5ae7357caf4f9",
+                                "operator": "==",
+                                "value": "no"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "removelabel",
+                        "id": ""
+                    },
+                    "message": "To be published on the OPSI platform, each case study must have at least one public sector sponsor who is involved in the innovation project. You may still submit the innovation, but you would need to identify a public official prior to case study publication.",
+                    "new_lines": "wpautop",
+                    "esc_html": 0
+                },
+                {
+                    "key": "field_5b34d61cf89f6",
+                    "label": "Invite collaborators",
+                    "name": "",
+                    "type": "message",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "removelabel",
+                        "id": ""
+                    },
+                    "message": "If your case study is accepted, you will have the opportunity to associate other collaborators who are members of the OPSI platform with the case study.  You will be able to add or invite your collaborators via your <a href=\"\/my-innovations\/\" target=\"_blank\" title=\"my innovations\">profile page<\/a>.",
+                    "new_lines": "wpautop",
+                    "esc_html": 0
+                },
+                {
+                    "key": "field_5b060ee64a0cf",
+                    "label": "Save and Submit placeholder",
+                    "name": "",
+                    "type": "message",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "removelabel submitmessage",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "message": "<div class=\"col-md-12 layout_hero_block \"><div class=\"hb_inner text-left\">\r\nUsing the “save” option will save the data you have entered and allow you to return to data entry immediately or at a later time. You can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href=\"mailto:opsi@oecd.org\" title=\"contact OPSI\">opsi@oecd.org</a> (include a screenshot if possible).\r\n\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-0\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-info big saveform\" title=\"Save\" href=\"#step-1\">Save <i class=\"fa fa-floppy-o\" aria-hidden=\"true\"><\/i><\/a><a class=\"button btn btn-default big gonext\" title=\"Next\" href=\"#step-2\">Next <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"><\/i><\/a> <span class=\"acf-spinner\"><\/span>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
+                    "new_lines": "wpautop",
+                    "esc_html": 0
+                }
+            ]
+        },
+        {
+            "key": "field_5ae7ac2c1bb4c",
+            "label": "Organisation Details",
+            "name": "organisation_details",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "stepgroup",
+                "id": ""
+            },
+            "display_order": -1,
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5b34dd534345a",
+                    "label": "Organisation Name",
+                    "name": "organisation_name",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5ae739c0c5ac4",
+                    "label": "Country",
+                    "name": "country",
+                    "type": "taxonomy",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "taxonomy": "country",
+                    "field_type": "select",
+                    "allow_null": 0,
+                    "add_term": 0,
+                    "save_terms": 1,
+                    "load_terms": 1,
+                    "return_format": "id",
+                    "multiple": 0
+                },
+                {
+                    "key": "field_5ae73ab6c5ac5",
+                    "label": "Level of Government",
+                    "name": "level_of_government",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "central": "National\/Federal government",
+                        "regional": "Regional\/State government",
+                        "local": "Local government",
+                        "other": "Other"
+                    },
+                    "default_value": [],
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "return_format": "array",
+                    "show_column": 0,
+                    "show_column_sortable": 0,
+                    "show_column_weight": 1000,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0,
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_5b34dd934345b",
+                    "label": "Custom level of government",
+                    "name": "level_of_government_other",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5ae73ab6c5ac5",
+                                "operator": "==",
+                                "value": "other"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5ae73d9dc5ac6",
+                    "label": "Primary Sector",
+                    "name": "organisation_primary_sectorfield",
+                    "type": "checkbox",
+                    "instructions": "What is your organisation's primary sector or field of activity",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "economic": "Economic affairs",
+                        "education": "Education",
+                        "employment": "Employment and labour-related affairs",
+                        "environmental": "Environmental protection, climate change, and agriculture",
+                        "external": "External relations",
+                        "health": "Health",
+                        "housing": "Housing and community relations",
+                        "information": "Information society and digitalisation",
+                        "public_admin": "Public administration modernisation and reform",
+                        "public_order": "Public order and safety, justice, and human rights",
+                        "recreation": "Recreation, culture, and religion",
+                        "science": "Science, research, and innovation",
+                        "transport": "Transport and infrastructure"
+                    },
+                    "allow_custom": 1,
+                    "save_custom": 0,
+                    "default_value": [],
+                    "layout": "vertical",
+                    "toggle": 0,
+                    "return_format": "array"
+                },
+                {
+                    "key": "field_5b0622244034e",
+                    "label": "Save and Submit placeholder",
+                    "name": "",
+                    "type": "message",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "removelabel submitmessage",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "message": "<div class=\"col-md-12 layout_hero_block \"><div class=\"hb_inner text-left\">\r\nUsing the “save” option will save the data you have entered and allow you to return to data entry immediately or at a later time. You can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href=\"mailto:opsi@oecd.org\" title=\"contact OPSI\">opsi@oecd.org</a> (include a screenshot if possible).\r\n\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-1\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-info big saveform\" title=\"Save\" href=\"#step-2\">Save <i class=\"fa fa-floppy-o\" aria-hidden=\"true\"><\/i><\/a><a class=\"button btn btn-default big gonext\" title=\"Next\" href=\"#step-3\">Next <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"><\/i><\/a> <span class=\"acf-spinner\"><\/span>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
+                    "new_lines": "wpautop",
+                    "esc_html": 0
+                }
+            ]
+        },
+        {
+            "key": "field_5ae73ec09f20d",
+            "label": "Innovation Summary",
+            "name": "describing_the_innovation",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "stepgroup",
+                "id": ""
+            },
+            "display_order": "",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5b34dfca4345c",
+                    "label": "Summary Instructions",
+                    "name": "",
+                    "type": "message",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "removelabel",
+                        "id": ""
+                    },
+                    "message": "Now, we're going to ask you several questions about your innovation. We are very excited to find out what you did, how you did it and who benefited from it. \r\n\r\nItems marked with <span class=\"important\">*<\/span> are required before you submit your final draft. However, if you need to, you may skip them for now and return to them later from the link in your <a href=\"\/my-profile\/\" title=\"profile\" target=\"_blank\">user profile<\/a>.\r\n\r\nAt the end of the submission process, you will have the opportunity to upload supporting materials and pictures, as well as submit video URLs (e.g., YouTube).\r\n\r\nThe OPSI team is excited to read about your innovation. The more comprehensive your answers are, the easier it will be for the reviewers and readers to appreciate the aims and achievements of your innovative project.",
+                    "new_lines": "wpautop",
+                    "esc_html": 0
+                },
+                {
+                    "key": "field_5ae740f59f20e",
+                    "label": "Title of Innovation",
+                    "name": "name_of_innovation",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5ae741179f20f",
+                    "label": "Innovation Website",
+                    "name": "innovation_website",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "http:\/\/",
+                    "placeholder": "http:\/\/"
+                },
+                {
+                    "key": "field_5ae741469f211",
+                    "label": "Year Your Innovation was Put Into Practice",
+                    "name": "year_innovation_launched",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "min": 2010,
+                    "max": 2019,
+                    "step": 1,
+                    "show_column": 0,
+                    "show_column_sortable": 0,
+                    "show_column_weight": 1000,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0
+                },
+				{
+                    "key": "field_5b35686af240c",
+                    "label": "Short and Simple Explanation",
+                    "name": "short_and_simple_explanation",
+                    "type": "textarea",
+                    "instructions": "This explanation should describe your innovation in <strong>three short and simple sentences<\/strong>. The explanation will be the first description people will see searching for innovations in the case study repository.  They will use this description to decide if they would like to read more about your innovation.\r\n\r\nThe explanation should:\r\n<ul class=\"dotted\">\r\n<li>use clear and succinct language<\/li>\r\n<li>compel the reader to continue reading about the innovation<\/li>\r\n<li>be able to be understood by someone who knows nothing about the sector or the innovation<\/li>\r\n<li>set the context for other professionals who are reading the case study<\/li>\r\n<li>use simple, not sector-specific terminology (no idioms, slang, or domain-specific \"buzz\" words)<\/li>\r\n<\/ul>\r\n\r\nThe explanation should describe:\r\n<ul class=\"dotted\">\r\n<li>why the innovation was developed or the problem\/opportunity being addressed<\/li>\r\n<li>what the innovation is and who it benefitted<\/li>\r\n<li>why it is innovative<\/li>\r\n<\/ul>\r\n<p><a data-fancybox data-src=\"#short_explanation_sample\" data-options='{\"touch\" : false}' href=\"javascript:;\">Click here for examples of a Short Explanation<\/a><\/p>",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": -2,
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": 500,
+                    "rows": "",
+                    "new_lines": "",
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0
+                },
+				{
+                    "key": "field_5b356b96dbd0c",
+                    "label": "Would you like to receive peer feedback on your explanation?",
+                    "name": "receive_feedback",
+                    "type": "radio",
+                    "instructions": "If you select yes, other innovators will be shown your explanation and give you feedback about how easy it is to understand.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "yesno",
+                        "id": ""
+                    },
+                    "choices": {
+                        "yes": "Yes",
+                        "no": "No"
+                    },
+                    "allow_null": 0,
+                    "other_choice": 0,
+                    "save_other_choice": 0,
+                    "default_value": "",
+                    "layout": "horizontal",
+                    "return_format": "value"
+                },
+                {
+                    "key": "field_5ae778f9224b4",
+                    "label": "Innovation Overview",
+                    "name": "executive_summary",
+                    "type": "textarea",
+                    "instructions": "The Innovation Overview is an overview of the project and outcomes. If you've already written a report about your project, this could also be your abstract or one-pager. This should summarize all of the information for the innovation at a high level. You will have the opportunity to elaborate on some of the details later in the submission. In approximately 3-4 paragraphs (maximum 5,000 characters), please tell us: \r\n\r\n<ul class=\"dotted\">\r\n<li>What problem the innovation solves or what opportunity was taken advantage of<\/li>\r\n<li>What the innovation is<\/li>\r\n<li>Objectives or goals of the innovation<\/li>\r\n<li>Who benefited from the innovation<\/li>\r\n<li>How is the innovation envisioned for the future? For example, how will it be institutionalised in its current context? How will it scale even bigger?<\/li>\r\n<\/ul>\r\n\r\nIf applicable, you may also wish to include:\r\n\r\n<ul class=\"dotted\">\r\n<li>How a course of action was determined<\/li>\r\n<li>Methods or tools used to implement the project<\/li>\r\n<li>A description of another innovation you were inspired by<\/li>\r\n<\/ul>\r\n<p><a data-fancybox data-src=\"#executive_summary_example\" data-options='{\"touch\" : false}' href=\"javascript:;\">Click here for example of an Innovation Overview<\/a><\/p>",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "with_top_hr",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": 5000,
+                    "rows": "",
+                    "new_lines": "",
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0
+                },
+                {
+                    "key": "field_5ae779ff224b6",
+                    "label": "Innovation Tags",
+                    "name": "innovation_tags",
+                    "type": "taxonomy",
+                    "instructions": "Select at <u>least 3<\/u> tags that describe your innovation.  We encourage you to add additional tags as needed.\r\n\r\nThese tags can describe the:\r\n\r\n<ul class=\"dotted\">\r\n<li>Innovation idea and type<\/li>\r\n<li>Development process<\/li>\r\n<li>Beneficiary<\/li>\r\n<li>Other relevant aspects<\/li>\r\n<\/ul>",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "with_top_hr select2 top_description",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "taxonomy": "innovation-tag",
+                    "field_type": "multi_select",
+                    "allow_null": 0,
+                    "add_term": 0,
+                    "save_terms": 1,
+                    "load_terms": 0,
+                    "return_format": "object",
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0,
+                    "multiple": 0
+                },
+                {
+                    "key": "field_5b530afc65c72",
+                    "label": "Custom Innovation Tags",
+                    "name": "custom_innovation_tags",
+                    "type": "text",
+                    "instructions": "You may add custom innovation tags by comma separating them, for example pesronalized information,data administration",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "removelabel",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "show_column": 0,
+                    "show_column_sortable": 0,
+                    "show_column_weight": 1000,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0
+                },
+                {
+                    "key": "field_5b0622474034f",
+                    "label": "Save and Submit placeholder",
+                    "name": "",
+                    "type": "message",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "removelabel submitmessage",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "message": "<div class=\"col-md-12 layout_hero_block \"><div class=\"hb_inner text-left\">\r\nUsing the “save” option will save the data you have entered and allow you to return to data entry immediately or at a later time. You can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href=\"mailto:opsi@oecd.org\" title=\"contact OPSI\">opsi@oecd.org</a> (include a screenshot if possible).\r\n\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-2\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-info big saveform\" title=\"Save\" href=\"#step-3\">Save <i class=\"fa fa-floppy-o\" aria-hidden=\"true\"><\/i><\/a><a class=\"button btn btn-default big gonext\" title=\"Next\" href=\"#step-4\">Next <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"><\/i><\/a> <span class=\"acf-spinner\"><\/span>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
+                    "new_lines": "wpautop",
+                    "esc_html": 0
+                }
+            ]
+        },
+        {
+            "key": "field_5ae77af12bcf6",
+            "label": "Innovation Description",
+            "name": "innovation_description",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "stepgroup",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5b34fd004fc4f",
+                    "label": "What Makes Your Project Innovative?",
+                    "name": "what_makes_your_project_innovative",
+                    "type": "textarea",
+                    "instructions": "We're eager to hear about how your project is innovative.\r\n\r\nIn approximately 1-2 paragraphs (maximum 1,000 characters), tell us how your innovation is:\r\n\r\n<ul class=\"dotted\">\r\n<li>Different, unique or more innovative than the what's been tried previously in your organisation, other organisations, or other countries<\/li>\r\n<\/ul>\r\n\r\n<p><a data-fancybox data-src=\"#what_makes_your_project_innovative_sample\" data-options='{\"touch\" : false}' href=\"javascript:;\">Click here for example of a \"What Makes Your Project Innovative?\"<\/a><\/p>",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": 1000,
+                    "rows": "",
+                    "new_lines": "",
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0
+                },
+                {
+                    "key": "field_5ae77bca2bcf7",
+                    "label": "Innovation Status",
+                    "name": "innovation_status",
+                    "type": "checkbox",
+                    "instructions": "First choose the current status of your innovation, then in 1-2 paragraphs, describe what is happening with your project right now (maximum 1,000 characters). Check all that apply and feel free to elaborate below if you feel the innovations phases below do not accurately describe your innovation's current status.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "pack",
+                        "id": ""
+                    },
+                    "choices": {
+                        "identifying_problems": "Identifying or Discovering Problems or Opportunities - <i>learning where and how an innovative response is needed<\/i>",
+                        "generating_ideas": "Generating Ideas or Designing Solutions - <i>finding and filtering ideas to respond to the problem or opportunity<\/i>",
+                        "developing_proposals": "Developing Proposals - <i>turning ideas into business cases that can be assessed and acted on<\/i>",
+                        "implementation": "Implementation - <i>making the innovation happen<\/i>",
+                        "evaluation": "Evaluation - <i>understanding whether the innovative initiative has delivered what was needed<\/i>",
+                        "diffusing": "Diffusing Lessons - <i>using what was learnt to inform other projects and understanding how the innovation can be applied in other ways<\/i>"
+                    },
+                    "allow_custom": 0,
+                    "save_custom": 0,
+                    "default_value": [],
+                    "layout": "vertical",
+                    "toggle": 0,
+                    "return_format": "array",
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0
+                },
+                {
+                    "key": "field_5ae77cd92bcf8",
+                    "label": "Innovation Status Details",
+                    "name": "status_description",
+                    "type": "textarea",
+                    "instructions": "<p><a data-fancybox data-src=\"#innovation_status_sample\" data-options='{\"touch\" : false}' href=\"javascript:;\">Click here for example of a Status Description<\/a><\/p>",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": 1000,
+                    "rows": "",
+                    "new_lines": "",
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0
+                },
+                {
+                    "key": "field_5b06226840350",
+                    "label": "Save and Submit placeholder",
+                    "name": "",
+                    "type": "message",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "removelabel submitmessage",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "message": "<div class=\"col-md-12 layout_hero_block \"><div class=\"hb_inner text-left\">\r\nUsing the “save” option will save the data you have entered and allow you to return to data entry immediately or at a later time. You can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href=\"mailto:opsi@oecd.org\" title=\"contact OPSI\">opsi@oecd.org</a> (include a screenshot if possible).\r\n\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-3\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-info big saveform\" title=\"Save\" href=\"#step-4\">Save <i class=\"fa fa-floppy-o\" aria-hidden=\"true\"><\/i><\/a><a class=\"button btn btn-default big gonext\" title=\"Next\" href=\"#step-5\">Next <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"><\/i><\/a> <span class=\"acf-spinner\"><\/span>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
+                    "new_lines": "wpautop",
+                    "esc_html": 0
+                }
+            ]
+        },
+        {
+            "key": "field_5b3560f3f240a",
+            "label": "Innovation Development",
+            "name": "innovation_development",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "stepgroup",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5ae77ec1e2a8f",
+                    "label": "Collaborations & Partnerships",
+                    "name": "collaboration_partnerships",
+                    "type": "textarea",
+                    "instructions": "What Collaborators or Partners were involved in the innovation process? Describe what each brought to the table and why it was important to the innovation (maximum 500 characters). \r\n\r\nThese may include:\r\n\r\n<ul class=\"dotted\">\r\n<li>Citizens<\/li>\r\n<li>Government officials<\/li>\r\n<li>Civil society organisations<\/li>\r\n<li>Companies<\/li>\r\n<\/ul>\r\n<p><a data-fancybox data-src=\"#collaboration_and_partnerships_description_sample\" data-options='{\"touch\" : false}' href=\"javascript:;\">Click here for example for Collaboration & Partnerships<\/a><\/p>",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": 500,
+                    "rows": "",
+                    "new_lines": "",
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0
+                },
+                {
+                    "key": "field_5ae77f20e2a90",
+                    "label": "Users, Stakeholders & Beneficiaries",
+                    "name": "users_stakeholders_beneficiaries",
+                    "type": "textarea",
+                    "instructions": "Describe each of the users, stakeholder and\/or beneficiaries for the innovation and how each group was affected (maximum 500 characters).\r\n\r\nThese may also include:\r\n\r\n<ul class=\"dotted\">\r\n<li>Citizens<\/li>\r\n<li>Government officials<\/li>\r\n<li>Civil society organisations<\/li>\r\n<li>Companies<\/li>\r\n<\/ul>\r\n<p><a data-fancybox data-src=\"#users_stakeholders_and_beneficiaries_sample\" data-options='{\"touch\" : false}' href=\"javascript:;\">Click here for example for Users, Stakeholders and Beneficiaries<\/a><\/p>",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "with_top_hr",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": 500,
+                    "rows": "",
+                    "new_lines": "",
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0
+                },
+                {
+                    "key": "field_5b3acfe818042",
+                    "label": "Save and Submit placeholder",
+                    "name": "",
+                    "type": "message",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "removelabel submitmessage",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "message": "<div class=\"col-md-12 layout_hero_block \"><div class=\"hb_inner text-left\">\r\nUsing the “save” option will save the data you have entered and allow you to return to data entry immediately or at a later time. You can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href=\"mailto:opsi@oecd.org\" title=\"contact OPSI\">opsi@oecd.org</a> (include a screenshot if possible).\r\n\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-4\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-info big saveform\" title=\"Save\" href=\"#step-5\">Save <i class=\"fa fa-floppy-o\" aria-hidden=\"true\"><\/i><\/a><a class=\"button btn btn-default big gonext\" title=\"Next\" href=\"#step-6\">Next <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"><\/i><\/a> <span class=\"acf-spinner\"><\/span>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
+                    "new_lines": "wpautop",
+                    "esc_html": 0
+                }
+            ]
+        },
+        {
+            "key": "field_5ae77fcca1e77",
+            "label": "Innovation Reflections",
+            "name": "project_reflections",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "stepgroup",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5ae77e7fe2a8e",
+                    "label": "Results, Outcomes & Impacts",
+                    "name": "results_impact",
+                    "type": "textarea",
+                    "instructions": "Describe the results, outcomes and Impacts of the innovation (maximum 1,000 characters).\r\n\r\n<ul class=\"dotted\">\r\n<li>What results and impacts have been observed from the innovation so far?<\/li>\r\n<li>What results and impacts do you expect in the future?<\/li>\r\n<\/ul>\r\n<p><a data-fancybox data-src=\"#results_outcomes_and_impact_sample\" data-options='{\"touch\" : false}' href=\"javascript:;\">Click here for example Results, Outcomes & Impact<\/a><\/p>",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": 1000,
+                    "rows": "",
+                    "new_lines": "",
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0
+                },
+                {
+                    "key": "field_5ae77fdda1e78",
+                    "label": "Challenges and Failures",
+                    "name": "challenges",
+                    "type": "textarea",
+                    "instructions": "Describe what challenges have been faces, and potentially what failures have occurred (maximum 1,000 characters).\r\n\r\n<ul class=\"dotted\">\r\n<li>What challenges have been encountered?<\/li>\r\n<li>What failures have been encountered along the way (e.g., structural failures or significant setbacks)?<\/li>\r\n<li>And how, if at all, have those challenges and\/or failures been responded to?<\/li>\r\n<\/ul>\r\n<p><a data-fancybox data-src=\"#challenges_sample\" data-options='{\"touch\" : false}' href=\"javascript:;\">Click here for example of Challenges<\/a><\/p>",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "with_top_hr",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": 1000,
+                    "rows": "",
+                    "new_lines": "",
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0
+                },
+                {
+                    "key": "field_5ae78030a1e7a",
+                    "label": "Conditions for Success",
+                    "name": "conditions_to_success",
+                    "type": "textarea",
+                    "instructions": "What conditions do you think are necessary for the success of an innovation such as this (maximum 1,000 characters)?\r\n\r\nConditions for success may include:\r\n\r\n<ul class=\"dotted\">\r\n<li>Supporting infrastructure and services<\/li>\r\n<li>Policy and rules<\/li>\r\n<li>Leadership and guidance<\/li>\r\n<li>Human and financial resources<\/li>\r\n<li>Personal values and motivation<\/li>\r\n<\/ul>\r\n<p><a data-fancybox data-src=\"#conditions_for_success_sample\" data-options='{\"touch\" : false}' href=\"javascript:;\">Click here for example of Conditions for Success<\/a><\/p>",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "with_top_hr",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": 1000,
+                    "rows": "",
+                    "new_lines": "",
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0
+                },
+                {
+                    "key": "field_5ae78083a1e7b",
+                    "label": "Replication",
+                    "name": "potential_to_be_replicated",
+                    "type": "textarea",
+                    "instructions": "How has the innovation been replicated to address similar problems? In your opinion, what is the potential for the innovation to be further replicated in the future? (maximum 1,000 characters)\r\n\r\nYou may wish to discuss how the innovation has already been used by others, as well as how you believe your innovation can be used by others in the future. These others may be in:\r\n\r\n<ul class=\"dotted\">\r\n<li>Other organisations<\/li>\r\n<li>Within your organisation<\/li>\r\n<li>Larger or smaller agencies, organisations or governments<\/li>\r\n<\/ul>\r\n<p><a data-fancybox data-src=\"#replication_sample\" data-options='{\"touch\" : false}' href=\"javascript:;\">Click here for example of Replication<\/a><\/p>",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "with_top_hr",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": 1000,
+                    "rows": "",
+                    "new_lines": "",
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0
+                },
+                {
+                    "key": "field_5ae78006a1e79",
+                    "label": "Lessons Learned",
+                    "name": "lessons_to_share",
+                    "type": "textarea",
+                    "instructions": "What lessons from your experience would you like to share with others like you (maximum 2,000 characters)?\r\n<p><a data-fancybox data-src=\"#lessons_learned_sample\" data-options='{\"touch\" : false}' href=\"javascript:;\">Click here for example of Lessons Learned<\/a><\/p>",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "with_top_hr",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": 2000,
+                    "rows": "",
+                    "new_lines": "",
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0
+                },
+                {
+                    "key": "field_5ae780c7a1e7c",
+                    "label": "Anything Else?",
+                    "name": "information_to_share",
+                    "type": "textarea",
+                    "instructions": "Is there any other information you would like to share about the innovation?",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "with_top_hr",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": 1000,
+                    "rows": "",
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_5b06228240351",
+                    "label": "Save and Submit placeholder",
+                    "name": "",
+                    "type": "message",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "removelabel submitmessage",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "message": "<div class=\"col-md-12 layout_hero_block \"><div class=\"hb_inner text-left\">\r\nUsing the “save” option will save the data you have entered and allow you to return to data entry immediately or at a later time. You can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href=\"mailto:opsi@oecd.org\" title=\"contact OPSI\">opsi@oecd.org</a> (include a screenshot if possible).\r\n\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-5\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-info big saveform\" title=\"Save\" href=\"#step-6\">Save <i class=\"fa fa-floppy-o\" aria-hidden=\"true\"><\/i><\/a><a class=\"button btn btn-default big gonext\" title=\"Next\" href=\"#step-7\">Next <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"><\/i><\/a> <span class=\"acf-spinner\"><\/span>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
+                    "new_lines": "wpautop",
+                    "esc_html": 0
+                }
+            ]
+        },
+        {
+            "key": "field_5b35683ff240b",
+            "label": "Materials",
+            "name": "materials_&_short_explanation",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "stepgroup",
+                "id": ""
+            },
+            "display_order": -1,
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5ae741799f212",
+                    "label": "Materials",
+                    "name": "photo_and_video",
+                    "type": "group",
+                    "instructions": "Visual assets and supporting materials help to bring your innovation to life. Do you have other materials you'd like to include with your submission? Please use the fields below to upload images (in jpg and png format) and other relevant documents (in .pdf, .doc, .docx, .ppt., .pptx., .odt, .xls, .xlsx, .txt, .mp3, .m4a, .ogg, .wav). You may also submit a brief video project pitch and specify up to two additional videos (insert YouTube, Vimeo URLs).",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "filegroup with_top_hr",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5ae741359f210",
+                            "label": "Other related URL",
+                            "name": "other_related_url",
+                            "type": "url",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "http:\/\/"
+                        },
+                        {
+                            "key": "field_5ae741e09f213",
+                            "label": "Upload images",
+                            "name": "upload_images",
+                            "type": "gallery",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "image_uploader",
+                                "id": ""
+                            },
+                            "min": "",
+                            "max": "",
+                            "insert": "append",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": ".jpg,.jpeg,.png",
+                            "show_column": 0,
+                            "show_column_weight": 1000
+                        },
+                        {
+                            "key": "field_5b3d915ae7b60",
+                            "label": "Upload supporting files",
+                            "name": "upload_supporting_files",
+                            "type": "gallery",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "file_uploader",
+                                "id": ""
+                            },
+                            "min": "",
+                            "max": "",
+                            "insert": "append",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": ".pdf,.doc,.docx,.ppt.,.pptx.,.odt,.xls,.xlsx,.txt,.mp3,.m4a,.ogg,.wav",
+                            "show_column": 0,
+                            "show_column_weight": 1000
+                        },
+                        {
+                            "key": "field_5ae77873224b0",
+                            "label": "1-2 Minute Video Pitch",
+                            "name": "video_url_1",
+                            "type": "url",
+                            "instructions": "For additional consideration, you may record a one-two minute video pitch about your innovation, host it on YouTube or a similar video sharing platform, and link it here. Additional supporting videos may be linked below.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "http:\/\/",
+                            "show_column": 0,
+                            "show_column_sortable": 0,
+                            "show_column_weight": 1000,
+                            "allow_quickedit": 0,
+                            "allow_bulkedit": 0
+                        },
+                        {
+                            "key": "field_5ae7789a224b1",
+                            "label": "Project-Related Video URL 1",
+                            "name": "video_url_2",
+                            "type": "url",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "http:\/\/",
+                            "show_column": 0,
+                            "show_column_sortable": 0,
+                            "show_column_weight": 1000,
+                            "allow_quickedit": 0,
+                            "allow_bulkedit": 0
+                        },
+                        {
+                            "key": "field_5ae778ab224b2",
+                            "label": "Project-Related Video URL 2",
+                            "name": "video_url_3",
+                            "type": "url",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "http:\/\/",
+                            "show_column": 0,
+                            "show_column_sortable": 0,
+                            "show_column_weight": 1000,
+                            "allow_quickedit": 0,
+                            "allow_bulkedit": 0
+                        }
+                    ]
+                },
+                {
+                    "key": "field_5b356c93dbd0d",
+                    "label": "Save and Submit placeholder",
+                    "name": "",
+                    "type": "message",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "removelabel submitmessage",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "message": "<div class=\"col-md-12 layout_hero_block \"><div class=\"hb_inner text-left\">\r\nUsing the “save” option will save the data you have entered and allow you to return to data entry immediately or at a later time. You can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href=\"mailto:opsi@oecd.org\" title=\"contact OPSI\">opsi@oecd.org</a> (include a screenshot if possible).\r\n\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-6\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-info big saveform\" title=\"Save\" href=\"#step-7\">Save <i class=\"fa fa-floppy-o\" aria-hidden=\"true\"><\/i><\/a><a class=\"button btn btn-default big gonext\" title=\"Next\" href=\"#step-8\">Next <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"><\/i><\/a> <span class=\"acf-spinner\"><\/span>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
+                    "new_lines": "wpautop",
+                    "esc_html": 0
+                }
+            ]
+        },
+        {
+            "key": "field_5ae784814921c",
+            "label": "Questionnaire Feedback & Miscellaneous",
+            "name": "questionnaire_feedback_miscellaneous",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "stepgroup",
+                "id": ""
+            },
+            "display_order": -1,
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5ae784ad4921d",
+                    "label": "On a scale of 1-10, how simple did you find it to complete this form?",
+                    "name": "simple_scale",
+                    "type": "radio",
+                    "instructions": "<span class=\"scalemin\">Impossible<\/span><span class=\"scalemax\">Very straightforward<\/span>",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "horizontal simplescale",
+                        "id": ""
+                    },
+                    "choices": {
+                        "1": "1",
+                        "2": "2",
+                        "3": "3",
+                        "4": "4",
+                        "5": "5",
+                        "6": "6",
+                        "7": "7",
+                        "8": "8",
+                        "9": "9",
+                        "10": "10"
+                    },
+                    "allow_null": 1,
+                    "other_choice": 0,
+                    "save_other_choice": 0,
+                    "default_value": 10,
+                    "layout": "horizontal",
+                    "return_format": "value"
+                },
+                {
+                    "key": "field_5ae7853f4921e",
+                    "label": "Please let us know if you have any feedback that will help us improve our submission form or submission process, or any feedback regarding your experience submitting your innovation.",
+                    "name": "form_feedback",
+                    "type": "textarea",
+                    "instructions": "For example, were there any questions that were too difficult to answer, and why?",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": "",
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_5ae7857e4921f",
+                    "label": "Would you like to register for the OPSI newsletter on public sector innovation (if you haven’t already)?",
+                    "name": "newsletter_register",
+                    "type": "radio",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "yesno",
+                        "id": ""
+                    },
+                    "choices": {
+                        "yes": "Yes",
+                        "no": "No"
+                    },
+                    "allow_null": 0,
+                    "other_choice": 0,
+                    "save_other_choice": 0,
+                    "default_value": "yes",
+                    "layout": "horizontal",
+                    "return_format": "value",
+                    "show_column": 0,
+                    "show_column_sortable": 0,
+                    "show_column_weight": 1000,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0
+                },
+                {
+                    "key": "field_5b06229e40352",
+                    "label": "Save and Submit placeholder",
+                    "name": "",
+                    "type": "message",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "removelabel submitmessage",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "message": "<div class=\"col-md-12 layout_hero_block \"><div class=\"hb_inner text-left\">\r\nUsing the “save” option will save the data you have entered and allow you to return to data entry immediately or at a later time. You can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href=\"mailto:opsi@oecd.org\" title=\"contact OPSI\">opsi@oecd.org</a> (include a screenshot if possible).\r\n\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-8\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-info big saveform\" title=\"Save\" href=\"#step-9\">Save <i class=\"fa fa-floppy-o\" aria-hidden=\"true\"><\/i><\/a><a class=\"button btn btn-default big submitform\" id=\"submitcasestudy\" title=\"Submit\" href=\"#step-6\">Submit <i class=\"fa fa-check-square-o\" aria-hidden=\"true\"><\/i><\/a> <span class=\"acf-spinner\"><\/span>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
+                    "new_lines": "wpautop",
+                    "esc_html": 0
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "case"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1532182683
+}

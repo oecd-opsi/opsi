@@ -1,0 +1,4 @@
+
+body.wp-admin .acf-fields .hidden {
+	display: block;
+}
