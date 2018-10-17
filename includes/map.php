@@ -1,9 +1,56 @@
 <?php
 
 function cs_jve_map() {
-	if ( !( is_post_type_archive( 'case' ) || is_tax( 'innovation-tag' ) || is_tax( 'country' ) || is_tax( 'innovation-badge' ) ) ) { return; }
+	if ( !( is_post_type_archive( 'case' ) || is_tax('case_type') || is_tax( 'innovation-tag' ) || is_tax( 'country' ) || is_tax( 'innovation-badge' ) ) ) { return; }
 
-	$wp_country_terms = get_terms( 'country' , array( 'hide_empty' => true, 'fields' => 'all' ) );
+	if ( is_tax('case_type') ) {
+
+		// create empty array
+		$wp_country_terms = [];
+		// get slug of taxonomy term of queried object
+		$taxonomy = get_queried_object();
+		$tax_term_slug = $taxonomy->slug;
+
+		// get all posts with taxonomy term of the archive
+		$the_query = new WP_Query( array(
+	    'post_type' => 'case',
+	    'tax_query' => array(
+        array (
+          'taxonomy' => 'case_type',
+          'field' => 'slug',
+          'terms' => $tax_term_slug,
+	      )
+		  ),
+			'posts_per_page' => -1,
+		) );
+
+		// loop posts
+		while ( $the_query->have_posts() ) : $the_query->the_post();
+
+			// get object of Country taxonomy terms
+			$terms = get_the_terms(get_the_ID(), 'country');
+			// loop Country terms
+			foreach( $terms as $term ) {
+				$termID = $term->term_id;
+				// check if ID is alreay in array
+				if ( isset($wp_country_terms[$termID]) ) {
+					// if exist, increment count
+					$wp_country_terms[$termID]->count++;
+				} else {
+					//if not add object to array with the term ID as key
+					$wp_country_terms[$termID] = $term;
+				}
+			}
+
+		endwhile;
+		wp_reset_postdata();
+
+	} else {
+
+		$wp_country_terms = get_terms( 'country' , array( 'hide_empty' => true, 'fields' => 'all' ) );
+
+	}
+
 	$data = '';
 	$code_to_flag = '';
 	$code_to_slug = '';
@@ -14,7 +61,7 @@ function cs_jve_map() {
 			$data .= '"'. $iso .'": '. $country_term->count .','; $data .= "\n\t";
 			$code_to_flag .= '"'. $iso .'": "<img src=\''. get_stylesheet_directory_uri().'/images/flags/'.$iso.'.png\' width=\'24\' height=\'24\' >",'; $code_to_flag .= "\n\t";
 			$code_to_slug .= '"'. $iso .'": "'. $country_term->slug .'",'; $code_to_slug .= "\n\t";
-			
+
 			if ( $country_term->count > $max_count ) {
 				$max_count = $country_term->count;
 			}
@@ -22,7 +69,7 @@ function cs_jve_map() {
 	}
 	?><script type="text/javascript">
 		jQuery(document).ready(function(){
-			
+
 			var data = {
 				<?php echo $data; ?>
 			};
@@ -34,18 +81,18 @@ function cs_jve_map() {
 			};
 			var maxValue = <?php echo $max_count;  ?>;
 			var country_to_add = '';
-			
+
 			jQuery('#map-bar .max').text(maxValue);
-			
-			
-			
+
+
+
 			jQuery('#regions_div').vectorMap({
 				map: 'world_mill',
 				backgroundColor: "#D7FAFE",
 				zoomMax: 20,
 				regionStyle: {
 					initial: {
-						fill: 'white', 
+						fill: 'white',
 						"fill-opacity": .95,
 						stroke: '#ededed', "stroke-width": .05, "stroke-opacity": .95
 					},
@@ -99,7 +146,7 @@ function cs_jve_map() {
 					jQuery("#curs").css("left", "-9999px");
 				},
 				onRegionClick: function(e, code) {
-					
+
 					if ( data[code] > 0 ) {
 						jQuery('.countries_widget .widget_content').show();
 						country_to_add = code_to_slug[code];
@@ -107,23 +154,23 @@ function cs_jve_map() {
 					} else {
 						country_to_add = '';
 					}
-					
+
 				}
 			});
-			
+
 			jQuery(document).on('facetwp-refresh', function() {
 				if ( jQuery.inArray( country_to_add, FWP.facets['countries'] ) == -1 && country_to_add != '' ) {
 					FWP.facets['countries'].push( country_to_add );
 					country_to_add = '';
 				}
 			});
-			
+
 			jQuery('.facetwp-facet-countries select').on( 'fs:changed', function() {
 				// ptnewval = $( this ).val();
 				// console.log(FWP.facets);
 				// FWP.refresh();
 			});
-			
+
 		});
 	</script>
 	<?php

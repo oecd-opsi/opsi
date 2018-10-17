@@ -34,7 +34,7 @@ add_filter('acf/load_field', 'bs_case_study_open_gov_hide_fields', 20);
 // Name of public official field
 function bs_case_study_form_name_public_official($field) {
 	$field['conditional_logic'] = 0;
-	$field['label'] = 'Name';
+	$field['label'] = __('Name', 'opsi');
 	return $field;
 }
 add_filter( 'acf/load_field/key=field_5ae73601af4fa', 'bs_case_study_form_name_public_official', 20 );
@@ -42,7 +42,7 @@ add_filter( 'acf/load_field/key=field_5ae73601af4fa', 'bs_case_study_form_name_p
 // Name of their organisation field
 function bs_case_study_form_name_organisation($field) {
 	$field['conditional_logic'] = 0;
-	$field['label'] = 'Name of Organisation';
+	$field['label'] = __('Name of Organisation', 'opsi');
 	return $field;
 }
 add_filter( 'acf/load_field/key=field_5ae7360eaf4fb', 'bs_case_study_form_name_organisation', 20 );
@@ -56,21 +56,21 @@ add_filter( 'acf/load_field/key=field_5ae7360eaf4fb', 'bs_case_study_form_email_
 
 // Organisation name field
 function bs_case_study_form_organisation_name($field) {
-	$field['label'] = 'Organisation Name &amp; background (NGO, private company etc)';
+	$field['label'] = __('Organisation Name &amp; background (NGO, private company etc)', 'opsi');
 	return $field;
 }
 add_filter( 'acf/load_field/key=field_5b34dd534345a', 'bs_case_study_form_organisation_name', 20 );
 
 // Level of government field
 function bs_case_study_form_level_of_government($field) {
-	$field['label'] = 'Level of Government / Organisation';
+	$field['label'] = __('Level of Government / Organisation', 'opsi');
 	return $field;
 }
 add_filter( 'acf/load_field/key=field_5ae73ab6c5ac5', 'bs_case_study_form_level_of_government', 20 );
 
 // Lesson learned field
 function bs_case_study_form_lesson_learned($field) {
-	$field['instructions'] = 'What lessons from your experience would you like to share with others like you? Where there any pitfalls to avoid (maximum 4000 characters)?';
+	$field['instructions'] = __('What lessons from your experience would you like to share with others like you? Where there any pitfalls to avoid (maximum 4000 characters)?', 'opsi');
 	$field['maxlength'] = 4000;
 	return $field;
 }
@@ -82,13 +82,10 @@ add_filter( 'acf/load_field/key=field_5ae78006a1e79', 'bs_case_study_form_lesson
 
 	?>
 	<div class="open-government-branding-container row">
-		<div class="col-sm-4">
+		<div class="col-sm-6">
 			<?php dynamic_sidebar('sidebar_case_study_open_gov_left') ?>
 		</div>
-		<div class="col-sm-4">
-			<?php dynamic_sidebar('sidebar_case_study_open_gov_center') ?>
-		</div>
-		<div class="col-sm-4">
+		<div class="col-sm-6">
 			<?php dynamic_sidebar('sidebar_case_study_open_gov_right') ?>
 		</div>
 	</div>

@@ -115,15 +115,6 @@ if (!current_user_can('administrator') && !is_admin()) {
       'after_title' => '</h2>',
     ));
     register_sidebar(array(
-      'name' => 'Case Study Open Government Branding Center',
-      'id' => 'sidebar_case_study_open_gov_center',
-      'description' => 'Widgets in this area will be shown on top-center sidebar position on Open Government Case Study page.',
-      'before_widget' => '<aside id="%1$s" class="widget sidebar-box sidebar-open-gov-center csa_aside %2$s">',
-      'after_widget' => '</aside>',
-      'before_title' => '<h2 class="widget-title">',
-      'after_title' => '</h2>',
-    ));
-    register_sidebar(array(
       'name' => 'Case Study Open Government Branding Right',
       'id' => 'sidebar_case_study_open_gov_right',
       'description' => 'Widgets in this area will be shown on top-right sidebar position on Open Government Case Study page.',
@@ -184,7 +175,7 @@ function opsi_load_admin_style() {
     wp_enqueue_style( 'bootstrap_theme' );
     wp_enqueue_style( 'font_awesome' );
 
-	if ( is_post_type_archive( 'case' ) || is_tax( 'innovation-tag' ) || is_tax( 'country' ) || is_tax( 'innovation-badge' ) ) {
+	if ( is_post_type_archive( 'case' ) || is_tax( 'case_type' ) || is_tax( 'innovation-tag' ) || is_tax( 'country' ) || is_tax( 'innovation-badge' ) ) {
 		wp_register_style('jve_css', get_template_directory_uri() . '/css/jquery-jvectormap-2.0.3.css', array(), false, 'screen');
 		wp_enqueue_style( 'jve_css' );
 	}
@@ -227,7 +218,7 @@ function opsi_load_admin_style() {
     wp_register_script('steps_js', get_template_directory_uri() . '/js/jquery.steps.min.js', array( 'jquery' ));
     wp_enqueue_script('steps_js');
 
-	if ( is_post_type_archive( 'case' ) || is_tax( 'innovation-tag' ) || is_tax( 'country' ) || is_tax( 'innovation-badge' ) ) {
+	if ( is_post_type_archive( 'case' ) || is_tax( 'case_type' ) || is_tax( 'innovation-tag' ) || is_tax( 'country' ) || is_tax( 'innovation-badge' ) ) {
 		// wp_register_script('google_charts_js', 'https://www.gstatic.com/charts/loader.js', array( 'jquery' ));
 		// wp_enqueue_script('google_charts_js');
 		wp_register_script('jve_js', get_template_directory_uri() . '/js/jquery-jvectormap-2.0.3.min.js', array( 'jquery' ));

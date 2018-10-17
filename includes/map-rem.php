@@ -1,7 +1,7 @@
 <?php
 
 function cs_jve_map() {
-	if ( !( is_post_type_archive( 'case' ) || is_tax( 'innovation-tag' ) || is_tax( 'country' ) || is_tax( 'innovation-badge' ) ) ) { return; }
+	if ( !( is_post_type_archive( 'case' ) || is_tax('case_type') || is_tax( 'innovation-tag' ) || is_tax( 'country' ) || is_tax( 'innovation-badge' ) ) ) { return; }
 
 	$wp_country_terms = get_terms( 'country' , array( 'hide_empty' => true, 'fields' => 'all' ) );
 	$data = '';
@@ -14,19 +14,19 @@ function cs_jve_map() {
 			$data .= "'". $iso ."': ". $country_term->count .","; $data .= "\n\t";
 			$code_to_flag .= "'". $iso ."': '<img src=\"". get_stylesheet_directory_uri()."/images/flags/".$iso.".png\" width=\"24\" height=\"24\" >',"; $code_to_flag .= "\n\t";
 			$code_to_slug .= "'". $iso ."': '". $country_term->slug ."',"; $code_to_slug .= "\n\t";
-			
+
 			if ( $country_term->count > $max_count ) {
 				$max_count = $country_term->count;
 			}
 		}
 	}
-	
+
 	ob_start();
 	?>
-	
+
 	// <script type="text/javascript">
 		jQuery(document).ready(function(){
-			
+
 			var data = {
 				<?php echo $data; ?>
 			};
@@ -38,18 +38,18 @@ function cs_jve_map() {
 			};
 			var maxValue = <?php echo $max_count;  ?>;
 			var country_to_add = '';
-			
+
 			jQuery('#map-bar .max').text(maxValue);
-			
-			
-			
+
+
+
 			jQuery('#regions_div').vectorMap({
 				map: 'world_mill',
 				backgroundColor: "#D7FAFE",
 				zoomMax: 20,
 				regionStyle: {
 					initial: {
-						fill: 'white', 
+						fill: 'white',
 						"fill-opacity": .95,
 						stroke: '#ededed', "stroke-width": .05, "stroke-opacity": .95
 					},
@@ -103,7 +103,7 @@ function cs_jve_map() {
 					jQuery("#curs").css("left", "-9999px");
 				},
 				onRegionClick: function(e, code) {
-					
+
 					if ( data[code] > 0 ) {
 						jQuery('.countries_widget .widget_content').show();
 						country_to_add = code_to_slug[code];
@@ -111,38 +111,38 @@ function cs_jve_map() {
 					} else {
 						country_to_add = '';
 					}
-					
+
 				}
 			});
-			
+
 			jQuery(document).on('facetwp-refresh', function() {
 				if ( jQuery.inArray( country_to_add, FWP.facets['countries'] ) == -1 && country_to_add != '' ) {
 					FWP.facets['countries'].push( country_to_add );
 					country_to_add = '';
 				}
 			});
-			
+
 			jQuery('.facetwp-facet-countries select').on( 'fs:changed', function() {
 				// ptnewval = $( this ).val();
 				// console.log(FWP.facets);
 				// FWP.refresh();
 			});
-			
+
 		});
 	// </script>
 	<?php
-	
+
 	$js = ob_get_contents();
 	ob_clean();
-	
+
 	// echo '<pre>'.print_r($js, true).'</pre>';
-	
-	
+
+
 
 	$myfile = fopen(get_stylesheet_directory()."/js/case-studies-map.js", "w") or die("Unable to open file!");
 	$txt = $js;
 	fwrite($myfile, $txt);
 	fclose($myfile);
-	
+
 }
 add_action( 'wp', 'cs_jve_map', 1000 );
