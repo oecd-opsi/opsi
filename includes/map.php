@@ -33,11 +33,7 @@ function cs_jve_map() {
 			foreach( $terms as $term ) {
 				$termID = $term->term_id;
 				// check if ID is alreay in array
-				if ( isset($wp_country_terms[$termID]) ) {
-					// if exist, increment count
-					$wp_country_terms[$termID]->count++;
-				} else {
-					//if not add object to array with the term ID as key
+				if ( !isset($wp_country_terms[$termID]) ) {
 					$wp_country_terms[$termID] = $term;
 				}
 			}
