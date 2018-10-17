@@ -106,19 +106,10 @@ if (!current_user_can('administrator') && !is_admin()) {
       'after_title' => '</h2><div class="widget_content collapse-xs">',
     ));
     register_sidebar(array(
-      'name' => 'Case Study Open Government Branding Left',
+      'name' => 'Case Study Open Government Branding',
       'id' => 'sidebar_case_study_open_gov_left',
       'description' => 'Widgets in this area will be shown on top-left sidebar position on Open Government Case Study page.',
       'before_widget' => '<aside id="%1$s" class="widget sidebar-box sidebar-open-gov-left csa_aside %2$s">',
-      'after_widget' => '</aside>',
-      'before_title' => '<h2 class="widget-title">',
-      'after_title' => '</h2>',
-    ));
-    register_sidebar(array(
-      'name' => 'Case Study Open Government Branding Right',
-      'id' => 'sidebar_case_study_open_gov_right',
-      'description' => 'Widgets in this area will be shown on top-right sidebar position on Open Government Case Study page.',
-      'before_widget' => '<aside id="%1$s" class="widget sidebar-box sidebar-open-gov-right csa_aside %2$s">',
       'after_widget' => '</aside>',
       'before_title' => '<h2 class="widget-title">',
       'after_title' => '</h2>',

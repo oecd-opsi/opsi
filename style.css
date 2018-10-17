@@ -3494,8 +3494,11 @@ h2.view-all-link {
   padding: 60px 0;
 }
 
+.open-government-branding-container img {
+  margin-right: 24px;
+}
+
 .open-government-branding-container h2 {
-  text-transform: uppercase;
   font-size: 48px;
 }
 

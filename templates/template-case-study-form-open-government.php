@@ -82,11 +82,8 @@ add_filter( 'acf/load_field/key=field_5ae78006a1e79', 'bs_case_study_form_lesson
 
 	?>
 	<div class="open-government-branding-container row">
-		<div class="col-sm-6">
+		<div class="col-sm-12">
 			<?php dynamic_sidebar('sidebar_case_study_open_gov_left') ?>
-		</div>
-		<div class="col-sm-6">
-			<?php dynamic_sidebar('sidebar_case_study_open_gov_right') ?>
 		</div>
 	</div>
 	<?php
