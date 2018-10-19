@@ -14,6 +14,18 @@ function bs_case_study_form_taxonomy_field($field) {
 }
 add_filter('acf/prepare_field/key=field_5bc60b5d239b4', 'bs_case_study_form_taxonomy_field', 20);
 
+// Hide Organisation Type field
+function bs_case_study_form_organisation_type($field) {
+  return;
+}
+add_filter('acf/prepare_field/key=field_5bc9fb9ae7390', 'bs_case_study_form_organisation_type', 20);
+
+// Hide Part of Open Gov partnership field
+function bs_case_study_form_open_gov_partnership($field) {
+  return;
+}
+add_filter('acf/prepare_field/key=field_5bca000811cdb', 'bs_case_study_form_open_gov_partnership', 20);
+
 	acf_form_head();
 	get_header();
 

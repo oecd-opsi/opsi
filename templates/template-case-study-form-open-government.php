@@ -31,39 +31,23 @@ function bs_case_study_open_gov_hide_fields($field) {
 }
 add_filter('acf/load_field', 'bs_case_study_open_gov_hide_fields', 20);
 
-// Name of public official field
-function bs_case_study_form_name_public_official($field) {
-	$field['conditional_logic'] = 0;
-	$field['label'] = __('Name', 'opsi');
-	return $field;
+// Innovation owner group field
+function bs_case_study_form_innovation_owner($field) {
+	return;
 }
-add_filter( 'acf/load_field/key=field_5ae73601af4fa', 'bs_case_study_form_name_public_official', 20 );
-
-// Name of their organisation field
-function bs_case_study_form_name_organisation($field) {
-	$field['conditional_logic'] = 0;
-	$field['label'] = __('Name of Organisation', 'opsi');
-	return $field;
-}
-add_filter( 'acf/load_field/key=field_5ae7360eaf4fb', 'bs_case_study_form_name_organisation', 20 );
-
-// Their email address field
-function bs_case_study_form_email_address($field) {
-	$field['conditional_logic'] = 0;
-	return $field;
-}
-add_filter( 'acf/load_field/key=field_5ae7360eaf4fb', 'bs_case_study_form_email_address', 20 );
-
-// Organisation name field
-function bs_case_study_form_organisation_name($field) {
-	$field['label'] = __('Organisation Name &amp; background (NGO, private company etc)', 'opsi');
-	return $field;
-}
-add_filter( 'acf/load_field/key=field_5b34dd534345a', 'bs_case_study_form_organisation_name', 20 );
+add_filter( 'acf/load_field/key=field_5ae7ab3b5dd80', 'bs_case_study_form_innovation_owner', 20 );
 
 // Level of government field
 function bs_case_study_form_level_of_government($field) {
-	$field['label'] = __('Level of Government / Organisation', 'opsi');
+	$field['conditional_logic'] = '[
+			[
+					{
+							"field": "field_5bc9fb9ae7390",
+							"operator": "==",
+							"value": "government"
+					}
+			]
+	]';
 	return $field;
 }
 add_filter( 'acf/load_field/key=field_5ae73ab6c5ac5', 'bs_case_study_form_level_of_government', 20 );
@@ -197,6 +181,7 @@ add_filter( 'acf/load_field/key=field_5ae77e7fe2a8e', 'bs_case_study_form_result
 
 // Challenges and Failures field
 function bs_case_study_form_challenges($field) {
+	$field['label'] = __('Challenges', 'opsi');
 	$field['instructions'] = __('Describe what challenges have been faces, and potentially what failures have occurred (maximum 1,000 characters).
 
 <ul class="dotted">
@@ -243,6 +228,34 @@ You may wish to discuss how the innovation has already been used by others, as w
 }
 add_filter( 'acf/load_field/key=field_5ae78083a1e7b', 'bs_case_study_form_potential_to_be_replicated', 20 );
 
+// Save and Submit placeholder field
+function bs_case_study_form_save_submit_placeholder($field) {
+	$field['message'] = __('<div class="col-md-12 layout_hero_block "><div class="hb_inner text-left">
+	Using the “save” option will save the data you have entered and allow you to return to data entry immediately or at a later time. You can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href="mailto:opengov@oecd.org" title="contact OPSI">opengov@oecd.org</a> (include a screenshot if possible).
+
+	<div class="text-center inlinep removebr formbuttons">
+	<a class="button btn btn-default big goback" title="Back" href="#step-8"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</a><a class="button btn btn-info big saveform" title="Save" href="#step-9">Save <i class="fa fa-floppy-o" aria-hidden="true"></i></a><a class="button btn btn-default big submitform" id="submitcasestudy" title="Submit" href="#step-6">Submit <i class="fa fa-check-square-o" aria-hidden="true"></i></a> <span class="acf-spinner"></span>
+	</div>
+	</div>
+	</div>', 'opsi');
+	return $field;
+}
+add_filter( 'acf/load_field/key=field_5b060ee64a0cf', 'bs_case_study_form_save_submit_placeholder', 20 );
+add_filter( 'acf/load_field/key=field_5b0622244034e', 'bs_case_study_form_save_submit_placeholder', 20 );
+add_filter( 'acf/load_field/key=field_5b0622474034f', 'bs_case_study_form_save_submit_placeholder', 20 );
+add_filter( 'acf/load_field/key=field_5b06226840350', 'bs_case_study_form_save_submit_placeholder', 20 );
+add_filter( 'acf/load_field/key=field_5b3acfe818042', 'bs_case_study_form_save_submit_placeholder', 20 );
+add_filter( 'acf/load_field/key=field_5b06228240351', 'bs_case_study_form_save_submit_placeholder', 20 );
+add_filter( 'acf/load_field/key=field_5b356c93dbd0d', 'bs_case_study_form_save_submit_placeholder', 20 );
+add_filter( 'acf/load_field/key=field_5b356c93dbd0d', 'bs_case_study_form_save_submit_placeholder', 20 );
+add_filter( 'acf/load_field/key=field_5b06229e40352', 'bs_case_study_form_save_submit_placeholder', 20 );
+
+// Innovation status questions fields
+function bs_case_study_form_innovation_status_fields($field) {
+	return;
+}
+add_filter( 'acf/load_field/key=field_5ae77bca2bcf7', 'bs_case_study_form_innovation_status_fields', 20 );
+add_filter( 'acf/load_field/key=field_5ae77cd92bcf8', 'bs_case_study_form_innovation_status_fields', 20 );
 
 	acf_form_head();
 	get_header();

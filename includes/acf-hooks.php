@@ -315,10 +315,22 @@ function case_study_save_collaborators( $post_id ) {
 
 	delete_field( 'collaborators', $cs_id );
 
+	// get Collaboration email subject and Collaborators email content based on case type
+	$case_type = get_the_terms( $post_id, 'case_type' );
+	$case_type_id = $case_type[0]->term_id;
+	if ( $case_type_id == 890 ) {
+		//OPSI-OECD case type
+		$collaborators_subject = get_field( 'collaborators_email_subject', 'option' );
+		$collaborators_email_content = get_field( 'collaborators_email', 'option' );
+	} else {
+		//Open gov case type
+		$collaborators_subject = get_field( 'collaborators_email_subject_open_gov', 'option' );
+		$collaborators_email_content = get_field( 'collaborators_email_open_gov', 'option' );
+	}
+
 	// replace shortcode content
-	$collaborators_email = get_field( 'collaborators_email', 'option' );
-	if ( strpos( $collaborators_email, '[innovation_name' ) !== false ) {
-		$collaborators_email =  sprintf( $collaborators_email, get_the_title( $cs_id ) );
+	if ( strpos( $collaborators_email_content, '[innovation_name' ) !== false ) {
+		$collaborators_email_content =  sprintf( $collaborators_email_content, get_the_title( $cs_id ) );
 	}
 
 	// check if the user already exists, if not send an email // else add to the existing users dropdown
@@ -334,10 +346,10 @@ function case_study_save_collaborators( $post_id ) {
 				continue;
 			}
 
-			$collaborators_email = nl2br( do_shortcode( $collaborators_email ) );
-			$subject = get_field( 'collaborators_email_subject', 'option' );
+			$collaborators_email_content = nl2br( do_shortcode( $collaborators_email_content ) );
+			$subject = $collaborators_subject;
 			$headers = array('Content-Type: text/html; charset=UTF-8');
-			wp_mail( $single_email, $subject, $collaborators_email, $headers );
+			wp_mail( $single_email, $subject, $collaborators_email_content, $headers );
 
 		}
 	}

@@ -410,6 +410,40 @@
                     "maxlength": ""
                 },
                 {
+                    "key": "field_5bc9fb9ae7390",
+                    "label": "Organisation Type",
+                    "name": "organisation_type",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "choices": {
+                        "government": "Government",
+                        "ngo": "Non-Governmental Organisation (NGO)",
+                        "international_org": "International Organisation",
+                        "academia": "Academia",
+                        "private_sector": "Private Sector"
+                    },
+                    "default_value": [],
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "return_format": "value",
+                    "show_column": 0,
+                    "show_column_sortable": 0,
+                    "show_column_weight": 1000,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0,
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
                     "key": "field_5ae739c0c5ac4",
                     "label": "Country",
                     "name": "country",
@@ -761,6 +795,36 @@
                     "show_column_weight": 1000,
                     "allow_quickedit": 0,
                     "allow_bulkedit": 0
+                },
+                {
+                    "key": "field_5bca000811cdb",
+                    "label": "Is this case part of Open Government Partnership action plan in your country?",
+                    "name": "is_this_case_part_of_open_government_partnership_action_plan_in_your_country?",
+                    "type": "radio",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "choices": {
+                        "yes": "Yes",
+                        "no": "No"
+                    },
+                    "allow_null": 0,
+                    "other_choice": 0,
+                    "default_value": "",
+                    "layout": "vertical",
+                    "return_format": "value",
+                    "show_column": 0,
+                    "show_column_sortable": 0,
+                    "show_column_weight": 1000,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0,
+                    "save_other_choice": 0
                 },
                 {
                     "key": "field_5b0622474034f",
