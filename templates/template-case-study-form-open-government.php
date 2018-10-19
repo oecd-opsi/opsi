@@ -76,6 +76,173 @@ function bs_case_study_form_lesson_learned($field) {
 }
 add_filter( 'acf/load_field/key=field_5ae78006a1e79', 'bs_case_study_form_lesson_learned', 20 );
 
+// Short and Simple Explanation field
+function bs_case_study_form_short_and_simple_explanation($field) {
+	$field['instructions'] = __('This explanation should describe your innovation in <strong>three short and simple sentences</strong>. The explanation will be the first description people will see searching for innovations in the case study repository.  They will use this description to decide if they would like to read more about your innovation.
+
+The explanation should:
+<ul class="dotted">
+<li>use clear and succinct language</li>
+<li>compel the reader to continue reading about the innovation</li>
+<li>be able to be understood by someone who knows nothing about the sector or the innovation</li>
+<li>set the context for other professionals who are reading the case study</li>
+<li>use simple, not sector-specific terminology (no idioms, slang, or domain-specific "buzz" words)</li>
+</ul>
+
+The explanation should describe:
+<ul class="dotted">
+<li>why the innovation was developed or the problem/opportunity being addressed</li>
+<li>what the innovation is and who it benefitted</li>
+<li>why it is innovative</li>
+</ul>
+<p><a data-fancybox data-src="#short_explanation_sample_open_gov" data-options=\'{"touch" : false}\' href="javascript:;">Click here for examples of a Short Explanation</a></p>', 'opsi');
+	return $field;
+}
+add_filter( 'acf/load_field/key=field_5b35686af240c', 'bs_case_study_form_short_and_simple_explanation', 20 );
+
+// Innovation Overview field
+function bs_case_study_form_executive_summary($field) {
+	$field['instructions'] = __('The Innovation Overview is an overview of the project and outcomes. If you\'ve already written a report about your project, this could also be your abstract or one-pager. This should summarize all of the information for the innovation at a high level. You will have the opportunity to elaborate on some of the details later in the submission. In approximately 3-4 paragraphs (maximum 5,000 characters), please tell us:
+
+<ul class="dotted">
+<li>What problem the innovation solves or what opportunity was taken advantage of</li>
+<li>What the innovation is</li>
+<li>Objectives or goals of the innovation</li>
+<li>Who benefited from the innovation</li>
+<li>How is the innovation envisioned for the future? For example, how will it be institutionalised in its current context? How will it scale even bigger?</li>
+</ul>
+
+If applicable, you may also wish to include:
+
+<ul class="dotted">
+<li>How a course of action was determined</li>
+<li>Methods or tools used to implement the project</li>
+<li>A description of another innovation you were inspired by</li>
+</ul>
+<p><a data-fancybox data-src="#executive_summary_exampleopen_gov" data-options=\'{"touch" : false}\' href="javascript:;">Click here for example of an Innovation Overview</a></p>', 'opsi');
+	return $field;
+}
+add_filter( 'acf/load_field/key=field_5ae778f9224b4', 'bs_case_study_form_executive_summary', 20 );
+
+// What Makes Your Project Innovative? field
+function bs_case_study_form_what_makes_your_project_innovative($field) {
+	$field['instructions'] = __('We\'re eager to hear about how your project is innovative.
+
+In approximately 1-2 paragraphs (maximum 1,000 characters), tell us how your innovation is:
+
+<ul class="dotted">
+<li>Different, unique or more innovative than the what\'s been tried previously in your organisation, other organisations, or other countries</li>
+</ul>
+
+<p><a data-fancybox data-src="#what_makes_your_project_innovative_sample_open_gov" data-options=\'{"touch" : false}\' href="javascript:;">Click here for example of a "What Makes Your Project Innovative?"</a></p>', 'opsi');
+	return $field;
+}
+add_filter( 'acf/load_field/key=field_5b34fd004fc4f', 'bs_case_study_form_what_makes_your_project_innovative', 20 );
+
+// Innovation Status Text field
+function bs_case_study_form_status_description($field) {
+	$field['instructions'] = __('<p><a data-fancybox data-src="#innovation_status_sample_open_gov" data-options=\'{"touch" : false}\' href="javascript:;">Click here for example of a Status Description</a></p>', 'opsi');
+	return $field;
+}
+add_filter( 'acf/load_field/key=field_5ae77cd92bcf8', 'bs_case_study_form_status_description', 20 );
+
+// Collaborations & Partnerships field
+function bs_case_study_form_collaboration_partnerships($field) {
+	$field['instructions'] = __('What Collaborators or Partners were involved in the innovation process? Describe what each brought to the table and why it was important to the innovation (maximum 500 characters).
+
+These may include:
+
+<ul class="dotted">
+<li>Citizens</li>
+<li>Government officials</li>
+<li>Civil society organisations</li>
+<li>Companies</li>
+</ul>
+<p><a data-fancybox data-src="#collaboration_and_partnerships_description_sample_open_gov" data-options=\'{"touch" : false}\' href="javascript:;">Click here for example for Collaboration & Partnerships</a></p>', 'opsi');
+	return $field;
+}
+add_filter( 'acf/load_field/key=field_5ae77ec1e2a8f', 'bs_case_study_form_collaboration_partnerships', 20 );
+
+// Users, Stakeholders & Beneficiaries field
+function bs_case_study_form_users_stakeholders_beneficiaries($field) {
+	$field['instructions'] = __('Describe each of the users, stakeholder and/or beneficiaries for the innovation and how each group was affected (maximum 500 characters).
+
+These may also include:
+
+<ul class="dotted">
+<li>Citizens</li>
+<li>Government officials</li>
+<li>Civil society organisations</li>
+<li>Companies</li>
+</ul>
+<p><a data-fancybox data-src="#users_stakeholders_and_beneficiaries_sample_open_gov" data-options=\'{"touch" : false}\' href="javascript:;">Click here for example for Users, Stakeholders and Beneficiaries</a></p>', 'opsi');
+	return $field;
+}
+add_filter( 'acf/load_field/key=field_5ae77f20e2a90', 'bs_case_study_form_users_stakeholders_beneficiaries', 20 );
+
+// Results, Outcomes & Impacts field
+function bs_case_study_form_results_impact($field) {
+	$field['instructions'] = __('Describe the results, outcomes and Impacts of the innovation (maximum 1,000 characters).
+
+<ul class="dotted">
+<li>What results and impacts have been observed from the innovation so far?</li>
+<li>How have the results and impacts been measured (e.g., methodologies used)?</li>
+<li>What results and impacts do you expect in the future?</li>
+<li>To the extent possible, please indicate the tangible or numeric results.</li>
+</ul>
+<p><a data-fancybox data-src="#results_outcomes_and_impact_sample_open_gov" data-options=\'{"touch" : false}\' href="javascript:;">Click here for example Results, Outcomes & Impact</a></p>', 'opsi');
+	return $field;
+}
+add_filter( 'acf/load_field/key=field_5ae77e7fe2a8e', 'bs_case_study_form_results_impact', 20 );
+
+// Challenges and Failures field
+function bs_case_study_form_challenges($field) {
+	$field['instructions'] = __('Describe what challenges have been faces, and potentially what failures have occurred (maximum 1,000 characters).
+
+<ul class="dotted">
+<li>What challenges have been encountered?</li>
+<li>What failures have been encountered along the way (e.g., structural failures or significant setbacks)?</li>
+<li>And how, if at all, have those challenges and/or failures been responded to?</li>
+</ul>
+<p><a data-fancybox data-src="#challenges_sample_open_gov" data-options=\'{"touch" : false}\' href="javascript:;">Click here for example of Challenges</a></p>', 'opsi');
+	return $field;
+}
+add_filter( 'acf/load_field/key=field_5ae77fdda1e78', 'bs_case_study_form_challenges', 20 );
+
+// Conditions for Success field
+function bs_case_study_form_conditions_to_success($field) {
+	$field['instructions'] = __('What conditions do you think are necessary for the success of an innovation such as this (maximum 1,000 characters)?
+
+Conditions for success may include:
+
+<ul class="dotted">
+<li>Supporting infrastructure and services</li>
+<li>Policy and rules</li>
+<li>Leadership and guidance</li>
+<li>Human and financial resources</li>
+<li>Personal values and motivation</li>
+</ul>
+<p><a data-fancybox data-src="#conditions_for_success_sample_open_gov" data-options=\'{"touch" : false}\' href="javascript:;">Click here for example of Conditions for Success</a></p>', 'opsi');
+	return $field;
+}
+add_filter( 'acf/load_field/key=field_5ae78030a1e7a', 'bs_case_study_form_conditions_to_success', 20 );
+
+// Replication field
+function bs_case_study_form_potential_to_be_replicated($field) {
+	$field['instructions'] = __('Has the innovation been replicated to address similar problems? If so, how? In your opinion, what is the potential for the innovation to be further replicated in the future? (maximum 1,000 characters)
+
+You may wish to discuss how the innovation has already been used by others, as well as how you believe your innovation could be used by others in the future. These others may be in:
+
+<ul class="dotted">
+<li>Other organisations</li>
+<li>Within your organisation</li>
+<li>Larger or smaller agencies, organisations or governments</li>
+</ul>
+<p><a data-fancybox data-src="#replication_sample_open_gov" data-options=\'{"touch" : false}\' href="javascript:;">Click here for example of Replication</a></p>', 'opsi');
+	return $field;
+}
+add_filter( 'acf/load_field/key=field_5ae78083a1e7b', 'bs_case_study_form_potential_to_be_replicated', 20 );
+
 
 	acf_form_head();
 	get_header();

@@ -1775,8 +1775,21 @@ function cs_on_publish_pending_post( $post ) {
 		$author_lname 		= get_the_author_meta( 'last_name', $post->post_author );
 		$author_fullname 	= $author_fname.' '. $author_lname;
 
+    // get subject and content based on case type
+    $case_type = get_the_terms( $post->ID, 'case_type' );
+    $case_type_id = $case_type[0]->term_id;
+    if ( $case_type_id == 890 ) {
+      //OPSI-OECD case type
+      $subject = get_field( 'author_published_notification_subject', 'option' );
+      $mail_content = get_field( 'author_published_notification_mail', 'option' );
+    } else {
+      //Open gov case type
+      $subject = get_field( 'author_published_notification_subject_open_gov', 'option' );
+      $mail_content = get_field( 'author_published_notification_mail_open_gov', 'option' );
+    }
+
 		$subject = get_field( 'author_published_notification_subject', 'option' );
-		$body    = str_replace( array( '%authorname%', '%casestudylink%', '%casestudytitle%' ), array( $author_fullname, $cslink, $cstitle ), get_field( 'author_published_notification_mail', 'option' ) );
+		$body    = str_replace( array( '%authorname%', '%casestudylink%', '%casestudytitle%' ), array( $author_fullname, $cslink, $cstitle ), $mail_content );
 
 		$headers = array('Content-Type: text/html; charset=UTF-8');
 

@@ -511,6 +511,263 @@
             "delay": 0
         },
         {
+            "key": "field_5bc9a961c8362",
+            "label": "Open Gov Case study Form Examples",
+            "name": "case_study_form_example_copy",
+            "type": "divider",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "custom_css": "",
+            "font_size": 14
+        },
+        {
+            "key": "field_5bc9a9bdc8363",
+            "label": "Open Gov Executive Summary Example",
+            "name": "executive_summary_example_open_gov",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "csform_example",
+                "id": "executive_summary_example_open_gov"
+            },
+            "display_order": "",
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5bc9a9d9c8364",
+            "label": "Open Gov Innovation description sample",
+            "name": "innovation_description_sample_open_gov",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "csform_example",
+                "id": "innovation_description_sample_open_gov"
+            },
+            "display_order": "",
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5bc9a9f5c8365",
+            "label": "Open Gov What Makes Your Project Innovative Sample",
+            "name": "what_makes_your_project_innovative_sample_open_gov",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "csform_example",
+                "id": "what_makes_your_project_innovative_sample_open_gov"
+            },
+            "display_order": "",
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5bc9aa09c8366",
+            "label": "Open Gov Innovation status sample",
+            "name": "innovation_status_sample_open_gov",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "csform_example",
+                "id": "innovation_status_sample_open_gov"
+            },
+            "display_order": "",
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5bc9aa18c8367",
+            "label": "Open Gov Collaboration and partnerships description sample",
+            "name": "collaboration_and_partnerships_description_sample_open_gov",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "csform_example",
+                "id": "collaboration_and_partnerships_description_sample_open_gov"
+            },
+            "display_order": "",
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5bc9aa2ec8368",
+            "label": "Open Gov Users, stakeholders and beneficiaries sample",
+            "name": "users_stakeholders_and_beneficiaries_sample_open_gov",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "csform_example",
+                "id": "users_stakeholders_and_beneficiaries_sample_open_gov"
+            },
+            "display_order": "",
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5bc9aa42c8369",
+            "label": "Open Gov Results, outcomes and impact sample",
+            "name": "results_outcomes_and_impact_sample_open_gov",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "csform_example",
+                "id": "results_outcomes_and_impact_sample_open_gov"
+            },
+            "display_order": "",
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5bc9aa52c836a",
+            "label": "Open Gov Challenges sample",
+            "name": "challenges_sample_open_gov",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "csform_example",
+                "id": "challenges_sample_open_gov"
+            },
+            "display_order": "",
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5bc9aa5dc836b",
+            "label": "Open Gov Conditions for success sample",
+            "name": "conditions_for_success_sample_open_gov",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "csform_example",
+                "id": "conditions_for_success_sample_open_gov"
+            },
+            "display_order": "",
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5bc9aa68c836c",
+            "label": "Open Gov Replication sample",
+            "name": "replication_sample_open_gov",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "csform_example",
+                "id": "replication_sample_open_gov"
+            },
+            "display_order": "",
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5bc9aa78c836d",
+            "label": "Open Gov Lessons learned sample",
+            "name": "lessons_learned_sample_open_gov",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "csform_example",
+                "id": "lessons_learned_sample_open_gov"
+            },
+            "display_order": "",
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5bc9aa85c836e",
+            "label": "Open Gov Short explanation sample",
+            "name": "short_explanation_sample_open_gov",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "csform_example",
+                "id": "short_explanation_sample_open_gov"
+            },
+            "display_order": "",
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
             "key": "field_5b445fc02f724",
             "label": "Crons Options",
             "name": "crons_options",

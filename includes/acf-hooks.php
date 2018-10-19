@@ -232,7 +232,8 @@ function case_study_redirect_acf_submit_form( $form, $post_id ) {
 
 	if( $_POST['csf_action'] == 'save' ) {
 
-		$case_study_form_page = get_field( 'case_study_form_page', 'option' );
+		$case_study_form_page = $_SERVER['REQUEST_URI'];
+
 		$step = ( isset( $_POST['form_step'] ) && intval( $_POST['form_step'] ) > 0 ? intval( $_POST['form_step'] ) : 0 );
 
 		wp_safe_redirect( get_the_permalink( $case_study_form_page ).'?edit='.$post_id.'&updated=true#step-'.$step );
@@ -241,7 +242,7 @@ function case_study_redirect_acf_submit_form( $form, $post_id ) {
 
 	if( $_POST['csf_action'] == 'saveandpreview' ) {
 
-		wp_safe_redirect( get_the_permalink( $post_id  ) );
+		wp_safe_redirect( get_the_permalink( $post_id ) );
 		die;
 	}
 
