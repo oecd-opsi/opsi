@@ -13,11 +13,11 @@
   }
 add_action('after_setup_theme', 'remove_admin_bar');
 
-function remove_admin_bar() {
-if (!current_user_can('administrator') && !is_admin()) {
-  show_admin_bar(false);
-}
-}
+// function remove_admin_bar() {
+// if (!current_user_can('administrator') && !is_admin()) {
+//   show_admin_bar(false);
+// }
+// }
 
   add_filter( 'jpeg_quality', create_function( '', 'return 85;' ) );
   add_filter('acf-image-crop/image-quality', 85);
@@ -732,6 +732,12 @@ function bs_case_type_taxonomy() {
 		'show_admin_column'          => true,
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => false,
+    'capabilities'               => array(
+      'manage_terms'  => 'manage_case_type',
+      'edit_terms'    => 'edit_case_type',
+      'delete_terms'  => 'delete_case_type',
+      'assign_terms'  => 'assign_case_type'
+    ),
 	);
 	register_taxonomy( 'case_type', array( 'case' ), $args );
 
@@ -2036,3 +2042,53 @@ function bs_single_case_open_gov_template($single_template) {
   return $single_template;
 }
 add_filter('single_template', 'bs_single_case_open_gov_template');
+
+// Add custom capabilities to Case CPT
+function bs_case_custom_capabilities( $args, $post_type ) {
+
+    // Only target our specific post type
+    if ( 'case' !== $post_type )
+        return $args;
+
+    // Change capabilities
+    $args['capability_type'] = 'case';
+    $args['map_meta_cap'] = true;
+
+    return $args;
+};
+add_filter( 'register_post_type_args', 'bs_case_custom_capabilities', 10, 2 );
+
+
+// Add a taxonomy filter for Case type
+function bs_filter_case_by_case_type( $post_type, $which ) {
+
+	// Apply this only on Case post type
+	if ( 'case' !== $post_type )
+		return;
+
+	// A list of taxonomy slugs to filter by
+	$taxonomies = array( 'manufacturer', 'model', 'transmission', 'doors', 'color' );
+
+	// Retrieve taxonomy data
+	$taxonomy_obj = get_taxonomy( 'case_type' );
+	$taxonomy_name = $taxonomy_obj->labels->name;
+
+	// Retrieve taxonomy terms
+	$terms = get_terms( 'case_type' );
+
+	// Display filter HTML
+	echo "<select name='case_type' id='case_type' class='postform'>";
+	echo '<option value="">'.__('Show All Case Types', 'opsi').'</option>';
+	foreach ( $terms as $term ) {
+		printf(
+			'<option value="%1$s" %2$s>%3$s (%4$s)</option>',
+			$term->slug,
+			( ( isset( $_GET['case_type'] ) && ( $_GET['case_type'] == $term->slug ) ) ? ' selected="selected"' : '' ),
+			$term->name,
+			$term->count
+		);
+	}
+	echo '</select>';
+
+}
+add_action( 'restrict_manage_posts', 'bs_filter_case_by_case_type' , 10, 2);
