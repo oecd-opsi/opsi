@@ -2011,3 +2011,28 @@ function opsi_textarea_format_value( $value, $post_id, $field ) {
 	return wpautop( $value );
 }
 add_filter('acf/format_value/type=textarea', 'opsi_textarea_format_value', 20, 3);
+
+
+
+// Get single case template for Open Government type cases
+function bs_single_case_open_gov_template($single_template) {
+  global $post;
+
+  // Check if it is a case post type
+  if ($post->post_type == 'case') {
+
+    // Get case type taxnomy terms
+    $case_type = wp_get_post_terms( $post->ID, 'case_type' );
+
+    // If in Open Government case type return the dedicated template
+    if ( 891 == $case_type[0]->term_id) {
+      $single_template = TEMPLATEPATH . '/single-case-open-gov.php';
+    } elseif (890 == $case_type[0]->term_id ) {
+      $single_template = TEMPLATEPATH . '/single-case.php';
+    }
+
+  }
+
+  return $single_template;
+}
+add_filter('single_template', 'bs_single_case_open_gov_template');
