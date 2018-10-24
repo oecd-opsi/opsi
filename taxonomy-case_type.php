@@ -94,6 +94,26 @@
 	</div>
 </div>
 
+<?php
+$term_id = get_queried_object()->term_id;
+if ( 891 == $term_id ) {
+	?>
+	<script>
+	(function($) {
+		$(document).on('facetwp-loaded', function() {
+			var levelGovFilter = $('aside._level_of_government'),
+					government_check = $('div.facetwp-checkbox[data-value="government"]');
+			levelGovFilter.hide()
+			if (government_check.hasClass('checked')) {
+				levelGovFilter.show();
+			}
+		});
+	})(jQuery);
+	</script>
+	<?php
+} ?>
+
+
 <?php wp_reset_query(); ?>
 
 <?php get_footer(); ?>

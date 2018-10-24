@@ -261,19 +261,16 @@ add_filter( 'acf/load_field/key=field_5ae77cd92bcf8', 'bs_case_study_form_innova
 function bs_case_study_form_innovation_tag( $args, $field, $post_id ) {
 
   // modify args
-  $args['meta_query'] = array(
-		'relation'		=> 'AND',
-		array(
-			'key'			=> 'belonging_case_study',
-			'value'			=> 'open_gov',
-			'compare'		=> '=='
-		)
+  $args['meta_query'] =	array(
+		'key'			=> 'belonging_case_study',
+		'value'			=> 'open_gov',
+		'compare'		=> '='
 	);
 
   // return
   return $args;
 }
-add_filter('acf/fields/taxonomy/query/key=field_5ae779ff224b6', 'bs_case_study_form_innovation_tag', 20, 3);
+add_filter('acf/fields/taxonomy/wp_list_categories/key=field_5ae779ff224b6', 'bs_case_study_form_innovation_tag', 20, 3);
 
 
 	acf_form_head();
