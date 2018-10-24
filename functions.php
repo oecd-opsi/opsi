@@ -2092,3 +2092,13 @@ function bs_filter_case_by_case_type( $post_type, $which ) {
 
 }
 add_action( 'restrict_manage_posts', 'bs_filter_case_by_case_type' , 10, 2);
+
+
+// Redirect case archive page to OPSI Case tye archive page
+function bs_redirect_case_archive() {
+  if( is_post_type_archive( 'case' ) ) {
+    wp_redirect( get_term_link( 'opsi', 'case_type' ), 301 );
+    exit;
+  }
+}
+add_action( 'template_redirect', 'bs_redirect_case_archive' );

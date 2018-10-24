@@ -26,6 +26,24 @@ function bs_case_study_form_open_gov_partnership($field) {
 }
 add_filter('acf/prepare_field/key=field_5bca000811cdb', 'bs_case_study_form_open_gov_partnership', 20);
 
+// Innovation tags field
+function bs_case_study_form_innovation_tag( $args, $field, $post_id ) {
+
+  // modify args
+  $args['meta_query'] = array(
+		'relation'		=> 'AND',
+		array(
+			'key'			=> 'belonging_case_study',
+			'value'			=> 'opsi',
+			'compare'		=> '=='
+		)
+	);
+
+  // return
+  return $args;
+}
+add_filter('acf/fields/taxonomy/query/key=field_5ae779ff224b6', 'bs_case_study_form_innovation_tag', 20, 3);
+
 	acf_form_head();
 	get_header();
 

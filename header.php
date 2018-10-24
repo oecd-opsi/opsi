@@ -166,7 +166,12 @@
             <div class="col-sm-3 col-sm-push-9">
 				<div class="sidewrap sidewrap_csfilters">
 					<div class="cs_sidebar_wrap">
-						<?php echo __( 'Total cases:', 'opsi' ); ?> <span class="cs_counter"><?php $count_cases = wp_count_uncached_posts( 'case' ); echo $count_cases['publish']; ?></span><br />
+            <?php
+            $term_id = get_queried_object()->term_id;
+            $term = get_term( $term_id, 'case_type' );
+            $count_cases = $term->count;
+             ?>
+						<?php echo __( 'Total cases:', 'opsi' ); ?> <span class="cs_counter"><?php echo $count_cases; ?></span><br />
 						<?php echo __( 'Search results:', 'opsi' ); ?> <span class="cs_counter"><?php echo facetwp_display( 'counts' ); ?></span>
 					</div>
 					<h2><?php echo __( 'Filter innovations:', 'opsi' ); ?></h2>

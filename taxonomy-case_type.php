@@ -1,19 +1,19 @@
-<?php 
+<?php
 	get_header();
 
 	global $post;
 	$title_element = '';
-  
+
 	$has_sidebar = 0;
 	$layout = '';
-  
+
 	if( is_active_sidebar( 'sidebar_case_study' )) {
 		$has_sidebar = 3;
 	}
-	
+
 ?>
 
-  
+
 
 
 <div class="col-sm-<?php echo 12 - $has_sidebar; ?> <?php echo ($has_sidebar > 0 ? 'col-sm-pull-3' : ''); ?>">
@@ -37,7 +37,7 @@
 					<i class="fa fa-chevron-down" aria-hidden="true"></i> <?php echo __( 'Hide Map', 'opsi' ); ?>
 				</div>
 			</div>
-			
+
 		</div>
 	</div>
 	<div class="cs_top_map hoverzoom-">
@@ -70,21 +70,21 @@
 
 		<div class="row post_list">
 
-			<?php 
+			<?php
 			while ( have_posts() ) {
 			  the_post();
 			  get_template_part( 'content', 'case' );
 			}
-			
+
 			$pagination = get_the_posts_pagination( array(
 			  'mid_size' => 2,
 			  'prev_text' => '<i class="fa fa-chevron-left" aria-hidden="true"></i>',
 			  'next_text' => '<i class="fa fa-chevron-right" aria-hidden="true"></i>'
 			) );
-			
-			
+
+
 			?>
-		  
+
 		</div>
 		<div class="row pagination_wrap">
 			<div class="col-md-12">
@@ -95,6 +95,5 @@
 </div>
 
 <?php wp_reset_query(); ?>
-
 
 <?php get_footer(); ?>
