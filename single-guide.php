@@ -2,7 +2,9 @@
     // note change
     global $post;
 
-
+    $is_subpage = $post->post_parent !== 0;
+    $main_content_id = $is_subpage ? 'subguide-main-content' : 'guide-main-content';
+    $main_content_classes = $is_subpage ? 'subguide-page-content wpb_column vc_column_container col-md-12 vc_col-sm-12' : 'guide-page-content wpb_column vc_column_container col-md-8 vc_col-sm-12';
   ?>
 
 
@@ -24,11 +26,13 @@
 
             </section>
 
-            <section id="guide-main-content" class="guide-page-content wpb_column vc_column_container col-md-8 vc_col-sm-12">
+            <section id="<?php echo $main_content_id; ?>" class="<?php echo $main_content_classes; ?>">
 
               <?php the_content(); ?>
 
             </section>
+
+			<?php if ( !$is_subpage ) : ?>
 
             <section id="guide-sidebar" class="guide-page-content wpb_column vc_column_container col-md-4 vc_col-sm-12">
 
@@ -145,7 +149,7 @@
 
             </section>
 
-
+			<?php endif; ?>
 
 
 
