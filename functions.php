@@ -2161,7 +2161,7 @@ function opsi_how_do_i( $atts ) {
 	);
 
 	if ( !empty( $terms ) ) {
-		$output .= '<ul class="how-do-i-tags">';
+		$output .= '<ul class="how-do-i-tags link-list">';
 		foreach ( $terms as $term ) {
 			$archive_page = get_term_meta( $term->term_id, 'archive_page', true );
 			$archive_page = is_array( $archive_page ) ? current( $archive_page ) : $archive_page;
@@ -2178,9 +2178,10 @@ add_shortcode( 'opsi-clustered-provision-archive', 'opsi_clustered_provision_arc
 function opsi_clustered_provision_archive( $atts ) {
 	$a = shortcode_atts( array(
 		'tag' => '',
+		'title' => 'Toolkits',
 		'col_w' => '6'
 	), $atts );
-	$output = '<div class="clustered-provision">';
+	$output = '<div class="taxonomy-archive clustered-provision">';
 
 	if ( !empty( $a['tag'] ) ) {
 		if ( term_exists( $a['tag'], 'clustered-provisions' ) ) {
@@ -2206,6 +2207,11 @@ function opsi_clustered_provision_archive( $atts ) {
 			$posts = get_posts( $args );
 
 			if ( !empty( $posts ) ) {
+
+				if ( !empty( $a['title'] ) ) {
+					$output .= sprintf( '<h2><strong>%s</strong></h2>', $a['title'] );
+				}
+
 				$i = 0;
 				foreach ( $posts as $post ) {
 					$mod = $i % 2;
@@ -2253,9 +2259,11 @@ add_shortcode( 'opsi-how-do-i-archive', 'opsi_how_do_i_archive' );
 function opsi_how_do_i_archive( $atts ) {
 	$a = shortcode_atts( array(
 		'tag' => '',
+		'title' => 'Toolkits',
 		'col_w' => '6'
 	), $atts );
-	$output = '<div class="how-do-i">';
+
+	$output = '<div class="taxonomy-archive how-do-i">';
 
 	if ( !empty( $a['tag'] ) ) {
 		if ( term_exists( $a['tag'], 'how-do-i' ) ) {
@@ -2281,6 +2289,11 @@ function opsi_how_do_i_archive( $atts ) {
 			$posts = get_posts( $args );
 
 			if ( !empty( $posts ) ) {
+
+				if ( !empty( $a['title'] ) ) {
+					$output .= sprintf( '<h2><strong>%s</strong></h2>', $a['title'] );
+				}
+
 				$i = 0;
 				foreach ( $posts as $post ) {
 					$mod = $i % 2;
