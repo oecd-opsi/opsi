@@ -3502,6 +3502,12 @@ h2.view-all-link {
   font-size: 48px;
 }
 
+.page-template-template-case-study-form-open-government #acf-field_5ae77af12bcf6-,
+.page-template-template-case-study-form-open-government #acf-field_5ae73ec09f20d-,
+.page-template-template-case-study-form-open-government #acf-field_5ae784814921c- {
+  display: none;
+}
+
 /* FOR MOBILE SCREENS, TOOLKIT SPECIFIC */
 @media only screen and (max-width: 767px) {
 

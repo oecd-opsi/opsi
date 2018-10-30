@@ -86,7 +86,7 @@ add_filter( 'acf/load_field/key=field_5b35686af240c', 'bs_case_study_form_short_
 
 // Innovation Overview field
 function bs_case_study_form_executive_summary($field) {
-	$field['instructions'] = __('The Innovation Overview is an overview of the project and outcomes. If you\'ve already written a report about your project, this could also be your abstract or one-pager. This should summarize all of the information for the innovation at a high level. You will have the opportunity to elaborate on some of the details later in the submission. In approximately 3-4 paragraphs (maximum 5,000 characters), please tell us:
+	$field['instructions'] = __('The Innovation Overview is an overview of the project and outcomes. You will have the opportunity to elaborate on some of the details later in the submission. In a maximum of 5,000 characters, please tell us:
 
 <ul class="dotted">
 <li>What problem the innovation solves or what opportunity was taken advantage of</li>
@@ -99,9 +99,10 @@ function bs_case_study_form_executive_summary($field) {
 If applicable, you may also wish to include:
 
 <ul class="dotted">
-<li>How a course of action was determined</li>
-<li>Methods or tools used to implement the project</li>
-<li>A description of another innovation you were inspired by</li>
+<li>What challenge the innovation addresses or what opportunity was taken advantage of</li>
+<li>Objectives for this innovation</li>
+<li>Who benefited from the innovation</li>
+<li>How is the innovation envisioned to be sustained? Scaled-up? Replicated?</li>
 </ul>
 <p><a data-fancybox data-src="#executive_summary_exampleopen_gov" data-options=\'{"touch" : false}\' href="javascript:;">Click here for example of an Innovation Overview</a></p>', 'opsi');
 	return $field;
@@ -182,7 +183,7 @@ add_filter( 'acf/load_field/key=field_5ae77e7fe2a8e', 'bs_case_study_form_result
 // Challenges and Failures field
 function bs_case_study_form_challenges($field) {
 	$field['label'] = __('Challenges', 'opsi');
-	$field['instructions'] = __('Describe what challenges have been faces, and potentially what failures have occurred (maximum 1,000 characters).
+	$field['instructions'] = __('Describe what challenges have been encountered during design and/or implementation of the innovation (maximum 1,000 characters).
 
 <ul class="dotted">
 <li>What challenges have been encountered?</li>
@@ -228,16 +229,9 @@ You may wish to discuss how the innovation has already been used by others, as w
 }
 add_filter( 'acf/load_field/key=field_5ae78083a1e7b', 'bs_case_study_form_potential_to_be_replicated', 20 );
 
-// Save and Submit (all that with next button) placeholder field
+// Save and Submit placeholder fields
 function bs_case_study_form_save_submit_placeholder($field) {
-	$field['message'] = __('<div class="col-md-12 layout_hero_block "><div class="hb_inner text-left">
-	Using the “save” option will save the data you have entered and allow you to return to data entry immediately or at a later time. You can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href="mailto:opengov@oecd.org" title="contact OPSI">opengov@oecd.org</a> (include a screenshot if possible).
-
-	<div class="text-center inlinep removebr formbuttons">
-	<a class="button btn btn-default big goback" title="Back" href="#step-1"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</a><a class="button btn btn-info big saveform" title="Save" href="#step-2">Save <i class="fa fa-floppy-o" aria-hidden="true"></i></a><a class="button btn btn-default big gonext" title="Next" href="#step-3">Next <i class="fa fa-chevron-right" aria-hidden="true"></i></a> <span class="acf-spinner"></span>
-	</div>
-	</div>
-	</div>', 'opsi');
+	$field['message'] = str_replace( '<a href="mailto:opsi@oecd.org" title="contact OPSI">opsi@oecd.org</a>', '<a href="mailto:opengov@oecd.org" title="contact OPSI">opengov@oecd.org</a>', $field['message'] );
 	return $field;
 }
 add_filter( 'acf/load_field/key=field_5b060ee64a0cf', 'bs_case_study_form_save_submit_placeholder', 20 );
@@ -248,20 +242,69 @@ add_filter( 'acf/load_field/key=field_5b3acfe818042', 'bs_case_study_form_save_s
 add_filter( 'acf/load_field/key=field_5b06228240351', 'bs_case_study_form_save_submit_placeholder', 20 );
 add_filter( 'acf/load_field/key=field_5b356c93dbd0d', 'bs_case_study_form_save_submit_placeholder', 20 );
 add_filter( 'acf/load_field/key=field_5b356c93dbd0d', 'bs_case_study_form_save_submit_placeholder', 20 );
+add_filter( 'acf/load_field/key=field_5b06229e40352', 'bs_case_study_form_save_submit_placeholder', 20 );
 
-// Save and Submit (last one with save button) placeholder field
-function bs_case_study_form_save_submit_last_placeholder($field) {
-	$field['message'] = __('<div class="col-md-12 layout_hero_block "><div class="hb_inner text-left">
-	Using the “save” option will save the data you have entered and allow you to return to data entry immediately or at a later time. You can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href="mailto:opengov@oecd.org" title="contact OPSI">opengov@oecd.org</a> (include a screenshot if possible).
-
-	<div class="text-center inlinep removebr formbuttons">
-	<a class="button btn btn-default big goback" title="Back" href="#step-8"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</a><a class="button btn btn-info big saveform" title="Save" href="#step-9">Save <i class="fa fa-floppy-o" aria-hidden="true"></i></a><a class="button btn btn-default big submitform" id="submitcasestudy" title="Submit" href="#step-6">Submit <i class="fa fa-check-square-o" aria-hidden="true"></i></a> <span class="acf-spinner"></span>
-	</div>
-	</div>
-	</div>', 'opsi');
+// Save and Submit placeholder field - step 1
+function bs_case_study_form_save_submit_placeholder_step1($field) {
+	$field['message'] = str_replace( '#step-1', '#step-0', $field['message'] );
+	$field['message'] = str_replace( '#step-2', '#step-1', $field['message'] );
+	$field['message'] = str_replace( '#step-3', '#step-2', $field['message'] );
 	return $field;
 }
-add_filter( 'acf/load_field/key=field_5b06229e40352', 'bs_case_study_form_save_submit_last_placeholder', 20 );
+add_filter( 'acf/load_field/key=field_5b0622244034e', 'bs_case_study_form_save_submit_placeholder_step1', 20 );
+
+// Save and Submit placeholder field - step 2
+function bs_case_study_form_save_submit_placeholder_step2($field) {
+	$field['message'] = str_replace( '#step-2', '#step-1', $field['message'] );
+	$field['message'] = str_replace( '#step-3', '#step-2', $field['message'] );
+	$field['message'] = str_replace( '#step-4', '#step-3', $field['message'] );
+	return $field;
+}
+add_filter( 'acf/load_field/key=field_5b0622474034f', 'bs_case_study_form_save_submit_placeholder_step2', 20 );
+
+// Save and Submit placeholder field - step 3
+function bs_case_study_form_save_submit_placeholder_step3($field) {
+	$field['message'] = str_replace( '#step-3', '#step-2', $field['message'] );
+	$field['message'] = str_replace( '#step-4', '#step-3', $field['message'] );
+	$field['message'] = str_replace( '#step-5', '#step-4', $field['message'] );
+	return $field;
+}
+add_filter( 'acf/load_field/key=field_5b06226840350', 'bs_case_study_form_save_submit_placeholder_step3', 20 );
+
+// Save and Submit placeholder field - step 4
+function bs_case_study_form_save_submit_placeholder_step4($field) {
+	$field['message'] = str_replace( '#step-4', '#step-3', $field['message'] );
+	$field['message'] = str_replace( '#step-5', '#step-4', $field['message'] );
+	$field['message'] = str_replace( '#step-6', '#step-5', $field['message'] );
+	return $field;
+}
+add_filter( 'acf/load_field/key=field_5b3acfe818042', 'bs_case_study_form_save_submit_placeholder_step4', 20 );
+
+// Save and Submit placeholder field - step 5
+function bs_case_study_form_save_submit_placeholder_step5($field) {
+	$field['message'] = str_replace( '#step-5', '#step-4', $field['message'] );
+	$field['message'] = str_replace( '#step-6', '#step-5', $field['message'] );
+	$field['message'] = str_replace( '#step-7', '#step-6', $field['message'] );
+	return $field;
+}
+add_filter( 'acf/load_field/key=field_5b06228240351', 'bs_case_study_form_save_submit_placeholder_step5', 20 );
+
+// Save and Submit placeholder field - step 6
+function bs_case_study_form_save_submit_placeholder_step6($field) {
+	$field['message'] = str_replace( '#step-6', '#step-5', $field['message'] );
+	$field['message'] = str_replace( '#step-7', '#step-6', $field['message'] );
+	$field['message'] = str_replace( '#step-8', '#step-7', $field['message'] );
+	return $field;
+}
+add_filter( 'acf/load_field/key=field_5b356c93dbd0d', 'bs_case_study_form_save_submit_placeholder_step6', 20 );
+
+// Save and Submit placeholder field - step 7
+function bs_case_study_form_save_submit_placeholder_step7($field) {
+	$field['message'] = str_replace( '#step-8', '#step-6', $field['message'] );
+	$field['message'] = str_replace( '#step-9', '#step-7', $field['message'] );
+	return $field;
+}
+add_filter( 'acf/load_field/key=field_5b06229e40352', 'bs_case_study_form_save_submit_placeholder_step7', 20 );
 
 // Innovation status questions fields
 function bs_case_study_form_innovation_status_fields($field) {
@@ -282,6 +325,12 @@ function bs_case_study_form_innovation_tags_opengov_fields($field) {
 	return $field;
 }
 add_filter( 'acf/load_field/key=field_5bd734194e45a', 'bs_case_study_form_innovation_tags_opengov_fields', 20 );
+
+// Newsletter field
+function bs_case_study_form_newsletter_fields($field) {
+	return;
+}
+add_filter( 'acf/load_field/key=field_5ae7857e4921f', 'bs_case_study_form_newsletter_fields', 20 );
 
 
 	acf_form_head();
