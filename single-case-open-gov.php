@@ -28,7 +28,7 @@
 
 
 	$country = wp_get_post_terms( $postid, 'country' );
-	$badges = wp_get_post_terms( $postid, 'innovation-badge' );
+	$badges = wp_get_post_terms( $postid, 'innovation-badge-opengov' );
 	$iso = false;
 	if ( $country ) {
 		$iso = get_field( 'iso_code', $country[0] );

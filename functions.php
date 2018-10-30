@@ -1711,18 +1711,50 @@ function wp_count_uncached_posts( $type = 'post', $perm = '' ) {
 
 function opsi_admin_notice() {
 
-	$args = array(
+  // Get Opsi pending Cases
+  $args_opsi = array(
 		'fields'		=> 'ids',
 		'post_type'		=> 'case',
 		'post_status'	=> 'pending',
-		'posts_per_page'=> -1
+    'tax_query' => array(
+      array (
+        'taxonomy' => 'case_type',
+        'field' => 'slug',
+        'terms' => 'opsi',
+      ),
+    ),
+		'posts_per_page' => -1,
 	);
 
-	$query = new WP_Query( $args );
-	if ( $query->post_count > 0 ) {
+	$query_opsi = new WP_Query( $args_opsi );
+	if ( $query_opsi->post_count > 0 ) {
     ?>
     <div class="notice notice-warning is-dismissible">
-        <p><a href="<?php admin_url(); ?>edit.php?post_status=pending&post_type=case"><strong><?php echo sprintf( __( 'There are %d pending Case Studies', 'opsi' ), $query->post_count ); ?></strong></a></p>
+        <p><a href="<?php admin_url(); ?>edit.php?post_status=pending&post_type=case&case_type=opsi"><strong><?php echo sprintf( __( 'There are %d pending OPSI Case Studies', 'opsi' ), $query_opsi->post_count ); ?></strong></a></p>
+    </div>
+    <?php
+	}
+
+  // Get OpenGov pending Cases
+  $args_opengov = array(
+		'fields'		=> 'ids',
+		'post_type'		=> 'case',
+		'post_status'	=> 'pending',
+    'tax_query' => array(
+      array (
+        'taxonomy' => 'case_type',
+        'field' => 'slug',
+        'terms' => 'open-government',
+      )
+    ),
+		'posts_per_page' => -1,
+	);
+
+	$query_opengov = new WP_Query( $args_opengov );
+	if ( $query_opengov->post_count > 0 ) {
+    ?>
+    <div class="notice notice-warning is-dismissible">
+        <p><a href="<?php admin_url(); ?>edit.php?post_status=pending&post_type=case&case_type=open-government"><strong><?php echo sprintf( __( 'There are %d pending Open Government Case Studies', 'opsi' ), $query_opengov->post_count ); ?></strong></a></p>
     </div>
     <?php
 	}
@@ -2338,3 +2370,13 @@ function opsi_how_do_i_archive( $atts ) {
 
 	return $output;
 }
+
+// Hide Analitify menu item for OpenGov Admin
+function bs_remove_menu_pages() {
+  $user = wp_get_current_user();
+  $roles = ( array ) $user->roles;
+  if ( in_array( 'open-gov-admin', $roles ) ) {
+    remove_menu_page( 'analytify-dashboard' );
+  }
+}
+add_action( 'admin_init', 'bs_remove_menu_pages' );
