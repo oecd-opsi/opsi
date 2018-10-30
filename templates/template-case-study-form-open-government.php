@@ -228,13 +228,13 @@ You may wish to discuss how the innovation has already been used by others, as w
 }
 add_filter( 'acf/load_field/key=field_5ae78083a1e7b', 'bs_case_study_form_potential_to_be_replicated', 20 );
 
-// Save and Submit placeholder field
+// Save and Submit (all that with next button) placeholder field
 function bs_case_study_form_save_submit_placeholder($field) {
 	$field['message'] = __('<div class="col-md-12 layout_hero_block "><div class="hb_inner text-left">
 	Using the “save” option will save the data you have entered and allow you to return to data entry immediately or at a later time. You can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href="mailto:opengov@oecd.org" title="contact OPSI">opengov@oecd.org</a> (include a screenshot if possible).
 
 	<div class="text-center inlinep removebr formbuttons">
-	<a class="button btn btn-default big goback" title="Back" href="#step-8"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</a><a class="button btn btn-info big saveform" title="Save" href="#step-9">Save <i class="fa fa-floppy-o" aria-hidden="true"></i></a><a class="button btn btn-default big submitform" id="submitcasestudy" title="Submit" href="#step-6">Submit <i class="fa fa-check-square-o" aria-hidden="true"></i></a> <span class="acf-spinner"></span>
+	<a class="button btn btn-default big goback" title="Back" href="#step-1"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</a><a class="button btn btn-info big saveform" title="Save" href="#step-2">Save <i class="fa fa-floppy-o" aria-hidden="true"></i></a><a class="button btn btn-default big gonext" title="Next" href="#step-3">Next <i class="fa fa-chevron-right" aria-hidden="true"></i></a> <span class="acf-spinner"></span>
 	</div>
 	</div>
 	</div>', 'opsi');
@@ -248,7 +248,20 @@ add_filter( 'acf/load_field/key=field_5b3acfe818042', 'bs_case_study_form_save_s
 add_filter( 'acf/load_field/key=field_5b06228240351', 'bs_case_study_form_save_submit_placeholder', 20 );
 add_filter( 'acf/load_field/key=field_5b356c93dbd0d', 'bs_case_study_form_save_submit_placeholder', 20 );
 add_filter( 'acf/load_field/key=field_5b356c93dbd0d', 'bs_case_study_form_save_submit_placeholder', 20 );
-add_filter( 'acf/load_field/key=field_5b06229e40352', 'bs_case_study_form_save_submit_placeholder', 20 );
+
+// Save and Submit (last one with save button) placeholder field
+function bs_case_study_form_save_submit_last_placeholder($field) {
+	$field['message'] = __('<div class="col-md-12 layout_hero_block "><div class="hb_inner text-left">
+	Using the “save” option will save the data you have entered and allow you to return to data entry immediately or at a later time. You can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href="mailto:opengov@oecd.org" title="contact OPSI">opengov@oecd.org</a> (include a screenshot if possible).
+
+	<div class="text-center inlinep removebr formbuttons">
+	<a class="button btn btn-default big goback" title="Back" href="#step-8"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</a><a class="button btn btn-info big saveform" title="Save" href="#step-9">Save <i class="fa fa-floppy-o" aria-hidden="true"></i></a><a class="button btn btn-default big submitform" id="submitcasestudy" title="Submit" href="#step-6">Submit <i class="fa fa-check-square-o" aria-hidden="true"></i></a> <span class="acf-spinner"></span>
+	</div>
+	</div>
+	</div>', 'opsi');
+	return $field;
+}
+add_filter( 'acf/load_field/key=field_5b06229e40352', 'bs_case_study_form_save_submit_last_placeholder', 20 );
 
 // Innovation status questions fields
 function bs_case_study_form_innovation_status_fields($field) {
@@ -257,20 +270,18 @@ function bs_case_study_form_innovation_status_fields($field) {
 add_filter( 'acf/load_field/key=field_5ae77bca2bcf7', 'bs_case_study_form_innovation_status_fields', 20 );
 add_filter( 'acf/load_field/key=field_5ae77cd92bcf8', 'bs_case_study_form_innovation_status_fields', 20 );
 
-// Innovation tags field
-function bs_case_study_form_innovation_tag( $args, $field, $post_id ) {
-
-  // modify args
-  $args['meta_query'] =	array(
-		'key'			=> 'belonging_case_study',
-		'value'			=> 'open_gov',
-		'compare'		=> '='
-	);
-
-  // return
-  return $args;
+// Innovation tags
+function bs_case_study_form_innovation_tags_fields($field) {
+	return;
 }
-add_filter('acf/fields/taxonomy/wp_list_categories/key=field_5ae779ff224b6', 'bs_case_study_form_innovation_tag', 20, 3);
+add_filter( 'acf/load_field/key=field_5ae779ff224b6', 'bs_case_study_form_innovation_tags_fields', 20 );
+
+// Innovation tags OpenGov
+function bs_case_study_form_innovation_tags_opengov_fields($field) {
+	$field['label'] = 'Innovation Tags';
+	return $field;
+}
+add_filter( 'acf/load_field/key=field_5bd734194e45a', 'bs_case_study_form_innovation_tags_opengov_fields', 20 );
 
 
 	acf_form_head();

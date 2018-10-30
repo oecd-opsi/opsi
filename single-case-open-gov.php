@@ -202,7 +202,7 @@
 					<?php } ?>
 
 
-					<?php if ( $fields['describing_the_innovation']['innovation_website'] != '' ) { ?>
+					<?php if ( $fields['describing_the_innovation']['innovation_website']['text'] != '' ) { ?>
 						<div class="website_wrap">
 							<span class="sidebar_label"><?php echo __( 'Website:', 'opsi' ); ?></span>
 							<span class="strong truncate">
@@ -238,21 +238,6 @@
 					</div>
 				</div>
 			</div>
-
-			<?php if ( !empty( $fields['innovation_description']['innovation_status']['text'] ) ) { ?>
-			<div class="cs_sidebar_wrap">
-				<div class="row">
-					<div class="col-xs-12">
-						<h4 class="status_label"><?php echo __( 'Status:', 'opsi' ); ?></h4>
-						<ul class="nospace">
-						<?php foreach( $fields['innovation_description']['innovation_status']['text'] as $status ) { ?>
-								<li><span class="strong"><?php echo $status['label']; ?></span></li>
-						<?php } ?>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<?php } ?>
 
 			<div class="post_tags_wrap">
 				<div class="post_tags">

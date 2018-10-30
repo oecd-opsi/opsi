@@ -672,7 +672,9 @@ function opsi_post_types() {
 	);
 	nitro_taxonomy_creator(__('Country', 'opsi'), __('Countries', 'opsi'), 'case', 'opsi', $countries_args);
 	nitro_taxonomy_creator(__('Innovation Tag', 'opsi'), __('Innovation Tags', 'opsi'), 'case', 'opsi', $countries_args);
+  nitro_taxonomy_creator(__('Innovation Tag OpenGov', 'opsi'), __('Innovation Tags OpenGov', 'opsi'), 'case', 'opsi', $countries_args);
 	nitro_taxonomy_creator(__('Innovation Badge', 'opsi'), __('Innovation Badges', 'opsi'), 'case', 'opsi', $projects_args);
+  nitro_taxonomy_creator(__('Innovation Badge OpenGov', 'opsi'), __('Innovation Badges OpenGov', 'opsi'), 'case', 'opsi', $projects_args);
 
 	register_post_status( 'pending_deletion', array(
 		'label'                     => _x( 'Pending Deletion', 'opsi' ),
