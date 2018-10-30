@@ -2104,3 +2104,237 @@ function bs_redirect_case_archive() {
   }
 }
 add_action( 'template_redirect', 'bs_redirect_case_archive' );
+
+
+add_shortcode( 'opsi-clustered-provisions', 'opsi_clustered_provisions' );
+function opsi_clustered_provisions( $atts ) {
+	$a = shortcode_atts( array(
+		'col_w' => '4',
+	), $atts );
+	$output = '';
+
+	$terms = get_terms(
+		array(
+			'taxonomy' => 'clustered-provisions',
+			'hide_empty' => false,
+			'meta_query' => array(
+				array(
+					'key'     => 'archive_page',
+					'value'   => '',
+					'compare' => '!='
+				)
+			)
+		)
+	);
+
+	if ( !empty( $terms ) ) {
+		$output .= '<div class="clustered-provisions row wpb_column vc_column_container vc_col-sm-12">';
+		foreach ( $terms as $term ) {
+			$archive_page = get_term_meta( $term->term_id, 'archive_page', true );
+			$archive_page = is_array( $archive_page ) ? current( $archive_page ) : $archive_page;
+			$archive_page_url = get_permalink( $archive_page );
+			$output .= sprintf( '<div class="col-md-%s col-sm-%s clustered-provision"><a href="%s">%s</a></div>', $a['col_w'], $a['col_w'], $archive_page_url, $term->name );
+		}
+		$output .= '</div>';
+	}
+
+	return $output;
+}
+add_shortcode( 'opsi-how-do-i', 'opsi_how_do_i' );
+function opsi_how_do_i( $atts ) {
+	$a = shortcode_atts( array(
+		'suffix' => '?'
+	), $atts );
+	$output = '';
+
+	$terms = get_terms(
+		array(
+			'taxonomy' => 'how-do-i',
+			'hide_empty' => false,
+			'orderby' => 'ID',
+			'meta_query' => array(
+				array(
+					'key'     => 'archive_page',
+					'value'   => '',
+					'compare' => '!='
+				)
+			)
+		)
+	);
+
+	if ( !empty( $terms ) ) {
+		$output .= '<ul class="how-do-i-tags link-list">';
+		foreach ( $terms as $term ) {
+			$archive_page = get_term_meta( $term->term_id, 'archive_page', true );
+			$archive_page = is_array( $archive_page ) ? current( $archive_page ) : $archive_page;
+			$archive_page_url = get_permalink( $archive_page );
+			$output .= sprintf( '<li class="how-do-i-tag"><a href="%s">%s%s</a></li>', $archive_page_url, $term->name, $a['suffix'] );
+		}
+		$output .= '</ul>';
+	}
+
+	return $output;
+}
+
+add_shortcode( 'opsi-clustered-provision-archive', 'opsi_clustered_provision_archive' );
+function opsi_clustered_provision_archive( $atts ) {
+	$a = shortcode_atts( array(
+		'tag' => '',
+		'title' => 'Toolkits',
+		'col_w' => '6'
+	), $atts );
+	$output = '<div class="taxonomy-archive clustered-provision">';
+
+	if ( !empty( $a['tag'] ) ) {
+		if ( term_exists( $a['tag'], 'clustered-provisions' ) ) {
+
+			$args = array(
+				'post_type' => 'toolkit',
+				'posts_per_page' => -1,
+				'orderby' => 'title',
+				'tax_query' => array(
+					array(
+						'taxonomy' => 'clustered-provisions',
+						'field' => 'slug',
+						'terms' => $a['tag']
+					),
+					array(
+						'taxonomy' => 'discipline-or-practice',
+						'field' => 'slug',
+						'terms' => 'open-government'
+					)
+				)
+			);
+
+			$posts = get_posts( $args );
+
+			if ( !empty( $posts ) ) {
+
+				if ( !empty( $a['title'] ) ) {
+					$output .= sprintf( '<h2><strong>%s</strong></h2>', $a['title'] );
+				}
+
+				$i = 0;
+				foreach ( $posts as $post ) {
+					$mod = $i % 2;
+					if ( !$mod ) {
+						$output .= '<div class="row wpb_column vc_column_container vc_col-sm-12">';
+					}
+
+					$url = get_permalink( $post->ID );
+					$publisher = wp_get_post_terms( $post->ID, 'toolkit-publisher' );
+					$img = sprintf(
+						'<a href="%s">%s</a>',
+						$url,
+						get_the_post_thumbnail( $post->ID, 'thumbnail' )
+					);
+					$content = sprintf(
+						'<div class="title"><a href="%s">%s</a></div><div class="publisher">%s</div><div class="description">%s</div>',
+						$url,
+						$post->post_title,
+						is_array( $publisher ) ? $publisher[0]->name : '',
+						get_post_meta( $post->ID, 'description', true )
+					);
+					$output .= sprintf(
+						'<div class="col-md-%s col-sm-%s toolkit"><div class="col-md-4 col-sm-4 img">%s</div><div class="col-md-8 col-sm-8 body">%s</div></div>',
+						$a['col_w'],
+						$a['col_w'],
+						$img,
+						$content
+					);
+
+					if ( $mod ){
+						$output .= '</div>';
+					}
+					$i++;
+				}
+			}
+		}
+	}
+
+	$output .= '</div>';
+
+	return $output;
+}
+
+add_shortcode( 'opsi-how-do-i-archive', 'opsi_how_do_i_archive' );
+function opsi_how_do_i_archive( $atts ) {
+	$a = shortcode_atts( array(
+		'tag' => '',
+		'title' => 'Toolkits',
+		'col_w' => '6'
+	), $atts );
+
+	$output = '<div class="taxonomy-archive how-do-i">';
+
+	if ( !empty( $a['tag'] ) ) {
+		if ( term_exists( $a['tag'], 'how-do-i' ) ) {
+
+			$args = array(
+				'post_type' => 'toolkit',
+				'posts_per_page' => -1,
+				'orderby' => 'title',
+				'tax_query' => array(
+					array(
+						'taxonomy' => 'how-do-i',
+						'field' => 'slug',
+						'terms' => $a['tag']
+					),
+					array(
+						'taxonomy' => 'discipline-or-practice',
+						'field' => 'slug',
+						'terms' => 'open-government'
+					)
+				)
+			);
+
+			$posts = get_posts( $args );
+
+			if ( !empty( $posts ) ) {
+
+				if ( !empty( $a['title'] ) ) {
+					$output .= sprintf( '<h2><strong>%s</strong></h2>', $a['title'] );
+				}
+
+				$i = 0;
+				foreach ( $posts as $post ) {
+					$mod = $i % 2;
+					if ( !$mod ) {
+						$output .= '<div class="row wpb_column vc_column_container vc_col-sm-12">';
+					}
+
+					$url = get_permalink( $post->ID );
+					$publisher = wp_get_post_terms( $post->ID, 'toolkit-publisher' );
+					$img = sprintf(
+						'<a href="%s">%s</a>',
+						$url,
+						get_the_post_thumbnail( $post->ID, 'thumbnail' )
+					);
+					$content = sprintf(
+						'<div class="title"><a href="%s">%s</a></div><div class="publisher">%s</div><div class="description">%s</div>',
+						$url,
+						$post->post_title,
+						is_array( $publisher ) ? $publisher[0]->name : '',
+						get_post_meta( $post->ID, 'description', true )
+					);
+					$output .= sprintf(
+						'<div class="col-md-%s col-sm-%s toolkit"><div class="col-md-4 col-sm-4 img">%s</div><div class="col-md-8 col-sm-8 body">%s</div></div>',
+						$a['col_w'],
+						$a['col_w'],
+						$img,
+						$content
+					);
+
+					if ( $mod ){
+						$output .= '</div>';
+					}
+					$i++;
+				}
+			}
+		}
+	}
+
+	$output .= '</div>';
+
+	return $output;
+}

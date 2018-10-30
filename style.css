@@ -3613,3 +3613,71 @@ h2.view-all-link {
 
 
 /* END OF ADDITIONAL CODE FOR META-TOOLKIT PROJECT */
+
+/* Toolkit archives shortcodes  */
+.clustered-provisions {
+	margin-bottom: 2.5em;
+}
+.clustered-provisions .clustered-provision {
+	padding: 0.5em 1em 0.5em 1em;
+}
+.clustered-provisions .clustered-provision a {
+	background-color: #f7fbfe;
+	border: 1px solid #dbe7ef;
+	border-radius: 8px;
+	display: block;
+	font-weight: 700;
+	text-align: center;
+	padding: 1em;
+	color: #337ab7;
+}
+
+ul.link-list {
+	padding-left: 0;
+}
+ul.link-list li{
+	list-style-type: none;
+	margin-bottom: 0.5em;
+}
+ul.link-list a {
+	color: #337ab7;
+}
+ul.link-list a:before {
+	content: "\2192\a0";
+}
+
+.subguide-page-content .taxonomy-archive {
+	margin: 2em 0;
+}
+.subguide-page-content .taxonomy-archive h2 {
+	margin-bottom: 1em;
+}
+.subguide-page-content .taxonomy-archive .toolkit {
+	margin-bottom: 3em;
+}
+.subguide-page-content .taxonomy-archive .toolkit .title {
+	font-size: 1.1em;
+}
+.subguide-page-content .taxonomy-archive .toolkit .title a {
+	color: #337ab7;
+}
+.subguide-page-content .taxonomy-archive .toolkit .publisher {
+	font-weight: bold;
+}
+.subguide-page-content .taxonomy-archive .toolkit .description {
+	line-height: normal;
+}
+
+.toolkit-useful-links div {
+	margin-bottom: 1em;
+}
+.toolkit-useful-links div > div {
+	background-color: #f7fbfe;
+	border: 1px solid #dbe7ef;
+	border-radius: 8px;
+	font-weight: 700;
+	padding: 1em;
+}
+.toolkit-useful-links a {
+	color: #337ab7;
+}
