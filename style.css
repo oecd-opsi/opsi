@@ -3646,6 +3646,10 @@ ul.link-list a:before {
 	content: "\2192\a0";
 }
 
+.subguide-page-content {
+	padding-left: 0;
+	padding-right: 0;
+}
 .subguide-page-content .taxonomy-archive {
 	margin: 2em 0;
 }
