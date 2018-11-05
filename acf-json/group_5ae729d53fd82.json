@@ -30,6 +30,36 @@
             "allow_null": 0
         },
         {
+            "key": "field_5be00a685e5a8",
+            "label": "Primary Case type",
+            "name": "primary_case_type",
+            "type": "radio",
+            "instructions": "Which form will be used to edit this case?",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "choices": {
+                "open-government": "Open Government",
+                "opsi": "OPSI"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "opsi",
+            "layout": "vertical",
+            "return_format": "value",
+            "show_column": 0,
+            "show_column_sortable": 0,
+            "show_column_weight": 1000,
+            "allow_quickedit": 0,
+            "allow_bulkedit": 0,
+            "save_other_choice": 0
+        },
+        {
             "key": "field_5af38eeb63c46",
             "label": "Before You Begin",
             "name": "submit_an_innovation",

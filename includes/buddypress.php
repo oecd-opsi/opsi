@@ -7,56 +7,56 @@ add_filter( 'bp_registration_needs_activation', '__return_false' );
 // auto login users on registration
 add_action( 'bp_core_signup_user', 'opsi_on_register_actions', 100, 1 );
 function opsi_on_register_actions( $user_id ) {
-	
-	
+
+
 	global $wpdb;
-	
+
 	// $wpdb->query( $wpdb->prepare( "UPDATE $wpdb->users SET user_status = 0 WHERE ID = %d", $user_id ) );
-	
+
 	// $u = new WP_User( $user_id );
 	// Set role
 	// $set_role = $u->set_role( 'pending' );
-	
+
 	$activation_key = get_user_meta( $user_id, 'activation_key', true );
 	$signups_table  = buddypress()->members->table_name_signups;
-	$signup_id = $wpdb->get_var( $wpdb->prepare( 
+	$signup_id = $wpdb->get_var( $wpdb->prepare(
 		"
-			SELECT signup_id 
+			SELECT signup_id
 			FROM $signups_table
 			WHERE activation_key = %s
-		", 
+		",
 		$activation_key
 	) );
-	
-	
+
+
 	BP_Signup::activate( array ( $signup_id ) );
-	
+
 	// delete_user_meta( $user_id, 'activation_key' );
-	
-	
+
+
 }
 
 
 
 add_action( 'bp_core_activated_user', 'opsi_bp_core_activated_user', 10, 3);
 function opsi_bp_core_activated_user ( $user_id, $key, $user ) {
-	
+
 	// notify the admin
 	$subject = 'New pending member';
 	$body    = 'A new user have just registered. The account has been set to pending. <a href="'. get_admin_url().'user-edit.php?user_id='.$user_id .'">Edit the user here</a>';
 	$headers = array('Content-Type: text/html; charset=UTF-8');
-	
+
 	$sendto = get_field( 'emails_to_get_pending_user_notification', 'option' );
-	
+
 	if ( $sendto != '' ) {
-		
+
 		$emails = explode( ',', $sendto );
-		
+
 		foreach ( $emails as $em ) {
 			wp_mail( trim( $em ), $subject, $body, $headers );
 
 		}
-		
+
 	}
 
 	// login the user
@@ -64,26 +64,26 @@ function opsi_bp_core_activated_user ( $user_id, $key, $user ) {
 	wp_set_auth_cookie($user_id);
 	// wp_redirect( home_url() );
 	// exit;
-	
+
 }
 
 add_action( 'template_redirect', 'opsi_restrict_bp_pages' );
 function opsi_restrict_bp_pages() {
-	
-	
+
+
 	if ( is_user_logged_in() ) {
-		
+
 			$user = wp_get_current_user();
-	
+
 			if ( in_array( 'pending', (array) $user->roles ) && is_buddypress() && !bp_is_my_profile() ) {
 				global $bp;
-					
+
 				wp_safe_redirect( $bp->bp_nav['profile']['link'] );
 				die;
 			}
-			
+
 			if ( in_array( 'pending', (array) $user->roles ) && is_buddypress() && bp_is_my_profile()  ) {
-				
+
 				$componenets_rem = array(
 					'activity',
 					'friends',
@@ -91,53 +91,53 @@ function opsi_restrict_bp_pages() {
 					'groups',
 					'messages',
 				);
-				
+
 				if ( in_array( bp_current_component(), $componenets_rem ) ) {
-					
+
 					global $bp;
-					
+
 					wp_safe_redirect( $bp->bp_nav['profile']['link'] );
 					die;
 				}
 			}
-			
+
 	}
 }
 
 
 add_filter( 'bp_is_active', 'opsi_conditionally_disable_components_for_pending', 10, 2 );
 function opsi_conditionally_disable_components_for_pending( $enabled, $component ) {
- 
+
     if ( is_user_logged_in() ) {
-		
+
 		global $bp;
-	
+
 		$user = wp_get_current_user();
-		
-		
-		
+
+
+
 		$componenets_rem = array(
 			'activity',
 		);
-		foreach ( $componenets_rem as $rem ) {	
+		foreach ( $componenets_rem as $rem ) {
 			if ( $rem == $component && in_array( 'pending', (array) $user->roles ) )  {
 				bp_core_remove_nav_item( $rem );
 				$enabled = false ;
 			}
 		}
     }
- 
+
     return $enabled;
 }
 
 
 add_filter( 'bp_before_member_header', 'opsi_display_warning_to_pending' );
 function opsi_display_warning_to_pending () {
-	
+
 	if ( is_user_logged_in() ) {
-		
+
 			$user = wp_get_current_user();
-	
+
 			if ( in_array( 'pending', (array) $user->roles ) && is_buddypress() ) {
 				?>
 				<div class="alert alert-danger text-center">
@@ -154,10 +154,10 @@ function opsi_display_warning_to_pending () {
 add_filter('body_class', 'opsi_user_body_classes');
 
 function opsi_user_body_classes($classes) {
-	
+
 	if ( is_user_logged_in() ) {
 		$user = wp_get_current_user();
-		
+
 		if ( in_array( 'pending', (array) $user->roles ) && is_buddypress() ) {
 			$classes[] = 'user_pending';
 		}
@@ -179,12 +179,12 @@ function nitro_bp_core_avatar_class($classes) {
 // nav menu hooks
 add_filter('wp_nav_menu_objects', 'bp_menu_items_tweak', 10, 2);
 function bp_menu_items_tweak($items, $args) {
-  
+
   if (($args->theme_location == 'mobile' || $args->theme_location == 'primary') && is_user_logged_in()) {
     $user = wp_get_current_user();
-    
+
     $notifications_count = bp_notifications_get_unread_notification_count( $user->ID );
-    
+
     foreach($items as $item) {
       // replace with bell icon and add bubble
       if (in_array('bp-notifications-nav', $item->classes)) {
@@ -198,7 +198,7 @@ function bp_menu_items_tweak($items, $args) {
       }
     }
   }
-  
+
   return $items;
 }
 
@@ -221,15 +221,15 @@ function nitro_user_can_create_groups( $can_create, $restricted=false ){
 }
 
 function user_can_create_group($userid) {
-  
+
   if (current_user_can('administrator')) {
     return true;
   }
-  
+
   if( current_user_can('bd_create_group')){
     return true;
   }
-  
+
   return false;
 }
 
@@ -269,7 +269,7 @@ function bp_get_roles() {
       $roles[$key] = $value;
     }
   }
-  
+
   return $roles;
 }
 
@@ -295,7 +295,7 @@ if ( class_exists('BP_Group_Extension') ) : // Recommended, to prevent problems 
             $this->id = 'group_role_access';
             $this->format_notification_function = 'bp_group_role_access_format_notifications';
             $this->create_step_position = 22;
-            
+
         }
 
         /**
@@ -349,7 +349,7 @@ if ( class_exists('BP_Group_Extension') ) : // Recommended, to prevent problems 
             //useful ur for submits & links
             $action_link = get_bloginfo('url') . '/' . bp_get_groups_root_slug() . '/' . $bp->current_item . '/' . $bp->current_action . '/' . $this->slug;
             $this->edit_create_markup($bp->groups->current_group->id);
-            
+
             do_action('bp_group_role_access_group_admin_edit');
             ?>
             &nbsp;<p>
@@ -367,7 +367,7 @@ if ( class_exists('BP_Group_Extension') ) : // Recommended, to prevent problems 
             if (empty($group_role_access) || !$group_role_access) {
               $group_role_access = array();
             }
-            
+
             // get user data
             $userdata = get_userdata(bp_loggedin_user_id());
             $bp_group_role_access = groups_get_groupmeta($gid, 'group_role_access', true);
@@ -376,26 +376,26 @@ if ( class_exists('BP_Group_Extension') ) : // Recommended, to prevent problems 
             } else {
               $intersect = array();
             }
-            
+
             //only show the roles persmissions if the site admin allows this to be changed at group-level
             ?>
             <p>
               <?php _e( 'By default all groups are open to all member roles.', 'opsi' ); ?><br />
               <?php _e( 'Which roles should be <b>DENIED</b> access to the group page?', 'opsi' ); ?>
             </p>
-            <?php 
-              $bp_get_roles = bp_get_roles();              
+            <?php
+              $bp_get_roles = bp_get_roles();
               if (!empty($bp_get_roles)) { ?>
                 <div class="checkbox">
-                  <?php foreach($bp_get_roles as $key => $value) { 
-                  
+                  <?php foreach($bp_get_roles as $key => $value) {
+
                     if (in_array($key, $intersect)) { continue; }
-                  
+
                   ?>
                     <label for="group_role_access_<?php echo $key; ?>" style="display: block; <?php echo (in_array($key, $group_role_access) ? 'opacity: 0.6; ' : '' ); ?>"><input type="checkbox" name="group_role_access[]" id="group_role_access_<?php echo $key; ?>" value="<?php echo $key; ?>" <?php echo (in_array($key, $group_role_access) ? 'checked' : '' ); ?> /> <?php echo $value['name']; ?></label>
                   <?php } ?>
                 </div>
-            
+
               <?php } else { ?>
                 <div class="alert alert-warning">
                 <?php _e('No suitable roles were found', 'opsi'); ?>
@@ -413,7 +413,7 @@ if ( class_exists('BP_Group_Extension') ) : // Recommended, to prevent problems 
             $message = '';
             $type = '';
 
-            
+
             if ( (!isset($_POST['save'])) && (!isset($_POST['setRoles'])) ) {
                 return false;
             }
@@ -437,7 +437,7 @@ if ( class_exists('BP_Group_Extension') ) : // Recommended, to prevent problems 
               groups_delete_groupmeta( $bp->groups->current_group->id, 'group_role_access' );
               $message .= __('Role Access Permissions changed successfully.' , 'opsi') . ' ';
             }
-            
+
 
 
             /* Post an error/success message to the screen */
@@ -514,7 +514,7 @@ function nitro_remove_group_tabs() {
  * @param string $slug      The slug of the primary navigation item.
  * @param string $component The component the navigation is attached to. Defaults to 'members'.
  * @return bool Returns false on failure, True on success.
- */ 
+ */
 
 	if ( ! bp_is_group() ) {
 		return;
@@ -536,25 +536,25 @@ add_action('bp_actions', 'opsi_bp_groups_forum_first_tab');
 function opsi_bp_groups_forum_first_tab() {
   global $bp;
   // echo '<pre>'.print_r($bp->groups, true).'</pre>';
-  bp_core_new_subnav_item( 
-    array( 
-        'name' => __('All groups', 'opsi'), 
-        'slug' => 'all-groups', 
+  bp_core_new_subnav_item(
+    array(
+        'name' => __('All groups', 'opsi'),
+        'slug' => 'all-groups',
         'parent_slug' => $bp->groups->slug,
         'parent_url' => $bp->groups->slug,
-        'position' => 50, 
+        'position' => 50,
         'screen_function' => 'false',
         'link' => bp_get_groups_directory_permalink()
         // 'link' => get_option('siteurl') . '/groups/create/step/group-details/'
     ));
     if (current_user_can('bd_create_group')) {
-      bp_core_new_subnav_item( 
-      array( 
-          'name' => __('Create group', 'opsi'), 
-          'slug' => 'create-group', 
+      bp_core_new_subnav_item(
+      array(
+          'name' => __('Create group', 'opsi'),
+          'slug' => 'create-group',
           'parent_slug' => $bp->groups->slug,
           'parent_url' => $bp->groups->slug,
-          'position' => 60, 
+          'position' => 60,
           'screen_function' => 'false',
           'link' => get_option('siteurl') . '/groups/create/step/group-details/'
       ));
@@ -564,19 +564,19 @@ function opsi_bp_groups_forum_first_tab() {
 
 add_action( 'bp_after_profile_field_content', 'nitro_bp_after_profile_field_content' );
 function nitro_bp_after_profile_field_content() {
-  
+
   global $wp_query, $bp;
   if (
         isset( $bp->canonical_stack['component'] ) && $bp->canonical_stack['component'] == 'profile'
     &&  (isset($bp->canonical_stack['action']) && $bp->canonical_stack['action'] == 'edit')
     &&  $bp->canonical_stack['action_variables'][0] == 'group'
     &&  $bp->canonical_stack['action_variables'][1] == 1
-  
+
     ) {
-  
+
     // $userdata = get_userdata( bp_loggedin_user_id() );
     $userdata = get_userdata( bp_displayed_user_id() );
-    
+
     echo '
       <label for="email">E-mail <span class="description">'. bp_the_profile_field_required_label() .'</span></label>
       <input type="text" name="email" id="email" value="'. $userdata->user_email .'" class="regular-text">
@@ -586,23 +586,23 @@ function nitro_bp_after_profile_field_content() {
 
 add_action( 'xprofile_updated_profile', 'nitro_xprofile_updated_profile', 10, 5 );
 function nitro_xprofile_updated_profile($user_id, $posted_field_ids, $errors, $old_values, $new_values) {
-  
+
   global $wp_query, $bp;
   if (
         $bp->canonical_stack['component'] == 'profile'
     &&  $bp->canonical_stack['action'] == 'edit'
     &&  $bp->canonical_stack['action_variables'][0] == 'group'
     &&  $bp->canonical_stack['action_variables'][1] == 1
-  
+
     ) {
-  
-  
+
+
     $userdata = get_userdata($user_id);
     $user_email = $userdata->user_email;
-    
+
     if (isset( $_POST['email']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
       // check if user is really updating the value
-      if ($user_email != $_POST['email']) {       
+      if ($user_email != $_POST['email']) {
           // check if email is free to use
           if (email_exists( $_POST['email'] )){
               // Email exists, do not update value.
@@ -611,13 +611,13 @@ function nitro_xprofile_updated_profile($user_id, $posted_field_ids, $errors, $o
               $args = array(
                   'ID'         => $user_id,
                   'user_email' => esc_attr( $_POST['email'] )
-              );            
+              );
           wp_update_user( $args );
-         }   
+         }
       }
     }
   }
-  
+
 }
 
 
@@ -634,7 +634,7 @@ function opsi_bp_xprofile_sanitize_field_options( $field_options = '' ) {
 /**
  * Buddypress Header Type
  */
- 
+
 add_filter( 'bp_xprofile_get_field_types', 'nitro_get_field_types', 10, 1 );
 function nitro_get_field_types($fields) {
     $fields = array_merge($fields, array('header' => 'nitro_bd_field_type_header'));
@@ -657,7 +657,7 @@ if (!class_exists('nitro_bd_field_type_header'))
             $this->accepts_null_value = true;
             $this->supports_options = true;
             $this->supports_richtext = false;
-            
+
             $this->set_format( '/.*?/', 'replace' );
 
             do_action( 'bp_xprofile_field_type_header', $this );
@@ -767,7 +767,7 @@ if (!class_exists('nitro_bd_field_type_header'))
             } else {
               $header = $options[0]->name;
             }
-            
+
         ?>
             <div id="<?php echo esc_attr( $type ); ?>" class="postbox bp-options-box" style="<?php echo esc_attr( $class ); ?> margin-top: 15px;">
                 <h3><?php esc_html_e( 'Header text.', 'bxcft' ); ?></h3>
@@ -783,7 +783,7 @@ if (!class_exists('nitro_bd_field_type_header'))
             </div>
         <?php
         }
-        
+
         public function is_valid( $values ) {
             $this->validation_whitelist = null;
             return parent::is_valid($values);
@@ -862,7 +862,7 @@ if (!class_exists('nitro_bd_field_type_repeater'))
                 'rows' => '10',
                 'cols' => '100'
             );
-            
+
             $options = $field->get_children( true );
             $field_val = '';
             if ( !empty($options) ) {
@@ -921,18 +921,18 @@ if (!class_exists('nitro_bd_field_type_repeater'))
             // Errors.
             do_action( bp_get_the_profile_field_errors_action() );
             // Input.
-            
+
             $option_data = maybe_unserialize(BP_XProfile_ProfileData::get_value_byid( $field->id, bp_displayed_user_id()));
-        
+
             $i = 0;
             $odai = 0; // option data auto increase
-            
+
             if (!empty($fields)) {
-              
+
               $num_of_fields = count($fields);
               $groups_of_fields = count($option_data) / $num_of_fields;
               $j = 0;
-              
+
               if ($num_of_fields > 0 && !empty($option_data)) {
                 for ($j = 0; $j < $groups_of_fields; $j++) {
                   echo '
@@ -944,32 +944,32 @@ if (!class_exists('nitro_bd_field_type_repeater'))
 
                   foreach($fields as $field_line) {
                     $f = explode('|', $field_line);
-                    
+
 					if ( isset ( $f[2] ) ) {
 						$f[2] = trim( $f[2] );
 					} else {
 						$f[2] = trim( $f[0] );
 					}
-                    
+
                     echo '<label for="'. bp_get_the_profile_field_input_name() .'['. $i.'_'.$f[2] .']" class="repeater_label">'.$f[1];
-                    
+
                     if ($f[0] == 'text') {
 						echo '<input value="'. ( isset( $option_data[$odai] ) ? $option_data[$odai] : '' ) .'" name="'. bp_get_the_profile_field_input_name() .'['. $i.'_'.$f[2] .']" type="text" id="'. bp_get_the_profile_field_input_name() .'['. $i.'_'.$f[2] .']" class="form-control" />';
 						$odai++;
 					}
-                    
+
                     if ($f[0] == 'url') {
 						echo '<input value="'. ( isset( $option_data[$odai] ) ? $option_data[$odai] : '' ) .'" name="'. bp_get_the_profile_field_input_name() .'['. $i.'_'.$f[2] .']" type="url" id="'. bp_get_the_profile_field_input_name() .'['. $i.'_'.$f[2] .']" class="form-control" />';
 						$odai++;
 					}
-                    
+
                     if ($f[0] == 'email') {
 						echo '<input value="'. ( isset( $option_data[$odai] ) ? $option_data[$odai] : '' ) .'" name="'. bp_get_the_profile_field_input_name() .'['. $i.'_'.$f[2] .']" type="email" id="'. bp_get_the_profile_field_input_name() .'['. $i.'_'.$f[2] .']" class="form-control" />';
 						$odai++;
                     }
-                    
+
                     if ($f[0] == 'date') {
-                      
+
                       $temp_date = array();
 					  if ( isset( $option_data[$odai] ) ) {
 						$temp_date = explode('/', $option_data[$odai]);
@@ -980,160 +980,160 @@ if (!class_exists('nitro_bd_field_type_repeater'))
                       if (!isset($temp_date[1])) {
                         $temp_date[1] = '';
                       }
-                      
+
                       echo '
                         <div class="opsi_date_field_wrap">';
                       echo '
                         <select class="opsi_date_month">
                           <option value="">----</option>
                           ';
-                        
+
                           for($d=1; $d<13; $d++) {
                             echo '<option value="'. $d .'" '. ($temp_date[0] == $d ? 'selected="selected"' : '') .'>'. date('F',strtotime('01.'.$d.'.2001')) .'</option>';
                           }
-                        
-                      echo '  
+
+                      echo '
                         </select>
                       ';
-                      
+
                       echo '
                         <select class="opsi_date_year">
                           <option value="">----</option>
                         ';
-                        
+
                           for($d=date('Y'); $d>1900; $d--) {
                             echo '<option value="'. $d .'" '. ($temp_date[1] == $d ? 'selected="selected"' : '') .'>'. $d .'</option>';
                           }
                         ;
-                      echo '  
+                      echo '
                         </select>
                       ';
-                      
+
                       echo '<input value="'. ( isset( $option_data[$odai] ) ? $option_data[$odai] : '' ) .'" name="'. bp_get_the_profile_field_input_name() .'['. $i.'_'.$f[2] .']" type="hidden" id="'. bp_get_the_profile_field_input_name() .'['. $i.'_'.$f[2] .']" class="form-control opsi_date_field_value" />';
 					  $odai++;
                     }
-                    
+
                     if ($f[0] == 'textarea') {
                       echo '<textarea name="'. bp_get_the_profile_field_input_name() .'['. $i.'_'.$f[2] .']" id="'. bp_get_the_profile_field_input_name() .'['. $i.'_'.$f[2] .']" class="form-control">'. ( isset($option_data[$odai]) ? $option_data[$odai] : '' ) .'</textarea>';
 					  $odai++;
                     }
-                    
+
                     if ($f[0] == 'select') {
                       echo '<select name="'. bp_get_the_profile_field_input_name() .'['. $i.'_'.$f[2] .']" id="'. bp_get_the_profile_field_input_name() .'['. $i.'_'.$f[2] .']" class="form-control">';
-                      
+
                       if (isset($f[3]) && !empty($f[3]))
                         foreach($f[3] as $select_option) {
                           echo '<option value="'. $select_option .'">'. $select_option .'</option>';
                         }
                       echo '</select>';
                     }
-                    
+
                     echo '</label>';
                   }
-                  
-                  
-                  
+
+
+
                   echo '
                       </fieldset>
                     </div>
                   ';
-                  
+
                   $i++;
                 }
               }
-              
+
               echo '<div class="repeater_wrap repeater_wrap_first wrap_'. $field->id .'">
                 '. ($j > 0 ? '<hr />' : '') .'
                 <fieldset>
                   <div class="text-right"><a href="#" class="delete_fieldset">&times;</a></div>
                 ';
-              
-              
+
+
               foreach($fields as $field_line) {
                 $f = explode('|', $field_line);
-                
+
                 if ( isset ( $f[2] ) ) {
 					$f[2] = trim( $f[2] );
 				} else {
 					$f[2] = trim( $f[0] );
 				}
-                
+
                 echo '<label for="'. bp_get_the_profile_field_input_name() .'['. $i.'_'.$f[2] .']" class="repeater_label">'.$f[1];
-                
+
                 if ($f[0] == 'text') {
                   echo '<input name="'. bp_get_the_profile_field_input_name() .'['. $i.'_'.$f[2] .']" type="text" id="'. bp_get_the_profile_field_input_name() .'['. $i.'_'.$f[2] .']" class="form-control" />';
                 }
-                
+
                 if ($f[0] == 'url') {
                   echo '<input name="'. bp_get_the_profile_field_input_name() .'['. $i.'_'.$f[2] .']" type="url" id="'. bp_get_the_profile_field_input_name() .'['. $i.'_'.$f[2] .']" class="form-control" />';
                 }
-                
+
                 if ($f[0] == 'email') {
                   echo '<input name="'. bp_get_the_profile_field_input_name() .'['. $i.'_'.$f[2] .']" type="email" id="'. bp_get_the_profile_field_input_name() .'['. $i.'_'.$f[2] .']" class="form-control" />';
                 }
-                
+
                 if ($f[0] == 'date') {
-                  
+
                   echo '
                     <div class="opsi_date_field_wrap">';
                   echo '
                     <select class="opsi_date_month">
                       <option value="">----</option>
                       ';
-                    
+
                       for($d=1; $d<13; $d++) {
                         echo '<option value="'. $d .'">'. date('F',strtotime('01.'.$d.'.2001')) .'</option>';
                       }
-                    
-                  echo '  
+
+                  echo '
                     </select>
                   ';
-                  
+
                   echo '
                     <select class="opsi_date_year">
                       <option value="">----</option>
                     ';
-                    
+
                       for($d=date('Y'); $d>1900; $d--) {
                         echo '<option value="'. $d .'">'. $d .'</option>';
                       }
                     ;
-                  echo '  
+                  echo '
                     </select>
                   ';
-                  
+
                   echo '
                       <input name="'. bp_get_the_profile_field_input_name() .'['. $i.'_'.$f[2] .']" type="hidden" id="'. bp_get_the_profile_field_input_name() .'['. $i.'_'.$f[2] .']" class="form-control opsi_date_field_value" value="" />
                     </div>
                   ';
                 }
-                
+
                 if ($f[0] == 'textarea') {
                   echo '<textarea name="'. bp_get_the_profile_field_input_name() .'['. $i.'_'.$f[2] .']" id="'. bp_get_the_profile_field_input_name() .'['. $i.'_'.$f[2] .']" class="form-control"></textarea>';
                 }
-                
+
                 if ($f[0] == 'select') {
                   echo '<select name="'. bp_get_the_profile_field_input_name() .'['. $i.'_'.$f[2] .']" id="'. bp_get_the_profile_field_input_name() .'['. $i.'_'.$f[2] .']" class="form-control">';
-                  
+
                   if (isset($f[3]) && !empty($f[3]))
                     foreach($f[3] as $select_option) {
                       echo '<option value="'. $select_option .'">'. $select_option .'</option>';
                     }
                   echo '</select>';
                 }
-                
+
                 echo '</label>';
               }
               echo '
                 </fieldset>
               </div>
-              <div class="additional_fieldsets_'. $field->id .'"></div>                
+              <div class="additional_fieldsets_'. $field->id .'"></div>
               ';
-              
+
               echo '<a href="#" id="add_'. $field->id .'" data-fid="'. $field->id .'" class="btn btn-primary add_fieldset_btn">'. __('Add', 'opsi') .' '. bp_get_the_profile_field_name() .'</a>';
-              
+
               $i++;
-              
+
             }
             ?>
             <span id="output-field_<?php echo $field->id; ?>"></span>
@@ -1141,7 +1141,7 @@ if (!class_exists('nitro_bd_field_type_repeater'))
               jQuery('document').ready(function() {
                 var i = <?php echo $i - 1; ?>;
                 var wrapper = jQuery('.wrap_<?php echo $field->id; ?>');
-                
+
                 jQuery('.delete_fieldset').on('click', function(e) {
                   e.preventDefault();
                   jQuery(this).closest('.repeater_wrap').remove();
@@ -1151,28 +1151,28 @@ if (!class_exists('nitro_bd_field_type_repeater'))
                   e.preventDefault();
                   jQuery('.additional_fieldsets_<?php echo $field->id; ?>').append('<div class="repeater_wrap"><?php ($j == 0 ? '<hr />' : ''); ?>'+ wrapper.html().split('field_<?php echo $field->id; ?>[<?php echo $i - 1; ?>').join('field_<?php echo $field->id; ?>['+ (i+1)) +'</div>');
                   i++;
-                  
+
                   if (jQuery(".opsi_date_month").length > 0) {
                     jQuery('.opsi_date_month, .opsi_date_year').on('change', function() {
-                      
+
                       var opsi_date_field_wrap = jQuery(this).parents('.opsi_date_field_wrap');
                       opsi_date_field_wrap.children('.opsi_date_field_value').val(opsi_date_field_wrap.children('.opsi_date_month').val()+'/'+opsi_date_field_wrap.children('.opsi_date_year').val());
-                      
+
                     });
                   }
-                  
+
                   return false;
                 });
-                
+
               });
-            </script>            
+            </script>
         <?php
         }
 
         public function admin_new_field_html (\BP_XProfile_Field $current_field, $control_type = '')
         {
             $type = array_search( get_class( $this ), bp_xprofile_get_field_types() );
-           
+
             if ( false === $type ) {
                 return;
             }
@@ -1301,46 +1301,46 @@ if (!class_exists('nitro_bd_field_type_repeater'))
 
 add_filter('bp_xprofile_set_field_data_pre_validate', 'nitro_bp_xprofile_set_field_data_pre_validate', 10, 3);
 function nitro_bp_xprofile_set_field_data_pre_validate($value, $field, $field_type_obj) {
-  if ($field_type_obj->name == 'Repeater') {       
-    
+  if ($field_type_obj->name == 'Repeater') {
+
     $options = $field->get_children( true );
     if ($options) {
       foreach ($options as $o) {
         $fields = explode("\n", $o->name);
       }
     }
-    
+
     $fields_count = count($fields);
-    
+
     if (!empty($value)) {
       $i = 0;
       $batch_data = '';
       $batch_keys = array();
       foreach($value as $k => $v) {
-        
+
         $batch_data .= $v;
         $batch_keys[] = $k;
-        
+
         $i++;
-        
+
         if($fields_count == $i) {
-          
+
           // if there is nothing in the batch, then remove the batch
           if (trim($batch_data) == '') {
             foreach($batch_keys as $bk) {
               unset($value[$bk]);
             }
           }
-          
+
           $i = 0; // reset $i
           $batch_data = ''; // reset batch data
           $batch_keys = array(); // reset the keys
         }
       }
-      
+
     }
   }
-  
+
   return $value;
 }
 
@@ -1355,26 +1355,26 @@ function nitro_bp_get_the_profile_field_value($value, $type, $field_id) {
         $fields = explode("\n", $o->name);
       }
     }
-  
+
     if (!empty($fields)) {
-      
+
       $labels = array();
-      
+
       foreach($fields as $f) {
         $line = explode('|', $f);
         $labels[] = $line[1];
       }
     }
-    
+
     $field_values_array = maybe_unserialize($field->data->value);
-    
-    
-    
+
+
+
     if (!empty($field_values_array)) {
       $i = $j = 0;
       $value = '';
       foreach($field_values_array as $field_value) {
-        
+
         if (trim($field_value) != '') {
           $value .= '
             <div class="repeater_field_wrap">
@@ -1383,7 +1383,7 @@ function nitro_bp_get_the_profile_field_value($value, $type, $field_id) {
             </div>
           ';
         }
-        
+
         $i++;
         $j++;
         if ($i == count( $labels ) && $j < count($field_values_array)) {
@@ -1395,18 +1395,18 @@ function nitro_bp_get_the_profile_field_value($value, $type, $field_id) {
   }
 
   return $value;
-  
+
 }
 
 
 add_filter( 'bp_get_the_profile_field_value', 'nitro_urls_bp_get_the_profile_field_value', 11, 3 );
 function nitro_urls_bp_get_the_profile_field_value($value, $type, $field_id) {
-  
+
   if ($type == 'repeater' && strpos($value, 'Additional URLs') !== false) {
     $value = str_replace('<h4 class="repeater_title">Additional URLs</h4>', '', $value);
     $value = str_replace('<hr class="repeater_batch_splitter" />', '', $value);
   }
-  
+
   return $value;
 }
 
@@ -1468,7 +1468,7 @@ class BP_XProfile_Field_Type_Multiselectbox_OPSI extends BP_XProfile_Field_Type 
 		} else {
 			$user_id = bp_displayed_user_id();
 		}
-    
+
     $field = new BP_XProfile_Field(bp_get_the_profile_field_id());
 
     if ($field && $field->data) {
@@ -1483,7 +1483,7 @@ class BP_XProfile_Field_Type_Multiselectbox_OPSI extends BP_XProfile_Field_Type 
         $compared_entries = array_diff($values, $options);
       }
     }
-    
+
 		$r = bp_parse_args( $raw_properties, array(
 			'multiple' => 'multiple',
 			'id'       => bp_get_the_profile_field_input_name() . '[]',
@@ -1638,7 +1638,7 @@ class BP_XProfile_Field_Type_Multiselectbox_OPSI extends BP_XProfile_Field_Type 
 	public function admin_new_field_html( BP_XProfile_Field $current_field, $control_type = '' ) {
 		parent::admin_new_field_html( $current_field, 'checkbox' );
 	}
-  
+
   public function is_valid( $values ) {
       $validated = false;
 
@@ -1669,18 +1669,18 @@ class BP_XProfile_Field_Type_Multiselectbox_OPSI extends BP_XProfile_Field_Type 
 
 add_filter( 'widget_title', 'nitro_my_friends_widget_title', 10, 1 );
 function nitro_my_friends_widget_title($title) {
-  
+
   if(strpos($title, bp_get_displayed_user_fullname(). '&#8217;s Friend') !== FALSE) {
       $title = str_replace(bp_get_displayed_user_fullname(). '&#8217;s', '', $title);
   }
-  
-  
+
+
   return $title;
 }
 
 add_filter('bp_get_the_profile_field_required_label', 'nitro_bp_get_the_profile_field_required_label');
 function nitro_bp_get_the_profile_field_required_label($label) {
-  
+
   return '*';
 }
 
@@ -1705,14 +1705,14 @@ function nitro_bp_profile_field_item() {
 
 add_action( 'xprofile_updated_profile', 'nitro_buddypress_profile_update', 10, 5 );
 function nitro_buddypress_profile_update( $user_id, $posted_field_ids, $errors, $old_values, $new_values ) {
-  
+
   if ($old_values[51]['value'] == $new_values[51]['value']) {
     return;
   }
- 
+
    $admin_email = get_option( 'admin_email' );
-   $message = sprintf( __( 'Member: %1$s', 'buddypress' ), bp_core_get_user_displayname( $user_id ) ) . "\r\n\r\n"; 
-   $message .= get_edit_user_link($user_id)."\r\n\r\n"; 
+   $message = sprintf( __( 'Member: %1$s', 'buddypress' ), bp_core_get_user_displayname( $user_id ) ) . "\r\n\r\n";
+   $message .= get_edit_user_link($user_id)."\r\n\r\n";
    $message .= sprintf( __( 'NEW Organisation type: %s' ), bp_get_profile_field_data('field=Organisation type') ). "\r\n\r\n";
    $message .= sprintf( __( 'Old Organisation type: %s' ), $old_values[51]['value'] ). "\r\n\r\n";
    wp_mail( $admin_email, sprintf( __( '%1$s Member Profile Update' ), get_option('blogname') ), $message );
@@ -1721,12 +1721,12 @@ function nitro_buddypress_profile_update( $user_id, $posted_field_ids, $errors, 
 
 add_filter( 'bp_xprofile_set_field_data_pre_validate',  'nitro_xprofile_filter_pre_validate_value_by_field_type', 9, 3 );
 function nitro_xprofile_filter_pre_validate_value_by_field_type( $value, $field, $field_type_obj ) {
-	
+
   if ($field->name == 'Twitter' && filter_var($field->data->value, FILTER_VALIDATE_URL) === FALSE) {
     $value = str_replace('twitter.com', '', $value);
     $value = 'https://twitter.com/'. $value;
   }
-  
+
 	return $value;
 }
 
@@ -1736,10 +1736,10 @@ function nitro_xprofile_filter_pre_validate_value_by_field_type( $value, $field,
 add_action( 'bp_setup_nav', 'profile_tab_innovations' );
 function profile_tab_innovations() {
     global $bp;
-	  
+
 	$user_id = bp_displayed_user_id();
 	$current_user_id = bp_loggedin_user_id();
-	
+
 	$count_args_owner = array(
 		'post_type' => array ( 'case' ),
 		'post_status' => array( 'any', 'archive', 'pending_deletion', 'reviewed' )
@@ -1748,32 +1748,32 @@ function profile_tab_innovations() {
 		'post_type' => array ( 'case' ),
 		'post_status' => array( 'publish' )
 	);
-	
+
 	$all_posts = nitro_get_user_posts_count( $user_id, $count_args_owner );
 	$published_posts = nitro_get_user_posts_count( $user_id, $count_args_guest );
-	
+
 	$count_inno = 0;
-	
+
 	if ( $user_id == $current_user_id ) {
 		$count_inno = $all_posts;
 	} else {
 		$count_inno = $published_posts;
 	}
-	
+
 	$innonum = '';
-	
+
 	if ( $count_inno == 0 ) {
 		$innonum = ' <span class="no-count">'. $count_inno .'</span>';
 	} else {
-		
+
 		$innonum = ' <span class="count">'. $count_inno .'</span>';
-		
+
 	}
- 
-      bp_core_new_nav_item( array( 
-            'name' => __( 'Innovations', 'opsi' ).$innonum, 
-            'slug' => 'innovations', 
-            'screen_function' => 'nitro_my_innovations_screen', 
+
+      bp_core_new_nav_item( array(
+            'name' => __( 'Innovations', 'opsi' ).$innonum,
+            'slug' => 'innovations',
+            'screen_function' => 'nitro_my_innovations_screen',
             'position' => 70,
             'parent_url'      => bp_loggedin_user_domain() . '/innovations/',
             'parent_slug'     => $bp->profile->slug,
@@ -1791,7 +1791,7 @@ function nitro_my_innovations_screen(){
 }
 
 function bp_innovations_template_part_filter( $templates, $slug, $name ) {
-	
+
 	if ( 'members/single/activity' != $slug ) {
 		return $templates;
 	}
@@ -1803,12 +1803,12 @@ function bp_my_innovations_screen_title() {
     // global $bp;
 	// echo __( 'Innovations', 'opsi' );
 	return;
-	
+
 }
 function bp_my_innovations_screen_content() {
     global $bp;
-	
-	
+
+
 	/**
 	 * Fires before the display of the member activity post form.
 	 *
@@ -1826,52 +1826,52 @@ function bp_my_innovations_screen_content() {
 	 * @since 1.2.0
 	 */
 	do_action( 'bp_after_member_activity_post_form' );
-	
+
     echo bp_get_author_innovations_list();
- 
+
 }
 
 // build author Innovations / Case Studies list
 function bp_get_author_innovations_list( $user_id = 0 ) {
-	
+
 	if ($user_id == 0) {
       $user_id = bp_displayed_user_id();
     }
     if (!$user_id) {
       return false;
     }
-	
+
     $current_user_id = bp_loggedin_user_id();
-	
+
 	if ( $user_id == $current_user_id ) {
 		return bp_innovation_list_owner();
 	} else {
 		return bp_innovation_list_guest();
 	}
-	
+
 }
 
 function bp_innovation_list_owner() {
-	
+
 	// WP_Query arguments
 	$args = array(
 		'post_type'		=> array( 'case' ),
 		'post_status'	=> array( 'any', 'pending_deletion', 'archive', 'reviewed' ),
 		'author'		=> bp_loggedin_user_id(),
 		'posts_per_page'=> -1
-		
+
 	);
 
 	// The Query
 	$query = new WP_Query( $args );
-	
+
 	$out  = '';
-	
+
 	ob_start();
 
 	// The Loop
 	if ( $query->have_posts() ) {
-		
+
 		?>
 		<div class="table-responsive">
 			<table class="table table-striped table-hover">
@@ -1881,17 +1881,24 @@ function bp_innovation_list_owner() {
 					<th class="text-center" colspan="4"><?php echo __( 'Actions', 'opsi' ); ?></th>
 				</thead>
 				<tbody>
-		
+
 		<?php
-		
+
 		while ( $query->have_posts() ) {
 			$query->the_post();
-			
+
 			// get assigned users
 			$no_existing_colabs = count_collaborators( get_the_ID() );
 			$post_status_obj = get_post_status_object( get_post_status( get_the_ID() ) );
+			// get primary type
+			$primary_type = get_field('primary_case_type', get_the_ID());
+			if( 'open-government' == $primary_type ) {
+				$edit_url = get_field('case_study_form_page_open_gov', 'option');
+			} else {
+				$edit_url = get_field('case_study_form_page', 'option');
+			}
 			?>
-			
+
 			<tr <?php if ( get_post_status( get_the_ID() ) == 'archive' ) { echo ' class="warning archive"'; } ?> >
 				<td>
 					<a href="<?php the_permalink(); ?>" title="<?php echo __( 'view', 'opsi' ); ?>">
@@ -1899,8 +1906,8 @@ function bp_innovation_list_owner() {
 					</a>
 				</td>
 				<td>
-					<?php 
-					
+					<?php
+
 						if ( get_post_status( get_the_ID() ) == 'pending' ) {
 							echo __( 'Submitted (pending review)', 'opsi' );
 						} else {
@@ -1914,41 +1921,41 @@ function bp_innovation_list_owner() {
 					</a>
 				</td>
 				<td>
-					<a href="<?php echo get_the_permalink( get_field('case_study_form_page', 'option') ).'?edit='. get_the_ID(); ?>" title="<?php echo __( 'edit', 'opsi' ); ?>">
+					<a href="<?php echo get_the_permalink( $edit_url ).'?edit='. get_the_ID(); ?>" title="<?php echo __( 'edit', 'opsi' ); ?>">
 						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 					</a>
 				</td>
 				<td>
-					
+
 					<a href="<?php echo get_the_permalink( get_field('case_study_add_collaborator_page', 'option') ).'?edit='. get_the_ID(); ?>" title="<?php echo __( 'Manage collaborators', 'opsi' ); ?>">
 						<i class="fa fa-user-plus" aria-hidden="true"></i>
 						<sup><?php echo $no_existing_colabs; ?></sup>
 					</a>
-					
+
 				</td>
 				<td>
-				<?php 
+				<?php
 					$get_post_status = get_post_status();
 					if ( can_delete_cs( get_the_ID(), bp_loggedin_user_id() ) ) { ?>
 					<a href="<?php echo get_the_permalink( get_field('case_study_form_page', 'option') ).'?delete='. get_the_ID(); ?>" title="<?php echo __( 'remove', 'opsi' ); ?>" class="danger">
 						<i class="fa fa-trash-o" aria-hidden="true"></i>
 					</a>
 				<?php } ?>
-				</td>			
+				</td>
 			</tr>
-			
+
 			<?php
-			
+
 		}
-		
+
 		?>
 				</tbody>
 			</table>
 		</div>
 		<?php
-		
+
 	} else {
-		
+
 		?>
 		<div id="message" class="info">
 			<p><?php echo __( 'Sorry, there was no entries found.', 'opsi' ); ?></p>
@@ -1958,15 +1965,15 @@ function bp_innovation_list_owner() {
 
 	// Restore original Post Data
 	wp_reset_postdata();
-	
+
 	$out = ob_get_clean();
-	
+
 	return $out;
-	
+
 }
 
 function bp_innovation_list_guest() {
-	
+
 	// WP_Query arguments
 	$args = array(
 		'post_type'		=> array( 'case' ),
@@ -1977,35 +1984,35 @@ function bp_innovation_list_guest() {
 
 	// The Query
 	$query = new WP_Query( $args );
-	
+
 	$out  = '';
-	
+
 	ob_start();
 
 	// The Loop
 	if ( $query->have_posts() ) {
-		
+
 		?>
 			<ul>
-		
+
 		<?php
-		
+
 		while ( $query->have_posts() ) {
 			$query->the_post();
 			?>
-			
+
 			<li><a href="<?php the_permalink(); ?>" title="<?php echo __( 'view', 'opsi' ); ?>"><?php the_title(); ?></a></li>
-			
+
 			<?php
-			
+
 		}
-		
+
 		?>
 			</ul>
 		<?php
-		
+
 	} else {
-		
+
 		?>
 		<div id="message" class="info">
 			<p><?php echo __( 'Sorry, there was no entries found.', 'opsi' ); ?></p>
@@ -2015,11 +2022,11 @@ function bp_innovation_list_guest() {
 
 	// Restore original Post Data
 	wp_reset_postdata();
-	
+
 	$out = ob_get_clean();
-	
+
 	return $out;
-	
+
 }
 
 
@@ -2035,34 +2042,34 @@ function bp_innovation_list_guest() {
     if (!$user_id) {
       return false;
     }
-    
+
     $result = array();
     $current_user_id = bp_loggedin_user_id();
-    
+
     if ( bp_has_profile('user_id='. $user_id) ) {
       while ( bp_profile_groups() ) {
         bp_the_profile_group();
 
         if ( bp_profile_group_has_fields() ) {
 
-   
+
           // bp_the_profile_group_name();
-          while ( bp_profile_fields() ) { 
+          while ( bp_profile_fields() ) {
 
             bp_the_profile_field();
-   
+
             if ( bp_field_has_data() ) {
-              
+
               $hidden_fields = bp_xprofile_get_hidden_fields_for_user($user_id, $current_user_id);
               $field_id = bp_get_the_profile_field_name();
-              
+
               if(!in_array($field_id, $hidden_fields)){
                 $args = array(
                 'field' => $field_id, // Field ID or name.
                 'user_id' => $user_id // Default -- It is profile owner id
                 );
                 $data = bp_get_profile_field_data($args);
-                
+
                 if (!is_array($data) && strip_tags($data) != '') {
                   $result[''.bp_get_the_profile_field_name().''] = bp_get_the_profile_field_value();
                 }
@@ -2072,15 +2079,15 @@ function bp_innovation_list_guest() {
           }
         }
       }
-      
+
       return $result;
     } else {
- 
+
       return false;
- 
+
     }
   }
-  
+
 function bp_custom_get_send_private_message_link($to_id, $subject=false, $message=false) {
 
 	//if user is not logged, do not prepare the link
@@ -2104,18 +2111,18 @@ function bp_custom_get_send_private_message_link($to_id, $subject=false, $messag
 
 add_action ( 'set_user_role', 'opsi_notify_pending_user', 10, 3 );
 function opsi_notify_pending_user( $user_id, $role, $old_roles ) {
-	
+
 	if ( !in_array( 'pending', $old_roles ) ) {
 		return;
 	}
-	
+
 	if ( $role != 'pending' ) {
-	
+
 		// notify the user
 		$subject = 'Your account on OPSI has been approved';
 		$body    = 'Your account on the OPSI website has been approved. You may visit <a href="'. bp_core_get_user_domain( $user_id ) .'">your profile here</a>.';
 		$headers = array('Content-Type: text/html; charset=UTF-8');
 		wp_mail( get_the_author_meta( 'user_email', $user_id ), $subject, $body, $headers );
 	}
-	
+
 }

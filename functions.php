@@ -1817,8 +1817,8 @@ function cs_on_publish_pending_post( $post ) {
 
     // get subject and content based on case type
     $case_type = get_the_terms( $post->ID, 'case_type' );
-    $case_type_id = $case_type[0]->term_id;
-    if ( $case_type_id == 890 ) {
+    $case_type_slug = $case_type[0]->slug;
+    if ( $case_type_slug == 'opsi' ) {
       //OPSI-OECD case type
       $subject = get_field( 'author_published_notification_subject', 'option' );
       $mail_content = get_field( 'author_published_notification_mail', 'option' );
@@ -2065,9 +2065,9 @@ function bs_single_case_open_gov_template($single_template) {
     $case_type = wp_get_post_terms( $post->ID, 'case_type' );
 
     // If in Open Government case type return the dedicated template
-    if ( 891 == $case_type[0]->term_id) {
+    if ( 'open-government' == $case_type[0]->slug ) {
       $single_template = TEMPLATEPATH . '/single-case-open-gov.php';
-    } elseif (890 == $case_type[0]->term_id ) {
+    } elseif ( 'opsi' == $case_type[0]->slug ) {
       $single_template = TEMPLATEPATH . '/single-case.php';
     }
 
@@ -2380,3 +2380,29 @@ function bs_remove_menu_pages() {
   }
 }
 add_action( 'admin_init', 'bs_remove_menu_pages' );
+
+// Add custom capabilities to Case studies taxonomies
+function bs_add_custom_capabilities_to_case_taxonomies( $args, $taxonomy, $object_type ) {
+
+  $taxonomies_array = array(
+    'case_type',
+    'country',
+    'innovation-tag',
+    'innovation-tag-opnegov',
+    'innovation-badge',
+    'innovation-badge-opengov',
+  );
+
+  // Only target the case taxonomies
+  if ( !in_array($taxonomy, $taxonomies_array) )
+    return $args;
+
+  // Set our custom capabilities
+  $args["capabilities"]["manage_terms"] = 'manage_case_terms';
+  $args["capabilities"]["edit_terms"] = 'edit_case_terms';
+  $args["capabilities"]["delete_terms"] = 'delete_case_terms';
+  $args["capabilities"]["assign_terms"] = 'assign_case_terms';
+
+  return $args;
+}
+add_filter( 'register_taxonomy_args', 'bs_add_custom_capabilities_to_case_taxonomies', 10, 3);

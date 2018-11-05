@@ -317,8 +317,8 @@ function case_study_save_collaborators( $post_id ) {
 
 	// get Collaboration email subject and Collaborators email content based on case type
 	$case_type = get_the_terms( $post_id, 'case_type' );
-	$case_type_id = $case_type[0]->term_id;
-	if ( $case_type_id == 890 ) {
+	$case_type_slug = $case_type[0]->slug;
+	if ( $case_type_id == 'opsi' ) {
 		//OPSI-OECD case type
 		$collaborators_subject = get_field( 'collaborators_email_subject', 'option' );
 		$collaborators_email_content = get_field( 'collaborators_email', 'option' );
