@@ -9,10 +9,20 @@ Template Post Type: page
 */
 // give value to case type taxonomy field
 function bs_case_study_form_taxonomy_field($field) {
-	$field['value'] = 891;
+	// get Open Gov case type term ID
+	$open_gov_term = get_term_by('slug', 'open-government', 'case_type');
+	$open_gov_term_id = $open_gov_term->term_id;
+	// set the value
+	$field['value'] = $open_gov_term_id;
   return $field;
 }
 add_filter('acf/prepare_field/key=field_5bc60b5d239b4', 'bs_case_study_form_taxonomy_field', 20);
+// give value to Primary case type taxonomy field
+function bs_case_study_form_primary_case_field($field) {
+	$field['value'] = 'open-government';
+  return $field;
+}
+add_filter('acf/load_field/key=field_5be00a685e5a8', 'bs_case_study_form_primary_case_field', 20);
 
 // Hide fields
 function bs_case_study_open_gov_hide_fields($field) {
