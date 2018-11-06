@@ -3699,3 +3699,18 @@ ul.link-list a:before {
 .toolkit-useful-links a {
 	color: #337ab7;
 }
+
+#featured-toolkits {
+	margin-bottom: 3em;
+}
+.featured-toolkits .featured {
+	background-color: #f7fbfe;
+	border: 1px solid #dbe7ef;
+	border-radius: 8px;
+	padding: 1em;
+}
+.featured-toolkits a.title {
+	display: block;
+	text-align: center;
+	color: #337ab7;
+}
