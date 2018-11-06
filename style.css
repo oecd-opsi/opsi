@@ -3655,6 +3655,11 @@ ul.link-list a:before {
 	content: "\2192\a0";
 }
 
+
+.guide-template-default .before-guide-title {
+	margin-top: 3em;
+}
+
 .subguide-page-content {
 	padding-left: 0;
 	padding-right: 0;

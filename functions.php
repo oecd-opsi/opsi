@@ -2371,6 +2371,14 @@ function opsi_how_do_i_archive( $atts ) {
 	return $output;
 }
 
+add_action( 'opsi-before-guide-title', 'bs_add_subguide_banner' );
+function bs_add_subguide_banner( $is_subpage ) {
+	if ( $is_subpage ) {
+		$src = trailingslashit(get_template_directory_uri()) . 'images/OECD-opengovernment-banner.jpg';
+		printf('<div class="before-guide-title"><img src="%s" class="oecd-opengovernment-banner" alt="OECD Opengovernment"></div>', $src);
+	}
+}
+
 // Hide Analitify menu item for OpenGov Admin
 function bs_remove_menu_pages() {
   $user = wp_get_current_user();

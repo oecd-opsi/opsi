@@ -20,7 +20,7 @@
 
             <section id="guide-header">
 
-
+			  <?php do_action( 'opsi-before-guide-title', $is_subpage ); ?>
               <h1 class="guide-title"><?php the_title(); ?></h1>
               <p id="skip-for-mobile"><a href="#guide-related-header">Scroll to toolkits</a></p>
 
