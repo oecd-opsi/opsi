@@ -47,6 +47,47 @@
           <a href="<?php the_field('url'); ?>"><?php the_title(); ?></a>
         </h1>
 
+		  <?php
+		  $current_user_id = get_current_user_id();
+		  if ( $current_user_id ) :
+			  $toolkit_ID = get_the_ID();
+			  $saved_user_ids = get_post_meta( $toolkit_ID, 'saved', true );
+			  $used_user_ids = get_post_meta( $toolkit_ID, 'used', true );
+			  $saved_user_ids = is_array( $saved_user_ids ) ? $saved_user_ids : array();
+			  $used_user_ids = is_array( $used_user_ids ) ? $used_user_ids: array();
+			  $saved = in_array( $current_user_id, $saved_user_ids );
+			  $used = in_array( $current_user_id, $used_user_ids );
+			  ?>
+			  <div class="row toolkit-actions">
+				  <div class="meta-column col-md-6 col-sm-6 col-xs-12 <?php if ( $used ) echo 'used'; ?>">
+					  <i class="fa fa-check" aria-hidden="true"></i>&nbsp;
+					  <?php
+					  if ( $used ) {
+						  $link_text = __( 'You have used this toolkit', 'opsi' );
+						  $url = wp_nonce_url( get_permalink().'?_opsi_action=remove-used', 'opsi-remove-used_'.$toolkit_ID );
+					  } else {
+						  $link_text = __( 'I have used this toolkit', 'opsi' );
+						  $url = wp_nonce_url( get_permalink().'?_opsi_action=used', 'opsi-used_'.$toolkit_ID );
+					  }
+					  printf( '<a href="%s">%s</a>', $url, $link_text );
+					  ?>
+				  </div>
+				  <div class="meta-column col-md-6 col-sm-6 col-xs-12 <?php if ( $saved ) echo 'saved'; ?>">
+					  <i class="fa fa-star" aria-hidden="true"></i>&nbsp;
+					  <?php
+					  if ( $saved ) {
+						  $link_text = __( 'Saved toolkit', 'opsi' );
+						  $url = wp_nonce_url( get_permalink().'?_opsi_action=remove-saved', 'opsi-remove-saved_'.$toolkit_ID );
+					  } else {
+						  $link_text = __( 'Save this toolkit', 'opsi' );
+						  $url = wp_nonce_url( get_permalink().'?_opsi_action=saved', 'opsi-saved_'.$toolkit_ID );
+					  }
+					  printf( '<a href="%s">%s</a>', $url, $link_text );
+					  ?>
+				  </div>
+			  </div>
+		  <?php endif; ?>
+
         <p class="toolkit-description">
           <?php the_field('description'); ?>
         </p>
@@ -294,7 +335,9 @@
             ),
             'post__not_in' => array($currentID), // removes the current page from being shown
             'posts_per_page' => 6,
-
+			'orderby' => 'meta_value_num',
+			'meta_key' => '_bs_relevance',
+			'order' => 'DESC'
             );
 
             $cssCounter = 1;

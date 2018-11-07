@@ -3723,3 +3723,13 @@ ul.link-list a:before {
 	padding-left: 0;
 	padding-right: 0;
 }
+
+.toolkit-actions i {
+	color: #DDDDDD;
+}
+.toolkit-actions .used i {
+	color: #03d603;
+}
+.toolkit-actions .saved i {
+	color: #f9dd07;
+}

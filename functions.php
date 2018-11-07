@@ -2389,6 +2389,99 @@ function bs_set_featured_image( $value, $post_id, $field ) {
 	return $value;
 }
 
+// Manage toolkit actions
+add_filter( 'query_vars', 'bs_add_query_vars' );
+function bs_add_query_vars( $vars ) {
+	$vars[] = '_opsi_action';
+	return $vars;
+}
+add_action( 'wp', 'bs_manage_actions' );
+function bs_manage_actions() {
+	$object = get_queried_object();
+	$user_id = get_current_user_id();
+	$action = get_query_var( '_opsi_action' );
+
+	if ( is_singular( 'toolkit' ) ) {
+		// Save visit counter
+		if ( !isset( $_SESSION['bs_visited_'.$object->ID] ) ) {
+			$visits = get_post_meta( $object->ID, '_bs_visits', true );
+			$visits = empty( $visits ) ? 1 : ++$visits;
+			update_post_meta( $object->ID, '_bs_visits', $visits );
+			$_SESSION['bs_visited_'.$object->ID] = true;
+		}
+	}
+
+	if ( is_singular( 'toolkit' ) && $user_id && function_exists( 'add_row' ) && !empty( $action ) ) {
+		// Check the nonce
+		if ( !wp_verify_nonce( $_REQUEST['_wpnonce'], 'opsi-'.$action.'_'.$object->ID ) ) {
+			die( 'Security check' );
+		} else {
+
+			switch ( $action ) {
+				case 'used':
+				case 'saved':
+					$users = get_post_meta( $object->ID, $action, true );
+					if ( empty( $users ) || !in_array( $user_id, $users ) ) {
+						add_row( $action, $user_id, $object->ID );
+					}
+					break;
+				case 'remove-used':
+					$users = get_post_meta( $object->ID, 'used', true );
+					$users = bs_remove_from_array_recursive( $user_id, $users );
+					update_post_meta( $object->ID, 'used', $users );
+					break;
+				case 'remove-saved':
+					$users = get_post_meta( $object->ID, 'saved', true );
+					$users = bs_remove_from_array_recursive( $user_id, $users );
+					update_post_meta( $object->ID, 'saved', $users );
+					break;
+			}
+		}
+	}
+}
+function bs_remove_from_array_recursive( $value, $array ) {
+	if ( !is_array( $array ) ) {
+		return $array;
+	}
+
+	foreach ( $array as $i => $v ) {
+		if ( $v == $value ) {
+			unset( $array[$i] );
+		}
+	}
+	return $array;
+}
+add_action( 'after_switch_theme', 'opsi_theme_activation' );
+function opsi_theme_activation() {
+	if  (!wp_next_scheduled ( 'opsi-toolkits-relevance' ) ) {
+		wp_schedule_event( time(), 'daily', 'opsi-toolkits-relevance' );
+	}
+}
+add_action( 'opsi-toolkits-relevance', 'bs_toolkits_relevance' );
+function bs_toolkits_relevance() {
+	$toolkits = get_posts(
+		array(
+			'posts_per_page' => -1,
+			'post_type' => 'toolkit'
+		)
+	);
+
+	foreach ( $toolkits as $toolkit ) {
+		//$relevance = get_post_meta( $toolkit->ID, '_bs_relevance', true );
+		$used = get_post_meta( $toolkit->ID, 'used', true );
+		$used = is_array( $used ) ? $used : array();
+		$saved = get_post_meta( $toolkit->ID, 'saved', true );
+		$saved = is_array( $saved ) ? $saved : array();
+		$visits = get_post_meta( $toolkit->ID, '_bs_visits', true );
+		$visits = isset( $visits )? $visits : 0;
+
+		$relevance = 30*count( $used ) + 20*count( $saved) + 1*$visits;
+		echo '<pre>';var_dump( $toolkit->ID );echo '</pre>';
+		echo '<pre>';var_dump( $relevance );echo '</pre>';
+		update_post_meta( $toolkit->ID, '_bs_relevance', $relevance );
+	}
+}
+
 // Hide Analitify menu item for OpenGov Admin
 function bs_remove_menu_pages() {
   $user = wp_get_current_user();
