@@ -162,7 +162,7 @@
 				<div class="register-section" id="profile-details-section">
 
 					<h2><?php _e( 'Profile Details', 'buddypress' ); ?></h2>
-          
+
           <?php $fields_for_signup = array(); ?>
 
 					<?php /* Use the profile field loop to render input fields for the 'base' profile field group */ ?>
@@ -233,11 +233,11 @@
 
 
 					<?php endwhile; endif; endif; ?>
-          
-          <?php 
-            $fields_for_signup[] = bp_get_the_profile_field_ids(); 
+
+          <?php
+            $fields_for_signup[] = bp_get_the_profile_field_ids();
           ?>
-          
+
           <?php if ( bp_is_active( 'xprofile' ) ) : if ( bp_has_profile( array( 'profile_group_id' => 3, 'fetch_field_data' => false ) ) ) : while ( bp_profile_groups() ) : bp_the_profile_group(); ?>
 
 					<?php while ( bp_profile_fields() ) : bp_the_profile_field(); ?>
@@ -305,9 +305,9 @@
 
 
 					<?php endwhile; endif; endif; ?>
-          
-          <?php 
-            $fields_for_signup[] = bp_get_the_profile_field_ids(); 
+
+          <?php
+            $fields_for_signup[] = bp_get_the_profile_field_ids();
           ?>
 
 					<input type="hidden" name="signup_profile_field_ids" id="signup_profile_field_ids" value="<?php echo implode(',',$fields_for_signup) ?>" />
@@ -475,7 +475,8 @@
 					<div class="clearfix"></div>
 					<div class="alert alert-success text-center">
 						<p><?php _e( 'You have successfully created your account! We will notify you once your account has been approved', 'buddypress' ); ?></p>
-						<h2><a href="<?php echo get_permalink( get_page_by_path( 'case-study-form' ) ); ?>"><?php _e( 'Click here to submit a case study', 'buddypress' ); ?></a></h2>
+						<h2><a href="<?php echo get_permalink( get_page_by_path( 'case-study-form' ) ); ?>"><?php _e( 'Please click here to submit a public sector innovation case study to OPSI.', 'buddypress' ); ?></a></h2>
+						<h2><a href="<?php echo get_permalink( get_page_by_path( 'case-study-form-open-government' ) ); ?>"><?php _e( 'If your innovation is mostly related to Open Government, please use our specialised form.', 'buddypress' ); ?></a></h2>
 					</div>
 				<?php endif; ?>
 			</div>

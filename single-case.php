@@ -5,6 +5,13 @@
     $has_sidebar = 0;
 	$layout = 'fullpage';
 
+  // tweak Innovationstatus text title
+  function bs_case_innovation_status_text_field($field) {
+  	$field['label'] = 'What is the current status of your innovation?';
+    return $field;
+  }
+  add_filter('acf/load_field/key=field_5ae77cd92bcf8', 'bs_case_innovation_status_text_field', 20);
+
 ?>
 
 
@@ -264,6 +271,21 @@
 					?>
 				 </div>
              </div>
+
+
+        <?php
+          $type_terms = get_the_terms( get_the_ID(), 'case_type' );
+          if ( $type_terms > 1 ):
+            $opengov_tag_list = get_the_term_list( get_the_ID(), 'innovation-tag-opengov' );
+            if ( !empty( $opengov_tag_list ) ):
+              ?>
+              <div class="post_tags_wrap">
+         				<div class="post_tags">
+         					<h4><?php echo __( 'Open Government tags:', 'opsi' ); ?></h4>
+         					<?php echo get_the_term_list( get_the_ID(), 'innovation-tag-opengov' );	?>
+         				</div>
+              </div>
+        <?php endif; endif; ?>
 
 			<div class="row">
 				<div class="col-md-12">

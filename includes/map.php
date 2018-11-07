@@ -22,6 +22,7 @@ function cs_jve_map() {
 	      )
 		  ),
 			'posts_per_page' => -1,
+			'post_status' => 'publish',
 		) );
 
 		// loop posts
@@ -35,6 +36,26 @@ function cs_jve_map() {
 				// check if ID is alreay in array
 				if ( !isset($wp_country_terms[$termID]) ) {
 					$wp_country_terms[$termID] = $term;
+					// get all posts with taxonomy term of the archive and current country term
+					$the_country_query = new WP_Query( array(
+				    'post_type' => 'case',
+				    'tax_query' => array(
+							'relation' => 'AND',
+			        array (
+			          'taxonomy' => 'case_type',
+			          'field' => 'slug',
+			          'terms' => $tax_term_slug,
+				      ),
+							array (
+			          'taxonomy' => 'country',
+			          'field' => 'ID',
+			          'terms' => $termID,
+				      ),
+					  ),
+						'posts_per_page' => -1,
+						'post_status' => 'publish',
+					) );
+					$wp_country_terms[$termID]->count = $the_country_query->post_count;
 				}
 			}
 

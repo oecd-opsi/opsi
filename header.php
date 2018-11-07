@@ -178,7 +178,16 @@
 					<?php dynamic_sidebar( 'sidebar_case_study' ); ?>
 					<button class="button btn btn-default btn-block big reset-filters-button" onclick="FWP.reset()"><?php echo __( 'Clear All Filters', 'opsi' ); ?></button>
 				</div>
-			</div>
+        <?php
+          $taxonomy = get_queried_object();
+          $tax_term_slug = $taxonomy->slug;
+          if ( 'open-government' == $tax_term_slug ) {
+            dynamic_sidebar( 'sidebar_case_study_opengov_brand' );
+          } else {
+            ?></div><?php
+          }
+        ?>
+
           <?php
           } elseif ( is_active_sidebar( 'sidebar' ) && $layout != 'fullpage' && !(is_home() && !is_front_page()) && bp_is_blog_page()) { ?>
             <div class="col-sm-3 col-sm-push-9"><div class="sidewrap"><?php dynamic_sidebar( 'sidebar' ); ?></div></div>
