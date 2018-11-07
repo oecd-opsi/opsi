@@ -105,7 +105,7 @@ function bs_case_study_form_executive_summary($field) {
 <li>How is the innovation envisioned for the future? For example, how will it be institutionalised in its current context? How will it scale even bigger?</li>
 </ul>
 
-<p><a data-fancybox data-src="#executive_summary_exampleopen_gov" data-options=\'{"touch" : false}\' href="javascript:;">Click here for example of an Innovation Overview</a></p>', 'opsi');
+<p><a data-fancybox data-src="#executive_summary_example_open_gov" data-options=\'{"touch" : false}\' href="javascript:;">Click here for example of an Innovation Overview</a></p>', 'opsi');
 	return $field;
 }
 add_filter( 'acf/load_field/key=field_5ae778f9224b4', 'bs_case_study_form_executive_summary', 20 );
@@ -342,7 +342,7 @@ function bs_case_study_form_user_email_fields($field) {
 add_filter( 'acf/load_field/key=field_5ae734c3af4f6', 'bs_case_study_form_user_email_fields', 20 );
 
 // Innovation summary instruction
-function bs_case_study_form_user_email_fields($field) {
+function bs_case_study_form_innovation_summary($field) {
 	$field['message'] = str_replace( 'OPSI team', 'OECD team', $field['message'] );
 	return $field;
 }
