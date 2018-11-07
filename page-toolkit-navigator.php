@@ -187,6 +187,7 @@
 						array(
 							'taxonomy' => 'featured',
 							'hide_empty' => false,
+							'orderby' => 'ID',
 							'meta_query' => array(
 								array(
 									'key'     => 'archive_page',
