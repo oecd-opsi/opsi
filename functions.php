@@ -106,6 +106,15 @@ add_action('after_setup_theme', 'remove_admin_bar');
       'after_title' => '</h2><div class="widget_content collapse-xs">',
     ));
     register_sidebar(array(
+      'name' => 'Case Study Archive Sidebar for OpenGov branding',
+      'id' => 'sidebar_case_study_opengov_brand',
+      'description' => 'Widgets in this area will be shown on right sidebar position on OpenGov Case Study Archive only.',
+      'before_widget' => '<aside id="%1$s" class="widget sidebar-box sidebar-left csa_aside %2$s">',
+      'after_widget' => '</div></aside>',
+      'before_title' => '<h2 class="widget-title">',
+      'after_title' => '</h2><div class="widget_content collapse-xs">',
+    ));
+    register_sidebar(array(
       'name' => 'Case Study Open Government Branding',
       'id' => 'sidebar_case_study_open_gov_left',
       'description' => 'Widgets in this area will be shown on top-left sidebar position on Open Government Case Study page.',
@@ -166,7 +175,7 @@ function opsi_load_admin_style() {
     wp_enqueue_style( 'bootstrap_theme' );
     wp_enqueue_style( 'font_awesome' );
 
-	if ( is_post_type_archive( 'case' ) || is_tax( 'case_type' ) || is_tax( 'innovation-tag' ) || is_tax( 'country' ) || is_tax( 'innovation-badge' ) ) {
+	if ( is_post_type_archive( 'case' ) || is_tax( 'case_type' ) || is_tax( 'innovation-tag' ) || is_tax( 'country' ) || is_tax( 'innovation-badge' ) || is_tax( 'innovation-tag-opengov' ) || is_tax( 'innovation-badge-opengov' ) ) {
 		wp_register_style('jve_css', get_template_directory_uri() . '/css/jquery-jvectormap-2.0.3.css', array(), false, 'screen');
 		wp_enqueue_style( 'jve_css' );
 	}
@@ -209,7 +218,7 @@ function opsi_load_admin_style() {
     wp_register_script('steps_js', get_template_directory_uri() . '/js/jquery.steps.min.js', array( 'jquery' ));
     wp_enqueue_script('steps_js');
 
-	if ( is_post_type_archive( 'case' ) || is_tax( 'case_type' ) || is_tax( 'innovation-tag' ) || is_tax( 'country' ) || is_tax( 'innovation-badge' ) ) {
+	if ( is_post_type_archive( 'case' ) || is_tax( 'case_type' ) || is_tax( 'innovation-tag' ) || is_tax( 'country' ) || is_tax( 'innovation-badge' ) || is_tax( 'innovation-tag-opengov' ) || is_tax( 'innovation-badge-opengov' ) ) {
 		// wp_register_script('google_charts_js', 'https://www.gstatic.com/charts/loader.js', array( 'jquery' ));
 		// wp_enqueue_script('google_charts_js');
 		wp_register_script('jve_js', get_template_directory_uri() . '/js/jquery-jvectormap-2.0.3.min.js', array( 'jquery' ));
@@ -687,7 +696,7 @@ function opsi_post_types() {
 
 	register_post_status( 'reviewed', array(
 		'label'                     => _x( 'Reviewed – Not Currently Published', 'opsi' ),
-		'public'                    => true,
+		'public'                    => false,
 		'exclude_from_search'       => true,
 		'show_in_admin_all_list'    => true,
 		'show_in_admin_status_list' => true,
@@ -734,12 +743,6 @@ function bs_case_type_taxonomy() {
 		'show_admin_column'          => true,
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => false,
-    'capabilities'               => array(
-      'manage_terms'  => 'manage_case_type',
-      'edit_terms'    => 'edit_case_type',
-      'delete_terms'  => 'delete_case_type',
-      'assign_terms'  => 'assign_case_type'
-    ),
 	);
 	register_taxonomy( 'case_type', array( 'case' ), $args );
 
@@ -2061,13 +2064,11 @@ function bs_single_case_open_gov_template($single_template) {
   // Check if it is a case post type
   if ($post->post_type == 'case') {
 
-    // Get case type taxnomy terms
-    $case_type = wp_get_post_terms( $post->ID, 'case_type' );
+    $primary_type = get_field('primary_case_type', $post->ID);
 
-    // If in Open Government case type return the dedicated template
-    if ( 'open-government' == $case_type[0]->slug ) {
+    if( 'open-government' == $primary_type ) {
       $single_template = TEMPLATEPATH . '/single-case-open-gov.php';
-    } elseif ( 'opsi' == $case_type[0]->slug ) {
+    } elseif ( 'opsi' == $primary_type ) {
       $single_template = TEMPLATEPATH . '/single-case.php';
     }
 
@@ -2128,7 +2129,7 @@ function bs_filter_case_by_case_type( $post_type, $which ) {
 add_action( 'restrict_manage_posts', 'bs_filter_case_by_case_type' , 10, 2);
 
 
-// Redirect case archive page to OPSI Case tye archive page
+// Redirect case archive page to OPSI Case type archive page
 function bs_redirect_case_archive() {
   if( is_post_type_archive( 'case' ) ) {
     wp_redirect( get_term_link( 'opsi', 'case_type' ), 301 );
@@ -2393,11 +2394,7 @@ add_action( 'admin_init', 'bs_remove_menu_pages' );
 function bs_add_custom_capabilities_to_case_taxonomies( $args, $taxonomy, $object_type ) {
 
   $taxonomies_array = array(
-    'case_type',
-    'country',
-    'innovation-tag',
-    'innovation-tag-opnegov',
-    'innovation-badge',
+    'innovation-tag-opengov',
     'innovation-badge-opengov',
   );
 
@@ -2414,3 +2411,25 @@ function bs_add_custom_capabilities_to_case_taxonomies( $args, $taxonomy, $objec
   return $args;
 }
 add_filter( 'register_taxonomy_args', 'bs_add_custom_capabilities_to_case_taxonomies', 10, 3);
+
+// allow posts preview for post author
+add_filter( 'posts_results', 'bs_allow_preview_for_author' );
+function bs_allow_preview_for_author( $posts ) {
+
+  if ( empty( $posts )) {
+    return;
+  }
+
+  $current_user_id = get_current_user_id();
+  $author_id = $posts[0]->post_author;
+
+  if(!empty($_GET['preview'])){
+    if($_GET['preview'] == true && $current_user_id == $author_id){
+      $post_id = $posts[0]->ID;
+      $post_type = $posts[0]->post_type;
+      $posts[0]->post_status = 'publish';
+    }
+  }
+
+  return $posts;
+}

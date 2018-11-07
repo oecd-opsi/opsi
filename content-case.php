@@ -59,7 +59,17 @@
 					<div class="clearfix"></div>
 					<div class="post_tags_wrap">
 						<div class="post_tags">
-							<?php echo get_the_term_list( get_the_ID(), 'innovation-tag' ); ?>
+							<?php
+							// get slug of taxonomy term of queried object
+							$taxonomy = get_queried_object();
+							$tax_term_slug = $taxonomy->slug;
+							if ( 'opsi' == $tax_term_slug ) {
+								$tags = get_the_term_list( get_the_ID(), 'innovation-tag' );
+							} elseif ( 'open-government' == $tax_term_slug ) {
+								$tags = get_the_term_list( get_the_ID(), 'innovation-tag-opengov' );
+							}
+							?>
+							<?php echo $tags ?>
 							<?php if ( !empty( get_field( 'describing_the_innovation_custom_innovation_tags' ) ) ) {
 
 								$custom_tags = explode( ',', get_field( 'describing_the_innovation_custom_innovation_tags' ) );

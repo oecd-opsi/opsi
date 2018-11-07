@@ -132,7 +132,16 @@
                     "save_other_choice": 0,
                     "default_value": "yes",
                     "layout": "horizontal",
-                    "return_format": "value"
+                    "return_format": "value",
+                    "conditional_logic_advanced": [
+                        [
+                            {
+                                "param": "post_category",
+                                "operator": "==",
+                                "value": "case_type:opsi"
+                            }
+                        ]
+                    ]
                 },
                 {
                     "key": "field_5ae7357caf4f9",
@@ -833,7 +842,7 @@
                     "label": "Custom Innovation Tags",
                     "name": "custom_innovation_tags",
                     "type": "text",
-                    "instructions": "You may add custom innovation tags by comma separating them, for example pesronalized information,data administration",
+                    "instructions": "You may add custom innovation tags by comma separating them, for example personalized information,data administration",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -855,7 +864,7 @@
                 },
                 {
                     "key": "field_5bca000811cdb",
-                    "label": "Is this case part of Open Government Partnership action plan in your country?",
+                    "label": "Is this case part of the Open Government Partnership action plan in your country?",
                     "name": "is_this_case_part_of_open_government_partnership_action_plan_in_your_country?",
                     "type": "radio",
                     "instructions": "",

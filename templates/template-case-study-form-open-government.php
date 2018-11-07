@@ -105,14 +105,6 @@ function bs_case_study_form_executive_summary($field) {
 <li>How is the innovation envisioned for the future? For example, how will it be institutionalised in its current context? How will it scale even bigger?</li>
 </ul>
 
-If applicable, you may also wish to include:
-
-<ul class="dotted">
-<li>What challenge the innovation addresses or what opportunity was taken advantage of</li>
-<li>Objectives for this innovation</li>
-<li>Who benefited from the innovation</li>
-<li>How is the innovation envisioned to be sustained? Scaled-up? Replicated?</li>
-</ul>
 <p><a data-fancybox data-src="#executive_summary_exampleopen_gov" data-options=\'{"touch" : false}\' href="javascript:;">Click here for example of an Innovation Overview</a></p>', 'opsi');
 	return $field;
 }
@@ -142,7 +134,7 @@ add_filter( 'acf/load_field/key=field_5ae77cd92bcf8', 'bs_case_study_form_status
 
 // Collaborations & Partnerships field
 function bs_case_study_form_collaboration_partnerships($field) {
-	$field['instructions'] = __('What Collaborators or Partners were involved in the innovation process? Describe what each brought to the table and why it was important to the innovation (maximum 500 characters).
+	$field['instructions'] = __('What stakeholders were involved in the design process of the innovation? Desribe what each brought to the table and why it was important to the innovation (maximum 500 characters).
 
 These may include:
 
@@ -159,7 +151,7 @@ add_filter( 'acf/load_field/key=field_5ae77ec1e2a8f', 'bs_case_study_form_collab
 
 // Users, Stakeholders & Beneficiaries field
 function bs_case_study_form_users_stakeholders_beneficiaries($field) {
-	$field['instructions'] = __('Describe each of the users, stakeholder and/or beneficiaries for the innovation and how each group was affected (maximum 500 characters).
+	$field['instructions'] = __('What stakeholders were targeted as potential users  of the innovation? Describe each of the beneficiaries for the innovation and how each group was affected (maximum 500 characters).
 
 These may also include:
 
@@ -348,6 +340,13 @@ function bs_case_study_form_user_email_fields($field) {
 	return $field;
 }
 add_filter( 'acf/load_field/key=field_5ae734c3af4f6', 'bs_case_study_form_user_email_fields', 20 );
+
+// Innovation summary instruction
+function bs_case_study_form_user_email_fields($field) {
+	$field['message'] = str_replace( 'OPSI team', 'OECD team', $field['message'] );
+	return $field;
+}
+add_filter( 'acf/load_field/key=field_5b34dfca4345c', 'bs_case_study_form_innovation_summary', 20 );
 
 
 	acf_form_head();

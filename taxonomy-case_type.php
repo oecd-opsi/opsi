@@ -96,7 +96,7 @@
 
 <?php
 $term_id = get_queried_object()->term_id;
-if ( 891 == $term_id ) {
+if ( 893 == $term_id ) {
 	?>
 	<script>
 	(function($) {

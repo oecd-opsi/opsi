@@ -1901,7 +1901,11 @@ function bp_innovation_list_owner() {
 
 			<tr <?php if ( get_post_status( get_the_ID() ) == 'archive' ) { echo ' class="warning archive"'; } ?> >
 				<td>
-					<a href="<?php the_permalink(); ?>" title="<?php echo __( 'view', 'opsi' ); ?>">
+					<?php
+						if ( get_post_status( get_the_ID() ) == 'publish' ) { $post_url = get_permalink(); }
+						else { $post_url = get_preview_post_link(); }
+					?>
+					<a href="<?php echo $post_url ?>" title="<?php echo __( 'view', 'opsi' ); ?>">
 						<?php the_title(); ?>
 					</a>
 				</td>

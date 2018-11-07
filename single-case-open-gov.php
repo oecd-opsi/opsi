@@ -242,7 +242,7 @@
 			<div class="post_tags_wrap">
 				<div class="post_tags">
 					<h4><?php echo __( 'Innovation tags:', 'opsi' ); ?></h4>
-					<?php echo get_the_term_list( get_the_ID(), 'innovation-tag' );
+					<?php echo get_the_term_list( get_the_ID(), 'innovation-tag-opengov' );
 
 					?>
 					<?php if ( !empty( $fields['describing_the_innovation']['custom_innovation_tags']['text'] ) ) {
@@ -259,6 +259,18 @@
 					?>
 				 </div>
              </div>
+
+       <?php
+         $type_terms = get_the_terms( get_the_ID(), 'case_type' );
+         if ( $type_terms > 1 ):
+       ?>
+       <div class="post_tags_wrap">
+         <div class="post_tags">
+           <h4><?php echo __( 'Other Innovation Tags:', 'opsi' ); ?></h4>
+           <?php echo get_the_term_list( get_the_ID(), 'innovation-tag' );	?>
+         </div>
+       </div>
+     <?php endif; ?>
 
 			<div class="row">
 				<div class="col-md-12">
