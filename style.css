@@ -3703,6 +3703,10 @@ ul.link-list a:before {
 #featured-toolkits {
 	margin-bottom: 3em;
 }
+#featured-toolkits .row > div {
+	margin-top: .5em;
+	margin-bottom: .5em;
+}
 .featured-toolkits .featured {
 	background-color: #f7fbfe;
 	border: 1px solid #dbe7ef;
