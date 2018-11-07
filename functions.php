@@ -2379,6 +2379,16 @@ function bs_add_subguide_banner( $is_subpage ) {
 	}
 }
 
+// Convert the featured_image field into the _thumbnail_id (Featured Image) meta
+add_filter( 'acf/update_value/name=featured_image', 'bs_set_featured_image', 10, 3 );
+function bs_set_featured_image( $value, $post_id, $field ) {
+	if( $value != '' ){
+		add_post_meta( $post_id, '_thumbnail_id', $value );
+	}
+
+	return $value;
+}
+
 // Hide Analitify menu item for OpenGov Admin
 function bs_remove_menu_pages() {
   $user = wp_get_current_user();
