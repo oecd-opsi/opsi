@@ -985,7 +985,7 @@
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "",
-                        "class": "removelabel",
+                        "class": "",
                         "id": ""
                     },
                     "default_value": "",

@@ -5,6 +5,13 @@
     $has_sidebar = 0;
 	$layout = 'fullpage';
 
+  // tweak Innovationstatus text title
+  function bs_case_innovation_status_text_field($field) {
+  	$field['label'] = 'What is the current status of your innovation?';
+    return $field;
+  }
+  add_filter('acf/load_field/key=field_5ae77cd92bcf8', 'bs_case_innovation_status_text_field', 20);
+
 ?>
 
 
