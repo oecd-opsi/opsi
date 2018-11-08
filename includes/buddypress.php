@@ -1903,7 +1903,10 @@ function bp_innovation_list_owner() {
 				<td>
 					<?php
 						if ( get_post_status( get_the_ID() ) == 'publish' ) { $post_url = get_permalink(); }
-						else { $post_url = get_preview_post_link(); }
+						else {
+							$post_url = get_preview_post_link();
+							$post_url = str_replace( '&preview=true', '', $post_url );
+						}
 					?>
 					<a href="<?php echo $post_url ?>" title="<?php echo __( 'view', 'opsi' ); ?>">
 						<?php the_title(); ?>

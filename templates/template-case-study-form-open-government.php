@@ -30,8 +30,6 @@ function bs_case_study_open_gov_hide_fields($field) {
   $fields_hidden = array(
 		'public_employee_involved',
 		'public_official_involved',
-		'cs_user_name',
-		'cs_user_organization',
 		'tel',
 	);
   if( in_array( $field['name'], $fields_hidden ) ) return false;
@@ -334,12 +332,12 @@ function bs_case_study_form_newsletter_fields($field) {
 add_filter( 'acf/load_field/key=field_5ae7857e4921f', 'bs_case_study_form_newsletter_fields', 20 );
 
 // User e-mail
-function bs_case_study_form_user_email_fields($field) {
-	$current_user = wp_get_current_user();
-	$field['value'] = $current_user->user_email;
-	return $field;
-}
-add_filter( 'acf/load_field/key=field_5ae734c3af4f6', 'bs_case_study_form_user_email_fields', 20 );
+// function bs_case_study_form_user_email_fields($field) {
+// 	$current_user = wp_get_current_user();
+// 	$field['value'] = $current_user->user_email;
+// 	return $field;
+// }
+// add_filter( 'acf/load_field/key=field_5ae734c3af4f6', 'bs_case_study_form_user_email_fields', 20 );
 
 // Innovation summary instruction
 function bs_case_study_form_innovation_summary($field) {
