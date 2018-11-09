@@ -2413,23 +2413,48 @@ function bs_add_custom_capabilities_to_case_taxonomies( $args, $taxonomy, $objec
 add_filter( 'register_taxonomy_args', 'bs_add_custom_capabilities_to_case_taxonomies', 10, 3);
 
 // allow posts preview for post author
-add_filter( 'posts_results', 'bs_allow_preview_for_author' );
 function bs_allow_preview_for_author( $posts ) {
 
-  if ( empty( $posts )) {
-    return;
-  }
-
   $current_user_id = get_current_user_id();
+  $current_user_data = get_userdata($current_user_id);
+  $current_user_role = $current_user_data->roles;
   $author_id = $posts[0]->post_author;
 
-  if(!empty($_GET['preview'])){
-    if($_GET['preview'] == true && $current_user_id == $author_id){
-      $post_id = $posts[0]->ID;
-      $post_type = $posts[0]->post_type;
+  // if ( is_singular('case') ) {
+    print_r('singular case');
+    if(intval($current_user_id) == intval($author_id) || $current_user_role[0] == 'open-gov-admin' ){
+      print_r('current author');
       $posts[0]->post_status = 'publish';
     }
-  }
+  // }
 
   return $posts;
 }
+// add_filter( 'posts_results', 'bs_allow_preview_for_author' );
+
+// Auto-populate name, email and organizations for new OpenGov case
+function bs_autopopulate_owner_fields_for_opengov_cases( $post_id, $post, $update ) {
+
+  // If this is an update return (the function run only if the post is a new post)
+  if ( $update )
+    return;
+
+  // if it is not a case post with OpenGov case type return
+  $case_type = get_the_terms( $post_id, 'case_type' );
+  if ( 'case' != $post->post_type && 'open-government' != $case_type[0]->slug )
+    return;
+
+  // get author name, email and organization
+  $post_author_id = $post->post_author;
+  $user_data = get_userdata( $post_author_id );
+  $current_user_email = $user_data->data->user_email;
+  $current_user_name = $user_data->data->display_name;
+  $current_user_organization = bp_get_profile_field_data('field=Current organisation&user_id='.$post_author_id);
+
+  // update fields
+  update_field( 'personal_details_cs_user_email', $current_user_email, $post_id );
+  update_field( 'personal_details_cs_user_name', $current_user_name, $post_id );
+  update_field( 'personal_details_cs_user_organization', $current_user_organization, $post_id );
+
+}
+add_action( 'save_post', 'bs_autopopulate_owner_fields_for_opengov_cases', 9999, 3 );
