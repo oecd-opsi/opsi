@@ -2184,7 +2184,9 @@ function opsi_how_do_i( $atts ) {
 		array(
 			'taxonomy' => 'how-do-i',
 			'hide_empty' => false,
-			'orderby' => 'ID',
+			'orderby' => 'meta_value_num',
+			'meta_key' => 'order',
+			'order' => 'ASC',
 			'meta_query' => array(
 				array(
 					'key'     => 'archive_page',
