@@ -2375,8 +2375,10 @@ function opsi_how_do_i_archive( $atts ) {
 add_action( 'opsi-before-guide-title', 'bs_add_subguide_banner' );
 function bs_add_subguide_banner( $is_subpage ) {
 	if ( $is_subpage ) {
-		$src = trailingslashit(get_template_directory_uri()) . 'images/OECD-opengovernment-banner.jpg';
-		printf('<div class="before-guide-title"><img src="%s" class="oecd-opengovernment-banner" alt="OECD Opengovernment"></div>', $src);
+		$image = get_the_post_thumbnail( get_the_ID(), 'full', array( 'alt' => 'OECD Opengovernment' ) );
+		if ( $image ) {
+			printf( '<div class="before-guide-title">%s</div>', $image );
+		}
 	}
 }
 
