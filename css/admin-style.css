@@ -6,3 +6,7 @@ body.wp-admin .acf-fields .hidden {
 body.wp-admin.post-type-case #tagsdiv-case_type {
 	display: none;
 }
+
+.wp-admin.post-type-guide #postimagediv {
+	display: block;
+}
