@@ -1902,8 +1902,12 @@ function bp_innovation_list_owner() {
 			<tr <?php if ( get_post_status( get_the_ID() ) == 'archive' ) { echo ' class="warning archive"'; } ?> >
 				<td>
 					<?php
-						if ( get_post_status( get_the_ID() ) == 'publish' ) { $post_url = get_permalink(); }
-						else { $post_url = get_preview_post_link(); }
+						// if ( get_post_status( get_the_ID() ) == 'publish' ) { $post_url = get_permalink(); }
+						// else {
+							$post_url = get_preview_post_link(get_the_ID());
+							$post_url = str_replace( '&preview=true', '', $post_url );
+							$post_url = str_replace( '?preview=true', '', $post_url );
+						// }
 					?>
 					<a href="<?php echo $post_url ?>" title="<?php echo __( 'view', 'opsi' ); ?>">
 						<?php the_title(); ?>
