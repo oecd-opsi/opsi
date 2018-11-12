@@ -88,9 +88,9 @@ echo do_shortcode('[searchandfilter id="1894"]');
 <!-- end current image handling -->
 
 <div class="results-content col-md-9 col-sm-9 col-xs-12">
-<p class="toolkit-description">
+<div class="toolkit-description">
   <?php the_field('description'); ?>
-</p>
+</div>
 
 
 <div class="toolkit-results-meta-row row col-md-12 col-sm-12 col-xs-12">
