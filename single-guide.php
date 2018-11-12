@@ -60,7 +60,7 @@
                   <div class="referral-box meta-column col-md-12 col-xs-12">
                     <div id="cases-referral-block" class="referral-block">
                       <h5>Contact other experts in this area</h5>
-                      <p><a href="https://oecd-opsi.org/members/?members_search=<?php echo $disciplineHyphenated; ?>">Log in to connect</a></p>
+                      <p><a href="/members/?members_search=<?php echo $disciplineHyphenated; ?>"><?php echo is_user_logged_in() ? __( 'Find experts in this area', 'opsi' ) : __( 'Log in to connect', 'opsi' );  ?></a></p>
                     </div>
                   </div>
                   <div class="referral-box meta-column col-md-12 col-xs-12">
