@@ -75,6 +75,8 @@
 
                     <h2 id="guide-related-header"><?php echo $disciplineUpper ?> toolkits</h2>
 
+				  	<h2 class="view-all-link"><a href="/search-toolkits/?_sft_discipline-or-practice=<?php echo $disciplineHyphenated ?>">View all toolkits for <?php echo $disciplineUpper ?></a></h2>
+
 
             <?php
 
@@ -135,14 +137,6 @@
                         <?php else : ?>
                         <p>We're working on adding more toolkits in this discipline or practice.</p>
                         <?php endif; ?>
-
-
-
-
-                <h2 class="view-all-link"><a href="/search-toolkits/?_sft_discipline-or-practice=<?php echo $disciplineHyphenated ?>">View all toolkits for <?php echo $disciplineUpper ?></a></h2>
-
-
-
 
 
               </section>
