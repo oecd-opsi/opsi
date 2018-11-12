@@ -32,7 +32,26 @@
 
             </section>
 
-			<?php if ( !$is_subpage ) : ?>
+			<?php
+
+			if ( !$is_subpage ) :
+
+				$currentID = get_the_ID();
+
+				$disciplines = get_field('guide_discipline_or_practice');
+				if( $disciplines ):
+					foreach( array_reverse($disciplines) as $discipline ):
+
+						$disciplineSlug = $discipline->name;
+
+					endforeach;
+				endif;
+
+				$disciplineUpper = ucwords($disciplineSlug);
+				$disciplineLower = strtolower($disciplineSlug);
+				$disciplineHyphenated = str_replace(' ', '-', $disciplineLower);
+
+			?>
 
             <section id="guide-sidebar" class="guide-page-content wpb_column vc_column_container col-md-4 vc_col-sm-12">
 
@@ -40,8 +59,8 @@
                 <div class="row">
                   <div class="referral-box meta-column col-md-12 col-xs-12">
                     <div id="cases-referral-block" class="referral-block">
-                      <h5>The OPSI community has experts in this area</h5>
-                      <p><a href="/opsi-network/">Connect with them</a></p>
+                      <h5>Contact other experts in this area</h5>
+                      <p><a href="https://oecd-opsi.org/members/?members_search=<?php echo $disciplineHyphenated; ?>">Log in to connect</a></p>
                     </div>
                   </div>
                   <div class="referral-box meta-column col-md-12 col-xs-12">
@@ -52,24 +71,6 @@
                   </div>
 
                 </div>
-
-                <?php
-                      $currentID = get_the_ID();
-
-                      $disciplines = get_field('guide_discipline_or_practice');
-                      if( $disciplines ):
-                       foreach( array_reverse($disciplines) as $discipline ):
-
-                        $disciplineSlug = $discipline->name;
-
-                        endforeach;
-                      endif;
-
-                      $disciplineUpper = ucwords($disciplineSlug);
-                      $disciplineLower = strtolower($disciplineSlug);
-                      $disciplineHyphenated = str_replace(' ', '-', $disciplineLower);
-
-                    ?>
 
 
 
