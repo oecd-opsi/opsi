@@ -3734,3 +3734,11 @@ ul.link-list a:before {
 .toolkit-actions .saved i {
 	color: #f9dd07;
 }
+
+.saved-toolkits .toolkit {
+	margin-top: 3em;
+	margin-bottom: 3em;
+}
+.saved-toolkits .toolkit .description {
+	line-height: normal;
+}

@@ -2041,6 +2041,129 @@ function bp_innovation_list_guest() {
 /************** ADD Innovations / Case Study SubTab  END ************/
 
 
+/************** ADD Saved toolkits SubTab  START ************/
+add_action( 'bp_setup_nav', 'bs_saved_toolkits_tab' );
+function bs_saved_toolkits_tab() {
+	global $bp;
+
+	$toolkits = get_posts(
+		array(
+			'post_type' => 'toolkit',
+			'posts_per_page' => -1,
+			'orderby' => 'title',
+			'order' => 'ASC',
+			'meta_query' => array(
+				array(
+					'key' => 'saved',
+					'value' => 'i:'.get_current_user_id().';',
+					'compare' => 'LIKE'
+				)
+			)
+		)
+	);
+
+	$count = count( $toolkits );
+	$class = 'no-count';
+
+	if ( $count ) {
+		$class = 'count';
+	}
+
+	$toolkits_num = sprintf( '<span class="%s">%s</span>', $class, $count );
+
+	bp_core_new_nav_item( array(
+		'name' => __( 'Toolkits', 'opsi' ) . '&nbsp;' . $toolkits_num,
+		'slug' => 'toolkits',
+		'screen_function' => 'bs_toolkits_screen',
+		'position' => 80,
+		'parent_url' => bp_loggedin_user_domain() . '/toolkits/',
+		'parent_slug' => $bp->profile->slug,
+		'default_subnav_slug' => 'toolkits'
+	) );
+}
+
+function bs_toolkits_screen() {
+	add_action( 'bp_template_title', 'bs_toolkits_tab_title' );
+	add_action( 'bp_template_content', 'bs_toolkits_tab_content' );
+	bp_core_load_template( 'buddypress/members/single/plugins' );
+}
+
+function bs_toolkits_tab_title() {
+	return;
+}
+
+function bs_toolkits_tab_content() {
+	global $bp;
+
+
+	/**
+	 * Fires before the display of the member activity post form.
+	 *
+	 * @since 1.2.0
+	 */
+	do_action( 'bp_before_member_activity_post_form' );
+
+	if ( is_user_logged_in() && bp_is_my_profile() && ( !bp_current_action() || bp_is_current_action( 'just-me' ) ) ) {
+		bp_get_template_part( 'activity/post-form' );
+	}
+
+	/**
+	 * Fires after the display of the member activity post form.
+	 *
+	 * @since 1.2.0
+	 */
+	do_action( 'bp_after_member_activity_post_form' );
+
+	$posts = get_posts(
+		array(
+			'post_type' => 'toolkit',
+			'posts_per_page' => -1,
+			'orderby' => 'title',
+			'order' => 'ASC',
+			'meta_query' => array(
+				array(
+					'key' => 'saved',
+					'value' => 'i:'.get_current_user_id().';',
+					'compare' => 'LIKE'
+				)
+			)
+		)
+	);
+
+	echo '<div class="saved-toolkits">';
+	if ( !empty( $posts ) ) {
+		foreach ( $posts as $post ) {
+			$url = get_permalink( $post->ID );
+			$publisher = wp_get_post_terms( $post->ID, 'toolkit-publisher' );
+			$img = sprintf(
+				'<a href="%s">%s</a>',
+				$url,
+				get_the_post_thumbnail( $post->ID, 'thumbnail' )
+			);
+			$content = sprintf(
+				'<div class="title"><a href="%s">%s</a></div><div class="publisher">%s</div><div class="description">%s</div>',
+				$url,
+				$post->post_title,
+				is_array( $publisher ) ? $publisher[0]->name : '',
+				get_post_meta( $post->ID, 'description', true )
+			);
+			printf(
+				'<div class="row toolkit"><div class="col-md-4 col-sm-4 img">%s</div><div class="col-md-8 col-sm-8 body">%s</div></div>',
+				$img,
+				$content
+			);
+		}
+	} else {
+		?>
+		<div id="message" class="info">
+			<p><?php echo __( 'Sorry, there was no entries found.', 'opsi' ); ?></p>
+		</div>
+		<?php
+	}
+	echo '</div>';
+}
+
+/************** ADD Saved toolkits SubTab  END ************/
 
 
   function bd_fetch_all_user_fields($user_id = 0) {
