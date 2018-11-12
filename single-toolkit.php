@@ -49,44 +49,63 @@
 
 		  <?php
 		  $current_user_id = get_current_user_id();
-		  if ( $current_user_id ) :
-			  $toolkit_ID = get_the_ID();
-			  $saved_user_ids = get_post_meta( $toolkit_ID, 'saved', true );
-			  $used_user_ids = get_post_meta( $toolkit_ID, 'used', true );
-			  $saved_user_ids = is_array( $saved_user_ids ) ? $saved_user_ids : array();
-			  $used_user_ids = is_array( $used_user_ids ) ? $used_user_ids: array();
-			  $saved = in_array( $current_user_id, $saved_user_ids );
-			  $used = in_array( $current_user_id, $used_user_ids );
-			  ?>
-			  <div class="row toolkit-actions">
-				  <div class="meta-column col-md-6 col-sm-6 col-xs-12 <?php if ( $used ) echo 'used'; ?>">
-					  <i class="fa fa-check" aria-hidden="true"></i>&nbsp;
-					  <?php
-					  if ( $used ) {
-						  $link_text = __( 'You have used this toolkit', 'opsi' );
-						  $url = wp_nonce_url( get_permalink().'?_opsi_action=remove-used', 'opsi-remove-used_'.$toolkit_ID );
-					  } else {
-						  $link_text = __( 'I have used this toolkit', 'opsi' );
-						  $url = wp_nonce_url( get_permalink().'?_opsi_action=used', 'opsi-used_'.$toolkit_ID );
-					  }
-					  printf( '<a href="%s">%s</a>', $url, $link_text );
-					  ?>
-				  </div>
-				  <div class="meta-column col-md-6 col-sm-6 col-xs-12 <?php if ( $saved ) echo 'saved'; ?>">
-					  <i class="fa fa-star" aria-hidden="true"></i>&nbsp;
-					  <?php
-					  if ( $saved ) {
-						  $link_text = __( 'Saved toolkit', 'opsi' );
-						  $url = wp_nonce_url( get_permalink().'?_opsi_action=remove-saved', 'opsi-remove-saved_'.$toolkit_ID );
-					  } else {
-						  $link_text = __( 'Save this toolkit', 'opsi' );
-						  $url = wp_nonce_url( get_permalink().'?_opsi_action=saved', 'opsi-saved_'.$toolkit_ID );
-					  }
-					  printf( '<a href="%s">%s</a>', $url, $link_text );
-					  ?>
+		  $toolkit_ID = get_the_ID();
+		  $saved_user_ids = get_post_meta( $toolkit_ID, 'saved', true );
+		  $used_user_ids = get_post_meta( $toolkit_ID, 'used', true );
+		  $saved_user_ids = is_array( $saved_user_ids ) ? $saved_user_ids : array();
+		  $used_user_ids = is_array( $used_user_ids ) ? $used_user_ids : array();
+		  $saved = in_array( $current_user_id, $saved_user_ids );
+		  $used = in_array( $current_user_id, $used_user_ids );
+		  ?>
+		  <div class="row toolkit-actions">
+
+			  <div class="meta-column col-md-6 col-sm-6 col-xs-12">
+				  <?php if ( $current_user_id ) : ?>
+					  <div class="<?php if ( $used ) echo 'used'; ?>">
+						  <i class="fa fa-check" aria-hidden="true"></i>&nbsp;
+						  <?php
+						  if ( $used ) {
+							  $link_text = __( 'You have used this toolkit', 'opsi' );
+							  $url = wp_nonce_url( get_permalink().'?_opsi_action=remove-used', 'opsi-remove-used_'.$toolkit_ID );
+						  } else {
+							  $link_text = __( 'I have used this toolkit', 'opsi' );
+							  $url = wp_nonce_url( get_permalink().'?_opsi_action=used', 'opsi-used_'.$toolkit_ID );
+						  }
+						  printf( '<a href="%s">%s</a>', $url, $link_text );
+						  ?>
+					  </div>
+					  <div class="who_used">
+						  <small><?php _e( 'See others who have used this', 'opsi' ); ?></small>
+					  </div>
+				  <?php else: ?>
+					  <div class="who_used">
+						  <small><?php _e( 'Log in to see others who have used this', 'opsi' ); ?></small>
+					  </div>
+				  <?php endif; ?>
+			  </div>
+
+			  <div class="meta-column col-md-6 col-sm-6 col-xs-12">
+			      <?php if ( $current_user_id ) : ?>
+					  <div class="<?php if ( $saved ) echo 'saved'; ?>">
+						  <i class="fa fa-star" aria-hidden="true"></i>&nbsp;
+						  <?php
+						  if ( $saved ) {
+							  $link_text = __( 'Saved toolkit', 'opsi' );
+							  $url = wp_nonce_url( get_permalink().'?_opsi_action=remove-saved', 'opsi-remove-saved_'.$toolkit_ID );
+						  } else {
+							  $link_text = __( 'Save this toolkit', 'opsi' );
+							  $url = wp_nonce_url( get_permalink().'?_opsi_action=saved', 'opsi-saved_'.$toolkit_ID );
+						  }
+						  printf( '<a href="%s">%s</a>', $url, $link_text );
+						  ?>
+					  </div>
+				  <?php endif; ?>
+				  <div class="times_saved">
+					  <small><?php printf( _n( 'This toolkit has been saved %d time.', 'This toolkit has been saved %d times.', count( $saved_user_ids ), 'opsi' ), count( $saved_user_ids ) ); ?></small>
 				  </div>
 			  </div>
-		  <?php endif; ?>
+
+		  </div>
 
         <p class="toolkit-description">
           <?php the_field('description'); ?>
