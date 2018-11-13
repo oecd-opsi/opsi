@@ -91,6 +91,7 @@ echo do_shortcode('[searchandfilter id="1894"]');
 <div class="toolkit-description">
   <?php the_field('description'); ?>
 </div>
+<?php echo do_shortcode( '[opsi-adaptability_badges]' ); ?>
 
 
 <div class="toolkit-results-meta-row row col-md-12 col-sm-12 col-xs-12">

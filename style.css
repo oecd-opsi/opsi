@@ -3751,3 +3751,7 @@ ul.link-list a:before {
 		margin-top: 60px;
 	}
 }
+
+.results-section .adaptabilities {
+	margin-bottom: 1em;
+}

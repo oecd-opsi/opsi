@@ -2138,6 +2138,51 @@ function bs_redirect_case_archive() {
 }
 add_action( 'template_redirect', 'bs_redirect_case_archive' );
 
+add_shortcode( 'opsi-adaptability_badges', 'opsi_adaptability_badges' );
+function opsi_adaptability_badges( $atts ) {
+	$a = shortcode_atts(array(
+		'post_id' => '',
+		'wrap_class' => 'adaptabilities'
+	), $atts);
+
+	$post_id = empty( $a['post_id'] ) ? get_the_ID() : $a['post_id'];
+	$output = '';
+
+	$adaptabilities = wp_get_post_terms( $post_id, 'adaptability' );
+	if ( !empty( $adaptabilities ) ) {
+		$output .= '<div class="'.$a['wrap_class'].'">';
+		foreach ( $adaptabilities as $adaptability ) {
+			$icon = get_field( 'icon', $adaptability );
+			if ( !empty( $icon ) ) {
+				ob_start();
+				?>
+				<span class="adaptability tooltips">
+					<a href="/search-toolkits/?_sft_adaptability=<?php echo $adaptability->slug; ?>"
+					   title="<?php echo $adaptability->name; ?>" target="_blank">
+						<img src="<?php echo $icon['url']; ?>" width="<?php echo $icon['width']; ?>"
+							 height="<?php echo $icon['height']; ?>" alt="<?php echo $adaptability->name; ?>"/>
+					</a>
+					<span>
+						<small>
+							<?php
+							echo $adaptability->name;
+							if (!empty($adaptability->description)) {
+								echo '<br />' . $adaptability->description;
+							}
+							?>
+						</small>
+					</span>
+				</span>
+				<?php
+				$output .= ob_get_clean();
+			}
+		}
+		$output .= '</div>';
+	}
+
+	return $output;
+}
+
 
 add_shortcode( 'opsi-clustered-provisions', 'opsi_clustered_provisions' );
 function opsi_clustered_provisions( $atts ) {
