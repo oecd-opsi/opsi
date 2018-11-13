@@ -3320,7 +3320,7 @@ p.search-explainer a:hover {
 #browse-options .topic-column a {
   display: block;
   border: none;
-  border-radius: none;
+  border-radius: 0;
   height: auto;
   margin: 0;
   padding-bottom: 1em;
@@ -3741,4 +3741,10 @@ ul.link-list a:before {
 }
 .saved-toolkits .toolkit .description {
 	line-height: normal;
+}
+
+@media (min-width: 768px) {
+	.modal-dialog {
+		margin-top: 60px;
+	}
 }

@@ -56,6 +56,18 @@
 		  $used_user_ids = is_array( $used_user_ids ) ? $used_user_ids : array();
 		  $saved = in_array( $current_user_id, $saved_user_ids );
 		  $used = in_array( $current_user_id, $used_user_ids );
+
+		  if ( count( $used_user_ids ) ) {
+		  	  if ( $current_user_id ) {
+				  $used_html = sprintf('<a href="" data-toggle="modal" data-target=".used-toolkit-modal">%s</a>', __( 'See others who have used this', 'opsi' ) );
+			  } else {
+		  	  	  $url = '/login/?redirect_to='.urlencode( get_permalink() );
+				  $used_html = sprintf('<a href="%s">%s</a>', $url, __( 'Log in to see others who have used this', 'opsi' ) );
+			  }
+		  } else {
+			  $used_html = __( 'This toolkit has not yet been used', 'opsi' );
+		  }
+
 		  ?>
 		  <div class="row toolkit-actions">
 
@@ -74,14 +86,10 @@
 						  printf( '<a href="%s">%s</a>', $url, $link_text );
 						  ?>
 					  </div>
-					  <div class="who_used">
-						  <small><?php _e( 'See others who have used this', 'opsi' ); ?></small>
-					  </div>
-				  <?php else: ?>
-					  <div class="who_used">
-						  <small><?php _e( 'Log in to see others who have used this', 'opsi' ); ?></small>
-					  </div>
 				  <?php endif; ?>
+				  <div class="who_used">
+					  <small><?php echo $used_html; ?></small>
+				  </div>
 			  </div>
 
 			  <div class="meta-column col-md-6 col-sm-6 col-xs-12">
@@ -105,7 +113,74 @@
 				  </div>
 			  </div>
 
+			  <!-- "WHO HAVE USED THIS" MODAL START -->
+			  <?php if ( $current_user_id ) : ?>
+			  <div class="modal fade used-toolkit-modal" tabindex="-1" role="dialog" aria-labelledby="See others who have used this toolkit" aria-hidden="true">
+				  <div class="modal-dialog modal-lg">
+					  <div class="modal-content">
+						  <div id="buddypress" class="modal-body">
+							  <h3><?php _e( 'Others who have used this toolkit', 'opsi' ); ?></h3>
+							  <?php if ( bp_has_members( array( 'include' => implode( ',', $used_user_ids ) ) ) ) : ?>
+
+								  <?php do_action( 'bp_before_directory_members_list' ); ?>
+
+								  <ul id="members-list" class="item-list" role="main">
+
+									  <?php while ( bp_members() ) : bp_the_member(); ?>
+
+										  <li>
+											  <div class="item-avatar">
+												  <a href="<?php bp_member_permalink(); ?>"><?php bp_member_avatar(); ?></a>
+											  </div>
+
+											  <div class="item">
+												  <div class="item-title">
+													  <a href="<?php bp_member_permalink(); ?>"><?php bp_member_name(); ?></a>
+
+													  <?php if ( bp_get_member_latest_update() ) : ?>
+
+														  <span class="update"> <?php bp_member_latest_update(); ?></span>
+
+													  <?php endif; ?>
+
+												  </div>
+
+												  <div class="item-meta"><span class="activity"><?php bp_member_last_active(); ?></span></div>
+
+												  <?php do_action( 'bp_directory_members_item' ); ?>
+											  </div>
+
+											  <div class="action">
+
+												  <?php do_action( 'bp_directory_members_actions' ); ?>
+
+											  </div>
+
+											  <div class="clear"></div>
+										  </li>
+
+									  <?php endwhile; ?>
+
+								  </ul>
+
+								  <?php do_action( 'bp_after_directory_members_list' ); ?>
+
+								  <?php bp_member_hidden_fields(); ?>
+
+							  <?php else: ?>
+
+								  <div id="message" class="info">
+									  <p><?php _e( "Sorry, no members were found.", 'buddypress' ); ?></p>
+								  </div>
+
+							  <?php endif; ?>
+						  </div>
+					  </div>
+				  </div>
+			  </div>
 		  </div>
+		  <?php endif; ?>
+		  <!-- "WHO HAVE USED THIS" MODAL END -->
 
         <p class="toolkit-description">
           <?php the_field('description'); ?>
