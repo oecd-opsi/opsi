@@ -113,13 +113,18 @@
 				  </div>
 			  </div>
 
-			  <!-- "WHO HAVE USED THIS" MODAL START -->
 			  <?php if ( $current_user_id ) : ?>
+			  <!-- "WHO HAVE USED THIS" MODAL START -->
 			  <div class="modal fade used-toolkit-modal" tabindex="-1" role="dialog" aria-labelledby="See others who have used this toolkit" aria-hidden="true">
 				  <div class="modal-dialog modal-lg">
 					  <div class="modal-content">
+						  <div class="modal-header">
+							  <h3 class="modal-title" style="display: inline-block;"><?php _e( 'Others who have used this toolkit', 'opsi' ); ?></h3>
+							  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								  <span aria-hidden="true">&times;</span>
+							  </button>
+						  </div>
 						  <div id="buddypress" class="modal-body">
-							  <h3><?php _e( 'Others who have used this toolkit', 'opsi' ); ?></h3>
 							  <?php if ( bp_has_members( array( 'include' => implode( ',', $used_user_ids ) ) ) ) : ?>
 
 								  <?php do_action( 'bp_before_directory_members_list' ); ?>
@@ -177,10 +182,9 @@
 						  </div>
 					  </div>
 				  </div>
-			  </div>
+			  </div><!-- "WHO HAVE USED THIS" MODAL END -->
+			  <?php endif; ?>
 		  </div>
-		  <?php endif; ?>
-		  <!-- "WHO HAVE USED THIS" MODAL END -->
 
         <p class="toolkit-description">
           <?php the_field('description'); ?>

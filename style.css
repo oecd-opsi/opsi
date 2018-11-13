@@ -3743,6 +3743,9 @@ ul.link-list a:before {
 	line-height: normal;
 }
 
+.used-toolkit-modal #buddypress ul.item-list {
+	border-top: none;
+}
 @media (min-width: 768px) {
 	.modal-dialog {
 		margin-top: 60px;
