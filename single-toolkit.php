@@ -195,6 +195,8 @@
           <?php the_field('description'); ?>
         </p>
 
+		<?php echo do_shortcode( '[opsi-adaptability_badges]' ); ?>
+
 
         <div class="row">
           <div class="meta-column col-md-6 col-sm-6 col-xs-12">
