@@ -3725,6 +3725,9 @@ ul.link-list a:before {
 	padding-right: 0;
 }
 
+.toolkit-actions {
+	margin-bottom: 1.5em;
+}
 .toolkit-actions i {
 	color: #DDDDDD;
 }
@@ -3733,6 +3736,10 @@ ul.link-list a:before {
 }
 .toolkit-actions .saved i {
 	color: #f9dd07;
+}
+.toolkit-actions .who_used,
+.toolkit-actions .times_saved {
+	line-height: 1;
 }
 
 .saved-toolkits .toolkit {

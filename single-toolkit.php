@@ -65,7 +65,12 @@
 				  $used_html = sprintf('<a href="%s">%s</a>', $url, __( 'Log in to see others who have used this', 'opsi' ) );
 			  }
 		  } else {
-			  $used_html = __( 'This toolkit has not yet been used', 'opsi' );
+		  	  if ( !$current_user_id ) {
+				  $url = '/login/?redirect_to='.urlencode( get_permalink() );
+				  $used_html = sprintf('<a href="%s">%s</a>', $url, __( 'Log in to save toolkit or connect with other toolkit users', 'opsi' ) );
+			  } else {
+		  	  	  $used_html = '';
+			  }
 		  }
 
 		  ?>
@@ -189,8 +194,6 @@
         <p class="toolkit-description">
           <?php the_field('description'); ?>
         </p>
-
-		<?php echo do_shortcode( '[opsi-adaptability_badges]' ); ?>
 
 
         <div class="row">
