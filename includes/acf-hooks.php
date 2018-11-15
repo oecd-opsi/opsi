@@ -514,3 +514,35 @@ function opsi_admin_only_render_field_settings( $field ) {
 
 
 /***** ADMIN EXTRA FIELDS END *****/
+
+
+// Send notification emails when a new toolkit has been submitted
+add_action( 'acf/save_post', 'opsi_save_toolkit' );
+function opsi_save_toolkit( $post_id ) {
+	$post = get_post( $post_id );
+
+	// bail early if not a toolkit post
+	if ( $post->post_type != 'toolkit' ) {
+		return;
+	}
+
+	// bail early if editing in admin
+	if ( is_admin() ) {
+		return;
+	}
+
+	$users = get_users(
+		array(
+			'role' => 'editor'
+		)
+	);
+
+	$subject = __( 'A new toolkit has been submitted', 'opsi' );
+	$message = sprintf( "A new toolkit has been submitted and requires the approval of an administrator to be published.\r\n You can view, edit or approve the new toolkit at the following address (login is required): %s.", get_edit_post_link( $post_id, '' ) );
+
+	foreach( $users as $user ) {
+		$to = $user->user_email;
+		wp_mail( $to, $subject, $message );
+	}
+
+}
