@@ -183,30 +183,16 @@
 
 			<section id="featured-toolkits" class="col-md-12">
 				<?php
-					$terms = get_terms(
-						array(
-							'taxonomy' => 'featured',
-							'hide_empty' => false,
-							'orderby' => 'ID',
-							'meta_query' => array(
-								array(
-									'key'     => 'archive_page',
-									'value'   => '',
-									'compare' => '!='
-								)
-							)
-						)
-					);
+					$featured_buttons = get_field( 'featured_button', 'option' );
 
-					if ( !empty( $terms ) ) {
+					if ( !empty( $featured_buttons ) ) {
 						echo '<div class="featured featured-toolkits row">';
-						foreach ( $terms as $term ) {
-							$archive_page = get_term_meta( $term->term_id, 'archive_page', true );
+						foreach ( $featured_buttons as $button ) {
 							printf(
 								'<div class="col-md-4 vc_col-sm-4"><div class="featured"><a class="title" href="%s">%s</a><div class="description">%s</div></div></div>',
-								$archive_page,
-								$term->name,
-								$term->description
+								$button['url'],
+								$button['label'],
+								$button['description']
 							);
 						}
 						echo '</div>';
