@@ -2142,7 +2142,8 @@ add_shortcode( 'opsi-adaptability_badges', 'opsi_adaptability_badges' );
 function opsi_adaptability_badges( $atts ) {
 	$a = shortcode_atts(array(
 		'post_id' => '',
-		'wrap_class' => 'adaptabilities'
+		'wrap_class' => 'adaptabilities',
+		'size' => 'full'
 	), $atts);
 
 	$post_id = empty( $a['post_id'] ) ? get_the_ID() : $a['post_id'];
@@ -2153,14 +2154,24 @@ function opsi_adaptability_badges( $atts ) {
 		$output .= '<div class="'.$a['wrap_class'].'">';
 		foreach ( $adaptabilities as $adaptability ) {
 			$icon = get_field( 'icon', $adaptability );
+			if (  $a['size'] == 'full' ) {
+				$icon_size = $icon;
+			} else {
+				$icon_size = array(
+					'url' => $icon['sizes'][$a['size']],
+					'width' => $icon['sizes'][$a['size'].'-width'],
+					'height' => $icon['sizes'][$a['size'].'-height']
+				);
+			}
+
 			if ( !empty( $icon ) ) {
 				ob_start();
 				?>
 				<span class="adaptability tooltips">
 					<a href="/search-toolkits/?_sft_adaptability=<?php echo $adaptability->slug; ?>"
 					   title="<?php echo $adaptability->name; ?>" target="_blank">
-						<img src="<?php echo $icon['url']; ?>" width="<?php echo $icon['width']; ?>"
-							 height="<?php echo $icon['height']; ?>" alt="<?php echo $adaptability->name; ?>"/>
+						<img src="<?php echo $icon_size['url']; ?>" width="<?php echo $icon_size['width']; ?>"
+							 height="<?php echo $icon_size['height']; ?>" alt="<?php echo $adaptability->name; ?>"/>
 					</a>
 					<span>
 						<small>

@@ -3159,6 +3159,9 @@ p.search-explainer a:hover {
   padding: 24px;
 
 }
+#search-toolkits .results-section .result-item {
+	overflow: initial;
+}
 
 .results-section .result-item  h2 {
   padding-bottom: .4em;
@@ -3761,4 +3764,5 @@ ul.link-list a:before {
 
 .results-section .adaptabilities {
 	margin-bottom: 1em;
+	margin-left: 0.5em;
 }

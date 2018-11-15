@@ -8,7 +8,7 @@
 
 
 
-  <div class="col-sm-12">
+  <div id="search-toolkits" class="col-sm-12">
 
   <?php while ( have_posts() ) : the_post(); $postid = get_the_ID(); ?>
           <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -73,6 +73,7 @@ echo do_shortcode('[searchandfilter id="1894"]');
 
 
         <div class="result-item">
+		<?php echo do_shortcode( '[opsi-adaptability_badges size="tiny" wrap_class="adaptabilities tooltips_wrap"]' ); ?>
         <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 
 <!-- current image handling -->
@@ -91,7 +92,6 @@ echo do_shortcode('[searchandfilter id="1894"]');
 <div class="toolkit-description">
   <?php the_field('description'); ?>
 </div>
-<?php echo do_shortcode( '[opsi-adaptability_badges]' ); ?>
 
 
 <div class="toolkit-results-meta-row row col-md-12 col-sm-12 col-xs-12">
@@ -147,6 +147,7 @@ if( $features ): ?>
 
 </div>
 </div>
+<div class="clearfix"></div>
 </div> <!-- result item -->
 
 
