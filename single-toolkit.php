@@ -390,8 +390,25 @@
       </div>
       <div class="meta-column col-md-6 col-sm-6 col-xs-12">
         <div id="cases-referral-block" class="referral-block">
+			<?php
+			 $discipline_or_practices = get_field('discipline-or-practice');
+			 $base_url = trailingslashit( get_site_url() );
+			 $experts_url = sprintf('%smembers/', $base_url);
+
+			 if ( !is_user_logged_in() ) {
+			 	if ( is_array( $discipline_or_practices ) && isset( $discipline_or_practices[0] ) ) {
+			 		$dp_name = str_replace( ' ', '-', $discipline_or_practices[0]->name );
+					$experts_url = sprintf( '%smembers/?members_search=%s&opsi_hypenated=%s', $base_url, $dp_name, $dp_name );
+				}
+				$experts_url = wp_login_url( $experts_url );
+			 } else {
+				 if ( is_array( $discipline_or_practices ) && isset( $discipline_or_practices[0] ) ) {
+				 	$experts_url = sprintf( '%smembers/?members_search=%s', $base_url, $discipline_or_practices[0]->name );
+				 }
+			 }
+			?>
           <h5>Find experts and advisers who can assist me with this</h5>
-          <p><a href="/about-observatory-of-public-sector-innovation/about-our-in-country-contacts/">Go to advice</a></p>
+          <p><a href="<?php echo  $experts_url; ?>">Go to advice</a></p>
         </div>
       </div>
     </div>
