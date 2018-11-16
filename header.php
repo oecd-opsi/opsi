@@ -190,7 +190,7 @@
 
           <?php
           } elseif ( is_active_sidebar( 'sidebar' ) && $layout != 'fullpage' && !(is_home() && !is_front_page()) && bp_is_blog_page()) { ?>
-            <div class="col-sm-3 col-sm-push-9"><div class="sidewrap"><?php dynamic_sidebar( 'sidebar' ); ?></div></div>
+            <div class="col-sm-3 col-sm-push-9"><div class="sidewrap"><?php dynamic_sidebar( 'sidebar' ); ?></div>
           <?php
           } elseif ( is_home() && !is_front_page()) {
             if ( is_active_sidebar( 'blog' ) && $layout != 'fullpage') { ?>
