@@ -51,6 +51,13 @@
 				$disciplineLower = strtolower($disciplineSlug);
 				$disciplineHyphenated = str_replace(' ', '-', $disciplineLower);
 
+				$base_url = trailingslashit( get_site_url() );
+				$experts_url = sprintf( '%smembers/?members_search=%s', $base_url, $disciplineUpper );
+				if ( !is_user_logged_in() ) {
+					$experts_url = sprintf( '%smembers/?members_search=%s&opsi_hypenated=%s', $base_url, $disciplineHyphenated, $disciplineHyphenated );
+					$experts_url = wp_login_url( $experts_url );
+				}
+
 			?>
 
             <section id="guide-sidebar" class="guide-page-content wpb_column vc_column_container col-md-4 vc_col-sm-12">
@@ -60,7 +67,7 @@
                   <div class="referral-box meta-column col-md-12 col-xs-12">
                     <div id="cases-referral-block" class="referral-block">
                       <h5>Contact other experts in this area</h5>
-                      <p><a href="/members/?members_search=<?php echo $disciplineUpper; ?>"><?php echo is_user_logged_in() ? __( 'Find experts in this area', 'opsi' ) : __( 'Log in to connect', 'opsi' );  ?></a></p>
+                      <p><a href="<?php echo $experts_url; ?>"><?php echo is_user_logged_in() ? __( 'Find experts in this area', 'opsi' ) : __( 'Log in to connect', 'opsi' );  ?></a></p>
                     </div>
                   </div>
                   <div class="referral-box meta-column col-md-12 col-xs-12">

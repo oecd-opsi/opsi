@@ -2621,3 +2621,19 @@ function bs_autopopulate_owner_fields_for_opengov_cases( $post_id, $post, $updat
 
 }
 add_action( 'save_post', 'bs_autopopulate_owner_fields_for_opengov_cases', 9999, 3 );
+
+add_filter( 'wp_redirect', 'opsi_members_search_workaround', 10, 2 );
+function opsi_members_search_workaround (  $location, $status ) {
+	$components = parse_url( $location );
+	if ( !empty( $components['query'] ) ) {
+		$query_array = array();
+		parse_str( $components['query'], $query_array );
+		//var_dump( $query_array );
+		if ( isset( $query_array['redirect_to'] ) && isset( $query_array['opsi_hypenated'] ) ) {
+
+			$member_search_value = str_replace('-', '+', $query_array['opsi_hypenated'] );
+			$location = str_replace( $query_array['opsi_hypenated'], $member_search_value, $query_array['redirect_to'] );
+		}
+	}
+	return $location;
+}
