@@ -2176,8 +2176,8 @@ function opsi_adaptability_badges( $atts ) {
 					<span>
 						<small>
 							<?php
-							echo $adaptability->name;
-							if (!empty($adaptability->description)) {
+							echo strtoupper( $adaptability->name ) . ':';
+							if ( !empty( $adaptability->description ) ) {
 								echo '<br />' . $adaptability->description;
 							}
 							?>
