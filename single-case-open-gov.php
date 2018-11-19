@@ -93,7 +93,7 @@
 
 							echo '
 								<span class="tooltips">
-									<a href="'. get_post_type_archive_link( 'case' ) .'?_recognition='. $badge->slug .'" title="'. $badge->name .' '.__( 'innovations', 'opsi' ) .'" target="_blank">
+									<a href="'. get_term_link( $badge->slug, 'innovation-badge-opengov' ) .'" title="'. $badge->name .' '.__( 'innovations', 'opsi' ) .'" target="_blank">
 										<img src="'. $icon['url'] .'" width="'. $icon['width'] .'" height="'. $icon['height'] .'" alt="'. $badge->name .'" />
 									</a>
 									<span>'. $badge->name . ( $badge->description != '' ? '<br /><small>'. $badge->description : '') .'</small></span>
