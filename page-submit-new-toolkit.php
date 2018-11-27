@@ -26,7 +26,7 @@
 			'user-type',
 			'license',
 			'featured_image',
-			'description',
+			'field_5b552c5ec7688', // The "Description" filed key in the "toolkit-fields" group.
 			'email',
 			'static_versions',
 			'editable_versions'
