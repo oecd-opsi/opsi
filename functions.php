@@ -11,13 +11,23 @@
     load_theme_textdomain( 'opsi', get_template_directory() . '/languages' );
     add_theme_support( 'html5', array( 'search-form' ) );
   }
-add_action('after_setup_theme', 'remove_admin_bar');
 
-// function remove_admin_bar() {
-// if (!current_user_can('administrator') && !is_admin()) {
-//   show_admin_bar(false);
-// }
-// }
+add_action('after_setup_theme', 'remove_admin_bar');
+function remove_admin_bar() {
+	if (!current_user_can('administrator') && !is_admin()) {
+		show_admin_bar(false);
+	}
+}
+
+add_action( 'init', 'bs_block_users_init' );
+function bs_block_users_init() {
+	$user = wp_get_current_user();
+	$allowed_roles = array( 'administrator', 'author', 'contributor', 'editor', 'open-gov-admin' );
+	if ( is_admin() && empty( array_intersect( $allowed_roles, (array)$user->roles ) ) && ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
+		wp_redirect( home_url() );
+		exit;
+	}
+}
 
   add_filter( 'jpeg_quality', create_function( '', 'return 85;' ) );
   add_filter('acf-image-crop/image-quality', 85);
