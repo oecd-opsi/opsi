@@ -12,9 +12,10 @@
     add_theme_support( 'html5', array( 'search-form' ) );
   }
 
-add_action('after_setup_theme', 'remove_admin_bar');
+add_action( 'after_setup_theme', 'remove_admin_bar' );
 function remove_admin_bar() {
-	if (!current_user_can('administrator') && !is_admin()) {
+	$user = wp_get_current_user();
+	if ( !in_array( 'administrator', (array)$user->roles ) && !is_admin() ) {
 		show_admin_bar(false);
 	}
 }
