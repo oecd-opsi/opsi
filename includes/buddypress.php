@@ -2247,13 +2247,10 @@ function opsi_notify_pending_user( $user_id, $role, $old_roles ) {
 		return;
 	}
 
-	if ( $role != 'pending' ) {
-
-		// notify the user
-		$subject = 'Your account on OPSI has been approved';
-		$body    = 'Your account on the OPSI website has been approved. You may visit <a href="'. bp_core_get_user_domain( $user_id ) .'">your profile here</a>.';
-		$headers = array('Content-Type: text/html; charset=UTF-8');
-		wp_mail( get_the_author_meta( 'user_email', $user_id ), $subject, $body, $headers );
-	}
+	// notify the user
+	$subject = 'Your account on OPSI has been approved';
+	$body    = 'Your account on the OPSI website has been approved. You may visit <a href="'. bp_core_get_user_domain( $user_id ) .'">your profile here</a>.';
+	$headers = array('Content-Type: text/html; charset=UTF-8');
+	wp_mail( get_the_author_meta( 'user_email', $user_id ), $subject, $body, $headers );
 
 }
