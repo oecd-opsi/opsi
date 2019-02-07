@@ -2661,3 +2661,6 @@ function opsi_members_search_workaround (  $location, $status ) {
 
 // Remove email notification on user delete
 remove_action( 'delete_user', 'bp_notifications_delete_notifications_on_user_delete' );
+
+// Force buddypress to use the wp_mail function
+add_filter( 'bp_email_use_wp_mail', '__return_true' );
