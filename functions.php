@@ -2658,3 +2658,6 @@ function opsi_members_search_workaround (  $location, $status ) {
 	}
 	return $location;
 }
+
+// Remove email notification on user delete
+remove_action( 'delete_user', 'bp_notifications_delete_notifications_on_user_delete' );
