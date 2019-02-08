@@ -2254,7 +2254,10 @@ function opsi_notify_pending_user( $user_id, $role, $old_roles ) {
 		$body    = 'Your account on the OPSI website has been approved. You may visit <a href="'. bp_core_get_user_domain( $user_id ) .'">your profile here</a>.';
 		$headers = array('Content-Type: text/html; charset=UTF-8');
 		wp_mail( get_the_author_meta( 'user_email', $user_id ), $subject, $body, $headers );
-		
+
 	}
 
 }
+
+// Remove email notification on user delete
+remove_action( 'delete_user', 'bp_notifications_delete_notifications_on_user_delete' );

@@ -467,7 +467,8 @@
                         "ngo": "Non-Governmental Organisation (NGO)",
                         "international_org": "International Organisation",
                         "academia": "Academia",
-                        "private_sector": "Private Sector"
+                        "private_sector": "Private Sector",
+                        "independent_organisation": "Independent Organisation"
                     },
                     "default_value": [],
                     "allow_null": 0,
