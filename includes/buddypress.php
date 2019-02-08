@@ -2258,6 +2258,3 @@ function opsi_notify_pending_user( $user_id, $role, $old_roles ) {
 	}
 
 }
-
-// Remove email notification on user delete
-remove_action( 'delete_user', 'bp_notifications_delete_notifications_on_user_delete' );
