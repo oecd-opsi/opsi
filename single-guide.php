@@ -58,6 +58,17 @@
 					$experts_url = wp_login_url( $experts_url );
 				}
 
+				$innovation_tags = get_field( 'innovation_tag' );
+				$it_slugs = array();
+				foreach ( $innovation_tags as $it ) {
+					$it_slugs[] = $it->slug;
+				}
+				if ( !empty( $it_slugs ) ) {
+					$case_studies_url = sprintf( '%scase_type/opsi/?_innovation_tags=%s', $base_url, implode( '%2C', $it_slugs ) );
+				} else {
+					$case_studies_url = '/our-work/case-studies/';
+				}
+
 			?>
 
             <section id="guide-sidebar" class="guide-page-content wpb_column vc_column_container col-md-4 vc_col-sm-12">
@@ -73,7 +84,7 @@
                   <div class="referral-box meta-column col-md-12 col-xs-12">
                     <div id="cases-referral-block" class="referral-block">
                       <h5>See how other governments are doing this work</h5>
-                      <p><a href="/our-work/case-studies/">Go to case studies</a></p>
+                      <p><a href="<?php echo $case_studies_url; ?>">Go to case studies</a></p>
                     </div>
                   </div>
 
