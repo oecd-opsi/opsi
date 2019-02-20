@@ -468,7 +468,7 @@
                         "international_org": "International Organisation",
                         "academia": "Academia",
                         "private_sector": "Private Sector",
-                        "independent_organisation": "Independent Organisation"
+                        "independent_organisation": "Independent institution"
                     },
                     "default_value": [],
                     "allow_null": 0,
