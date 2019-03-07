@@ -2664,3 +2664,14 @@ add_filter( 'send_new_user_denial_notification', '__return_false', 20 );
 
 // Force buddypress to use the wp_mail function
 add_filter( 'bp_email_use_wp_mail', '__return_true' );
+
+// Fix password reset message link missing
+add_filter("retrieve_password_message", "bs_custom_password_reset", 99, 4);
+
+function bs_custom_password_reset($message, $key, $user_login, $user_data ) {
+
+  $message = "Someone has requested a password reset for the following account: " . sprintf(__('%s'), $user_data->user_email) . ". If this was a mistake, just ignore this email and nothing will happen.\r\nTo reset your password, visit the following address: " . network_site_url("wp-login.php?action=rp&key=$key&login=" . rawurlencode($user_login), 'login') . "\r\n";
+
+  return $message;
+
+}
