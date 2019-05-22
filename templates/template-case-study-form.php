@@ -11,7 +11,7 @@ Template Post Type: page
 function bs_case_study_form_taxonomy_field($field) {
 	// get Open Gov case type term ID
 	$opsi_term = get_term_by('slug', 'opsi', 'case_type');
-	$opsi_term_id = $open_gov_term->term_id;
+	$opsi_term_id = $opsi_term->term_id;
 	//  set value
 	$field['value'] = $opsi_term_id;
   return $field;
