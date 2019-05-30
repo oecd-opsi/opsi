@@ -314,7 +314,9 @@ add_filter( 'acf/load_field/key=field_5ae77cd92bcf8', 'bs_case_study_form_innova
 
 // Innovation tags
 function bs_case_study_form_innovation_tags_fields($field) {
-	return;
+	$field['required'] = 0;
+	$field['wrapper']['class'] .= ' hidden';
+	return $field;
 }
 add_filter( 'acf/load_field/key=field_5ae779ff224b6', 'bs_case_study_form_innovation_tags_fields', 20 );
 

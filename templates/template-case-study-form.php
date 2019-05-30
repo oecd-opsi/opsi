@@ -38,7 +38,9 @@ add_filter('acf/prepare_field/key=field_5bca000811cdb', 'bs_case_study_form_open
 
 // Innovation tags OpenGov
 function bs_case_study_form_innovation_tags_opengov_fields($field) {
-	return;
+	$field['required'] = 0;
+	$field['wrapper']['class'] .= ' hidden';
+	return $field;
 }
 add_filter( 'acf/load_field/key=field_5bd734194e45a', 'bs_case_study_form_innovation_tags_opengov_fields', 20 );
 
