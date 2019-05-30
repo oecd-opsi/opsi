@@ -67,6 +67,8 @@
 								$tags = get_the_term_list( get_the_ID(), 'innovation-tag' );
 							} elseif ( 'open-government' == $tax_term_slug ) {
 								$tags = get_the_term_list( get_the_ID(), 'innovation-tag-opengov' );
+							} else {
+								$tags = '';
 							}
 							?>
 							<?php echo $tags ?>
