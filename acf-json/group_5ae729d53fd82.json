@@ -60,6 +60,29 @@
             "save_other_choice": 0
         },
         {
+            "key": "field_5cff4295a4f99",
+            "label": "Submission date",
+            "name": "submission_date",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "display_format": "d\/m\/Y",
+            "return_format": "d\/m\/Y",
+            "first_day": 1,
+            "show_column": 1,
+            "show_column_sortable": 1,
+            "show_column_weight": 1000,
+            "allow_quickedit": 0,
+            "allow_bulkedit": 0
+        },
+        {
             "key": "field_5af38eeb63c46",
             "label": "Before You Begin",
             "name": "submit_an_innovation",

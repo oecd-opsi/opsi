@@ -38,11 +38,16 @@ add_filter('acf/prepare_field/key=field_5bca000811cdb', 'bs_case_study_form_open
 
 // Innovation tags OpenGov
 function bs_case_study_form_innovation_tags_opengov_fields($field) {
-	$field['required'] = 0;
+	return;
+}
+add_filter( 'acf/prepare_field/key=field_5bd734194e45a', 'bs_case_study_form_innovation_tags_opengov_fields', 20 );
+
+// Submission date
+function bs_case_study_form_submission_date_field($field) {
 	$field['wrapper']['class'] .= ' hidden';
 	return $field;
 }
-add_filter( 'acf/load_field/key=field_5bd734194e45a', 'bs_case_study_form_innovation_tags_opengov_fields', 20 );
+add_filter( 'acf/load_field/key=field_5cff4295a4f99', 'bs_case_study_form_submission_date_field', 20 );
 
 
 	acf_form_head();

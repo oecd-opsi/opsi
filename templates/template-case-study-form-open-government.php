@@ -314,11 +314,9 @@ add_filter( 'acf/load_field/key=field_5ae77cd92bcf8', 'bs_case_study_form_innova
 
 // Innovation tags
 function bs_case_study_form_innovation_tags_fields($field) {
-	$field['required'] = 0;
-	$field['wrapper']['class'] .= ' hidden';
-	return $field;
+	return;
 }
-add_filter( 'acf/load_field/key=field_5ae779ff224b6', 'bs_case_study_form_innovation_tags_fields', 20 );
+add_filter( 'acf/prepare_field/key=field_5ae779ff224b6', 'bs_case_study_form_innovation_tags_fields', 20 );
 
 // Innovation tags OpenGov
 function bs_case_study_form_innovation_tags_opengov_fields($field) {
@@ -347,6 +345,13 @@ function bs_case_study_form_innovation_summary($field) {
 	return $field;
 }
 add_filter( 'acf/load_field/key=field_5b34dfca4345c', 'bs_case_study_form_innovation_summary', 20 );
+
+// Submission date
+function bs_case_study_form_submission_date_field($field) {
+	$field['wrapper']['class'] .= ' hidden';
+	return $field;
+}
+add_filter( 'acf/load_field/key=field_5cff4295a4f99', 'bs_case_study_form_submission_date_field', 20 );
 
 
 	acf_form_head();

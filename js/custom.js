@@ -168,16 +168,16 @@ jQuery(document).ready(function(){
 
 			e.preventDefault();
 			reset_website_url();
-			// jQuery( 'a.saveform' ).addClass( 'disabled' );
-			// jQuery( 'a.submitform' ).addClass( 'disabled' );
-			// jQuery( '#csf_action' ).val( 'submit' );
+			jQuery( 'a.saveform' ).addClass( 'disabled' );
+			jQuery( 'a.submitform' ).addClass( 'disabled' );
+			jQuery( '#csf_action' ).val( 'submit' );
 			jQuery ( '.acf-form-submit input.acf-button' ).trigger( 'click' );
 
-			// if (jQuery( '.stepform .layout_hero_block .acf-spinner' ).length > 0) {
-			// 	jQuery( '.stepform .layout_hero_block .acf-spinner' ).addClass( 'is-active' );
-			// }
+			if (jQuery( '.stepform .layout_hero_block .acf-spinner' ).length > 0) {
+				jQuery( '.stepform .layout_hero_block .acf-spinner' ).addClass( 'is-active' );
+			}
 
-			// return false;
+			return false;
 
 		});
 
