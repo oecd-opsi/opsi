@@ -51,14 +51,27 @@
               <div class="row">
                 <div class="col-sm-2 col-xs-12 col-sm-push-10">
                   <div class="text-right-not-xs">
+                    <?php
+                    $authors_number = count( get_coauthors() );
+                    if ( ! function_exists( 'coauthors_posts_links' ) || $authors_number == 1 ) :
+                     ?>
                     <a href="<?php echo bp_core_get_user_domain( $userid ); ?>" class="single_author_avatar" title="<?php echo $name .' '. __('profile', 'opsi'); ?>">
                       <?php bp_displayed_user_avatar( array('item_id' => $userid, 'type'=>'full') ); ?>
                     </a>
+                  <?php endif; ?>
                   </div>
                 </div>
                 <div class="col-md-10 col-sm-10 col-xs-12 col-sm-pull-2">
                   <div class="authormeta">
-                    <?php echo __('Written by', 'opsi'); ?> <?php the_author_posts_link(); ?><?php echo ($job !='' ? ', ' : ''); ?><?php echo $job; ?> on <?php echo get_the_date(); ?>
+                    <?php echo __('Written by', 'opsi'); ?> <?php
+                    if ( function_exists( 'coauthors_posts_links' ) && $authors_number > 1 ) {
+                      coauthors_posts_links();
+                    } else {
+                      the_author_posts_link();
+                      echo ($job !='' ? ', ' : '');
+                      echo $job;
+                    } ?>
+                     on <?php echo get_the_date(); ?>
                     <?php // TODO: add author description ?>
                   </div>
                 </div>
