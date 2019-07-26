@@ -3766,3 +3766,27 @@ ul.link-list a:before {
 	margin-bottom: 1em;
 	margin-left: 0.5em;
 }
+
+/* Register page - Move captcha above Submit button */
+article.bp_register {
+  padding-bottom: 126px;
+}
+
+article.bp_register #g-recaptcha-0 {
+  position: absolute;
+  bottom: 46px;
+  right: 0;
+  width: 48%;
+}
+
+article.bp_register .submit {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 48%;
+}
+
+article.bp_register .mc4wp-checkbox-buddypress {
+  text-align: left !important;
+  padding-left: 52%;
+}
