@@ -62,6 +62,11 @@
 				<span class="strong"><?php echo __( 'Sorted by:', 'opsi' ); ?></span> <span class="cs_counter"><?php echo facetwp_display( 'sort' ); ?></span>
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				An additional 395 case studies are available in the case study <a href="https://oecd-opsi.org/case-study-archive/" target="_blank">archive</a>.
+			</div>
+		</div>
 	</div>
 
 	<div class="facetwp-template">
