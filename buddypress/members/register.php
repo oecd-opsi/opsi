@@ -476,7 +476,7 @@
 					<div class="alert alert-success text-center">
 						<p><?php _e( 'You have successfully created your account! We will notify you once your account has been approved', 'buddypress' ); ?></p>
 						<h2><a href="<?php echo get_permalink( get_page_by_path( 'case-study-form' ) ); ?>"><?php _e( 'Please click here to submit a public sector innovation case study to OPSI.', 'buddypress' ); ?></a></h2>
-						<h2><a href="<?php echo get_permalink( get_page_by_path( 'case-study-form-open-government' ) ); ?>"><?php _e( 'If your innovation is mostly related to Open Government, please use our specialised form here.', 'buddypress' ); ?></a></h2>
+						<!-- <h2><a href="<?php // echo get_permalink( get_page_by_path( 'case-study-form-open-government' ) ); ?>"><?php // _e( 'If your innovation is mostly related to Open Government, please use our specialised form here.', 'buddypress' ); ?></a></h2> -->
 					</div>
 				<?php endif; ?>
 			</div>
