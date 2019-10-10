@@ -533,7 +533,7 @@
                     "label": "Level of Government",
                     "name": "level_of_government",
                     "type": "select",
-                    "instructions": "",
+                    "instructions": "Please select the level of government most relevant to the innovation.",
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
