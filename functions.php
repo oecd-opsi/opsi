@@ -2689,3 +2689,18 @@ function bs_submission_date( $post ) {
   update_field( 'submission_date', $now, $post->ID );
 
 }
+
+// Allow textarea value with special characters to pass length validation
+add_filter( 'acf/validate_value/type=textarea', 'bs_validate_textarea_length', 30, 4 );
+function bs_validate_textarea_length( $valid, $value, $field, $input ) {
+	// Check maxlength
+  if( is_string($valid) ) {
+    $valid = true;
+  }
+  if( $field['maxlength'] && mb_strlen(str_replace("\r\n", "\n", html_entity_decode($value))) > $field['maxlength'] ) {
+		return sprintf( __('Value must not exceed %d characters', 'acf'), $field['maxlength'] );
+	}
+
+	// Return.
+	return $valid;
+}
