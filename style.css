@@ -2644,7 +2644,7 @@ div.translate select::-ms-expand {
     transition: max-height 0.15s ease-in-out;
   }
   .navbar-nav>li.open>.dropdown-menu {
-    max-height: 100px;
+    /* max-height: 100px; */
     overflow-y: hidden;
     -webkit-transition: max-height 0.25s ease-in-out;
     -moz-transition: max-height 0.25s ease-in-out;
