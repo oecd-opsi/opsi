@@ -3790,3 +3790,9 @@ article.bp_register .mc4wp-checkbox-buddypress {
   text-align: left !important;
   padding-left: 52%;
 }
+
+.anr_captcha_field {
+    clear: both;
+    float: right;
+    width: 48%;
+}
