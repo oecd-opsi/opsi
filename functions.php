@@ -687,6 +687,8 @@ function opsi_post_types() {
 
 	nitro_cpt_creator(__('Case Study', 'opsi'), __('Case Studies', 'opsi'), 'case', __( 'innovations', 'opsi' ) , 'opsi', 'dashicons-welcome-learn-more', 6);
 
+	nitro_cpt_creator(__('Covid Response', 'opsi'), __('Covid Responses', 'opsi'), 'covid_response', __( 'covid-response', 'opsi' ) , 'opsi', 'dashicons-sos', 7);
+
 	$countries_args = array(
 		'hierarchical' => false
 	);
