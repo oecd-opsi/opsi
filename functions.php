@@ -134,7 +134,24 @@ function bs_block_users_init() {
       'before_title' => '<h2 class="widget-title">',
       'after_title' => '</h2>',
     ));
-
+	register_sidebar(array(
+	  'name' => 'Covid Response Form Sidebar',
+	  'id' => 'sidebar_covid_response_form',
+	  'description' => 'Widgets in this area will be shown on left sidebar position on Covid Response Form only.',
+	  'before_widget' => '<aside id="%1$s" class="widget sidebar-box sidebar-left csf_aside %2$s">',
+	  'after_widget' => '</div></aside>',
+	  'before_title' => '<h2 class="widget-title">',
+	  'after_title' => '</h2><div class="widget_content collapse-xs">',
+	));
+	register_sidebar(array(
+	  'name' => 'Covid Response Archive Sidebar',
+	  'id' => 'sidebar_covid_response_archive',
+	  'description' => 'Widgets in this area will be shown on right sidebar position on Covid Response Archive only.',
+	  'before_widget' => '<aside id="%1$s" class="widget sidebar-box sidebar-left csa_aside %2$s">',
+	  'after_widget' => '</div></aside>',
+	  'before_title' => '<h2 class="widget-title">',
+	  'after_title' => '</h2><div class="widget_content collapse-xs">',
+	));
 
    }
 
