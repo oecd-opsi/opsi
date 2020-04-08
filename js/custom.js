@@ -105,7 +105,7 @@ jQuery(document).ready(function(){
 		}
 
 		// reset step navigation status
-		jQuery("#case_form #acf-form .acf-form-fields>div.acf-field-group.stepgroup").on( 'click', function() {
+		jQuery("#case_form .acf-form .acf-form-fields>div.acf-field-group.stepgroup").on( 'click', function() {
 
 			var stepindex = jQuery(this).index( '.stepgroup' );
 
@@ -113,7 +113,7 @@ jQuery(document).ready(function(){
 
 		});
 
-		jQuery("#case_form #acf-form .acf-form-fields>div.acf-field-group.stepgroup").each(function(index) {
+		jQuery("#case_form .acf-form .acf-form-fields>div.acf-field-group.stepgroup").each(function(index) {
 
 			var groupthis = jQuery(this);
 

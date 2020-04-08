@@ -17,26 +17,24 @@ if( function_exists('acf_add_options_page') ) {
 
 		global $post;
 
-		ob_start();
-
 		if( have_rows( 'row', $post->ID ) ) {
+
+			ob_start();
 
 			// loop through the rows of data
 			while ( have_rows( 'row', $post->ID ) ) {
 
 				$row = the_row();
 
-
-
 				if( have_rows('row_content') ) {
 					?>
 					<div class="row">
 					  <?php
 					  // loop through the rows of data
-					  while ( have_rows('row_content', $post->ID) ) {
+					  while ( have_rows('row_content') ) {
 						the_row( );
 
-						get_template_part( '/blocks/'.get_row_layout( ) ); // fails silently
+						get_template_part( '/blocks/'.get_row_layout() ); // fails silently
 
 					  }
 					  ?>
@@ -46,15 +44,11 @@ if( function_exists('acf_add_options_page') ) {
 
 			}
 
-		} else {
+			$content .= '<div class="clear clearfix"></div>'.ob_get_contents();
 
-			return $content;
+			ob_end_clean();
 
 		}
-
-		$content .= '<div class="clear clearfix"></div>'.ob_get_contents();
-
-		ob_end_clean();
 
 		return $content;
 	}
@@ -229,9 +223,13 @@ function opsi_acf_save_post( $post_id ) {
 }
 
 
-// redirect to the proper page
+// redirect to the proper page after Case study submission
 add_action('acf/submit_form', 'case_study_redirect_acf_submit_form', 10, 2);
 function case_study_redirect_acf_submit_form( $form, $post_id ) {
+
+	if ( 'case-study-form' !== $form['id'] ) {
+		return;
+	}
 
 	if( $_POST['csf_action'] == 'submit' ) {
 
@@ -259,11 +257,26 @@ function case_study_redirect_acf_submit_form( $form, $post_id ) {
 
 }
 
+// redirect to the proper page after Covid response submission
+add_action('acf/submit_form', 'covid_response_redirect_acf_submit_form', 10, 2);
+function covid_response_redirect_acf_submit_form( $form, $post_id ) {
 
+	if ( 'covid-response-form' !== $form['id'] ) {
+		return;
+	}
+
+	if( $_POST['csf_action'] == 'submit' ) {
+
+		$thankyou_page = get_field( 'covid_response_form_thank_you_page_submit', 'option' );
+
+		wp_safe_redirect( get_the_permalink( $thankyou_page ) );
+		die;
+	}
+
+}
 
 add_filter('acf/pre_save_post' , 'case_study_save_collaborators', 10, 1 );
 function case_study_save_collaborators( $post_id ) {
-
 
 	// check if there is a case study ID
 	if ( !isset( $_POST['cs_id'] ) ) {
@@ -296,10 +309,8 @@ function case_study_save_collaborators( $post_id ) {
 		return $post_id;
 	}
 
-
 	$ids_array = $post_emails['field_5b4f3f838f021'];
 	$emails_array = $post_emails['field_5b3ffdbdd0c3d'];
-
 
 	if ( empty( $emails_array ) && empty( $ids_array ) ) {
 		return $post_id;
@@ -386,7 +397,6 @@ function case_study_load_collaborators($value, $post_id, $field) {
 	if ( !can_edit_acf_form( $cs_id ) ) {
 		return false;
 	}
-
 
 	$no_existing_colabs = get_post_meta( $cs_id, 'collaborators', true );
 	$existing_values = array();
