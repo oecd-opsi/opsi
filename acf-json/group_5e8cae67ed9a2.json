@@ -192,7 +192,7 @@
                     "name": "levels_of_government",
                     "type": "checkbox",
                     "instructions": "Please select the level(s) of government most relevant to the innovation",
-                    "required": 0,
+                    "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "",
@@ -513,6 +513,24 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": ""
+                },
+                {
+                    "key": "field_5e8d92b7a81c6",
+                    "label": "Back \/ Next placeholder",
+                    "name": "",
+                    "type": "message",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "removelabel submitmessage",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "message": "<div class=\"col-md-12 layout_hero_block \"><div class=\"hb_inner text-left\">\r\nYou can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href=\"mailto:opsi@oecd.org\" title=\"contact OPSI\">opsi@oecd.org<\/a> (include a screenshot if possible).\r\n\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-0\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-default big gonext\" title=\"Next\" href=\"#step-2\">Next <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"><\/i><\/a> <span class=\"acf-spinner\"><\/span> <span class=\"acf-spinner\"><\/span>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
+                    "new_lines": "wpautop",
+                    "esc_html": 0
                 }
             ]
         },
@@ -632,6 +650,24 @@
                     "save_other_choice": 0
                 },
                 {
+                    "key": "field_5e8d9315a81c7",
+                    "label": "Back \/ Submit placeholder",
+                    "name": "",
+                    "type": "message",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "removelabel submitmessage",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "message": "<div class=\"col-md-12 layout_hero_block \"><div class=\"hb_inner text-left\">\r\nYou can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href=\"mailto:opsi@oecd.org\" title=\"contact OPSI\">opsi@oecd.org<\/a> (include a screenshot if possible).\r\n\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-1\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-default big submitform\" id=\"submitcovidresponse\" title=\"Submit\">Submit <i class=\"fa fa-check-square-o\" aria-hidden=\"true\"><\/i><\/a> <span class=\"acf-spinner\"><\/span>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
+                    "new_lines": "wpautop",
+                    "esc_html": 0
+                },
+                {
                     "key": "field_5e8cbaf626c6a",
                     "label": "Disclaimer",
                     "name": "",
@@ -669,5 +705,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1586336160
+    "modified": 1586337631
 }
