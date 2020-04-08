@@ -108,6 +108,17 @@ function nitro_case_study_form_first_page ( $field ) {
 	return $field;
 }
 
+add_filter( "acf/load_field/key=field_5e8caf4dd7d17", 'nitro_covid_response_form_first_page' );
+function nitro_covid_response_form_first_page ( $field ) {
+
+	if ( !is_admin() ) {
+		$field['label']   = '';
+		$field['message'] = apply_filters( 'the_content', get_post_field( 'post_content', get_field( 'covid_response_form_first_page', 'option' ) ) );
+	}
+
+	return $field;
+}
+
 
 add_filter( "acf/load_field/name=year_innovation_launched", 'nitro_case_study_form_year_field' );
 function nitro_case_study_form_year_field ( $field ) {
