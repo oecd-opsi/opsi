@@ -188,7 +188,29 @@
           }
         ?>
 
-          <?php
+	        <?php
+        }
+        elseif ( is_active_sidebar( 'sidebar_covid_response_archive' ) && ( is_post_type_archive( 'covid_response' ) ) ) { ?>
+	          <div class="col-sm-3 col-sm-push-9">
+		          <div class="sidewrap sidewrap_csfilters">
+			          <div class="cs_sidebar_wrap">
+				          <?php
+				          $term_id     = get_queried_object()->term_id;
+				          $term        = get_term( $term_id, 'covid_response' );
+				          $count_items = $term->count;
+				          ?>
+				          <?php echo __( 'Total responses:', 'opsi' ); ?> <span
+					          class="cs_counter"><?php echo $count_items; ?></span><br/>
+				          <?php echo __( 'Search results:', 'opsi' ); ?> <span
+					          class="cs_counter"><?php echo facetwp_display( 'counts' ); ?></span>
+			          </div>
+			          <h2><?php echo __( 'Filter Responses:', 'opsi' ); ?></h2>
+			          <?php dynamic_sidebar( 'sidebar_covid_response_archive' ); ?>
+			          <button class="button btn btn-default btn-block big reset-filters-button"
+			                  onclick="FWP.reset()"><?php echo __( 'Clear All Filters', 'opsi' ); ?></button>
+		          </div>
+
+		          <?php
           } elseif ( is_active_sidebar( 'sidebar' ) && $layout != 'fullpage' && !(is_home() && !is_front_page()) && bp_is_blog_page()) { ?>
             <div class="col-sm-3 col-sm-push-9"><div class="sidewrap"><?php dynamic_sidebar( 'sidebar' ); ?></div>
           <?php
