@@ -71,7 +71,7 @@
                     "default_value": "",
                     "placeholder": "",
                     "maxlength": 2000,
-                    "rows": "",
+                    "rows": 16,
                     "new_lines": ""
                 },
                 {
@@ -123,7 +123,7 @@
                     "default_value": "",
                     "placeholder": "",
                     "maxlength": 2000,
-                    "rows": "",
+                    "rows": 16,
                     "new_lines": ""
                 },
                 {
@@ -163,7 +163,7 @@
                     "default_value": "",
                     "placeholder": "",
                     "maxlength": 500,
-                    "rows": "",
+                    "rows": 4,
                     "new_lines": ""
                 },
                 {
@@ -183,7 +183,7 @@
                     "default_value": "",
                     "placeholder": "",
                     "maxlength": 1000,
-                    "rows": "",
+                    "rows": 8,
                     "new_lines": ""
                 },
                 {
@@ -519,9 +519,9 @@
         {
             "key": "field_5e8cb9cf26c66",
             "label": "Materials & Submission",
-            "name": "materials_&_submission",
+            "name": "materials_and_submission",
             "type": "group",
-            "instructions": "Images and other supporting materials can help others to learn from or even replicate your work. Do you have other materials you'd like to include with your submission? Please use the fields below to upload images (in jpg and png format) and other relevant documents (in .pdf, .doc, .docx, .ppt., .pptx., .odt, .xls, .xlsx, .txt, .mp3, .m4a, .ogg, .wav). You may also submit a brief video project pitch and specify up to two additional videos (insert YouTube, Vimeo URLs).",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -532,6 +532,24 @@
             "display_order": "",
             "layout": "block",
             "sub_fields": [
+                {
+                    "key": "field_5e8d8ed7c42bd",
+                    "label": "",
+                    "name": "",
+                    "type": "message",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "message": "Images and other supporting materials can help others to learn from or even replicate your work. Do you have other materials you'd like to include with your submission? Please use the fields below to upload images (in jpg and png format) and other relevant documents (in .pdf, .doc, .docx, .ppt., .pptx., .odt, .xls, .xlsx, .txt, .mp3, .m4a, .ogg, .wav). You may also submit a brief video project pitch and specify up to two additional videos (insert YouTube, Vimeo URLs).",
+                    "new_lines": "wpautop",
+                    "esc_html": 0
+                },
                 {
                     "key": "field_5e8cb9f526c67",
                     "label": "Upload Image(s)",
@@ -549,7 +567,7 @@
                     "return_format": "array",
                     "preview_size": "medium",
                     "insert": "append",
-                    "library": "all",
+                    "library": "uploadedTo",
                     "min": "",
                     "max": "",
                     "min_width": "",
@@ -577,7 +595,7 @@
                     "return_format": "array",
                     "preview_size": "medium",
                     "insert": "append",
-                    "library": "all",
+                    "library": "uploadedTo",
                     "min": "",
                     "max": "",
                     "min_width": "",
@@ -651,5 +669,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1586298841
+    "modified": 1586336160
 }
