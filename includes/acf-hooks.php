@@ -171,8 +171,8 @@ function opsi_acf_counter_filter($display) {
 }
 
 // manipulate the case study AFTER it has been saved
-add_action('acf/save_post', 'opsi_acf_save_post', 11);
-function opsi_acf_save_post( $post_id ) {
+add_action('acf/save_post', 'opsi_acf_save_post_case_study', 11);
+function opsi_acf_save_post_case_study( $post_id ) {
 
 	if ( get_post_type( $post_id ) != 'case' ) {
 		return;
@@ -192,7 +192,7 @@ function opsi_acf_save_post( $post_id ) {
 
 	wp_update_post($content);
 
-	// set the features image
+	// set the featured image
 	$material = get_field( 'materials_&_short_explanation', $post_id );
 	$photo_and_video = $material['photo_and_video'];
 	$upload_images = $photo_and_video['upload_images'];
@@ -202,26 +202,57 @@ function opsi_acf_save_post( $post_id ) {
 	}
 
 	// subscribe user on MailChimp if radio button is set
-
 	$wants_to_subscribe = get_field( 'questionnaire_feedback_miscellaneous_newsletter_register', $post_id );
-
-	if ( class_exists( 'MC4WP_MailChimp') && $wants_to_subscribe == 'yes' ) {
-
-		$MC4WP_MailChimp 		= new MC4WP_MailChimp();
-
-		$subscriber['status'] 	= 'subscribed';
-		$list_id 				= '8445d592ef';
+	if ( $wants_to_subscribe == 'yes' ) {
 		$post_author_id 		= get_post_field( 'post_author', $post_id );
 		$email_address 			= get_the_author_meta( 'user_email', $post_author_id );
-
-		$MC4WP_MailChimp->list_subscribe( $list_id, $email_address, $subscriber );
-
-
+		opsi_subscribe_to_mailchimp( $email_address );
 	}
-
 
 }
 
+// manipulate the Covid Response AFTER it has been saved
+add_action('acf/save_post', 'opsi_acf_save_post_covid_response', 11);
+function opsi_acf_save_post_covid_response( $post_id ) {
+
+	if ( get_post_type( $post_id ) != 'covid_response' ) {
+		return;
+	}
+
+	// set title
+	$summary = get_field( 'information_about_the_response', $post_id );
+	$content = array(
+		'ID'           => $post_id,
+		'post_title'   => ( empty( $summary['innovative_response_short_title'] ) ? __( 'Untitled Covid Response', 'opsi' ) : $summary['innovative_response_short_title'] ),
+		'post_content' => ''
+	);
+	wp_update_post( $content );
+
+	// set the featured image
+	$material      = get_field( 'materials_and_submission', $post_id );
+	$upload_images = $material['upload_images'];
+	if ( !empty( $upload_images ) ) {
+		set_post_thumbnail( $post_id, $upload_images[0]['ID'] );
+	}
+
+	// subscribe user on MailChimp if radio button is set
+	$wants_to_subscribe = get_field( 'register_for_newsletter', $post_id );
+	$info               = get_field( 'information_about_the_response' );
+	if ( $wants_to_subscribe == 'yes' ) {
+		opsi_subscribe_to_mailchimp( $info['email'] );
+	}
+
+}
+
+// Subscribes a user to Mailchimp
+function opsi_subscribe_to_mailchimp( $email_address ) {
+	if ( class_exists( 'MC4WP_MailChimp' ) && $wants_to_subscribe == 'yes' ) {
+		$subscriber['status'] = 'subscribed';
+		$list_id              = '8445d592ef';
+		$MC4WP_MailChimp      = new MC4WP_MailChimp();
+		$MC4WP_MailChimp->list_subscribe( $list_id, $email_address, $subscriber );
+	}
+}
 
 // redirect to the proper page after Case study submission
 add_action('acf/submit_form', 'case_study_redirect_acf_submit_form', 10, 2);
