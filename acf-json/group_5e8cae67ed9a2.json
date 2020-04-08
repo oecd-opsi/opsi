@@ -453,8 +453,8 @@
                     },
                     "display_order": "",
                     "choices": {
-                        "Yes": "Yes",
-                        "No": "No"
+                        "yes": "Yes",
+                        "no": "No"
                     },
                     "allow_null": 0,
                     "other_choice": 0,
@@ -519,5 +519,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1586339044
+    "modified": 1586373630
 }
