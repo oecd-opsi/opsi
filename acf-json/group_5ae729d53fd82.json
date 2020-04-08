@@ -12,7 +12,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
-                "class": "",
+                "class": "hidden",
                 "id": ""
             },
             "display_order": "",
@@ -22,10 +22,6 @@
             "save_terms": 1,
             "load_terms": 1,
             "return_format": "id",
-            "show_column": 0,
-            "show_column_weight": 1000,
-            "allow_quickedit": 1,
-            "allow_bulkedit": 1,
             "multiple": 0,
             "allow_null": 0
         },
@@ -39,7 +35,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
-                "class": "",
+                "class": "hidden",
                 "id": ""
             },
             "display_order": "",
@@ -52,11 +48,6 @@
             "default_value": "opsi",
             "layout": "vertical",
             "return_format": "value",
-            "show_column": 0,
-            "show_column_sortable": 0,
-            "show_column_weight": 1000,
-            "allow_quickedit": 0,
-            "allow_bulkedit": 0,
             "save_other_choice": 0
         },
         {
@@ -69,18 +60,13 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
-                "class": "",
+                "class": "hidden",
                 "id": ""
             },
             "display_order": "",
             "display_format": "d\/m\/Y",
             "return_format": "d\/m\/Y",
-            "first_day": 1,
-            "show_column": 1,
-            "show_column_sortable": 1,
-            "show_column_weight": 1000,
-            "allow_quickedit": 0,
-            "allow_bulkedit": 0
+            "first_day": 1
         },
         {
             "key": "field_5af38eeb63c46",
@@ -533,7 +519,7 @@
                     "label": "Level of Government",
                     "name": "level_of_government",
                     "type": "select",
-                    "instructions": "Please select the level of government most relevant to the innovation.",
+                    "instructions": "",
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -727,8 +713,8 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "min": 2000,
-                    "max": 2018,
+                    "min": 2002,
+                    "max": 2020,
                     "step": 1,
                     "show_column": 0,
                     "show_column_sortable": 0,
@@ -1246,7 +1232,7 @@
                     "label": "Lessons Learned",
                     "name": "lessons_to_share",
                     "type": "textarea",
-                    "instructions": "What lessons from your experience would you like to share with others like you (maximum 2,000 characters)?\r\n<p><a data-fancybox data-src=\"#lessons_learned_sample\" data-options='{\"touch\" : false}' href=\"javascript:;\">Click here for example of Lessons Learned<\/a><\/p>",
+                    "instructions": "What lessons from your experience would you like to share with others like you (maximum 1,000 characters)?\r\n<p><a data-fancybox data-src=\"#lessons_learned_sample\" data-options='{\"touch\" : false}' href=\"javascript:;\">Click here for example of Lessons Learned<\/a><\/p>",
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -1254,15 +1240,12 @@
                         "class": "with_top_hr",
                         "id": ""
                     },
+                    "display_order": "",
                     "default_value": "",
                     "placeholder": "",
-                    "maxlength": 2000,
+                    "maxlength": 1000,
                     "rows": "",
-                    "new_lines": "",
-                    "show_column": 0,
-                    "show_column_weight": 1000,
-                    "allow_quickedit": 0,
-                    "allow_bulkedit": 0
+                    "new_lines": ""
                 },
                 {
                     "key": "field_5ae780c7a1e7c",
@@ -1375,7 +1358,9 @@
                             "max_size": "",
                             "mime_types": ".jpg,.jpeg,.png",
                             "show_column": 0,
-                            "show_column_weight": 1000
+                            "show_column_weight": 1000,
+                            "return_format": "array",
+                            "preview_size": "medium"
                         },
                         {
                             "key": "field_5b3d915ae7b60",
@@ -1402,7 +1387,9 @@
                             "max_size": "",
                             "mime_types": ".pdf,.doc,.docx,.ppt.,.pptx.,.odt,.xls,.xlsx,.txt,.mp3,.m4a,.ogg,.wav",
                             "show_column": 0,
-                            "show_column_weight": 1000
+                            "show_column_weight": 1000,
+                            "return_format": "array",
+                            "preview_size": "medium"
                         },
                         {
                             "key": "field_5ae77873224b0",
@@ -1576,7 +1563,7 @@
                     "allow_null": 0,
                     "other_choice": 0,
                     "save_other_choice": 0,
-                    "default_value": "no",
+                    "default_value": "yes",
                     "layout": "horizontal",
                     "return_format": "value",
                     "show_column": 0,
@@ -1623,5 +1610,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1532182683
+    "modified": 1586365777
 }
