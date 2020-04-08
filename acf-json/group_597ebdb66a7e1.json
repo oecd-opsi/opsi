@@ -3,6 +3,23 @@
     "title": "Opsi Settings",
     "fields": [
         {
+            "key": "field_5e8d7f145682e",
+            "label": "Header",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
             "key": "field_597ebe1c94320",
             "label": "Top header line",
             "name": "top_header_line",
@@ -20,6 +37,23 @@
             "toolbar": "full",
             "media_upload": 1,
             "delay": 0
+        },
+        {
+            "key": "field_5e8d7daa5682b",
+            "label": "Pages",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_5b3d757d1841f",
@@ -154,6 +188,23 @@
             "ui": 1
         },
         {
+            "key": "field_5e8d7de85682c",
+            "label": "Collaborators",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
             "key": "field_5b40cc902bdd7",
             "label": "Collaborators email subject",
             "name": "collaborators_email_subject",
@@ -235,34 +286,10 @@
             "delay": 0
         },
         {
-            "key": "field_5b43d1f9786f7",
-            "label": "Google maps API Key",
-            "name": "google_maps_api_key",
-            "type": "text",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
-            "show_column": 0,
-            "show_column_sortable": 0,
-            "show_column_weight": 1000,
-            "allow_quickedit": 0,
-            "allow_bulkedit": 0
-        },
-        {
             "key": "field_5b43572ca3310",
             "label": "Case study Form Examples",
-            "name": "case_study_form_example",
-            "type": "divider",
+            "name": "",
+            "type": "tab",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -271,8 +298,9 @@
                 "class": "",
                 "id": ""
             },
-            "custom_css": "",
-            "font_size": 14
+            "display_order": "",
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_5b435749a3311",
@@ -506,8 +534,8 @@
         {
             "key": "field_5e8d79ac880be",
             "label": "Open Gov Case study Form Examples",
-            "name": "case_study_form_example_copy",
-            "type": "divider",
+            "name": "",
+            "type": "tab",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -517,8 +545,8 @@
                 "id": ""
             },
             "display_order": "",
-            "custom_css": "",
-            "font_size": 14
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_5e8d79df880bf",
@@ -763,8 +791,8 @@
         {
             "key": "field_5b445fc02f724",
             "label": "Crons Options",
-            "name": "crons_options",
-            "type": "divider",
+            "name": "",
+            "type": "tab",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -773,8 +801,9 @@
                 "class": "",
                 "id": ""
             },
-            "custom_css": "",
-            "font_size": 14
+            "display_order": "",
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_5b44643185841",
@@ -818,6 +847,47 @@
             "toolbar": "full",
             "media_upload": 0,
             "delay": 0
+        },
+        {
+            "key": "field_5e8d7e505682d",
+            "label": "Google Maps",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5b43d1f9786f7",
+            "label": "Google maps API Key",
+            "name": "google_maps_api_key",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "show_column": 0,
+            "show_column_sortable": 0,
+            "show_column_weight": 1000,
+            "allow_quickedit": 0,
+            "allow_bulkedit": 0
         }
     ],
     "location": [
@@ -837,5 +907,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1586330577
+    "modified": 1586331495
 }
