@@ -709,7 +709,7 @@ function opsi_post_types() {
 	$countries_args = array(
 		'hierarchical' => false
 	);
-	nitro_taxonomy_creator(__('Country', 'opsi'), __('Countries', 'opsi'), 'case', 'opsi', $countries_args);
+	nitro_taxonomy_creator(__('Country', 'opsi'), __('Countries', 'opsi'), array( 'case', 'covid_response' ), 'opsi', $countries_args);
 	nitro_taxonomy_creator(__('Innovation Tag', 'opsi'), __('Innovation Tags', 'opsi'), 'case', 'opsi', $countries_args);
 	nitro_taxonomy_creator(__('Innovation Tag OpenGov', 'opsi'), __('Innovation Tags OpenGov', 'opsi'), 'case', 'opsi', $countries_args);
 	nitro_taxonomy_creator(__('Response Tag', 'opsi'), __('Response Tags', 'opsi'), 'covid_response', 'opsi', $countries_args);
@@ -917,7 +917,7 @@ function nitro_cpt_creator($singular_name, $plural_name, $post_type, $rewriteval
 if ( ! function_exists( 'nitro_taxonomy_creator' ) ) {
 
   // Register Custom Taxonomy
-  function nitro_taxonomy_creator($single, $plural, $post_type, $textdomain, $custom_args = array()) {
+  function nitro_taxonomy_creator($single, $plural, $post_types, $textdomain, $custom_args = array()) {
 
     $labels = array(
       'name'                       => _x( $plural, 'Taxonomy General Name', $textdomain ),
@@ -955,7 +955,11 @@ if ( ! function_exists( 'nitro_taxonomy_creator' ) ) {
       $args = array_replace($args, $custom_args);
     }
 
-    register_taxonomy( sanitize_title($single), array( $post_type ), $args );
+    if ( ! is_array( $post_types ) ) {
+    	$post_types = array( $post_types );
+    }
+
+    register_taxonomy( sanitize_title($single), $post_types, $args );
 
   }
 
