@@ -1,7 +1,7 @@
 <?php
 
 function cs_jve_map() {
-	if ( !( is_post_type_archive( 'case' ) || is_tax('case_type') || is_tax( 'innovation-tag' ) || is_tax( 'country' ) || is_tax( 'innovation-badge' ) ) ) { return; }
+	if ( !( is_post_type_archive( 'covid_response' ) || is_post_type_archive( 'case' ) || is_tax('case_type') || is_tax( 'innovation-tag' ) || is_tax( 'country' ) || is_tax( 'innovation-badge' ) ) ) { return; }
 
 	if ( is_tax('case_type') ) {
 
@@ -74,13 +74,14 @@ function cs_jve_map() {
 	$max_count = 0;
 	if ( !empty( $wp_country_terms ) ) {
 		foreach ( $wp_country_terms as $country_term ) {
+			$count = count_posts_in_term( 'country', $country_term->term_name, get_post_type() );
 			$iso = trim( get_field( 'iso_code', $country_term ) );
-			$data .= '"'. $iso .'": '. $country_term->count .','; $data .= "\n\t";
+			$data .= '"'. $iso .'": '. $count .','; $data .= "\n\t";
 			$code_to_flag .= '"'. $iso .'": "<img src=\''. get_stylesheet_directory_uri().'/images/flags/'.$iso.'.png\' width=\'24\' height=\'24\' >",'; $code_to_flag .= "\n\t";
 			$code_to_slug .= '"'. $iso .'": "'. $country_term->slug .'",'; $code_to_slug .= "\n\t";
 
-			if ( $country_term->count > $max_count ) {
-				$max_count = $country_term->count;
+			if ( $count > $max_count ) {
+				$max_count = $count;
 			}
 		}
 	}
