@@ -3,6 +3,24 @@
     "title": "Covid Responses",
     "fields": [
         {
+            "key": "field_5e8d9bef36505",
+            "label": "Submission date",
+            "name": "submission_date",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "hidden",
+                "id": ""
+            },
+            "display_order": "",
+            "display_format": "d\/m\/Y",
+            "return_format": "d\/m\/Y",
+            "first_day": 1
+        },
+        {
             "key": "field_5e8caeb6d7d16",
             "label": "Getting Started",
             "name": "getting_started",
@@ -501,5 +519,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1586338436
+    "modified": 1586339044
 }
