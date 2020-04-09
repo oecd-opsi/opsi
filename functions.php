@@ -1835,6 +1835,11 @@ function cs_form_template_redirect() {
 // force login single member page
 add_action( 'template_redirect', 'opsi_restrict_access_to_single_member_page' );
 function opsi_restrict_access_to_single_member_page() {
+
+	if ( ! function_exists( 'bp_is_user' ) ) {
+		return;
+	}
+
 	if( bp_is_user() && !is_user_logged_in() ) {
 		global $bp;
 
@@ -1946,6 +1951,10 @@ function bp_filter_notifications_get_registered_components( $component_names = a
 // create activity stream for the published Case Study
 add_action( 'init', 'nitro_customize_page_tracking_args', 1000 );
 function nitro_customize_page_tracking_args() {
+	if ( ! function_exists( 'bp_is_active' ) ) {
+		return;
+	}
+
     if ( ! bp_is_active( 'activity' ) ) {
         return;
     }

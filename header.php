@@ -133,10 +133,14 @@
         <div class="container">
           <div class="row">
             <div class="col-md-12 hidden-xs">
-              <?php if (!is_front_page() && bp_is_blog_page() ) { ?>
+              <?php if (!is_front_page() && function_exists( 'bp_is_blog_page' ) && bp_is_blog_page() ) { ?>
               <div class="nitrobreadcrumb">
                 <?php // custom_breadcrumbs(); ?>
-                <?php bcn_display(); ?>
+                <?php
+                if ( function_exists( 'bcn_display' ) ) {
+	                bcn_display();
+                }
+                ?>
               </div>
               <?php } ?>
             </div>
@@ -150,7 +154,7 @@
           }
 
           // always sidebar for buddypress
-          if (!bp_is_blog_page()) {
+          if (function_exists( 'bp_is_blog_page' ) && ! bp_is_blog_page() ) {
             $layout = '';
           }
           // but not on registration
