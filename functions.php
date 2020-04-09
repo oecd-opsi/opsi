@@ -2704,3 +2704,20 @@ function bs_validate_textarea_length( $valid, $value, $field, $input ) {
 	// Return.
 	return $valid;
 }
+
+// Add ISO code column to Country admin list
+add_filter( 'manage_edit-country_columns', 'opsi_country_column' );
+function opsi_country_column( $columns ) {
+	return array_merge(
+		array_slice( $columns, 1, 1, true ),
+		array( 'iso_code' => __( 'ISO code', 'opsi' ) ),
+		array_slice( $columns, 2, null, true )
+	);
+}
+add_filter( 'manage_country_custom_column', 'opsi_country_iso_code_column_content', 10, 3 );
+function opsi_country_iso_code_column_content( $content, $column_name, $term_id ) {
+	if ( 'iso_code' == $column_name ) {
+		$content = get_field( 'iso_code', 'term_' . $term_id );
+	}
+	return $content;
+}
