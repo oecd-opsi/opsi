@@ -713,6 +713,7 @@ function opsi_post_types() {
 	nitro_taxonomy_creator(__('Innovation Tag', 'opsi'), __('Innovation Tags', 'opsi'), 'case', 'opsi', $countries_args);
 	nitro_taxonomy_creator(__('Innovation Tag OpenGov', 'opsi'), __('Innovation Tags OpenGov', 'opsi'), 'case', 'opsi', $countries_args);
 	nitro_taxonomy_creator(__('Response Tag', 'opsi'), __('Response Tags', 'opsi'), 'covid_response', 'opsi', $countries_args);
+	nitro_taxonomy_creator(__('Response Badge', 'opsi'), __('Response Badges', 'opsi'), 'covid_response', 'opsi', $countries_args);
 
 
 	$badge_args = array(
