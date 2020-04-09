@@ -158,7 +158,7 @@
             $layout = '';
           }
           // but not on registration
-          if ( is_page('register') || ( is_singular() && get_post_type( $post ) == 'case' ) ) {
+          if ( is_page('register') || ( is_singular() && get_post_type( $post ) == 'case' ) || ( is_singular() && get_post_type( $post ) == 'covid_response' ) ) {
             $layout = 'fullpage';
           }
 
