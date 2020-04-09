@@ -919,7 +919,7 @@
         },
         {
             "key": "field_5e8d7e505682d",
-            "label": "Google Maps",
+            "label": "Google Services",
             "name": "",
             "type": "tab",
             "instructions": "",
@@ -931,12 +931,13 @@
                 "id": ""
             },
             "display_order": "",
+            "acfe_permissions": "",
             "placement": "top",
             "endpoint": 0
         },
         {
             "key": "field_5b43d1f9786f7",
-            "label": "Google maps API Key",
+            "label": "Google Maps API Key",
             "name": "google_maps_api_key",
             "type": "text",
             "instructions": "",
@@ -947,16 +948,55 @@
                 "class": "",
                 "id": ""
             },
+            "display_order": "",
+            "acfe_permissions": "",
             "default_value": "",
             "placeholder": "",
             "prepend": "",
             "append": "",
-            "maxlength": "",
-            "show_column": 0,
-            "show_column_sortable": 0,
-            "show_column_weight": 1000,
-            "allow_quickedit": 0,
-            "allow_bulkedit": 0
+            "maxlength": ""
+        },
+        {
+            "key": "field_5e8ef007798c3",
+            "label": "Google Recaptcha v2 Site key",
+            "name": "google_recaptcha_v2_site_key",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "acfe_permissions": "",
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5e8ef01f798c4",
+            "label": "Google Recaptcha v2 Secret key",
+            "name": "google_recaptcha_v2_secret_key",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "acfe_permissions": "",
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         }
     ],
     "location": [
@@ -976,5 +1016,13 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1586331876
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_permissions": "",
+    "acfe_form": 0,
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1586425925
 }

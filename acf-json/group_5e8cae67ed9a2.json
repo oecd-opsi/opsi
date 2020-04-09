@@ -464,6 +464,30 @@
                     "save_other_choice": 0
                 },
                 {
+                    "key": "field_5e8ee1a22892c",
+                    "label": "",
+                    "name": "captcha",
+                    "type": "acfe_recaptcha",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "acfe_permissions": "",
+                    "version": "v2",
+                    "v2_theme": "light",
+                    "v2_size": "normal",
+                    "site_key": "",
+                    "secret_key": "",
+                    "disabled": 0,
+                    "readonly": 0,
+                    "v3_hide_logo": false
+                },
+                {
                     "key": "field_5e8d9315a81c7",
                     "label": "Back \/ Submit placeholder",
                     "name": "",
@@ -477,7 +501,7 @@
                         "id": ""
                     },
                     "display_order": "",
-                    "message": "<div class=\"col-md-12 layout_hero_block \"><div class=\"hb_inner text-left\">\r\nYou can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href=\"mailto:opsi@oecd.org\" title=\"contact OPSI\">opsi@oecd.org<\/a> (include a screenshot if possible).\r\n\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-1\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-default big submitform\" id=\"submitcovidresponse\" title=\"Submit\">Submit <i class=\"fa fa-check-square-o\" aria-hidden=\"true\"><\/i><\/a> <span class=\"acf-spinner\"><\/span>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
+                    "message": "<div class=\"col-md-12 layout_hero_block \">\r\n<div class=\"hb_inner text-left\">\r\nYou can click on previously completed sections in the sidebar to navigate back to them in order to revise your entry. If you have any problems, please contact us at <a href=\"mailto:opsi@oecd.org\" title=\"contact OPSI\">opsi@oecd.org<\/a> (include a screenshot if possible).\r\n\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-1\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-default big submitform\" id=\"submitcovidresponse\" title=\"Submit\">Submit <i class=\"fa fa-check-square-o\" aria-hidden=\"true\"><\/i><\/a> <span class=\"acf-spinner\"><\/span>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
                     "new_lines": "wpautop",
                     "esc_html": 0
                 },
@@ -519,5 +543,13 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1586418491
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_permissions": "",
+    "acfe_form": 0,
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1586425674
 }

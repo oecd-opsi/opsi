@@ -2757,7 +2757,15 @@ function remove_columns_from_covid_responses( $columns ) {
 	return $columns;
 }
 
-
+// Set Google Recaptcha v2 keys
+add_filter( 'acf/settings/acfe/field/recaptcha/site_key', 'opsi_recaptcha_site_key' );
+function  opsi_recaptcha_site_key( $value ) {
+	return get_field( 'google_recaptcha_v2_site_key', 'option' );
+}
+add_filter( 'acf/settings/acfe/field/recaptcha/secret_key', 'opsi_recaptcha_secret_key' );
+function  opsi_recaptcha_secret_key( $value ) {
+	return get_field( 'google_recaptcha_v2_secret_key', 'option' );
+}
 
 /**
  * Count number of any given post type in the term
