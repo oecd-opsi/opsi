@@ -2757,7 +2757,8 @@ function count_posts_in_term($taxonomy, $term, $postType = 'post') {
 				'terms' => $term,
 				'field' => 'slug'
 			]
-		]
+		],
+		'suppress_filters' => true,
 	]);
 
 	return $query->found_posts;

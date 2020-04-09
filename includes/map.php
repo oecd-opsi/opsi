@@ -74,7 +74,7 @@ function cs_jve_map() {
 	$max_count = 0;
 	if ( !empty( $wp_country_terms ) ) {
 		foreach ( $wp_country_terms as $country_term ) {
-			$count = count_posts_in_term( 'country', $country_term->term_name, get_post_type() );
+			$count = count_posts_in_term( 'country', $country_term->slug, get_post_type() );
 			$iso = trim( get_field( 'iso_code', $country_term ) );
 			$data .= '"'. $iso .'": '. $count .','; $data .= "\n\t";
 			$code_to_flag .= '"'. $iso .'": "<img src=\''. get_stylesheet_directory_uri().'/images/flags/'.$iso.'.png\' width=\'24\' height=\'24\' >",'; $code_to_flag .= "\n\t";
