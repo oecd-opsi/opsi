@@ -835,12 +835,15 @@ function opsi_append_post_status_list(){
 
 
 function opsi_custom_status_add_in_quick_edit() {
-	echo "<script>
-	jQuery(document).ready( function() {
-		jQuery( 'select[name=\"_status\"]' ).append( '<option value=\"pending_deletion\">". __('Pending Deletion', 'opsi') ."</option>' );
-		jQuery( 'select[name=\"_status\"]' ).append( '<option value=\"reviewed\">". __('Reviewed', 'opsi') ."</option>' );
-	});
-	</script>";
+	global $post;
+	if( $post->post_type == 'case' ) {
+		echo "<script>
+		jQuery(document).ready( function() {
+			jQuery( 'select[name=\"_status\"]' ).append( '<option value=\"pending_deletion\">" . __( 'Pending Deletion', 'opsi' ) . "</option>' );
+			jQuery( 'select[name=\"_status\"]' ).append( '<option value=\"reviewed\">" . __( 'Reviewed', 'opsi' ) . "</option>' );
+		});
+		</script>";
+	}
 }
 add_action('admin_footer-edit.php','opsi_custom_status_add_in_quick_edit');
 
