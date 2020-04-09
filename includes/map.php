@@ -1,7 +1,18 @@
 <?php
 
 function cs_jve_map() {
-	if ( !( is_post_type_archive( 'covid_response' ) || is_post_type_archive( 'case' ) || is_tax('case_type') || is_tax( 'innovation-tag' ) || is_tax( 'country' ) || is_tax( 'innovation-badge' ) ) ) { return; }
+	if ( ! (
+			is_post_type_archive( 'covid_response' ) ||
+			is_post_type_archive( 'case' ) ||
+			is_tax('case_type') ||
+			is_tax( 'innovation-tag' ) ||
+			is_tax( 'country' ) ||
+			is_tax( 'innovation-badge' )
+	) ) {
+		return;
+	}
+
+	$color_scale = 'case' == get_post_type() ? "['#d5bcf7', '#165580']" : "['#e9f2ef', '#167a59']";
 
 	if ( is_tax('case_type') ) {
 
@@ -126,13 +137,13 @@ function cs_jve_map() {
 					regions: [
 						{
 							values: data,
-							scale: ['#d5bcf7', '#165580'],
+							scale: <?php echo $color_scale; ?>,
 							normalizeFunction: 'linear',
 							attribute: 'fill'
 						},
 						{
 							values: data,
-							scale: ['#d5bcf7','#165580'],
+							scale: <?php echo $color_scale; ?>,
 							normalizeFunction: 'linear',
 							attribute: 'stroke'
 						},

@@ -1088,6 +1088,33 @@ hr.divline {
   /* IE6-9 */
 
 }
+.post-type-archive-covid_response #map-bar .rule {
+    background: #167a59;
+    background: #e9f2ef;
+    /* Old browsers */
+
+    background: -moz-linear-gradient(left, #e9f2ef 0%, #167a59 100%);
+    /* FF3.6+ */
+
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, #e9f2ef), color-stop(100%, #167a59));
+    /* Chrome,Safari4+ */
+
+    background: -webkit-linear-gradient(left, #e9f2ef 0%, #167a59 100%);
+    /* Chrome10+,Safari5.1+ */
+
+    background: -o-linear-gradient(left, #e9f2ef 0%, #167a59 100%);
+    /* Opera 11.10+ */
+
+    background: -ms-linear-gradient(left, #e9f2ef 0%, #167a59 100%);
+    /* IE10+ */
+
+    background: linear-gradient(to right, #e9f2ef 0%, #167a59 100%);
+    /* W3C */
+
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e9f2ef', endColorstr='#167a59', GradientType=1);
+    /* IE6-9 */
+}
+
 /* line 76, /Users/ezka/Documents/WRK/opsi/less/libraries/jquery-jvectormap.less */
 #map-bar #curs {
   position: absolute;
