@@ -1572,6 +1572,21 @@ nav.navbar { margin-bottom: 0px; }
   border: 1px solid #3473e7;
   color: #fff;
 }
+.post-type-archive-covid_response .btn.btn-default,
+.post-type-archive-covid_response .btn.btn-info {
+    background-color: #167a59;
+}
+.post-type-archive-covid_response .btn.btn-default:hover,
+.post-type-archive-covid_response .btn.btn-default:active,
+.post-type-archive-covid_response .btn.btn-default:focus,
+.post-type-archive-covid_response .btn.btn-info:hover,
+.post-type-archive-covid_response .btn.btn-info:active,
+.post-type-archive-covid_response .btn.btn-info:focus {
+    color: #167a59;
+    background-color: white;
+    border: 1px solid #167a59;
+}
+
 .acf-button.button.button-primary {
 	padding: 8px;
 }
