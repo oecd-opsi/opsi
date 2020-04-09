@@ -2739,6 +2739,23 @@ function bs_validate_textarea_length( $valid, $value, $field, $input ) {
 	return $valid;
 }
 
+// Remove unnecessary columns from Covid Response admin list
+add_filter( 'manage_covid_response_posts_columns', 'remove_columns_from_covid_responses', 100 );
+function remove_columns_from_covid_responses( $columns ) {
+	if ( isset( $columns['coauthors'] ) ) {
+		unset( $columns['coauthors'] );
+	}
+	if ( isset( $columns['post_type'] ) ) {
+		unset( $columns['post_type'] );
+	}
+	if ( isset( $columns['mkdo_rcbr_access'] ) ) {
+		unset( $columns['mkdo_rcbr_access'] );
+	}
+	return $columns;
+}
+
+
+
 /**
  * Count number of any given post type in the term
  *
