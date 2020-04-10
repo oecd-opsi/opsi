@@ -7,8 +7,10 @@
 
 ?>
 
-<div class="single_img_wrap">
-<img src="/wp-content/uploads/2020/04/OPSI-Covid19-Tracker-banner.jpg" class="attachment-blog size-blog wp-post-image" alt="OPSI COVID-19 Innovative Response Tracker">
+<div class="col-md-12">
+  <div class="single_img_wrap">
+    <img src="/wp-content/uploads/2020/04/OPSI-Covid19-Tracker-banner.jpg" class="attachment-blog size-blog wp-post-image" alt="OPSI COVID-19 Innovative Response Tracker">
+  </div>
 </div>
 
     <div class="col-sm-<?php echo 12 - $has_sidebar; ?> <?php echo ($has_sidebar > 0 ? 'col-sm-pull-3' : ''); ?>">
@@ -288,6 +290,22 @@
 
 				</div>
 			</div>
+
+      <div class="cs_post_meta">
+        <div class="row">
+				  <div class="col-xs-12">
+            <?php
+            echo  bpmts_get_report_button( array(
+      				'item_id'    => get_the_ID(),
+      				'item_type'  => 'covid_response',
+      				'context'    => 'covid_response',
+      				'context_id' => get_the_ID(),
+      			) );
+            ?>
+          </div>
+        </div>
+      </div>
+
 			<?php if ( !is_user_logged_in() ) { ?>
 			<div class="cs_sidebar_wrap">
 				<div class="row">

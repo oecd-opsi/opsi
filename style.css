@@ -3838,3 +3838,14 @@ article.bp_register .mc4wp-checkbox-buddypress {
     float: right;
     width: 48%;
 }
+
+/* COVID response */
+.bpmts-report-button {
+  background: red;
+  color: #fff;
+  padding: 8px 16px;
+}
+
+.entry-content .bpmts-moderation-button-wrap {
+  display: none;
+}

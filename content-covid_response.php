@@ -74,6 +74,14 @@
 							<?php echo __( 'View response details', 'opsi' ); ?>
 							<i class="fa fa-chevron-right" aria-hidden="true"></i>
 						</a>
+						<?php
+            echo  bpmts_get_report_button( array(
+      				'item_id'    => get_the_ID(),
+      				'item_type'  => 'covid_response',
+      				'context'    => 'covid_response',
+      				'context_id' => get_the_ID(),
+      			) );
+            ?>
 					</p>
 			</div>
 		</div>
