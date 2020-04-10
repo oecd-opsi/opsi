@@ -105,7 +105,10 @@ function nitro_case_study_form_first_page ( $field ) {
 add_filter( "acf/load_field/key=field_5e8caf4dd7d17", 'nitro_covid_response_form_first_page' );
 function nitro_covid_response_form_first_page ( $field ) {
 
-	if ( !is_admin() ) {
+	// form page
+	$covid_response_form_page = get_field( 'covid_response_form_page', 'option' );
+
+	if ( !is_admin() && ! empty( $covid_response_form_page ) && is_page( $covid_response_form_page ) ) {
 		$field['label']   = '';
 		$field['message'] = apply_filters( 'the_content', get_post_field( 'post_content', get_field( 'covid_response_form_first_page', 'option' ) ) );
 	}
