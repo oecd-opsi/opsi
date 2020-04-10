@@ -7,7 +7,9 @@
 
 ?>
 
-
+<div class="single_img_wrap">
+<img src="/wp-content/uploads/2020/04/OPSI-Covid19-Tracker-banner.jpg" class="attachment-blog size-blog wp-post-image" alt="OPSI COVID-19 Innovative Response Tracker">
+</div>
 
     <div class="col-sm-<?php echo 12 - $has_sidebar; ?> <?php echo ($has_sidebar > 0 ? 'col-sm-pull-3' : ''); ?>">
 
@@ -82,18 +84,6 @@
             <h3><?php echo __( 'What is the innovative response?', 'opsi' ); ?></h3>
             <div class="csp"><?php echo $fields['information_about_the_response']['innovative_response_description']['text'] ?></div>
 
-            <h3><?php echo __( 'What general issue(s) is this addressing?', 'opsi' ); ?></h3>
-            <?php $issue_values = $fields['information_about_the_response']['general_issues_addressed']['text']; ?>
-            <div class="csp">
-              <ul>
-                <?php
-                foreach ($issue_values as $value) {
-                  echo '<li>' . $value . '</li>';
-                }
-                ?>
-              </ul>
-            </div>
-
             <h3><?php echo __( 'What specific issue is this solution intended to address? What is the anticipated or expected impact?', 'opsi' ); ?></h3>
             <div class="csp"><?php echo $fields['information_about_the_response']['specific_issue_addresed']['text'] ?></div>
 
@@ -149,7 +139,7 @@
 
 					<?php if ( $fields['information_about_the_response']['primary_url']['text'] != '' ) { ?>
 						<div class="website_wrap">
-							<span class="sidebar_label"><?php echo __( 'Website:', 'opsi' ); ?></span>
+							<span class="sidebar_label"><?php echo __( 'Relevant URL(s):', 'opsi' ); ?></span>
 							<span class="strong truncate">
 								<a href="<?php echo $fields['information_about_the_response']['primary_url']['text']; ?>" title="<?php echo $fields['information_about_the_response']['innovative_response_description']['text']; ?>" target="_blank" >
 									<?php echo $fields['information_about_the_response']['primary_url']['text']; ?>
@@ -162,16 +152,6 @@
 							<span class="strong truncate">
 								<a href="<?php echo $fields['information_about_the_response']['other_urls']['text']; ?>" title="<?php echo __( 'additional URL', 'opsi' ); ?>" target="_blank" >
 									<?php echo $fields['information_about_the_response']['other_urls']['text']; ?>
-								</a>
-							</span>
-						</div>
-					<?php } ?>
-          <?php if ( $fields['information_about_the_response']['email_public']['text'] != '' ) { ?>
-						<div class="website_wrap additional">
-              <span class="sidebar_label"><?php echo __( 'An email anyone can contact for more information:', 'opsi' ); ?></span>
-							<span class="strong truncate">
-								<a href="mailto:<?php echo $fields['information_about_the_response']['email_public']['text']; ?>" target="_blank" >
-									<?php echo $fields['information_about_the_response']['email_public']['text']; ?>
 								</a>
 							</span>
 						</div>
@@ -191,30 +171,49 @@
               </ul>
 						</div>
 					<?php } ?>
-					</div>
-				</div>
-			</div>
+        </div>
+      </div>
+    </div>
 
-			<!-- <div class="post_tags_wrap">
-				<div class="post_tags">
-					<h4><?php // echo __( 'Innovation tags:', 'opsi' ); ?></h4>
-					<?php // echo get_the_term_list( get_the_ID(), 'response-tag' );
+          <?php if ( !empty( $fields['information_about_the_response']['general_issues_addressed']['text'] ) ) { ?>
+    			<div class="cs_sidebar_wrap">
+    				<div class="row">
+    					<div class="col-xs-12">
+    						<h4 class="status_label"><?php echo __( 'Issues being addressed:', 'opsi' ); ?></h4>
+    						<ul class="nospace">
+    						<?php foreach( $fields['information_about_the_response']['general_issues_addressed']['text'] as $issue ) { ?>
+    								<li><span class="strong"><?php echo $issue; ?></span></li>
+    						<?php } ?>
+    						</ul>
+    					</div>
+    				</div>
+    			</div>
+    			<?php } ?>
 
-					?>
-					<?php //if ( !empty( $fields['describing_the_innovation']['custom_innovation_tags']['text'] ) ) {
+          <?php if ( !empty( $fields['information_about_the_response']['email_public']['text'] ) ) { ?>
+    			<div class="cs_sidebar_wrap">
+    				<div class="row">
+    					<div class="col-xs-12">
+    						<h4 class="status_label"><?php echo __( 'Response contact:', 'opsi' ); ?></h4>
+                <span class="strong truncate">
+  								<a href="mailto:<?php echo $fields['information_about_the_response']['email_public']['text']; ?>" target="_blank" >
+  									<?php echo $fields['information_about_the_response']['email_public']['text']; ?>
+  								</a>
+  							</span>
+    					</div>
+    				</div>
+    			</div>
+    			<?php } ?>
 
-						//$custom_tags = explode( ',', $fields['describing_the_innovation']['custom_innovation_tags']['text'] );
-
-						//foreach( $custom_tags as $ctag ) {
-
-							//echo '<span class="custom_tag" title="'. $ctag .'">'. $ctag .'</span>';
-
-						//}
-
-					//}
-					?>
-				</div>
-      </div> -->
+      <?php
+      if( !empty( get_the_terms( get_the_ID(), 'response-tag' ) ) ) { ?>
+        <div class="post_tags_wrap">
+  				<div class="post_tags">
+  					<h4><?php echo __( 'Response tags:', 'opsi' ); ?></h4>
+  					<?php echo get_the_term_list( get_the_ID(), 'response-tag' ); ?>
+  				</div>
+        </div>
+      <?php } ?>
 
 			<?php  if ( !empty( $upload_images ) ) { ?>
 			<div class="cs_sidebar_wrap">
@@ -280,7 +279,7 @@
 				<div class="row">
 				  <div class="col-xs-12">
 					<span class="strong make-block">
-						<?php echo __( 'Date published:', 'opsi' ); ?>
+						<?php echo __( 'Date submitted:', 'opsi' ); ?>
 					</span>
 					<span class="make-block">
 					<?php echo get_the_date(); ?>
