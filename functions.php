@@ -2809,3 +2809,12 @@ function count_posts_in_term($taxonomy, $term, $postType = 'post') {
 
 	return $query->found_posts;
 }
+
+// Edit report button label
+function report_btn_label( $button, $args ) {
+
+  $button = str_replace( 'Report', 'Flag as inappropriate', $button );
+  return $button;
+
+}
+add_filter( 'bpmts_report_button', 'report_btn_label', 20, 2 );

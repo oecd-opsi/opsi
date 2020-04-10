@@ -3845,6 +3845,11 @@ article.bp_register .mc4wp-checkbox-buddypress {
   color: #fff;
   padding: 8px 16px;
 }
+.bpmts-report-button:hover {
+  color: #fff;
+  text-decoration: none;
+  background: brown;
+}
 
 .entry-content .bpmts-moderation-button-wrap {
   display: none;
