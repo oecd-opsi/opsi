@@ -212,33 +212,114 @@ function opsi_acf_save_post_case_study( $post_id ) {
 }
 
 // manipulate the Covid Response AFTER it has been saved
-add_action('acf/save_post', 'opsi_acf_save_post_covid_response', 11);
+add_action('acf/save_post', 'opsi_acf_save_post_covid_response', 20 );
 function opsi_acf_save_post_covid_response( $post_id ) {
 
 	if ( get_post_type( $post_id ) != 'covid_response' ) {
 		return;
 	}
 
+	// get data
+	$info     = get_field( 'information_about_the_response', $post_id );
+	$material = get_field( 'materials_and_submission', $post_id );
+
 	// set title
-	$summary = get_field( 'information_about_the_response', $post_id );
 	$content = array(
 		'ID'           => $post_id,
-		'post_title'   => ( empty( $summary['innovative_response_short_title'] ) ? __( 'Untitled Covid Response', 'opsi' ) : $summary['innovative_response_short_title'] ),
+		'post_title'   => ( empty( $info['innovative_response_short_title'] ) ? __( 'Untitled Covid Response', 'opsi' ) : $info['innovative_response_short_title'] ),
 		'post_content' => ''
 	);
 	wp_update_post( $content );
 
 	// set the featured image
-	$material      = get_field( 'materials_and_submission', $post_id );
 	$upload_images = $material['upload_images'];
 	if ( !empty( $upload_images ) ) {
 		set_post_thumbnail( $post_id, $upload_images[0]['ID'] );
 	}
 
+	// Send submission to user via email
+	if ( ! is_admin() ) {
+		$headers = array( 'Content-Type: text/html; charset=UTF-8' );
+		$body = '<p>' . __( 'Thank you for submitting your Covid-19 Innovative Response to OPSI', 'opsi' ) . '</p>';
+		$body .= '<p>' . __( 'Please find below a recap of the data submitted', 'opsi' ) . '</p>';
+
+		$field_groups = [
+			'information_about_the_response' => [
+				'field_5e8cb0ccd7d19', // innovative_response_description
+				'field_5e8cb127d7d1a', // general_issues_addressed
+				'field_5e8cb19cd7d1c', // specific_issue_addressed
+				'field_5e8cb22dd7d1d', // innovative_response_short_title
+				'field_5e8cb88c9bd46', // organisations_involved
+				'field_5e8cb8fb9bd47', // potential_issues
+				'field_5e8cb9249bd48', // levels_of_government
+				'field_5e8cbf8a5ea83', // primary_url
+				'field_5e8cbfa55ea84', // other_urls
+				'field_5e8cbfd45ea85', // country
+				'field_5e8cc02b5ea86', // email
+				'field_5e8cc0495ea87', // email_public
+			],
+			'materials_and_submission' => [
+				'field_5e8cb9f526c67', // upload_images
+				'field_5e8cba6f26c68', // upload_files
+				'field_5e8cbaa326c69', // register_for_newsletter
+			],
+		];
+
+		foreach ( $field_groups as $field_group_name => $field_group_fields ) {
+			$field_group  = get_field( $field_group_name, $post_id );
+			foreach ( $field_group_fields as $field ) {
+				$field_object = get_field_object( $field, $post_id );
+				if ( ! empty( $field_object ) ) {
+					$body  .= '<p><strong>' . $field_object['label'] . '</strong></p>';
+					$value = $field_group[ $field_object['name'] ];
+					switch ( $field_object['type'] ) {
+						case 'checkbox':
+							$body .= '<p>';
+							foreach ( $value as $subvalue ) {
+								$body .= $subvalue;
+								$body .= '<br>';
+							}
+							$body .= '</p>';
+							break;
+						case 'taxonomy':
+							$body .= '<p>';
+							$terms = wp_get_post_terms( $post_id, $field_object['taxonomy'], [ 'fields' => 'names' ] );
+							foreach ( $terms as $term ) {
+								$body .= $term;
+								$body .= '<br>';
+							}
+							$body .= '</p>';
+							break;
+						case 'gallery':
+							$body .= '<p>';
+							foreach ( $value as $term ) {
+								$body .= $term['url'];
+								$body .= '<br>';
+							}
+							$body .= '</p>';
+							break;
+						case 'textarea':
+							$body .= $value;
+							break;
+						case 'text':
+						case 'url':
+						case 'email':
+						case 'radio':
+						default:
+							$body .= '<p>' . $value . '</p>';
+							break;
+					}
+				}
+			}
+		}
+
+		$body .= 'Best regards,<br>The OPSI team';
+
+		wp_mail( $info['email'], __( 'Your Covid-19 Innovative Response submission', 'opsi' ), $body, $headers );
+	}
+
 	// subscribe user on MailChimp if radio button is set
-	$wants_to_subscribe = get_field( 'register_for_newsletter', $post_id );
-	$info               = get_field( 'information_about_the_response' );
-	if ( $wants_to_subscribe == 'yes' ) {
+	if ( 'yes' === $material['register_for_newsletter'] ) {
 		opsi_subscribe_to_mailchimp( $info['email'] );
 	}
 
@@ -246,11 +327,11 @@ function opsi_acf_save_post_covid_response( $post_id ) {
 
 // Subscribes a user to Mailchimp
 function opsi_subscribe_to_mailchimp( $email_address ) {
-	if ( class_exists( 'MC4WP_MailChimp' ) && $wants_to_subscribe == 'yes' ) {
-		$subscriber['status'] = 'subscribed';
-		$list_id              = '8445d592ef';
-		$MC4WP_MailChimp      = new MC4WP_MailChimp();
-		$MC4WP_MailChimp->list_subscribe( $list_id, $email_address, $subscriber );
+	if ( class_exists( 'MC4WP_MailChimp' ) ) {
+		$args['status']  = 'subscribed';
+		$list_id         = '8445d592ef';
+		$MC4WP_MailChimp = new MC4WP_MailChimp();
+		$MC4WP_MailChimp->list_subscribe( $list_id, $email_address, $args );
 	}
 }
 
