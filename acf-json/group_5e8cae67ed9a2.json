@@ -70,7 +70,10 @@
                 "id": ""
             },
             "display_order": "",
+            "acfe_permissions": "",
             "layout": "block",
+            "acfe_seamless_style": 0,
+            "acfe_group_modal": 0,
             "sub_fields": [
                 {
                     "key": "field_5e8cb0ccd7d19",
@@ -127,7 +130,7 @@
                 {
                     "key": "field_5e8cb19cd7d1c",
                     "label": "What specific issue is this solution intended to address? What is the anticipated or expected impact?",
-                    "name": "specific_issue_addresed",
+                    "name": "specific_issue_addressed",
                     "type": "textarea",
                     "instructions": "",
                     "required": 1,
@@ -138,11 +141,13 @@
                         "id": ""
                     },
                     "display_order": "",
+                    "acfe_permissions": "",
                     "default_value": "",
                     "placeholder": "",
                     "maxlength": 2000,
                     "rows": 16,
-                    "new_lines": ""
+                    "new_lines": "",
+                    "acfe_textarea_code": 0
                 },
                 {
                     "key": "field_5e8cb22dd7d1d",
@@ -551,5 +556,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1586425674
+    "modified": 1586525929
 }
