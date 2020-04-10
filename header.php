@@ -208,6 +208,14 @@
 				          <?php echo __( 'Search results:', 'opsi' ); ?> <span
 					          class="cs_counter"><?php echo facetwp_display( 'counts' ); ?></span>
 			          </div>
+			          <?php
+			          $export_url = get_field( 'export_covid_responses_url', 'option');
+			          if ( ! empty( $export_url ) ) {
+				          ?>
+				          <a class="button btn btn-default btn-block big covid-export-button" href="<?php echo $export_url; ?>"><?php echo __( 'Export All Data', 'opsi' ); ?></a>
+				          <?php
+			          }
+			          ?>
 			          <h2><?php echo __( 'Filter Responses:', 'opsi' ); ?></h2>
 			          <?php dynamic_sidebar( 'sidebar_covid_response_archive' ); ?>
 			          <button class="button btn btn-default btn-block big reset-filters-button"

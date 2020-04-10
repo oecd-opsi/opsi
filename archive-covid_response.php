@@ -13,9 +13,6 @@
 
 ?>
 
-
-
-
 <div class="col-sm-<?php echo 12 - $has_sidebar; ?> <?php echo ($has_sidebar > 0 ? 'col-sm-pull-3' : ''); ?>">
 
 	<div class="cs_top_filters">
@@ -23,15 +20,6 @@
 			<div class="col-sm-10">
 				<?php echo facetwp_display( 'facet', 'search' ); ?>
 			</div>
-			<!-- <div class="col-sm-3">
-				<div class="switchwrap switchwrap_archive text-right">
-					<span><?php echo __( 'Show Archives', 'opsi' ); ?>&nbsp;</span>
-					<label class="switch">
-					  <input type="checkbox" id="archivetoggle" value="1" <?php echo ( isset( $_GET['archive'] ) && intval( $_GET['archive'] ) == 1 ? 'checked="checked"' : '' ); ?> />
-					  <span class="slider"></span>
-					</label>
-				</div>
-			</div> -->
 			<div class="col-sm-2">
 				<div class="hidemaptoggle">
 					<i class="fa fa-chevron-down" aria-hidden="true"></i> <?php echo __( 'Hide Map', 'opsi' ); ?>

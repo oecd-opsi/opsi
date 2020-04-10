@@ -237,6 +237,24 @@
             "ui": 1
         },
         {
+            "key": "field_5e90681309289",
+            "label": "Export Covid Responses URL",
+            "name": "export_covid_responses_url",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "acfe_permissions": "",
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
             "key": "field_5e8d7de85682c",
             "label": "Collaborators",
             "name": "",
@@ -1024,5 +1042,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1586425925
+    "modified": 1586522187
 }
