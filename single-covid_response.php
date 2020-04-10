@@ -133,12 +133,6 @@
 				<div class="row">
 					<div class="col-md-12">
 
-					<div class="year_wrap">
-						<span class="sidebar_label"><?php echo __( 'Year:', 'opsi' ); ?></span>
-						<span class="strong">2020</span>
-					</div>
-
-
 					<?php if ( $fields['information_about_the_response']['primary_url']['text'] != '' ) { ?>
 						<div class="website_wrap">
 							<span class="sidebar_label"><?php echo __( 'Relevant URL(s):', 'opsi' ); ?></span>
