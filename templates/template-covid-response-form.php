@@ -17,6 +17,12 @@ if ( $layout != 'fullpage' && is_active_sidebar( 'sidebar' ) ) {
 
 ?>
 
+<div class="col-md-12">
+	<div class="single_img_wrap">
+		<img src="/wp-content/uploads/2020/04/OPSI-Covid19-Tracker-banner.jpg" class="attachment-blog size-blog wp-post-image" alt="OPSI COVID-19 Innovative Response Tracker">
+	</div>
+</div>
+
 <div class="col-sm-3 dont-col-sm-push--9">
 	<ul id="acf_steps">
 	</ul>
