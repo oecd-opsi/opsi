@@ -194,9 +194,16 @@
 
 	        <?php
         }
+        elseif ( get_queried_object_id() == get_field( 'covid_response_form_thank_you_page_submit', 'options' ) ) {
+        ?>
+	          <div class="single_img_wrap col-md-12">
+	            <img src="/wp-content/uploads/2020/04/OPSI-Covid19-Tracker-banner.jpg" class="attachment-blog size-blog wp-post-image" alt="OPSI COVID-19 Innovative Response Tracker">
+              </div>
+	        <?php
+        }
         elseif ( is_active_sidebar( 'sidebar_covid_response_archive' ) && ( is_post_type_archive( 'covid_response' ) ) ) { ?>
 
-	          <div class="single_img_wrap"">
+	          <div class="single_img_wrap">
 		          <img src="/wp-content/uploads/2020/04/OPSI-Covid19-Tracker-banner.jpg" class="attachment-blog size-blog wp-post-image" alt="OPSI COVID-19 Innovative Response Tracker">
 	          </div>
 
