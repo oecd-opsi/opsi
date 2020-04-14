@@ -3857,7 +3857,9 @@ article.bp_register .mc4wp-checkbox-buddypress {
 .entry-content .bpmts-moderation-button-wrap {
   display: none;
 }
-
+.covid-banner {
+    margin-bottom: 20px;
+}
 .covid-export-button {
     margin-bottom: 40px;
 }
