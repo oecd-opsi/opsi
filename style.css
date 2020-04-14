@@ -377,6 +377,9 @@ h4.repeater_title {
 	font-size: 32px;
 	margin-bottom: 40px;
 }
+.stepform .acf-form-fields>.acf-field-group.stepgroup>.acf-label:first-child {
+    margin-top: 40px;
+}
 .stepform .acf-form-fields>.acf-field {
 	padding: 0;
 }
