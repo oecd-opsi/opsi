@@ -1092,29 +1092,29 @@ hr.divline {
 
 }
 .post-type-archive-covid_response #map-bar .rule {
-    background: #167a59;
-    background: #e9f2ef;
+    background: #0f1570;
+    background: #b4d5ed;
     /* Old browsers */
 
-    background: -moz-linear-gradient(left, #e9f2ef 0%, #167a59 100%);
+    background: -moz-linear-gradient(left, #b4d5ed 0%, #0f1570 100%);
     /* FF3.6+ */
 
-    background: -webkit-gradient(linear, left top, right top, color-stop(0%, #e9f2ef), color-stop(100%, #167a59));
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, #b4d5ed), color-stop(100%, #0f1570));
     /* Chrome,Safari4+ */
 
-    background: -webkit-linear-gradient(left, #e9f2ef 0%, #167a59 100%);
+    background: -webkit-linear-gradient(left, #b4d5ed 0%, #0f1570 100%);
     /* Chrome10+,Safari5.1+ */
 
-    background: -o-linear-gradient(left, #e9f2ef 0%, #167a59 100%);
+    background: -o-linear-gradient(left, #b4d5ed 0%, #0f1570 100%);
     /* Opera 11.10+ */
 
-    background: -ms-linear-gradient(left, #e9f2ef 0%, #167a59 100%);
+    background: -ms-linear-gradient(left, #b4d5ed 0%, #0f1570 100%);
     /* IE10+ */
 
-    background: linear-gradient(to right, #e9f2ef 0%, #167a59 100%);
+    background: linear-gradient(to right, #b4d5ed 0%, #0f1570 100%);
     /* W3C */
 
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e9f2ef', endColorstr='#167a59', GradientType=1);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b4d5ed', endColorstr='#0f1570', GradientType=1);
     /* IE6-9 */
 }
 
@@ -1577,7 +1577,7 @@ nav.navbar { margin-bottom: 0px; }
 }
 .post-type-archive-covid_response .btn.btn-default,
 .post-type-archive-covid_response .btn.btn-info {
-    background-color: #167a59;
+    background-color: #0f1570;
 }
 .post-type-archive-covid_response .btn.btn-default:hover,
 .post-type-archive-covid_response .btn.btn-default:active,
@@ -1585,9 +1585,9 @@ nav.navbar { margin-bottom: 0px; }
 .post-type-archive-covid_response .btn.btn-info:hover,
 .post-type-archive-covid_response .btn.btn-info:active,
 .post-type-archive-covid_response .btn.btn-info:focus {
-    color: #167a59;
+    color: #0f1570;
     background-color: white;
-    border: 1px solid #167a59;
+    border: 1px solid #0f1570;
 }
 
 .acf-button.button.button-primary {

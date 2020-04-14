@@ -12,7 +12,7 @@ function cs_jve_map() {
 		return;
 	}
 
-	$color_scale = 'case' == get_post_type() ? "['#d5bcf7', '#165580']" : "['#e9f2ef', '#167a59']";
+	$color_scale = 'case' == get_post_type() ? "['#d5bcf7', '#165580']" : "['#b4d5ed', '#0f1570']";
 
 	if ( is_tax('case_type') ) {
 
