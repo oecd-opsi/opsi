@@ -316,7 +316,7 @@
                 },
                 {
                     "key": "field_5e8cc0495ea87",
-                    "label": "An email anyone can contact for more information",
+                    "label": "An e-mail address anyone can contact for more information",
                     "name": "email_public",
                     "type": "email",
                     "instructions": "Optional; this email will be publicly visible",
@@ -328,6 +328,7 @@
                         "id": ""
                     },
                     "display_order": "",
+                    "acfe_permissions": "",
                     "default_value": "",
                     "placeholder": "",
                     "prepend": "",
@@ -556,5 +557,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1586525929
+    "modified": 1586880026
 }
