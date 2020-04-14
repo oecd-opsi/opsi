@@ -225,12 +225,14 @@ function opsi_acf_save_post_covid_response( $post_id ) {
 	// get data
 	$info     = get_field( 'information_about_the_response', $post_id );
 	$material = get_field( 'materials_and_submission', $post_id );
+	$title    = ( empty( $info['innovative_response_short_title'] ) ? __( 'Untitled Covid Response', 'opsi' ) : $info['innovative_response_short_title'] );
 
 	// set title
 	$content = array(
 		'ID'           => $post_id,
-		'post_title'   => ( empty( $info['innovative_response_short_title'] ) ? __( 'Untitled Covid Response', 'opsi' ) : $info['innovative_response_short_title'] ),
-		'post_content' => ''
+		'post_title'   => $title,
+		'post_content' => '',
+		'post_name'    => sanitize_title( $title ),
 	);
 	wp_update_post( $content );
 
