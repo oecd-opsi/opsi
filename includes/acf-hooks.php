@@ -245,7 +245,8 @@ function opsi_acf_save_post_covid_response( $post_id ) {
 	// Send submission to user via email
 	if ( ! is_admin() ) {
 		$headers = array( 'Content-Type: text/html; charset=UTF-8' );
-		$body = '<p>' . __( 'Thank you for submitting your Covid-19 Innovative Response to OPSI', 'opsi' ) . '</p>';
+		$permalink = get_permalink( $post_id );
+		$body = '<p>' . sprintf( __( 'Thank you for submitting your Covid-19 Innovative Response to OPSI. Your response is now live on the OPSI website at %s.', 'opsi' ), "<a href='$permalink'>$permalink</a>" ) . '</p>';
 		$body .= '<p>' . __( 'Please find below a recap of the data submitted', 'opsi' ) . '</p>';
 
 		$field_groups = [
