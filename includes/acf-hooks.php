@@ -405,7 +405,7 @@ function covid_response_redirect_acf_submit_form( $form, $post_id ) {
 
 		$thankyou_page = get_field( 'covid_response_form_thank_you_page_submit', 'option' );
 
-		wp_safe_redirect( get_the_permalink( $thankyou_page ) );
+		wp_safe_redirect( get_the_permalink( $thankyou_page ) . '?id=' . $post_id );
 		die;
 	}
 

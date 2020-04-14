@@ -128,3 +128,8 @@ function joinorlogin_func ( $atts ) {
 	return $out;
 	
 }
+
+add_shortcode( 'covid_response_submitted_url', 'covid_response_submitted_url_func' );
+function covid_response_submitted_url_func( $atts ) {
+	return isset( $_GET['id'] ) && is_numeric( $_GET['id'] )? get_permalink( $_GET['id'] ) : '';
+}
