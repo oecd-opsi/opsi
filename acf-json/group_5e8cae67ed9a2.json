@@ -389,10 +389,10 @@
                     "esc_html": 0
                 },
                 {
-                    "key": "field_5e8cb9f526c67",
+                    "key": "field_5e95e4293128c",
                     "label": "Upload Image(s)",
                     "name": "upload_images",
-                    "type": "gallery",
+                    "type": "repeater",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -402,25 +402,49 @@
                         "id": ""
                     },
                     "display_order": "",
-                    "return_format": "array",
-                    "preview_size": "medium",
-                    "insert": "append",
-                    "library": "uploadedTo",
-                    "min": "",
-                    "max": "",
-                    "min_width": "",
-                    "min_height": "",
-                    "min_size": "",
-                    "max_width": "",
-                    "max_height": "",
-                    "max_size": "",
-                    "mime_types": ".jpg,.jpeg,.png"
+                    "acfe_permissions": "",
+                    "acfe_repeater_stylised_button": 0,
+                    "collapsed": "field_5e95e46c3128d",
+                    "min": 0,
+                    "max": 0,
+                    "layout": "table",
+                    "button_label": "Add image",
+                    "sub_fields": [
+                        {
+                            "key": "field_5e95e46c3128d",
+                            "label": "Image",
+                            "name": "image",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "display_order": "",
+                            "acfe_permissions": "",
+                            "acfe_uploader": "basic",
+                            "acfe_thumbnail": 0,
+                            "return_format": "array",
+                            "preview_size": "medium",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": ".jpg,.jpeg,.png"
+                        }
+                    ]
                 },
                 {
-                    "key": "field_5e8cba6f26c68",
+                    "key": "field_5e95e889e7e53",
                     "label": "Upload File(s)",
                     "name": "upload_files",
-                    "type": "gallery",
+                    "type": "repeater",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -430,19 +454,37 @@
                         "id": ""
                     },
                     "display_order": "",
-                    "return_format": "array",
-                    "preview_size": "medium",
-                    "insert": "append",
-                    "library": "uploadedTo",
-                    "min": "",
-                    "max": "",
-                    "min_width": "",
-                    "min_height": "",
-                    "min_size": "",
-                    "max_width": "",
-                    "max_height": "",
-                    "max_size": "",
-                    "mime_types": ".pdf,.doc,.docx,.ppt.,.pptx.,.odt,.xls,.xlsx,.txt,.mp3,.m4a,.ogg,.wav"
+                    "acfe_permissions": "",
+                    "acfe_repeater_stylised_button": 0,
+                    "collapsed": "",
+                    "min": 0,
+                    "max": 0,
+                    "layout": "table",
+                    "button_label": "Add file",
+                    "sub_fields": [
+                        {
+                            "key": "field_5e95e89ae7e54",
+                            "label": "File",
+                            "name": "file",
+                            "type": "file",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "display_order": "",
+                            "acfe_permissions": "",
+                            "acfe_uploader": "basic",
+                            "return_format": "array",
+                            "library": "uploadedTo",
+                            "min_size": "",
+                            "max_size": "",
+                            "mime_types": ".pdf,.doc,.docx,.ppt.,.pptx.,.odt,.xls,.xlsx,.txt,.mp3,.m4a,.ogg,.wav"
+                        }
+                    ]
                 },
                 {
                     "key": "field_5e8cbaa326c69",
@@ -557,5 +599,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1586880026
+    "modified": 1586884102
 }

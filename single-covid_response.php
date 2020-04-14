@@ -44,19 +44,19 @@
 		<div class="col-md-9">
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-				<?php if ( isset( $upload_images[0] ) ) { ?>
+				<?php if ( isset( $upload_images[0]['image'] ) ) { ?>
 
 
-				<div class="single_img_wrap <?php echo (!isset( $upload_images[0] ) ? 'noimg' : ''); ?>">
+				<div class="single_img_wrap <?php echo (!isset( $upload_images[0]['image'] ) ? 'noimg' : ''); ?>">
                 <?php
 
 					echo '
-					<a href="' . $upload_images[0]['sizes']['large'] . '" title="' . the_title_attribute('echo=0') . '" class="featuredimglink fancybox" >';
-					echo '<img src="'.$upload_images[0]['sizes']['blog'].'" alt="'.$upload_images[0]['title'].'" width="'. $upload_images[0]['sizes']['blog-width'] .'" height="'. $upload_images[0]['sizes']['blog-height'] .'"" />';
+					<a href="' . $upload_images[0]['image']['sizes']['large'] . '" title="' . the_title_attribute('echo=0') . '" class="featuredimglink fancybox" >';
+					echo '<img src="'.$upload_images[0]['image']['sizes']['blog'].'" alt="'.$upload_images[0]['image']['title'].'" width="'. $upload_images[0]['image']['sizes']['blog-width'] .'" height="'. $upload_images[0]['image']['sizes']['blog-height'] .'"" />';
 					echo '</a>';
 
-					if ($upload_images[0]['caption'] != '') {
-						echo '<p>'. $upload_images[0]['caption'] .'</p>';
+					if ($upload_images[0]['image']['caption'] != '') {
+						echo '<p>'. $upload_images[0]['image']['caption'] .'</p>';
 					}
 					echo ( get_field('hide_social_sharing') === true ? '' : wpfai_social() );
                 ?>
@@ -64,7 +64,7 @@
 				<?php } ?>
 
 				<?php
-					if ( !isset( $upload_images[0] ) ) { ?>
+					if ( !isset( $upload_images[0]['image'] ) ) { ?>
 
 						<div class="social_sharing_wrap pull-right">
 							<?php echo ( get_field('hide_social_sharing') === true ? '' : wpfai_social() ); ?>
@@ -222,8 +222,8 @@
 							$g = 0;
 							foreach ( $upload_images as $upimg ) {
 
-								echo '<a href="' . $upimg['sizes']['large'] . '" title="'.$upimg['title'].'" class="featuredimglinked fancybox" data-fancybox="gallery" >';
-								echo '<img src="'.$upimg['sizes']['tiny'].'" alt="'.$upimg['title'].'" width="'. $upimg['sizes']['tiny-width'] .'" height="'. $upimg['sizes']['tiny-height'] .'"" />';
+								echo '<a href="' . $upimg['image']['sizes']['large'] . '" title="'.$upimg['image']['title'].'" class="featuredimglinked fancybox" data-fancybox="gallery" >';
+								echo '<img src="'.$upimg['image']['sizes']['tiny'].'" alt="'.$upimg['image']['title'].'" width="'. $upimg['image']['sizes']['tiny-width'] .'" height="'. $upimg['image']['sizes']['tiny-height'] .'"" />';
 								echo '</a>';
 
 
@@ -248,15 +248,15 @@
 
 							foreach ( $upload_files as $file ) {
 								$icon  = '<i class="fa fa-file-archive-o" aria-hidden="true"></i>';
-								if ( $file['subtype'] = 'pdf' ) {
+								if ( $file['file']['subtype'] = 'pdf' ) {
 									$icon  = '<i class="fa fa-file-pdf-o" aria-hidden="true"></i>';
 								}
 
 								echo '
 								<li>
-									<a href="' . $file['url'] . '" title="'.$file['title'].'" target="_blank" >
-										'. $icon .' '.$file['title'].'
-									</a><small class="help-block">'. $file['description'] .'</small>
+									<a href="' . $file['file']['url'] . '" title="'.$file['file']['title'].'" target="_blank" >
+										'. $icon .' '.$file['file']['title'].'
+									</a><small class="help-block">'. $file['file']['description'] .'</small>
 								</li>
 								';
 

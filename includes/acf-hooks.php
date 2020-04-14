@@ -239,7 +239,7 @@ function opsi_acf_save_post_covid_response( $post_id ) {
 	// set the featured image
 	$upload_images = $material['upload_images'];
 	if ( !empty( $upload_images ) ) {
-		set_post_thumbnail( $post_id, $upload_images[0]['ID'] );
+		set_post_thumbnail( $post_id, $upload_images[0]['image']['ID'] );
 	}
 
 	// Send submission to user via email
@@ -265,8 +265,8 @@ function opsi_acf_save_post_covid_response( $post_id ) {
 				'field_5e8cc0495ea87', // email_public
 			],
 			'materials_and_submission' => [
-				'field_5e8cb9f526c67', // upload_images
-				'field_5e8cba6f26c68', // upload_files
+				'field_5e95e4293128c', // upload_images
+				'field_5e95e889e7e53', // upload_files
 				'field_5e8cbaa326c69', // register_for_newsletter
 			],
 		];
@@ -298,14 +298,32 @@ function opsi_acf_save_post_covid_response( $post_id ) {
 							break;
 						case 'gallery':
 							$body .= '<p>';
-							foreach ( $value as $term ) {
-								$body .= $term['url'];
+							foreach ( $value as $image ) {
+								$body .= $image['url'];
 								$body .= '<br>';
 							}
 							$body .= '</p>';
 							break;
 						case 'textarea':
 							$body .= $value;
+							break;
+						case 'repeater':
+							if ( isset( $value[0]['image'] ) ) {
+								$body .= '<p>';
+								foreach ( $value as $image ) {
+									$body .= $image['image']['url'];
+									$body .= '<br>';
+								}
+								$body .= '</p>';
+							}
+							if ( isset( $value[0]['file'] ) ) {
+								$body .= '<p>';
+								foreach ( $value as $file ) {
+									$body .= $file['file']['url'];
+									$body .= '<br>';
+								}
+								$body .= '</p>';
+							}
 							break;
 						case 'text':
 						case 'url':
