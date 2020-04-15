@@ -3843,15 +3843,23 @@ article.bp_register .mc4wp-checkbox-buddypress {
 }
 
 /* COVID response */
+.bpmts-moderation-button-wrap {
+    float: right;
+    display: inline-block;
+}
 .bpmts-report-button {
-  background: red;
-  color: #fff;
-  padding: 8px 16px;
+    color: red;
+    padding: 8px 16px;
+}
+.bpmts-report-button:before {
+    content: '\f024';
+    font-family: 'FontAwesome';
+    padding-right: 8px;
 }
 .bpmts-report-button:hover {
-  color: #fff;
-  text-decoration: none;
-  background: brown;
+    color: #fff;
+    text-decoration: none;
+    background: red;
 }
 
 .entry-content .bpmts-moderation-button-wrap {
@@ -3860,6 +3868,9 @@ article.bp_register .mc4wp-checkbox-buddypress {
 .covid-banner {
     margin-bottom: 20px;
 }
-.covid-export-button {
+.post-type-archive-covid_response .covid_response {
     margin-bottom: 40px;
+}
+.covid-export-button {
+    margin-bottom: 50px;
 }
