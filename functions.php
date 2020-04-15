@@ -2917,12 +2917,21 @@ function count_posts_in_term( $taxonomy, $term, $postType = 'post' ) {
 	return $query->found_posts;
 }
 
-// Edit report button label
-function report_btn_label( $button, $args ) {
-	$button = str_replace( 'Report', 'Flag as inappropriate', $button );
-	return $button;
+// Change labels on "Flag as inappropriate" form
+add_filter( 'gettext', 'opsi_bpmts_filter_gettext', 10, 3 );
+function opsi_bpmts_filter_gettext( $translated, $original, $domain ) {
+	if ( 'buddypress-moderation-tools' == $domain ) {
+		switch ( $translated ) {
+			case "Content: ":
+				$translated = 'In what way is this inappropriate?';
+				break;
+			case 'Report':
+				$translated = 'Flag as inappropriate';
+
+		}
+	}
+	return $translated;
 }
-add_filter( 'bpmts_report_button', 'report_btn_label', 20, 2 );
 
 // Force posts per page for Covid Responses archive
 function set_posts_per_page_for_covid_responses( $query ) {
