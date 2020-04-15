@@ -610,16 +610,16 @@ function get_textarea_acf_fields_by_group_key( $group_key, $skip = false ) {
 
 }
 
-function get_options_acf_fields_by_group_key( ) {
+function get_options_acf_fields_by_group_key( $group, $class ) {
 
 	$out = '';
 
-	$all_acf_fields = acf_get_fields( 'group_597ebdb66a7e1' );
+	$all_acf_fields = acf_get_fields( $group );
 
 	foreach( $all_acf_fields as $acf_options ) {
 
 
-		if ( $acf_options['wrapper']['class'] == 'csform_example' ) {
+		if ( $acf_options['wrapper']['class'] == $class ) {
 
 		// echo '<pre>'.print_r(get_field( $acf_options['name'], 'option' ), true).'</pre>';
 			$out .= '

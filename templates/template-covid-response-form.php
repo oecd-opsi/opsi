@@ -69,7 +69,7 @@ if ( $layout != 'fullpage' && is_active_sidebar( 'sidebar' ) ) {
 		<?php // comments_template(); ?>
 	<?php endwhile; ?>
 
-	<?php echo get_options_acf_fields_by_group_key(); ?>
+	<?php echo get_options_acf_fields_by_group_key( 'group_597ebdb66a7e1', 'covid_form_example' ); ?>
 
 </div>
 

@@ -80,7 +80,7 @@
                     "label": "What is the innovative response?",
                     "name": "innovative_response_description",
                     "type": "textarea",
-                    "instructions": "Describe the key aspects. What is important to know about it?",
+                    "instructions": "<p>Describe the key aspects. What is important to know about it?<\/p>\r\n\r\n<p><a data-fancybox data-src=\"#description_of_innovative_response_sample\" data-options='{\"touch\" : false}' href=\"javascript:;\">Click here for an example<\/a><\/p>",
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -89,11 +89,13 @@
                         "id": ""
                     },
                     "display_order": "",
+                    "acfe_permissions": "",
                     "default_value": "",
                     "placeholder": "",
                     "maxlength": 2000,
                     "rows": 16,
-                    "new_lines": ""
+                    "new_lines": "",
+                    "acfe_textarea_code": 0
                 },
                 {
                     "key": "field_5e8cb127d7d1a",
@@ -132,7 +134,7 @@
                     "label": "What specific issue is this solution intended to address? What is the anticipated or expected impact?",
                     "name": "specific_issue_addressed",
                     "type": "textarea",
-                    "instructions": "",
+                    "instructions": "<p><a data-fancybox data-src=\"#specific_issue_addressed_by_innovative_response_sample\" data-options='{\"touch\" : false}' href=\"javascript:;\">Click here for an example<\/a><\/p>",
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -154,7 +156,7 @@
                     "label": "Give the innovative response a short title",
                     "name": "innovative_response_short_title",
                     "type": "text",
-                    "instructions": "Something that others can quickly scan to see if it is relevant to them",
+                    "instructions": "<p>Something that others can quickly scan to see if it is relevant to them.<\/p>\r\n\r\n<p><a data-fancybox data-src=\"#title_of_innovative_response_sample\" data-options='{\"touch\" : false}' href=\"javascript:;\">Click here for an example<\/a><\/p>",
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -163,6 +165,7 @@
                         "id": ""
                     },
                     "display_order": "",
+                    "acfe_permissions": "",
                     "default_value": "",
                     "placeholder": "",
                     "prepend": "",
@@ -194,7 +197,7 @@
                     "label": "Potential issues",
                     "name": "potential_issues",
                     "type": "textarea",
-                    "instructions": "What possible issues are you anticipating or what might need to be tweaked\/iterated later? Or, is there something you need from others?",
+                    "instructions": "<p>What possible issues are you anticipating or what might need to be tweaked\/iterated later? Or, is there something you need from others?<\/p>\r\n\r\n<p><a data-fancybox data-src=\"#potential_issues_anticipated_by_innovative_response_sample\" data-options='{\"touch\" : false}' href=\"javascript:;\">Click here for an example<\/a><\/p>",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -203,11 +206,13 @@
                         "id": ""
                     },
                     "display_order": "",
+                    "acfe_permissions": "",
                     "default_value": "",
                     "placeholder": "",
                     "maxlength": 1000,
                     "rows": 8,
-                    "new_lines": ""
+                    "new_lines": "",
+                    "acfe_textarea_code": 0
                 },
                 {
                     "key": "field_5e8cb9249bd48",
@@ -599,5 +604,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1586884102
+    "modified": 1586959015
 }

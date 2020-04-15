@@ -488,7 +488,7 @@ add_filter( 'acf/load_field/key=field_5cff4295a4f99', 'bs_case_study_form_submis
       <?php // comments_template(); ?>
       <?php endwhile; ?>
 
-	  <?php echo get_options_acf_fields_by_group_key(); ?>
+	  <?php echo get_options_acf_fields_by_group_key( 'group_597ebdb66a7e1', 'csform_example' ); ?>
 
     </div>
 
