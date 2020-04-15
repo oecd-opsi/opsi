@@ -219,7 +219,7 @@
 			          $export_url = get_field( 'export_covid_responses_url', 'option');
 			          if ( ! empty( $export_url ) ) {
 				          ?>
-				          <a class="button btn btn-default btn-block big covid-export-button" href="<?php echo $export_url; ?>"><?php echo __( 'Export All Data', 'opsi' ); ?></a>
+				          <a class="button btn btn-default btn-block big covid-export-button" href="<?php echo $export_url . '&time=' . time(); ?>"><?php echo __( 'Export All Data', 'opsi' ); ?></a>
 				          <?php
 			          }
 			          ?>
