@@ -307,18 +307,6 @@
         </div>
       </div>
 
-			<?php if ( !is_user_logged_in() ) { ?>
-			<div class="cs_sidebar_wrap">
-				<div class="row">
-					<div class="col-md-12">
-						<?php echo do_shortcode('[joinorlogin]'); ?>
-					</div>
-				</div>
-			</div>
-			<?php } ?>
-
-
-
 		</div>
 	</div>
 	<?php endwhile; ?>
