@@ -2919,11 +2919,15 @@ function count_posts_in_term( $taxonomy, $term, $postType = 'post' ) {
 
 // Edit report button label
 function report_btn_label( $button, $args ) {
-
 	$button = str_replace( 'Report', 'Flag as inappropriate', $button );
-
 	return $button;
-
 }
-
 add_filter( 'bpmts_report_button', 'report_btn_label', 20, 2 );
+
+// Force posts per page for Covid Responses archive
+function set_posts_per_page_for_covid_responses( $query ) {
+	if ( ! is_admin() && $query->is_main_query() && is_post_type_archive( 'covid_response' ) ) {
+		$query->set( 'posts_per_page', 25 );
+	}
+}
+add_action( 'pre_get_posts', 'set_posts_per_page_for_covid_responses' );
