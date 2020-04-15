@@ -377,9 +377,6 @@ h4.repeater_title {
 	font-size: 32px;
 	margin-bottom: 40px;
 }
-.stepform .acf-form-fields>.acf-field-group.stepgroup>.acf-label:first-child {
-    margin-top: 40px;
-}
 .stepform .acf-form-fields>.acf-field {
 	padding: 0;
 }
@@ -3843,6 +3840,18 @@ article.bp_register .mc4wp-checkbox-buddypress {
 }
 
 /* COVID response */
+.covid-banner {
+    margin-bottom: 20px;
+}
+#covid-response-form h1 {
+    margin-top: 0;
+}
+.post-type-archive-covid_response .covid_response {
+    margin-bottom: 40px;
+}
+.covid-export-button {
+    margin-bottom: 50px;
+}
 .bpmts-moderation-button-wrap {
     float: right;
     display: inline-block;
@@ -3861,16 +3870,6 @@ article.bp_register .mc4wp-checkbox-buddypress {
     text-decoration: none;
     background: red;
 }
-
 .entry-content .bpmts-moderation-button-wrap {
   display: none;
-}
-.covid-banner {
-    margin-bottom: 20px;
-}
-.post-type-archive-covid_response .covid_response {
-    margin-bottom: 40px;
-}
-.covid-export-button {
-    margin-bottom: 50px;
 }
