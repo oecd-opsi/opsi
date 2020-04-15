@@ -1,6 +1,6 @@
 {
     "key": "group_5b4391b7d6b66",
-    "title": "Innovation (case Study) badges taxonomy additional fields",
+    "title": "Innovation (case study and response) badges taxonomy additional fields",
     "fields": [
         {
             "key": "field_5b4391d78df5f",
@@ -38,6 +38,13 @@
                 "operator": "==",
                 "value": "innovation-badge"
             }
+        ],
+        [
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "response-badge"
+            }
         ]
     ],
     "menu_order": 0,
@@ -48,5 +55,13 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1531154956
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_permissions": "",
+    "acfe_form": 0,
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1586438297
 }

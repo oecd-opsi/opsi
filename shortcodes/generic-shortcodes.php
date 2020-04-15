@@ -2,13 +2,27 @@
 
 add_shortcode( 'case_study_steps_finish', 'case_study_steps_finish_func' );
 function case_study_steps_finish_func ( $atts ) {
-	
-	$acf_get_fields = acf_get_fields( 'group_5ae729d53fd82' );
-	
+	return form_steps_finish_shortcode( 'group_5ae729d53fd82' );
+}
+
+add_shortcode( 'covid_response_steps_finish', 'covid_response_steps_finish_func' );
+function covid_response_steps_finish_func ( $atts ) {
+	return form_steps_finish_shortcode( 'group_5e8cae67ed9a2' );
+}
+
+function form_steps_finish_shortcode( $group_id ) {
+
+	$acf_get_fields = acf_get_fields( $group_id );
+
 	$out = '<ul id="acf_steps">';
 	
 	$i = 0;
 	foreach ( $acf_get_fields as $group_field ) {
+
+		// Do not show hidden groups
+		if ( strstr( $group_field['wrapper']['class'], 'hidden' ) ) {
+			continue;
+		}
 		
 		$out .= '
 			<li class="form-step removecursor">
@@ -113,4 +127,9 @@ function joinorlogin_func ( $atts ) {
 	
 	return $out;
 	
+}
+
+add_shortcode( 'covid_response_submitted_url', 'covid_response_submitted_url_func' );
+function covid_response_submitted_url_func( $atts ) {
+	return isset( $_GET['id'] ) && is_numeric( $_GET['id'] )? get_permalink( $_GET['id'] ) : '';
 }

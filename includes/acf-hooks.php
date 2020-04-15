@@ -17,26 +17,24 @@ if( function_exists('acf_add_options_page') ) {
 
 		global $post;
 
-		ob_start();
-
 		if( have_rows( 'row', $post->ID ) ) {
+
+			ob_start();
 
 			// loop through the rows of data
 			while ( have_rows( 'row', $post->ID ) ) {
 
 				$row = the_row();
 
-
-
 				if( have_rows('row_content') ) {
 					?>
 					<div class="row">
 					  <?php
 					  // loop through the rows of data
-					  while ( have_rows('row_content', $post->ID) ) {
+					  while ( have_rows('row_content') ) {
 						the_row( );
 
-						get_template_part( '/blocks/'.get_row_layout( ) ); // fails silently
+						get_template_part( '/blocks/'.get_row_layout() ); // fails silently
 
 					  }
 					  ?>
@@ -46,15 +44,11 @@ if( function_exists('acf_add_options_page') ) {
 
 			}
 
-		} else {
+			$content .= '<div class="clear clearfix"></div>'.ob_get_contents();
 
-			return $content;
+			ob_end_clean();
 
 		}
-
-		$content .= '<div class="clear clearfix"></div>'.ob_get_contents();
-
-		ob_end_clean();
 
 		return $content;
 	}
@@ -103,6 +97,20 @@ function nitro_case_study_form_first_page ( $field ) {
 	if ( !is_admin() && !empty( $case_study_form_page ) && is_page( $case_study_form_page ) ) {
 		$field['label'] 	= '';
 		$field['message'] 	= apply_filters( 'the_content', get_post_field( 'post_content', get_field( 'case_study_form_first_page_open_gov', 'option' ) ) );
+	}
+
+	return $field;
+}
+
+add_filter( "acf/load_field/key=field_5e8caf4dd7d17", 'nitro_covid_response_form_first_page' );
+function nitro_covid_response_form_first_page ( $field ) {
+
+	// form page
+	$covid_response_form_page = get_field( 'covid_response_form_page', 'option' );
+
+	if ( !is_admin() && ! empty( $covid_response_form_page ) && is_page( $covid_response_form_page ) ) {
+		$field['label']   = '';
+		$field['message'] = apply_filters( 'the_content', get_post_field( 'post_content', get_field( 'covid_response_form_first_page', 'option' ) ) );
 	}
 
 	return $field;
@@ -166,8 +174,8 @@ function opsi_acf_counter_filter($display) {
 }
 
 // manipulate the case study AFTER it has been saved
-add_action('acf/save_post', 'opsi_acf_save_post', 11);
-function opsi_acf_save_post( $post_id ) {
+add_action('acf/save_post', 'opsi_acf_save_post_case_study', 11);
+function opsi_acf_save_post_case_study( $post_id ) {
 
 	if ( get_post_type( $post_id ) != 'case' ) {
 		return;
@@ -187,7 +195,7 @@ function opsi_acf_save_post( $post_id ) {
 
 	wp_update_post($content);
 
-	// set the features image
+	// set the featured image
 	$material = get_field( 'materials_&_short_explanation', $post_id );
 	$photo_and_video = $material['photo_and_video'];
 	$upload_images = $photo_and_video['upload_images'];
@@ -197,30 +205,167 @@ function opsi_acf_save_post( $post_id ) {
 	}
 
 	// subscribe user on MailChimp if radio button is set
-
 	$wants_to_subscribe = get_field( 'questionnaire_feedback_miscellaneous_newsletter_register', $post_id );
-
-	if ( class_exists( 'MC4WP_MailChimp') && $wants_to_subscribe == 'yes' ) {
-
-		$MC4WP_MailChimp 		= new MC4WP_MailChimp();
-
-		$subscriber['status'] 	= 'subscribed';
-		$list_id 				= '8445d592ef';
+	if ( $wants_to_subscribe == 'yes' ) {
 		$post_author_id 		= get_post_field( 'post_author', $post_id );
 		$email_address 			= get_the_author_meta( 'user_email', $post_author_id );
-
-		$MC4WP_MailChimp->list_subscribe( $list_id, $email_address, $subscriber );
-
-
+		opsi_subscribe_to_mailchimp( $email_address );
 	}
-
 
 }
 
+// manipulate the Covid Response AFTER it has been saved
+add_action('acf/save_post', 'opsi_acf_save_post_covid_response', 20 );
+function opsi_acf_save_post_covid_response( $post_id ) {
 
-// redirect to the proper page
+	if ( get_post_type( $post_id ) != 'covid_response' ) {
+		return;
+	}
+
+	// get data
+	$info     = get_field( 'information_about_the_response', $post_id );
+	$material = get_field( 'materials_and_submission', $post_id );
+	$title    = ( empty( $info['innovative_response_short_title'] ) ? __( 'Untitled Covid Response', 'opsi' ) : $info['innovative_response_short_title'] );
+
+	// set title
+	$content = array(
+		'ID'           => $post_id,
+		'post_title'   => $title,
+		'post_content' => '',
+		'post_name'    => sanitize_title( $title ),
+	);
+	wp_update_post( $content );
+
+	// set the featured image
+	$upload_images = $material['upload_images'];
+	if ( !empty( $upload_images ) ) {
+		set_post_thumbnail( $post_id, $upload_images[0]['image']['ID'] );
+	}
+
+	// Send submission to user via email
+	if ( ! is_admin() ) {
+		$headers = array( 'Content-Type: text/html; charset=UTF-8' );
+		$permalink = get_permalink( $post_id );
+		$body = '<p>' . sprintf( __( 'Thank you for submitting your Covid-19 Innovative Response to OPSI. Your response is now live on the OPSI website at %s.', 'opsi' ), "<a href='$permalink'>$permalink</a>" ) . '</p>';
+		$body .= '<p>' . __( 'Please find below a recap of the data submitted', 'opsi' ) . '</p>';
+
+		$field_groups = [
+			'information_about_the_response' => [
+				'field_5e8cb0ccd7d19', // innovative_response_description
+				'field_5e8cb127d7d1a', // general_issues_addressed
+				'field_5e8cb19cd7d1c', // specific_issue_addressed
+				'field_5e8cb22dd7d1d', // innovative_response_short_title
+				'field_5e8cb88c9bd46', // organisations_involved
+				'field_5e8cb8fb9bd47', // potential_issues
+				'field_5e8cb9249bd48', // levels_of_government
+				'field_5e8cbf8a5ea83', // primary_url
+				'field_5e8cbfa55ea84', // other_urls
+				'field_5e8cbfd45ea85', // country
+				'field_5e8cc02b5ea86', // email
+				'field_5e8cc0495ea87', // email_public
+			],
+			'materials_and_submission' => [
+				'field_5e95e4293128c', // upload_images
+				'field_5e95e889e7e53', // upload_files
+				'field_5e8cbaa326c69', // register_for_newsletter
+			],
+		];
+
+		foreach ( $field_groups as $field_group_name => $field_group_fields ) {
+			$field_group  = get_field( $field_group_name, $post_id );
+			foreach ( $field_group_fields as $field ) {
+				$field_object = get_field_object( $field, $post_id );
+				if ( ! empty( $field_object ) ) {
+					$body  .= '<p><strong>' . $field_object['label'] . '</strong></p>';
+					$value = $field_group[ $field_object['name'] ];
+					switch ( $field_object['type'] ) {
+						case 'checkbox':
+							$body .= '<p>';
+							foreach ( $value as $subvalue ) {
+								$body .= $subvalue;
+								$body .= '<br>';
+							}
+							$body .= '</p>';
+							break;
+						case 'taxonomy':
+							$body .= '<p>';
+							$terms = wp_get_post_terms( $post_id, $field_object['taxonomy'], [ 'fields' => 'names' ] );
+							foreach ( $terms as $term ) {
+								$body .= $term;
+								$body .= '<br>';
+							}
+							$body .= '</p>';
+							break;
+						case 'gallery':
+							$body .= '<p>';
+							foreach ( $value as $image ) {
+								$body .= $image['url'];
+								$body .= '<br>';
+							}
+							$body .= '</p>';
+							break;
+						case 'textarea':
+							$body .= $value;
+							break;
+						case 'repeater':
+							if ( isset( $value[0]['image'] ) ) {
+								$body .= '<p>';
+								foreach ( $value as $image ) {
+									$body .= $image['image']['url'];
+									$body .= '<br>';
+								}
+								$body .= '</p>';
+							}
+							if ( isset( $value[0]['file'] ) ) {
+								$body .= '<p>';
+								foreach ( $value as $file ) {
+									$body .= $file['file']['url'];
+									$body .= '<br>';
+								}
+								$body .= '</p>';
+							}
+							break;
+						case 'text':
+						case 'url':
+						case 'email':
+						case 'radio':
+						default:
+							$body .= '<p>' . $value . '</p>';
+							break;
+					}
+				}
+			}
+		}
+
+		$body .= 'Best regards,<br>The OPSI team';
+
+		wp_mail( $info['email'], __( 'Your Covid-19 Innovative Response submission', 'opsi' ), $body, $headers );
+	}
+
+	// subscribe user on MailChimp if radio button is set
+	if ( 'yes' === $material['register_for_newsletter'] ) {
+		opsi_subscribe_to_mailchimp( $info['email'] );
+	}
+
+}
+
+// Subscribes a user to Mailchimp
+function opsi_subscribe_to_mailchimp( $email_address ) {
+	if ( class_exists( 'MC4WP_MailChimp' ) ) {
+		$args['status']  = 'subscribed';
+		$list_id         = '8445d592ef';
+		$MC4WP_MailChimp = new MC4WP_MailChimp();
+		$MC4WP_MailChimp->list_subscribe( $list_id, $email_address, $args );
+	}
+}
+
+// redirect to the proper page after Case study submission
 add_action('acf/submit_form', 'case_study_redirect_acf_submit_form', 10, 2);
 function case_study_redirect_acf_submit_form( $form, $post_id ) {
+
+	if ( 'case-study-form' !== $form['id'] ) {
+		return;
+	}
 
 	if( $_POST['csf_action'] == 'submit' ) {
 
@@ -248,11 +393,26 @@ function case_study_redirect_acf_submit_form( $form, $post_id ) {
 
 }
 
+// redirect to the proper page after Covid response submission
+add_action('acf/submit_form', 'covid_response_redirect_acf_submit_form', 10, 2);
+function covid_response_redirect_acf_submit_form( $form, $post_id ) {
 
+	if ( 'covid-response-form' !== $form['id'] ) {
+		return;
+	}
+
+	if( $_POST['csf_action'] == 'submit' ) {
+
+		$thankyou_page = get_field( 'covid_response_form_thank_you_page_submit', 'option' );
+
+		wp_safe_redirect( get_the_permalink( $thankyou_page ) . '?id=' . $post_id );
+		die;
+	}
+
+}
 
 add_filter('acf/pre_save_post' , 'case_study_save_collaborators', 10, 1 );
 function case_study_save_collaborators( $post_id ) {
-
 
 	// check if there is a case study ID
 	if ( !isset( $_POST['cs_id'] ) ) {
@@ -285,10 +445,8 @@ function case_study_save_collaborators( $post_id ) {
 		return $post_id;
 	}
 
-
 	$ids_array = $post_emails['field_5b4f3f838f021'];
 	$emails_array = $post_emails['field_5b3ffdbdd0c3d'];
-
 
 	if ( empty( $emails_array ) && empty( $ids_array ) ) {
 		return $post_id;
@@ -376,7 +534,6 @@ function case_study_load_collaborators($value, $post_id, $field) {
 		return false;
 	}
 
-
 	$no_existing_colabs = get_post_meta( $cs_id, 'collaborators', true );
 	$existing_values = array();
 	for ( $i = 0; $i <  $no_existing_colabs; $i++ ) {
@@ -453,16 +610,16 @@ function get_textarea_acf_fields_by_group_key( $group_key, $skip = false ) {
 
 }
 
-function get_options_acf_fields_by_group_key( ) {
+function get_options_acf_fields_by_group_key( $group, $class ) {
 
 	$out = '';
 
-	$all_acf_fields = acf_get_fields( 'group_597ebdb66a7e1' );
+	$all_acf_fields = acf_get_fields( $group );
 
 	foreach( $all_acf_fields as $acf_options ) {
 
 
-		if ( $acf_options['wrapper']['class'] == 'csform_example' ) {
+		if ( $acf_options['wrapper']['class'] == $class ) {
 
 		// echo '<pre>'.print_r(get_field( $acf_options['name'], 'option' ), true).'</pre>';
 			$out .= '

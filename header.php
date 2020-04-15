@@ -133,10 +133,14 @@
         <div class="container">
           <div class="row">
             <div class="col-md-12 hidden-xs">
-              <?php if (!is_front_page() && bp_is_blog_page() ) { ?>
+              <?php if (!is_front_page() && function_exists( 'bp_is_blog_page' ) && bp_is_blog_page() ) { ?>
               <div class="nitrobreadcrumb">
                 <?php // custom_breadcrumbs(); ?>
-                <?php bcn_display(); ?>
+                <?php
+                if ( function_exists( 'bcn_display' ) ) {
+	                bcn_display();
+                }
+                ?>
               </div>
               <?php } ?>
             </div>
@@ -150,11 +154,11 @@
           }
 
           // always sidebar for buddypress
-          if (!bp_is_blog_page()) {
+          if (function_exists( 'bp_is_blog_page' ) && ! bp_is_blog_page() ) {
             $layout = '';
           }
           // but not on registration
-          if ( is_page('register') || ( is_singular() && get_post_type( $post ) == 'case' ) ) {
+          if ( is_page('register') || ( is_singular() && get_post_type( $post ) == 'case' ) || ( is_singular() && get_post_type( $post ) == 'covid_response' ) ) {
             $layout = 'fullpage';
           }
 
@@ -188,7 +192,45 @@
           }
         ?>
 
-          <?php
+	        <?php
+        }
+        elseif ( get_queried_object_id() == get_field( 'covid_response_form_thank_you_page_submit', 'options' ) ) {
+        ?>
+	          <div class="single_img_wrap col-md-12 covid-banner">
+	            <img src="/wp-content/uploads/2020/04/OPSI-Covid19-Tracker-banner.jpg" class="attachment-blog size-blog wp-post-image" alt="OPSI COVID-19 Innovative Response Tracker">
+              </div>
+	        <?php
+        }
+        elseif ( is_active_sidebar( 'sidebar_covid_response_archive' ) && ( is_post_type_archive( 'covid_response' ) ) ) { ?>
+
+	          <div class="single_img_wrap col-md-12 covid-banner">
+		          <img src="/wp-content/uploads/2020/04/OPSI-Covid19-Tracker-banner.jpg" class="attachment-blog size-blog wp-post-image" alt="OPSI COVID-19 Innovative Response Tracker">
+	          </div>
+
+	          <div class="col-sm-3 col-sm-push-9">
+		          <div class="sidewrap sidewrap_csfilters">
+			          <div class="cs_sidebar_wrap">
+				          <?php echo __( 'Total responses:', 'opsi' ); ?> <span
+					          class="cs_counter"><?php echo wp_count_uncached_posts( 'covid_response' )['publish']; ?></span><br/>
+				          <?php echo __( 'Search results:', 'opsi' ); ?> <span
+					          class="cs_counter"><?php echo facetwp_display( 'counts' ); ?></span>
+			          </div>
+			          <?php
+			          $export_url = get_field( 'export_covid_responses_url', 'option');
+			          if ( ! empty( $export_url ) ) {
+				          ?>
+				          <a class="button btn btn-default btn-block big covid-export-button" href="<?php echo $export_url . '&time=' . time(); ?>"><?php echo __( 'Export All Data', 'opsi' ); ?></a>
+				          <?php
+			          }
+			          ?>
+			          <h2><?php echo __( 'Filter Responses:', 'opsi' ); ?></h2>
+			          <?php dynamic_sidebar( 'sidebar_covid_response_archive' ); ?>
+			          <button class="button btn btn-default btn-block big reset-filters-button"
+			                  onclick="FWP.reset()"><?php echo __( 'Clear All Filters', 'opsi' ); ?></button>
+		          </div>
+	          </div>
+
+		          <?php
           } elseif ( is_active_sidebar( 'sidebar' ) && $layout != 'fullpage' && !(is_home() && !is_front_page()) && bp_is_blog_page()) { ?>
             <div class="col-sm-3 col-sm-push-9"><div class="sidewrap"><?php dynamic_sidebar( 'sidebar' ); ?></div>
           <?php

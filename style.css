@@ -960,6 +960,9 @@ article.type-case .single_img_wrap  {
 .cs_pager_sorter, .cs_top_map {
 	margin-bottom: 40px;
 }
+.facetwp-page.active {
+    border: solid 1px;
+}
 .cs_top_map {
 	border: 1px solid #dddddd;
 	position: relative;
@@ -1088,6 +1091,33 @@ hr.divline {
   /* IE6-9 */
 
 }
+.post-type-archive-covid_response #map-bar .rule {
+    background: #0f1570;
+    background: #b4d5ed;
+    /* Old browsers */
+
+    background: -moz-linear-gradient(left, #b4d5ed 0%, #0f1570 100%);
+    /* FF3.6+ */
+
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, #b4d5ed), color-stop(100%, #0f1570));
+    /* Chrome,Safari4+ */
+
+    background: -webkit-linear-gradient(left, #b4d5ed 0%, #0f1570 100%);
+    /* Chrome10+,Safari5.1+ */
+
+    background: -o-linear-gradient(left, #b4d5ed 0%, #0f1570 100%);
+    /* Opera 11.10+ */
+
+    background: -ms-linear-gradient(left, #b4d5ed 0%, #0f1570 100%);
+    /* IE10+ */
+
+    background: linear-gradient(to right, #b4d5ed 0%, #0f1570 100%);
+    /* W3C */
+
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b4d5ed', endColorstr='#0f1570', GradientType=1);
+    /* IE6-9 */
+}
+
 /* line 76, /Users/ezka/Documents/WRK/opsi/less/libraries/jquery-jvectormap.less */
 #map-bar #curs {
   position: absolute;
@@ -1545,6 +1575,22 @@ nav.navbar { margin-bottom: 0px; }
   border: 1px solid #3473e7;
   color: #fff;
 }
+.post-type-archive-covid_response .btn.btn-default,
+.post-type-archive-covid_response .btn.btn-info {
+    background-color: #0f1570;
+    padding-left: 12px;
+}
+.post-type-archive-covid_response .btn.btn-default:hover,
+.post-type-archive-covid_response .btn.btn-default:active,
+.post-type-archive-covid_response .btn.btn-default:focus,
+.post-type-archive-covid_response .btn.btn-info:hover,
+.post-type-archive-covid_response .btn.btn-info:active,
+.post-type-archive-covid_response .btn.btn-info:focus {
+    color: #0f1570;
+    background-color: white;
+    border: 1px solid #0f1570;
+}
+
 .acf-button.button.button-primary {
 	padding: 8px;
 }
@@ -3796,3 +3842,47 @@ article.bp_register .mc4wp-checkbox-buddypress {
     float: right;
     width: 48%;
 }
+
+/* COVID response */
+.covid-banner {
+    margin-bottom: 20px;
+}
+#covid-response-form h1,
+.covid_response_thankyou_page h1,
+.single-covid_response h1 {
+    margin-top: 0;
+}
+.single-covid_response h2 {
+    margin-top: 20px;
+}
+.post-type-archive-covid_response .covid_response {
+    margin-bottom: 50px;
+}
+.post-type-archive-covid_response .pagination_wrap {
+    margin-bottom: 10px;
+}
+.covid-export-button {
+    margin-bottom: 50px;
+}
+.bpmts-moderation-button-wrap {
+    float: right;
+    display: inline-block;
+}
+.bpmts-report-button {
+    color: red;
+    padding: 8px 16px;
+}
+.bpmts-report-button:before {
+    content: '\f024';
+    font-family: 'FontAwesome';
+    padding-right: 8px;
+}
+.bpmts-report-button:hover {
+    color: #fff;
+    text-decoration: none;
+    background: red;
+}
+.entry-content .bpmts-moderation-button-wrap {
+  display: none;
+}
+

@@ -3,6 +3,23 @@
     "title": "Opsi Settings",
     "fields": [
         {
+            "key": "field_5e8d7f145682e",
+            "label": "Header",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
             "key": "field_597ebe1c94320",
             "label": "Top header line",
             "name": "top_header_line",
@@ -20,6 +37,23 @@
             "toolbar": "full",
             "media_upload": 1,
             "delay": 0
+        },
+        {
+            "key": "field_5e8d7daa5682b",
+            "label": "Form Pages",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_5b3d757d1841f",
@@ -56,7 +90,6 @@
                 "class": "",
                 "id": ""
             },
-            "display_order": "",
             "post_type": [
                 "page"
             ],
@@ -64,12 +97,10 @@
             "allow_null": 0,
             "multiple": 0,
             "return_format": "id",
-            "show_column": 0,
-            "show_column_weight": 1000,
             "ui": 1
         },
         {
-            "key": "field_5bc607e98d26d",
+            "key": "field_5e8d78ab880bc",
             "label": "Case Study Form Page for Open Government",
             "name": "case_study_form_page_open_gov",
             "type": "post_object",
@@ -85,16 +116,14 @@
             "post_type": [
                 "page"
             ],
-            "taxonomy": [],
+            "taxonomy": "",
             "allow_null": 0,
             "multiple": 0,
             "return_format": "id",
-            "show_column": 0,
-            "show_column_weight": 1000,
             "ui": 1
         },
         {
-            "key": "field_5bc5be4146527",
+            "key": "field_5e8d78fb880bd",
             "label": "Case Study Form First Page for Open Government",
             "name": "case_study_form_first_page_open_gov",
             "type": "post_object",
@@ -110,12 +139,10 @@
             "post_type": [
                 "page"
             ],
-            "taxonomy": [],
+            "taxonomy": "",
             "allow_null": 0,
             "multiple": 0,
             "return_format": "id",
-            "show_column": 0,
-            "show_column_weight": 1000,
             "ui": 1
         },
         {
@@ -139,6 +166,110 @@
             "multiple": 0,
             "return_format": "id",
             "ui": 1
+        },
+        {
+            "key": "field_5e8d8014ea651",
+            "label": "Covid Response Form Page",
+            "name": "covid_response_form_page",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "post_type": [
+                "page"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "id",
+            "ui": 1
+        },
+        {
+            "key": "field_5e8d8035ea652",
+            "label": "Covid Response Form First Page",
+            "name": "covid_response_form_first_page",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "post_type": [
+                "page"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "id",
+            "ui": 1
+        },
+        {
+            "key": "field_5e8d80a6ea653",
+            "label": "Covid Response Form Thank You Page (Submit)",
+            "name": "covid_response_form_thank_you_page_submit",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "post_type": [
+                "page"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "id",
+            "ui": 1
+        },
+        {
+            "key": "field_5e90681309289",
+            "label": "Export Covid Responses URL",
+            "name": "export_covid_responses_url",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "acfe_permissions": "",
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_5e8d7de85682c",
+            "label": "Collaborators",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_5b3ffd24bfca3",
@@ -242,34 +373,10 @@
             "delay": 0
         },
         {
-            "key": "field_5b43d1f9786f7",
-            "label": "Google maps API Key",
-            "name": "google_maps_api_key",
-            "type": "text",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
-            "show_column": 0,
-            "show_column_sortable": 0,
-            "show_column_weight": 1000,
-            "allow_quickedit": 0,
-            "allow_bulkedit": 0
-        },
-        {
             "key": "field_5b43572ca3310",
             "label": "Case study Form Examples",
-            "name": "case_study_form_example",
-            "type": "divider",
+            "name": "",
+            "type": "tab",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -278,8 +385,9 @@
                 "class": "",
                 "id": ""
             },
-            "custom_css": "",
-            "font_size": 14
+            "display_order": "",
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_5b435749a3311",
@@ -511,10 +619,10 @@
             "delay": 0
         },
         {
-            "key": "field_5bc9a961c8362",
+            "key": "field_5e8d79ac880be",
             "label": "Open Gov Case study Form Examples",
-            "name": "case_study_form_example_copy",
-            "type": "divider",
+            "name": "",
+            "type": "tab",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -524,11 +632,11 @@
                 "id": ""
             },
             "display_order": "",
-            "custom_css": "",
-            "font_size": 14
+            "placement": "top",
+            "endpoint": 0
         },
         {
-            "key": "field_5bc9a9bdc8363",
+            "key": "field_5e8d79df880bf",
             "label": "Open Gov Executive Summary Example",
             "name": "executive_summary_example_open_gov",
             "type": "wysiwyg",
@@ -548,7 +656,7 @@
             "delay": 0
         },
         {
-            "key": "field_5bc9a9d9c8364",
+            "key": "field_5e8d7a12880c0",
             "label": "Open Gov Innovation description sample",
             "name": "innovation_description_sample_open_gov",
             "type": "wysiwyg",
@@ -568,7 +676,7 @@
             "delay": 0
         },
         {
-            "key": "field_5bc9a9f5c8365",
+            "key": "field_5e8d7a3b880c1",
             "label": "Open Gov What Makes Your Project Innovative Sample",
             "name": "what_makes_your_project_innovative_sample_open_gov",
             "type": "wysiwyg",
@@ -588,7 +696,7 @@
             "delay": 0
         },
         {
-            "key": "field_5bc9aa09c8366",
+            "key": "field_5e8d7a5e880c2",
             "label": "Open Gov Innovation status sample",
             "name": "innovation_status_sample_open_gov",
             "type": "wysiwyg",
@@ -608,7 +716,7 @@
             "delay": 0
         },
         {
-            "key": "field_5bc9aa18c8367",
+            "key": "field_5e8d7a7e880c3",
             "label": "Open Gov Collaboration and partnerships description sample",
             "name": "collaboration_and_partnerships_description_sample_open_gov",
             "type": "wysiwyg",
@@ -628,7 +736,7 @@
             "delay": 0
         },
         {
-            "key": "field_5bc9aa2ec8368",
+            "key": "field_5e8d7aa9880c4",
             "label": "Open Gov Users, stakeholders and beneficiaries sample",
             "name": "users_stakeholders_and_beneficiaries_sample_open_gov",
             "type": "wysiwyg",
@@ -648,7 +756,7 @@
             "delay": 0
         },
         {
-            "key": "field_5bc9aa42c8369",
+            "key": "field_5e8d7ac3880c5",
             "label": "Open Gov Results, outcomes and impact sample",
             "name": "results_outcomes_and_impact_sample_open_gov",
             "type": "wysiwyg",
@@ -668,7 +776,7 @@
             "delay": 0
         },
         {
-            "key": "field_5bc9aa52c836a",
+            "key": "field_5e8d7add880c6",
             "label": "Open Gov Challenges sample",
             "name": "challenges_sample_open_gov",
             "type": "wysiwyg",
@@ -688,7 +796,7 @@
             "delay": 0
         },
         {
-            "key": "field_5bc9aa5dc836b",
+            "key": "field_5e8d7af2880c7",
             "label": "Open Gov Conditions for success sample",
             "name": "conditions_for_success_sample_open_gov",
             "type": "wysiwyg",
@@ -708,7 +816,7 @@
             "delay": 0
         },
         {
-            "key": "field_5bc9aa68c836c",
+            "key": "field_5e8d7b1b880c8",
             "label": "Open Gov Replication sample",
             "name": "replication_sample_open_gov",
             "type": "wysiwyg",
@@ -728,7 +836,7 @@
             "delay": 0
         },
         {
-            "key": "field_5bc9aa78c836d",
+            "key": "field_5e8d7b37880c9",
             "label": "Open Gov Lessons learned sample",
             "name": "lessons_learned_sample_open_gov",
             "type": "wysiwyg",
@@ -748,7 +856,7 @@
             "delay": 0
         },
         {
-            "key": "field_5bc9aa85c836e",
+            "key": "field_5e8d7b52880ca",
             "label": "Open Gov Short explanation sample",
             "name": "short_explanation_sample_open_gov",
             "type": "wysiwyg",
@@ -768,10 +876,10 @@
             "delay": 0
         },
         {
-            "key": "field_5b445fc02f724",
-            "label": "Crons Options",
-            "name": "crons_options",
-            "type": "divider",
+            "key": "field_5e970cd529b10",
+            "label": "Covid Response Form Examples",
+            "name": "",
+            "type": "tab",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -780,8 +888,111 @@
                 "class": "",
                 "id": ""
             },
-            "custom_css": "",
-            "font_size": 14
+            "display_order": "",
+            "acfe_permissions": "",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5e970cf329b11",
+            "label": "Title of Innovative Response sample",
+            "name": "title_of_innovative_response_sample",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "covid_form_example",
+                "id": "title_of_innovative_response_sample"
+            },
+            "display_order": "",
+            "acfe_permissions": "",
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5e970d5429b12",
+            "label": "Description of Innovative Response sample",
+            "name": "description_of_innovative_response_sample",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "covid_form_example",
+                "id": "description_of_innovative_response_sample"
+            },
+            "display_order": "",
+            "acfe_permissions": "",
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5e970d7429b13",
+            "label": "Specific Issue addressed by Innovative Response sample",
+            "name": "specific_issue_addressed_by_innovative_response_sample",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "covid_form_example",
+                "id": "specific_issue_addressed_by_innovative_response_sample"
+            },
+            "display_order": "",
+            "acfe_permissions": "",
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5e970db329b14",
+            "label": "Potential issues anticipated by Innovative Response sample",
+            "name": "potential_issues_anticipated_by_innovative_response_sample",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "covid_form_example",
+                "id": "potential_issues_anticipated_by_innovative_response_sample"
+            },
+            "display_order": "",
+            "acfe_permissions": "",
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5b445fc02f724",
+            "label": "Crons Options",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_5b44643185841",
@@ -825,6 +1036,87 @@
             "toolbar": "full",
             "media_upload": 0,
             "delay": 0
+        },
+        {
+            "key": "field_5e8d7e505682d",
+            "label": "Google Services",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "acfe_permissions": "",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5b43d1f9786f7",
+            "label": "Google Maps API Key",
+            "name": "google_maps_api_key",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "acfe_permissions": "",
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5e8ef007798c3",
+            "label": "Google Recaptcha v2 Site key",
+            "name": "google_recaptcha_v2_site_key",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "acfe_permissions": "",
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5e8ef01f798c4",
+            "label": "Google Recaptcha v2 Secret key",
+            "name": "google_recaptcha_v2_secret_key",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "acfe_permissions": "",
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         }
     ],
     "location": [
@@ -844,5 +1136,13 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1531632678
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_permissions": "",
+    "acfe_form": 0,
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1586959671
 }

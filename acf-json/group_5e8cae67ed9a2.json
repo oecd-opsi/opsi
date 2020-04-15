@@ -1,0 +1,608 @@
+{
+    "key": "group_5e8cae67ed9a2",
+    "title": "Covid Responses",
+    "fields": [
+        {
+            "key": "field_5e8d9bef36505",
+            "label": "Submission date",
+            "name": "submission_date",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "hidden",
+                "id": ""
+            },
+            "display_order": "",
+            "display_format": "d\/m\/Y",
+            "return_format": "d\/m\/Y",
+            "first_day": 1
+        },
+        {
+            "key": "field_5e8caeb6d7d16",
+            "label": "Getting Started",
+            "name": "getting_started",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "headertitle notinform removetitle stepgroup",
+                "id": ""
+            },
+            "display_order": "",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5e8caf4dd7d17",
+                    "label": "Page ID to pull content",
+                    "name": "",
+                    "type": "message",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "message": "",
+                    "new_lines": "wpautop",
+                    "esc_html": 0
+                }
+            ]
+        },
+        {
+            "key": "field_5e8cb0c0d7d18",
+            "label": "Information about the response",
+            "name": "information_about_the_response",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "stepgroup",
+                "id": ""
+            },
+            "display_order": "",
+            "acfe_permissions": "",
+            "layout": "block",
+            "acfe_seamless_style": 0,
+            "acfe_group_modal": 0,
+            "sub_fields": [
+                {
+                    "key": "field_5e8cb0ccd7d19",
+                    "label": "What is the innovative response?",
+                    "name": "innovative_response_description",
+                    "type": "textarea",
+                    "instructions": "<p>Describe the key aspects. What is important to know about it?<\/p>\r\n\r\n<p><a data-fancybox data-src=\"#description_of_innovative_response_sample\" data-options='{\"touch\" : false}' href=\"javascript:;\">Click here for an example<\/a><\/p>",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "acfe_permissions": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": 2000,
+                    "rows": 16,
+                    "new_lines": "",
+                    "acfe_textarea_code": 0
+                },
+                {
+                    "key": "field_5e8cb127d7d1a",
+                    "label": "What general issue(s) is this addressing?",
+                    "name": "general_issues_addressed",
+                    "type": "checkbox",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "choices": {
+                        "Patient care": "Patient care",
+                        "Health and safety of responders": "Health and safety of responders",
+                        "Information and practice sharing (with public and\/or internal)": "Information and practice sharing (with public and\/or internal)",
+                        "Resource management and mobilisation": "Resource management and mobilisation",
+                        "Governance responses": "Governance responses",
+                        "Real-time data collection, sharing, and analysis": "Real-time data collection, sharing, and analysis",
+                        "Public service delivery under new circumstances": "Public service delivery under new circumstances",
+                        "Crowdsourcing solutions": "Crowdsourcing solutions",
+                        "Social effects of the crisis": "Social effects of the crisis"
+                    },
+                    "allow_custom": 1,
+                    "save_custom": 0,
+                    "default_value": [],
+                    "layout": "vertical",
+                    "toggle": 0,
+                    "return_format": "value"
+                },
+                {
+                    "key": "field_5e8cb19cd7d1c",
+                    "label": "What specific issue is this solution intended to address? What is the anticipated or expected impact?",
+                    "name": "specific_issue_addressed",
+                    "type": "textarea",
+                    "instructions": "<p><a data-fancybox data-src=\"#specific_issue_addressed_by_innovative_response_sample\" data-options='{\"touch\" : false}' href=\"javascript:;\">Click here for an example<\/a><\/p>",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "acfe_permissions": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": 2000,
+                    "rows": 16,
+                    "new_lines": "",
+                    "acfe_textarea_code": 0
+                },
+                {
+                    "key": "field_5e8cb22dd7d1d",
+                    "label": "Give the innovative response a short title",
+                    "name": "innovative_response_short_title",
+                    "type": "text",
+                    "instructions": "<p>Something that others can quickly scan to see if it is relevant to them.<\/p>\r\n\r\n<p><a data-fancybox data-src=\"#title_of_innovative_response_sample\" data-options='{\"touch\" : false}' href=\"javascript:;\">Click here for an example<\/a><\/p>",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "acfe_permissions": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": 100
+                },
+                {
+                    "key": "field_5e8cb88c9bd46",
+                    "label": "Organisations\/institutions involved (list all that play a role)",
+                    "name": "organisations_involved",
+                    "type": "textarea",
+                    "instructions": "List all that play a role",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": 500,
+                    "rows": 4,
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_5e8cb8fb9bd47",
+                    "label": "Potential issues",
+                    "name": "potential_issues",
+                    "type": "textarea",
+                    "instructions": "<p>What possible issues are you anticipating or what might need to be tweaked\/iterated later? Or, is there something you need from others?<\/p>\r\n\r\n<p><a data-fancybox data-src=\"#potential_issues_anticipated_by_innovative_response_sample\" data-options='{\"touch\" : false}' href=\"javascript:;\">Click here for an example<\/a><\/p>",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "acfe_permissions": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": 1000,
+                    "rows": 8,
+                    "new_lines": "",
+                    "acfe_textarea_code": 0
+                },
+                {
+                    "key": "field_5e8cb9249bd48",
+                    "label": "Level(s) of government",
+                    "name": "levels_of_government",
+                    "type": "checkbox",
+                    "instructions": "Please select the level(s) of government most relevant to the innovation",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "choices": {
+                        "National\/Federal government": "National\/Federal government",
+                        "Regional\/State government": "Regional\/State government",
+                        "Local government": "Local government",
+                        "International Organisation": "International Organisation",
+                        "Private Sector": "Private Sector",
+                        "Non-Profit\/Civil Society": "Non-Profit\/Civil Society"
+                    },
+                    "allow_custom": 1,
+                    "save_custom": 0,
+                    "default_value": [],
+                    "layout": "vertical",
+                    "toggle": 0,
+                    "return_format": "value"
+                },
+                {
+                    "key": "field_5e8cbf8a5ea83",
+                    "label": "Primary URL",
+                    "name": "primary_url",
+                    "type": "url",
+                    "instructions": "Link to innovation or related documentation (if available)",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "default_value": "",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_5e8cbfa55ea84",
+                    "label": "Other URLs",
+                    "name": "other_urls",
+                    "type": "url",
+                    "instructions": "Link to related documentation (if available)",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "default_value": "",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_5e8cbfd45ea85",
+                    "label": "Country",
+                    "name": "country",
+                    "type": "taxonomy",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "top_description",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "taxonomy": "country",
+                    "field_type": "select",
+                    "allow_null": 0,
+                    "add_term": 0,
+                    "save_terms": 1,
+                    "load_terms": 1,
+                    "return_format": "id",
+                    "multiple": 0
+                },
+                {
+                    "key": "field_5e8cc02b5ea86",
+                    "label": "Your e-mail",
+                    "name": "email",
+                    "type": "email",
+                    "instructions": "Will NOT be publicly visible; we will use only for questions\/clarification",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_5e8cc0495ea87",
+                    "label": "An e-mail address anyone can contact for more information",
+                    "name": "email_public",
+                    "type": "email",
+                    "instructions": "Optional; this email will be publicly visible",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "acfe_permissions": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_5e8d92b7a81c6",
+                    "label": "Back \/ Next placeholder",
+                    "name": "",
+                    "type": "message",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "removelabel submitmessage",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "message": "<div class=\"col-md-12 layout_hero_block \">\r\n<div class=\"hb_inner text-left\">\r\nYou can click on previously completed sections in the sidebar to navigate back to them in order to revise your entry. If you have any problems, please contact us at <a href=\"mailto:opsi@oecd.org\" title=\"contact OPSI\">opsi@oecd.org<\/a> (include a screenshot if possible).\r\n\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-0\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-default big gonext\" title=\"Next\" href=\"#step-2\">Next <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"><\/i><\/a> <span class=\"acf-spinner\"><\/span> <span class=\"acf-spinner\"><\/span>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
+                    "new_lines": "wpautop",
+                    "esc_html": 0
+                }
+            ]
+        },
+        {
+            "key": "field_5e8cb9cf26c66",
+            "label": "Materials & Submission",
+            "name": "materials_and_submission",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "stepgroup",
+                "id": ""
+            },
+            "display_order": "",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5e8d8ed7c42bd",
+                    "label": "",
+                    "name": "",
+                    "type": "message",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "message": "Images and other supporting materials can help others to learn from or even replicate your work. Do you have other materials you'd like to include with your submission? Please use the fields below to upload images (in jpg and png format) and other relevant documents (in .pdf, .doc, .docx, .ppt., .pptx., .odt, .xls, .xlsx, .txt, .mp3, .m4a, .ogg, .wav). You may also submit a brief video project pitch and specify up to two additional videos (insert YouTube, Vimeo URLs).",
+                    "new_lines": "wpautop",
+                    "esc_html": 0
+                },
+                {
+                    "key": "field_5e95e4293128c",
+                    "label": "Upload Image(s)",
+                    "name": "upload_images",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "acfe_permissions": "",
+                    "acfe_repeater_stylised_button": 0,
+                    "collapsed": "field_5e95e46c3128d",
+                    "min": 0,
+                    "max": 0,
+                    "layout": "table",
+                    "button_label": "Add image",
+                    "sub_fields": [
+                        {
+                            "key": "field_5e95e46c3128d",
+                            "label": "Image",
+                            "name": "image",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "display_order": "",
+                            "acfe_permissions": "",
+                            "acfe_uploader": "basic",
+                            "acfe_thumbnail": 0,
+                            "return_format": "array",
+                            "preview_size": "medium",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": ".jpg,.jpeg,.png"
+                        }
+                    ]
+                },
+                {
+                    "key": "field_5e95e889e7e53",
+                    "label": "Upload File(s)",
+                    "name": "upload_files",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "acfe_permissions": "",
+                    "acfe_repeater_stylised_button": 0,
+                    "collapsed": "",
+                    "min": 0,
+                    "max": 0,
+                    "layout": "table",
+                    "button_label": "Add file",
+                    "sub_fields": [
+                        {
+                            "key": "field_5e95e89ae7e54",
+                            "label": "File",
+                            "name": "file",
+                            "type": "file",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "display_order": "",
+                            "acfe_permissions": "",
+                            "acfe_uploader": "basic",
+                            "return_format": "array",
+                            "library": "uploadedTo",
+                            "min_size": "",
+                            "max_size": "",
+                            "mime_types": ".pdf,.doc,.docx,.ppt.,.pptx.,.odt,.xls,.xlsx,.txt,.mp3,.m4a,.ogg,.wav"
+                        }
+                    ]
+                },
+                {
+                    "key": "field_5e8cbaa326c69",
+                    "label": "Would you like to register for the OPSI newsletter on public sector innovation?",
+                    "name": "register_for_newsletter",
+                    "type": "radio",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "choices": {
+                        "yes": "Yes",
+                        "no": "No"
+                    },
+                    "allow_null": 0,
+                    "other_choice": 0,
+                    "default_value": "Yes",
+                    "layout": "horizontal",
+                    "return_format": "value",
+                    "save_other_choice": 0
+                },
+                {
+                    "key": "field_5e8ee1a22892c",
+                    "label": "",
+                    "name": "captcha",
+                    "type": "acfe_recaptcha",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "acfe_permissions": "",
+                    "version": "v2",
+                    "v2_theme": "light",
+                    "v2_size": "normal",
+                    "site_key": "",
+                    "secret_key": "",
+                    "disabled": 0,
+                    "readonly": 0,
+                    "v3_hide_logo": false
+                },
+                {
+                    "key": "field_5e8d9315a81c7",
+                    "label": "Back \/ Submit placeholder",
+                    "name": "",
+                    "type": "message",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "removelabel submitmessage",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "message": "<div class=\"col-md-12 layout_hero_block \">\r\n<div class=\"hb_inner text-left\">\r\nYou can click on previously completed sections in the sidebar to navigate back to them in order to revise your entry. If you have any problems, please contact us at <a href=\"mailto:opsi@oecd.org\" title=\"contact OPSI\">opsi@oecd.org<\/a> (include a screenshot if possible).\r\n\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-1\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-default big submitform\" id=\"submitcovidresponse\" title=\"Submit\">Submit <i class=\"fa fa-check-square-o\" aria-hidden=\"true\"><\/i><\/a> <span class=\"acf-spinner\"><\/span>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
+                    "new_lines": "wpautop",
+                    "esc_html": 0
+                },
+                {
+                    "key": "field_5e8cbaf626c6a",
+                    "label": "Disclaimer",
+                    "name": "",
+                    "type": "message",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "message": "Please note that OECD-OPSI may edit or remove content that it deems irrelevant (including pre-existing solutions or developments not specifically related to the current crisis), profane, or against OPSI’s <a href=\"https:\/\/oecd-opsi.org\/terms-of-service\/\">terms of service<\/a href=\"https:\/\/oecd-opsi.org\/privacy-policy\/\"> or <a>privacy policy<\/a>.)",
+                    "new_lines": "wpautop",
+                    "esc_html": 0
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "covid_response"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_permissions": "",
+    "acfe_form": 0,
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1586959015
+}
