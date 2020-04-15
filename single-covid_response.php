@@ -17,20 +17,15 @@ $layout      = 'fullpage';
 <div class="col-sm-<?php echo 12 - $has_sidebar; ?> <?php echo( $has_sidebar > 0 ? 'col-sm-pull-3' : '' ); ?>">
 
 	<?php while ( have_posts() ) : the_post();
-		$postid = get_the_ID();
-
+		$postid        = get_the_ID();
 		$upload_images = get_field( 'materials_and_submission_upload_images' );
 		$upload_files  = get_field( 'materials_and_submission_upload_files' );
-
-		$country = wp_get_post_terms( $postid, 'country' );
-		$iso     = false;
+		$country       = wp_get_post_terms( $postid, 'country' );
+		$iso           = false;
 		if ( $country ) {
 			$iso = get_field( 'iso_code', $country[0] );
 		}
-
-		$fields    = get_all_acf_fields_by_group_key( 'group_5e8cae67ed9a2', false );
-		$texts     = get_textarea_acf_fields_by_group_key( 'group_5e8cae67ed9a2', true );
-		$textsloop = $texts;
+		$fields = get_all_acf_fields_by_group_key( 'group_5e8cae67ed9a2', false );
 		?>
 		<div class="row">
 			<div class="col-md-9">
@@ -125,7 +120,7 @@ $layout      = 'fullpage';
 									<span class="sidebar_label"><?php echo __( 'Relevant URL(s):', 'opsi' ); ?></span>
 									<span class="strong truncate">
 								<a href="<?php echo $fields['information_about_the_response']['primary_url']['text']; ?>"
-								   title="<?php echo $fields['information_about_the_response']['innovative_response_description']['text']; ?>"
+								   title="<?php echo $fields['information_about_the_response']['innovative_response_short_title']['text']; ?>"
 								   target="_blank">
 									<?php echo $fields['information_about_the_response']['primary_url']['text']; ?>
 								</a>
@@ -147,7 +142,9 @@ $layout      = 'fullpage';
 							<?php if ( ! empty( $fields['information_about_the_response']['levels_of_government']['text'] ) ) { ?>
 								<div class="log_wrap">
 									<span class="sidebar_label"><?php echo __( 'Level(s) of government:', 'opsi' ); ?></span>
-									<?php $gov_levels = $fields['information_about_the_response']['levels_of_government']['text']; ?>
+									<?php
+									$gov_levels = $fields['information_about_the_response']['levels_of_government']['text'];
+									?>
 									<ul>
 										<?php
 										foreach ( $gov_levels as $value ) {

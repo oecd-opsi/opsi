@@ -960,6 +960,9 @@ article.type-case .single_img_wrap  {
 .cs_pager_sorter, .cs_top_map {
 	margin-bottom: 40px;
 }
+.facetwp-page.active {
+    border: solid 1px;
+}
 .cs_top_map {
 	border: 1px solid #dddddd;
 	position: relative;
@@ -1575,6 +1578,7 @@ nav.navbar { margin-bottom: 0px; }
 .post-type-archive-covid_response .btn.btn-default,
 .post-type-archive-covid_response .btn.btn-info {
     background-color: #0f1570;
+    padding-left: 12px;
 }
 .post-type-archive-covid_response .btn.btn-default:hover,
 .post-type-archive-covid_response .btn.btn-default:active,
@@ -3852,7 +3856,10 @@ article.bp_register .mc4wp-checkbox-buddypress {
     margin-top: 20px;
 }
 .post-type-archive-covid_response .covid_response {
-    margin-bottom: 40px;
+    margin-bottom: 50px;
+}
+.post-type-archive-covid_response .pagination_wrap {
+    margin-bottom: 10px;
 }
 .covid-export-button {
     margin-bottom: 50px;
@@ -3878,3 +3885,4 @@ article.bp_register .mc4wp-checkbox-buddypress {
 .entry-content .bpmts-moderation-button-wrap {
   display: none;
 }
+

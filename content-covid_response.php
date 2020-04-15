@@ -1,13 +1,13 @@
 <?php
-	if ( ! defined( 'ABSPATH' ) ) die('no direct access'); // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) die('no direct access'); // Exit if accessed directly
 
-	$country = wp_get_post_terms( get_the_ID(), 'country' );
-    $iso = get_field( 'iso_code', $country[0] );
-	$userid = get_the_author_meta('ID');
-	$owner = get_user_by( 'ID', $userid );
-    $name = function_exists( 'xprofile_get_field_data' )? xprofile_get_field_data( 'Name', $userid) : '';
-
-  ?>
+$country = wp_get_post_terms( get_the_ID(), 'country' );
+$iso     = trim( get_field( 'iso_code', $country[0] ) );
+$userid  = get_the_author_meta( 'ID' );
+$owner   = get_user_by( 'ID', $userid );
+$name    = function_exists( 'xprofile_get_field_data' ) ? xprofile_get_field_data( 'Name', $userid ) : '';
+$fields  = get_all_acf_fields_by_group_key( 'group_5e8cae67ed9a2', false );
+?>
 <div class="col-md-12 case_col">
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<div class="row">
@@ -19,9 +19,11 @@
 					<a href="<?php echo get_post_type_archive_link( 'covid_response' ); ?>?_countries=<?php echo $country[0]->slug; ?>" title="<?php echo __( 'All innovations by:', 'opsi' ); ?> <?php echo $country[0]->name; ?>" class="blacklink" >
 						<?php echo $country[0]->name; ?>
 					</a>
+					<?php if ( file_exists( get_stylesheet_directory().'/images/flags/'.$iso.'.png' ) ) {?>
 					<a href="<?php echo get_post_type_archive_link( 'covid_response' ); ?>?_countries=<?php echo $country[0]->slug; ?>">
 						<img src="<?php echo get_stylesheet_directory_uri().'/images/flags/'.$iso.'.png'; ?>" width="96" height="96" alt="<?php echo $country[0]->name; ?>" class="cs_flag" />
 					</a>
+					<?php } ?>
 				</div>
 			</div>
 		</div>
@@ -40,18 +42,6 @@
 							$tags = get_the_term_list( get_the_ID(), 'response-tag' );
 							?>
 							<?php echo $tags ?>
-							<?php if ( !empty( get_field( 'describing_the_innovation_custom_innovation_tags' ) ) ) {
-
-								$custom_tags = explode( ',', get_field( 'describing_the_innovation_custom_innovation_tags' ) );
-
-								foreach( $custom_tags as $ctag ) {
-
-									echo '<span class="custom_tag" title="'. $ctag .'">'. $ctag .'</span>';
-
-								}
-
-							}
-							?>
 						</div>
 					</div>
 
@@ -59,9 +49,8 @@
 			</div>
 			<div class="col-md-9 col-sm-8">
 				<?php
-					$information = get_field( 'information_about_the_response' );
-					if ( ! empty( $information['innovative_response_description'] ) ) { ?>
-						<p class="csp"><?php echo mb_strimwidth( $information['innovative_response_description'], 0, 500, '...' ); ?></p>
+					if ( ! empty( $fields['information_about_the_response']['innovative_response_description']['text'] ) ) { ?>
+						<p class="csp"><?php echo mb_strimwidth( $fields['information_about_the_response']['innovative_response_description']['text'], 0, 500, '...' ); ?></p>
 					<?php } ?>
 					<?php
 					echo bpmts_get_report_button( array(
