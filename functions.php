@@ -2940,3 +2940,26 @@ function set_posts_per_page_for_covid_responses( $query ) {
 	}
 }
 add_action( 'pre_get_posts', 'set_posts_per_page_for_covid_responses' );
+
+// Helper function to serialize values in export
+function opsi_export_serialize( $value ) {
+	$value = maybe_unserialize( $value );
+	if ( is_array( $value ) ) {
+		$value = implode( '|', $value );
+	}
+	return $value;
+}
+// Helper function to serialize images/files in export
+function opsi_export_serialize_media( $value ) {
+	$value = maybe_unserialize( $value );
+	if ( is_array( $value ) ) {
+		$permalinks = array_map(
+				function ( $element ) {
+					return get_permalink( $element );
+				},
+			$value
+		);
+		$value = implode( '|', $permalinks );
+	}
+	return $value;
+}
