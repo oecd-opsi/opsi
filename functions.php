@@ -2963,3 +2963,12 @@ function opsi_export_serialize_media( $value ) {
 	}
 	return $value;
 }
+
+// Helper function to add http:// prefix if missing
+function opsi_add_http( $link ) {
+	$scheme = parse_url( $link, PHP_URL_SCHEME );
+	if ( empty( $scheme ) && ! empty( $link ) ) {
+		$link = 'http://' . ltrim( $link, '/' );
+	}
+	return $link;
+}
