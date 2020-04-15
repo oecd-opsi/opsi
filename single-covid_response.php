@@ -221,6 +221,9 @@
 							<?php
 							$g = 0;
 							foreach ( $upload_images as $upimg ) {
+								if ( ! is_array( $upimg ) ) {
+									continue;
+								}
 
 								echo '<a href="' . $upimg['image']['sizes']['large'] . '" title="'.$upimg['image']['title'].'" class="featuredimglinked fancybox" data-fancybox="gallery" >';
 								echo '<img src="'.$upimg['image']['sizes']['tiny'].'" alt="'.$upimg['image']['title'].'" width="'. $upimg['image']['sizes']['tiny-width'] .'" height="'. $upimg['image']['sizes']['tiny-height'] .'"" />';
@@ -247,6 +250,10 @@
 							<?php
 
 							foreach ( $upload_files as $file ) {
+								if ( ! is_array( $file ) ) {
+									continue;
+								}
+
 								$icon  = '<i class="fa fa-file-archive-o" aria-hidden="true"></i>';
 								if ( $file['file']['subtype'] = 'pdf' ) {
 									$icon  = '<i class="fa fa-file-pdf-o" aria-hidden="true"></i>';
