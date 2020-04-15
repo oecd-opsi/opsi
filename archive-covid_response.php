@@ -79,6 +79,11 @@
 				<?php echo facetwp_display( 'pager' ); ?>
 			</div>
 		</div>
+
+		<div class="hb_inner text-left">
+			<p><strong>Disclaimer</strong></p>
+			<p>Please note that the OECD has not formally reviewed the responses and information provided and does not necessarily endorse any of the solutions included. Our objective is to share information and ideas at the maximum speed for governments to make use of it. As such, review and validation of information is limited and does not directly reflect the views or beliefs of the OECD.</p>
+		</div>
 	</div>
 </div>
 
