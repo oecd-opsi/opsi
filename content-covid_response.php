@@ -37,13 +37,7 @@
 							// get slug of taxonomy term of queried object
 							$taxonomy = get_queried_object();
 							$tax_term_slug = $taxonomy->slug;
-							if ( 'opsi' == $tax_term_slug ) {
-								$tags = get_the_term_list( get_the_ID(), 'innovation-tag' );
-							} elseif ( 'open-government' == $tax_term_slug ) {
-								$tags = get_the_term_list( get_the_ID(), 'innovation-tag-opengov' );
-							} else {
-								$tags = '';
-							}
+							$tags = get_the_term_list( get_the_ID(), 'response-tag' );
 							?>
 							<?php echo $tags ?>
 							<?php if ( !empty( get_field( 'describing_the_innovation_custom_innovation_tags' ) ) ) {
