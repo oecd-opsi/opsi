@@ -3844,8 +3844,12 @@ article.bp_register .mc4wp-checkbox-buddypress {
     margin-bottom: 20px;
 }
 #covid-response-form h1,
-.covid_response_thankyou_page h1 {
+.covid_response_thankyou_page h1,
+.single-covid_response h1 {
     margin-top: 0;
+}
+.single-covid_response h2 {
+    margin-top: 20px;
 }
 .post-type-archive-covid_response .covid_response {
     margin-bottom: 40px;
