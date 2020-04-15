@@ -3843,7 +3843,8 @@ article.bp_register .mc4wp-checkbox-buddypress {
 .covid-banner {
     margin-bottom: 20px;
 }
-#covid-response-form h1 {
+#covid-response-form h1,
+.covid_response_thankyou_page h1 {
     margin-top: 0;
 }
 .post-type-archive-covid_response .covid_response {
