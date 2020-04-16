@@ -1,4 +1,10 @@
 <?php
+
+	add_action( 'wp_head', 'opsi_add_covid_og_image' );
+	function opsi_add_covid_og_image() {
+		echo '<meta property="og:image" content="https://oecd-opsi.org/wp-content/uploads/2020/03/OPSI-Covid19wlogo.jpg" />';
+	}
+
 	get_header();
 
 	global $post;
