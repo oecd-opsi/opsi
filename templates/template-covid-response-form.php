@@ -23,7 +23,7 @@ if ( $layout != 'fullpage' && is_active_sidebar( 'sidebar' ) ) {
 	</div>
 </div>
 
-<div class="col-sm-3 dont-col-sm-push--9">
+<div class="col-sm-3 dont-col-sm-push--9 sidewrap">
 	<ul id="acf_steps">
 	</ul>
 

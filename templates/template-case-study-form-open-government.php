@@ -358,7 +358,7 @@ add_filter( 'acf/load_field/key=field_5cff4295a4f99', 'bs_case_study_form_submis
 	get_header();
 
 	?>
-	<div class="open-government-branding-container row">
+	<div class="open-government-branding-container row sidewrap">
 		<div class="col-sm-12">
 			<?php dynamic_sidebar('sidebar_case_study_open_gov_left') ?>
 		</div>

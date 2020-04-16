@@ -126,7 +126,7 @@ add_filter( 'acf/load_field/key=field_5cff4295a4f99', 'bs_case_study_form_submis
   ?>
 
 
-	<div class="col-sm-3 dont-col-sm-push--9">
+	<div class="col-sm-3 dont-col-sm-push--9 sidewrap">
 		<ul id="acf_steps">
 		</ul>
 
