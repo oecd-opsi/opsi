@@ -162,6 +162,17 @@ function nitro_case_study_form_user_organisation ( $value, $post_id, $field ) {
 	return $value;
 }
 
+// Render Covid Response textarea fields as wysiwyg on backend
+add_filter( 'acf/prepare_field/name=innovative_response_description', 'opsi_render_textarea_as_wysiwyg' );
+add_filter( 'acf/prepare_field/name=specific_issue_addressed', 'opsi_render_textarea_as_wysiwyg' );
+add_filter( 'acf/prepare_field/name=organisations_involved', 'opsi_render_textarea_as_wysiwyg' );
+add_filter( 'acf/prepare_field/name=potential_issues', 'opsi_render_textarea_as_wysiwyg' );
+function opsi_render_textarea_as_wysiwyg( $field ) {
+	if ( is_admin() && 'textarea' == $field['type'] ) {
+		$field['type'] = 'wysiwyg';
+	}
+	return $field;
+}
 
 add_filter('acf-input-counter/display', 'opsi_acf_counter_filter');
 function opsi_acf_counter_filter($display) {
