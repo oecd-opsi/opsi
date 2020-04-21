@@ -3861,6 +3861,9 @@ article.bp_register .mc4wp-checkbox-buddypress {
 .post-type-archive-covid_response .pagination_wrap {
     margin-bottom: 10px;
 }
+.covid-add-response-button {
+    margin-bottom: 20px;
+}
 .covid-export-button {
     margin-bottom: 50px;
 }

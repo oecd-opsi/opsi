@@ -216,7 +216,16 @@
 					          class="cs_counter"><?php echo facetwp_display( 'counts' ); ?></span>
 			          </div>
 			          <?php
-			          $export_url = get_field( 'export_covid_responses_url', 'option');
+			          $covid_form_page = get_field( 'covid_response_form_page', 'option' );
+			          if ( ! empty( $covid_form_page ) ) {
+				          $covid_form_page_url = get_permalink( $covid_form_page );
+				          if ( ! empty( $covid_form_page_url ) ) {
+					          ?>
+					          <a class="button btn btn-default btn-block big covid-add-response-button" href="<?php echo $covid_form_page_url; ?>"><?php echo __( 'Add a Response', 'opsi' ); ?></a>
+					          <?php
+				          }
+			          }
+			          $export_url = get_field( 'export_covid_responses_url', 'option' );
 			          if ( ! empty( $export_url ) ) {
 				          ?>
 				          <a class="button btn btn-default btn-block big covid-export-button" href="<?php echo $export_url . '&time=' . time(); ?>"><?php echo __( 'Export All Data', 'opsi' ); ?></a>
