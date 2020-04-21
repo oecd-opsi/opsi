@@ -86,10 +86,16 @@
 			</div>
 		</div>
 
+		<?php
+		$covid_disclaimer_page = get_field( 'covid_response_disclaimer_page', 'option' );
+		if ( ! empty( $covid_disclaimer_page ) ) {
+		?>
 		<div class="hb_inner text-left">
-			<p><strong>Disclaimer</strong></p>
-			<p>Please note that the OECD has not formally reviewed the responses and information provided and does not necessarily endorse any of the solutions included. Our objective is to share information and ideas at the maximum speed for governments to make use of it. As such, review and validation of information is limited and does not directly reflect the views or beliefs of the OECD.</p>
+			<?php echo get_the_content( null, false, $covid_disclaimer_page ); ?>
 		</div>
+		<?php
+		}
+		?>
 	</div>
 </div>
 
