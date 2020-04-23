@@ -166,7 +166,7 @@
             if ( is_active_sidebar( 'singleblog' ) && $layout != 'fullpage') { ?>
               <div class="col-sm-3 col-sm-push-9"><div class="sidewrap"><?php dynamic_sidebar( 'singleblog' ); ?></div></div>
             <?php }
-          } elseif ( is_active_sidebar( 'sidebar_case_study' ) && ( is_post_type_archive( 'case' ) || is_tax( 'case_type' ) || is_tax( 'innovation-tag' ) || is_tax( 'country' ) || is_tax( 'innovation-badge' ) ) ) { ?>
+          } elseif ( is_active_sidebar( 'sidebar_case_study' ) && ( is_post_type_archive( 'case' ) || is_tax( [ 'case_type', 'innovation-tag', 'country', 'innovation-badge', 'innovation-tag-opengov', 'innovation-badge-opengov'] ) ) ) { ?>
             <div class="col-sm-3 col-sm-push-9">
 				<div class="sidewrap sidewrap_csfilters">
 					<div class="cs_sidebar_wrap">
@@ -178,6 +178,23 @@
 						<?php echo __( 'Total cases:', 'opsi' ); ?> <span class="cs_counter"><?php echo $count_cases; ?></span><br />
 						<?php echo __( 'Search results:', 'opsi' ); ?> <span class="cs_counter"><?php echo facetwp_display( 'counts' ); ?></span>
 					</div>
+					<?php
+					$form_page_setting =
+						is_tax( 'case_type' ) && 'open-government' == get_queried_object()->slug ||
+						is_tax( 'innovation-tag-opengov' ) ||
+						is_tax( 'innovation-badge-opengov' ) ?
+						'case_study_form_page_open_gov' :
+						'case_study_form_page';
+					$case_study_form_page = get_field( $form_page_setting, 'option' );
+					if ( ! empty( $case_study_form_page ) ) {
+						$case_study_form_page_url = get_permalink( $case_study_form_page );
+						if ( ! empty( $case_study_form_page_url ) ) {
+						?>
+						<a class="button btn btn-default btn-block big covid-add-response-button" href="<?php echo $case_study_form_page_url; ?>"><?php echo __( 'Add an Innovation', 'opsi' ); ?></a>
+						<?php
+				        }
+			        }
+					?>
 					<h2><?php echo __( 'Filter innovations:', 'opsi' ); ?></h2>
 					<?php dynamic_sidebar( 'sidebar_case_study' ); ?>
 					<button class="button btn btn-default btn-block big reset-filters-button" onclick="FWP.reset()"><?php echo __( 'Clear All Filters', 'opsi' ); ?></button>
