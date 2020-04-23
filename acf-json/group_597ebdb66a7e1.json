@@ -100,6 +100,35 @@
             "ui": 1
         },
         {
+            "key": "field_5ea1415c87f45",
+            "label": "Case Study Disclaimer Page",
+            "name": "case_study_disclaimer_page",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "acfe_permissions": "",
+            "post_type": [
+                "page"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "allow_custom": 0,
+            "save_post_status": "publish",
+            "acfe_bidirectional": {
+                "acfe_bidirectional_enabled": "0"
+            },
+            "ui": 1
+        },
+        {
             "key": "field_5e8d78ab880bc",
             "label": "Case Study Form Page for Open Government",
             "name": "case_study_form_page_open_gov",
@@ -143,6 +172,35 @@
             "allow_null": 0,
             "multiple": 0,
             "return_format": "id",
+            "ui": 1
+        },
+        {
+            "key": "field_5ea1417287f46",
+            "label": "Case Study Disclaimer Page for Open Government",
+            "name": "case_study_disclaimer_page_open_gov",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "acfe_permissions": "",
+            "post_type": [
+                "page"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "allow_custom": 0,
+            "save_post_status": "publish",
+            "acfe_bidirectional": {
+                "acfe_bidirectional_enabled": "0"
+            },
             "ui": 1
         },
         {
@@ -1173,5 +1231,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1587490947
+    "modified": 1587626496
 }

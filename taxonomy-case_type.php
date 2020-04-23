@@ -96,6 +96,19 @@
 				<?php echo facetwp_display( 'pager' ); ?>
 			</div>
 		</div>
+
+		<?php
+		$disclaimer_setting = 'opsi' == get_queried_object()->slug ? 'case_study_disclaimer_page' : 'case_study_disclaimer_page_open_gov';
+		$case_study_disclaimer_page = get_field( $disclaimer_setting, 'option' );
+		if ( ! empty( $case_study_disclaimer_page ) ) {
+			?>
+			<div class="hb_inner text-left">
+				<?php echo get_the_content( null, false, $case_study_disclaimer_page ); ?>
+			</div>
+			<?php
+		}
+		?>
+
 	</div>
 </div>
 

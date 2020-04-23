@@ -3843,6 +3843,11 @@ article.bp_register .mc4wp-checkbox-buddypress {
     width: 48%;
 }
 
+.post-type-archive .pagination_wrap,
+.tax-case_type .pagination_wrap {
+    margin-bottom: 20px;
+}
+
 /* COVID response */
 .covid-banner {
     margin-bottom: 20px;
@@ -3857,9 +3862,6 @@ article.bp_register .mc4wp-checkbox-buddypress {
 }
 .post-type-archive-covid_response .covid_response {
     margin-bottom: 50px;
-}
-.post-type-archive-covid_response .pagination_wrap {
-    margin-bottom: 10px;
 }
 .covid-add-response-button {
     margin-bottom: 20px;
