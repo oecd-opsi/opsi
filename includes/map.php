@@ -4,10 +4,14 @@ function cs_jve_map() {
 	if ( ! (
 			is_post_type_archive( 'covid_response' ) ||
 			is_post_type_archive( 'case' ) ||
-			is_tax('case_type') ||
-			is_tax( 'innovation-tag' ) ||
-			is_tax( 'country' ) ||
-			is_tax( 'innovation-badge' )
+			is_tax([
+				'case_type',
+				'country',
+				'innovation-tag',
+				'innovation-badge',
+				'innovation-tag-opengov',
+				'innovation-badge-opengov',
+			])
 	) ) {
 		return;
 	}
