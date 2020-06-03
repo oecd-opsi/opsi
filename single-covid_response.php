@@ -21,6 +21,7 @@ $layout      = 'fullpage';
 		$upload_images = get_field( 'materials_and_submission_upload_images' );
 		$upload_files  = get_field( 'materials_and_submission_upload_files' );
 		$country       = wp_get_post_terms( $postid, 'country' );
+		$badges        = wp_get_post_terms( $postid, 'response-badge' );
 		$iso           = false;
 		if ( $country ) {
 			$iso = get_field( 'iso_code', $country[0] );
@@ -62,6 +63,27 @@ $layout      = 'fullpage';
 					<?php if ( get_field( 'hide_page_title' ) !== true ) { ?>
 						<h1 class="entry-title <?php echo( ! empty( $badges ) ? 'pull-left' : '' ); ?>"><?php the_title(); ?></h1>
 					<?php } ?>
+
+					<?php
+					if ( !empty( $badges ) ) {
+						echo '<div class="tooltips_wrap">';
+						foreach ( $badges as $badge ) {
+
+							$icon = get_field( 'icon', $badge );
+
+							echo '
+								<span class="tooltips">
+									<a href="'. get_term_link( $badge->slug, 'response-badge' ) .'" title="'. $badge->name .' '.__( 'responses', 'opsi' ) .'" target="_blank">
+										<img src="'. $icon['url'] .'" width="'. $icon['width'] .'" height="'. $icon['height'] .'" alt="'. $badge->name .'" style="max-width: 42px;" />
+									</a>
+									<span>'. $badge->name . ( $badge->description != '' ? '<br /><small>'. $badge->description : '') .'</small></span>
+								</span>';
+
+						}
+						echo '</div>';
+						echo '<div class="clearfix padding20"></div>';
+					}
+					?>
 
 					<div class="entry-content"><?php the_content(); ?></div>
 

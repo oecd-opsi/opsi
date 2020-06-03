@@ -11,6 +11,8 @@ function cs_jve_map() {
 				'innovation-badge',
 				'innovation-tag-opengov',
 				'innovation-badge-opengov',
+				'response-tag',
+				'response-badge',
 			])
 	) ) {
 		return;

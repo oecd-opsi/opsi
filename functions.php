@@ -204,7 +204,7 @@ function loadcss() {
 	wp_enqueue_style( 'bootstrap_theme' );
 	wp_enqueue_style( 'font_awesome' );
 
-	if ( is_post_type_archive( 'covid_response' ) || is_post_type_archive( 'case' ) || is_tax( 'case_type' ) || is_tax( 'innovation-tag' ) || is_tax( 'country' ) || is_tax( 'innovation-badge' ) || is_tax( 'innovation-tag-opengov' ) || is_tax( 'innovation-badge-opengov' ) ) {
+	if ( is_post_type_archive( 'covid_response' ) || is_post_type_archive( 'case' ) || is_tax( 'case_type' ) || is_tax( 'innovation-tag' ) || is_tax( 'country' ) || is_tax( 'innovation-badge' ) || is_tax( 'innovation-tag-opengov' ) || is_tax( 'innovation-badge-opengov' ) || is_tax( 'response-badge' ) || is_tax( 'response-tag' ) ) {
 		wp_register_style( 'jve_css', get_template_directory_uri() . '/css/jquery-jvectormap-2.0.3.css', array(), false, 'screen' );
 		wp_enqueue_style( 'jve_css' );
 	}
@@ -245,7 +245,7 @@ function loadjs() {
 	wp_register_script( 'steps_js', get_template_directory_uri() . '/js/jquery.steps.min.js', array( 'jquery' ) );
 	wp_enqueue_script( 'steps_js' );
 
-	if ( is_post_type_archive( 'covid_response' ) || is_post_type_archive( 'case' ) || is_tax( 'case_type' ) || is_tax( 'innovation-tag' ) || is_tax( 'country' ) || is_tax( 'innovation-badge' ) || is_tax( 'innovation-tag-opengov' ) || is_tax( 'innovation-badge-opengov' ) ) {
+	if ( is_post_type_archive( 'covid_response' ) || is_post_type_archive( 'case' ) || is_tax( 'case_type' ) || is_tax( 'innovation-tag' ) || is_tax( 'country' ) || is_tax( 'innovation-badge' ) || is_tax( 'innovation-tag-opengov' ) || is_tax( 'innovation-badge-opengov' ) || is_tax( 'response-badge' ) || is_tax( 'response-tag' ) ) {
 		// wp_register_script('google_charts_js', 'https://www.gstatic.com/charts/loader.js', array( 'jquery' ));
 		// wp_enqueue_script('google_charts_js');
 		wp_register_script( 'jve_js', get_template_directory_uri() . '/js/jquery-jvectormap-2.0.3.min.js', array( 'jquery' ) );

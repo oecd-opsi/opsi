@@ -218,7 +218,7 @@
               </div>
 	        <?php
         }
-        elseif ( is_active_sidebar( 'sidebar_covid_response_archive' ) && ( is_post_type_archive( 'covid_response' ) ) ) { ?>
+        elseif ( is_active_sidebar( 'sidebar_covid_response_archive' ) && ( is_post_type_archive( 'covid_response' ) || is_tax( [ 'response-tag', 'response-badge' ] ) ) ) { ?>
 
 	          <div class="single_img_wrap col-md-12 covid-banner">
 		          <img src="/wp-content/uploads/2020/04/OPSI-Covid19-Tracker-banner.jpg" class="attachment-blog size-blog wp-post-image" alt="OPSI COVID-19 Innovative Response Tracker">
