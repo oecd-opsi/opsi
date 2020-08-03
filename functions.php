@@ -49,7 +49,10 @@ require_once( 'includes/acf-hooks.php' );
 require_once( 'includes/collaborators.php' );
 require_once( 'includes/map.php' );
 require_once( 'includes/buddypress.php' );
-
+require_once( 'includes/redirect_whitelist.php' );
+require_once( 'includes/auth0-social-buttons.php');
+require_once( 'includes/auth0-change-password-hook.php' );
+require_once( 'includes/auth0-register-redirect.php' );
 
 /*-----------------------------------------------------------------------------------*/
 /*	Sidebars
