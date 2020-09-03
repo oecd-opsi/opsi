@@ -39,6 +39,45 @@
             "delay": 0
         },
         {
+            "key": "field_5f50f245f711f",
+            "label": "New members",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "acfe_permissions": "",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5f50f279f7120",
+            "label": "Emails to get pending user notification",
+            "name": "emails_to_get_pending_user_notification",
+            "type": "text",
+            "instructions": "Comma-separated list of addresses",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "acfe_permissions": "",
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_5e8d7daa5682b",
             "label": "Form Pages",
             "name": "",
@@ -1231,5 +1270,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1587626496
+    "modified": 1599140630
 }
