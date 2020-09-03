@@ -24,8 +24,6 @@
 
 		<form action="" name="signup_form" id="signup_form" class="standard-form" method="post" enctype="multipart/form-data">
 
-
-
 		<?php if ( 'registration-disabled' == bp_get_current_signup_step() ) : ?>
 
 			<div id="template-notices" role="alert" aria-atomic="true">

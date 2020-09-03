@@ -3837,6 +3837,16 @@ article.bp_register .mc4wp-checkbox-buddypress {
   padding-left: 52%;
 }
 
+.mc4wp-checkbox-buddypress + .error {
+  /* width: 48%; */
+  width: 43.2%; /* 48 * 0.9 */
+  margin-left: 52%;
+  background: #faa;
+  color: #a00;
+  margin-bottom: 10px;
+  padding: 6px;
+}
+
 .anr_captcha_field {
     clear: both;
     float: right;
@@ -3893,6 +3903,14 @@ article.bp_register .mc4wp-checkbox-buddypress {
 
 /* START Xfive Login Page Updates  */
 
+.page-template-template-auth0-login-page .custom-auth0-info {
+  max-width: 260px;
+  margin: 0 auto -49px;
+  text-align: center;
+  line-height: normal;
+}
+
+.page-template-template-auth0-login-page .custom-auth0-info,
 .page-template-template-auth0-login-page .auth0-login {
   /* 80 - 11 */
   padding-top: 69px;

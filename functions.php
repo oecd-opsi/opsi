@@ -1,5 +1,30 @@
 <?php
 
+function lehelmatyus_validation() {
+    global $bp;
+
+    if ( !empty( $_POST['signup_password'] ) )
+        if ( !valid_pass( $_POST['signup_password'] ) ){
+            $bp->signup->errors['signup_password'] = __( 'Your password is not strong enough. It needs to be at least 8 characters long, and must contain at least: 1 lowercase character (a-z), 1 uppercase character (A-Z), 1 number (0-9) and 1 special character (!@#..)', 'buddypress' );
+        }
+}
+add_action( 'bp_signup_validate', 'lehelmatyus_validation');
+
+function valid_pass($candidate) {
+    $r1='/[A-Z]/';  //Uppercase
+    $r2='/[a-z]/';  //lowercase
+    $r3='/[!@#$%^&*()-_=+{};:,<.>]/';  // whatever you mean by special char
+    $r4='/[0-9]/';  //numbers
+
+    if(preg_match_all($r1,$candidate, $o)<1) return FALSE;
+    if(preg_match_all($r2,$candidate, $o)<1) return FALSE;
+    if(preg_match_all($r3,$candidate, $o)<1) return FALSE;
+    if(preg_match_all($r4,$candidate, $o)<1) return FALSE;
+    if(strlen($candidate)<8) return FALSE;
+
+    return TRUE;
+}
+
 add_theme_support( 'post-thumbnails' );
 
 add_action( 'after_setup_theme', 'nitro_theme_setup' );
@@ -53,6 +78,7 @@ require_once( 'includes/redirect_whitelist.php' );
 require_once( 'includes/auth0-social-buttons.php');
 require_once( 'includes/auth0-change-password-hook.php' );
 require_once( 'includes/auth0-register-redirect.php' );
+require_once( 'includes/bp-remove-settings.php' );
 
 /*-----------------------------------------------------------------------------------*/
 /*	Sidebars

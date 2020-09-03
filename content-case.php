@@ -7,7 +7,6 @@
 	$owner = get_user_by( 'ID', $userid );
     $name = xprofile_get_field_data( 'Name', $userid);
 	$case_type = get_the_terms($post->ID, 'case_type');
-	$country_base_url = ! empty( $case_type ) && ! is_wp_error( $case_type ) ? get_term_link( $case_type[0] ) : get_post_type_archive_link( 'case_type' );
 
   ?>
 <div class="col-md-12 case_col">
@@ -21,7 +20,7 @@
 					<a href="<?php echo get_post_type_archive_link( 'case' ); ?>?_countries=<?php echo $country[0]->slug; ?>" title="<?php echo __( 'All innovations by:', 'opsi' ); ?> <?php echo $country[0]->name; ?>" class="blacklink" >
 						<?php echo $country[0]->name; ?>
 					</a>
-					<a href="<?php echo $country_base_url; ?>?_countries=<?php echo $country[0]->slug; ?>">
+					<a href="<?php echo get_term_link( $case_type[0] ); ?>?_countries=<?php echo $country[0]->slug; ?>">
 						<img src="<?php echo get_stylesheet_directory_uri().'/images/flags/'.$iso.'.png'; ?>" width="96" height="96" alt="<?php echo $country[0]->name; ?>" class="cs_flag" />
 					</a>
 				</div>
