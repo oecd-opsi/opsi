@@ -2825,7 +2825,7 @@ function bs_submission_date( $post ) {
 	}
 
 	// get current date and populate Submission field
-	$now = date( 'd/m/Y' );
+	$now = date( 'Y-m-d' );
 	update_field( 'submission_date', $now, $post->ID );
 
 }
