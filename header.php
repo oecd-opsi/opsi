@@ -28,7 +28,6 @@
 
     <?php wp_head(); ?>
 
-	  <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/57778163aacf3b56841696fe1/decf6415f0daae83b4cec44d9.js");</script>
   </head>
   <body itemscope itemtype="http://schema.org/WebPage" id="opsibody" <?php body_class(); ?>>
 
@@ -258,6 +257,12 @@
 	          </div>
 
 		          <?php
+          } elseif ( is_singular('pat_submission') ) {
+          ?>
+  	          <div class="single_img_wrap col-md-12 covid-banner">
+  	            <img src="" class="attachment-blog size-blog wp-post-image" alt="">
+                </div>
+  	        <?php
           } elseif ( is_active_sidebar( 'sidebar' ) && $layout != 'fullpage' && !(is_home() && !is_front_page()) && bp_is_blog_page()) { ?>
             <div class="col-sm-3 col-sm-push-9"><div class="sidewrap"><?php dynamic_sidebar( 'sidebar' ); ?></div>
           <?php
