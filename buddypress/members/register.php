@@ -8,6 +8,7 @@
 
 ?>
 
+
 <div id="buddypress">
 
 	<?php

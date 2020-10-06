@@ -3837,6 +3837,16 @@ article.bp_register .mc4wp-checkbox-buddypress {
   padding-left: 52%;
 }
 
+.mc4wp-checkbox-buddypress + .error {
+  /* width: 48%; */
+  width: 43.2%; /* 48 * 0.9 */
+  margin-left: 52%;
+  background: #faa;
+  color: #a00;
+  margin-bottom: 10px;
+  padding: 6px;
+}
+
 .anr_captcha_field {
     clear: both;
     float: right;
@@ -3891,3 +3901,120 @@ article.bp_register .mc4wp-checkbox-buddypress {
   display: none;
 }
 
+/* START Xfive Login Page Updates  */
+
+.page-template-template-auth0-login-page .custom-auth0-info {
+  max-width: 260px;
+  margin: 0 auto -49px;
+  text-align: center;
+  line-height: normal;
+}
+
+.page-template-template-auth0-login-page .custom-auth0-info,
+.page-template-template-auth0-login-page .auth0-login {
+  /* 80 - 11 */
+  padding-top: 69px;
+}
+
+.page-template-template-auth0-login-page .auth0-lock.auth0-lock .auth0-lock-cred-pane-internal-wrapper {
+  height: auto;
+}
+
+.page-template-template-auth0-login-page .auth0-lock .auth0-loading-screen {
+  top: 0;
+  left: calc(150px - 15px);
+}
+
+.auth0-lock-header-logo {
+  display: none !important;
+}
+
+.auth0-lock-tabs-container {
+  display: none !important;
+}
+
+.auth0-lock-header-bg,
+.auth0-lock-header-bg-blur,
+.auth0-lock-header-bg-solid {
+  background: none !important;
+}
+
+.auth0-lock-submit {
+  border-radius: 0 !important;
+}
+
+.bp_register .auth0-lock {
+  /* 80 - 11 */
+  margin: 0 0 10px !important;
+  display: table;
+}
+
+.bp_register .auth0-lock.auth0-lock .auth0-lock-cred-pane-internal-wrapper {
+  height: auto;
+  min-height: 40px;
+}
+
+.bp_register .auth0-lock-content-wrapper {
+  overflow-x: inherit !important;
+}
+
+.bp_register .auth0-lock .auth0-loading-screen {
+  min-height: 40px;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.bp_register .auth0-lock-widget {
+  width: auto !important;
+  min-width: 192px;
+}
+
+.bp_register .auth0-lock-tabs-container + div > div:last-child,
+.bp_register .auth0-lock-tabs-container + div > .auth0-lock-pane-separator,
+.bp_register .auth0-lock-submit,
+.bp_register .auth0-lock-header {
+  display: none !important;
+}
+
+.bp_register .auth0-lock.auth0-lock .auth0-lock-form {
+  padding: 0;
+}
+
+.bp_register .auth0-lock-social-buttons-container {
+  display: flex;
+}
+
+.bp_register .auth0-lock-social-button {
+  margin: 0 !important;
+  width: auto !important;
+  flex: 0 0 auto !important;
+}
+
+.bp_register .auth0-lock-social-button:not(:last-child) {
+  margin: 0 10px 0 0 !important;
+}
+
+.bp_register .auth0-lock-social-button-icon {
+  position: relative !important;
+}
+
+.bp_register .auth0-lock-social-button-text {
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(1px 1px 1px 1px);
+  height: 1px;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  width: 1px !important;
+}
+
+.bp_register .auth0-lock-social-button[data-provider^="google"] {
+  background-color: #fff;
+}
+
+/* .bp_register .auth0-lock-social-button[data-provider^="google"] .auth0-lock-social-button-icon {
+  border: none !important;
+} */
+
+/* END Xfive Login Page Updates  */
