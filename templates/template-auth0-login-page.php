@@ -34,6 +34,13 @@ add_filter('auth0_lock_options', 'auth0_docs_hook_lock_options', 10);
     </div>
 <?php endif; ?>
 
+<?php if ($_GET['redirected']) : ?>
+    <div class="clearfix"></div>
+    <div class="alert alert-success text-center">
+        <p>Please log in to access this content. If you are not yet a member, you may register <a href="/register">here</a>.</p>
+    </div>
+<?php endif; ?>
+
 <div class="col-sm-<?php echo 12 - $has_sidebar; ?> <?php echo($has_sidebar > 0 ? 'col-sm-pull-3' : ''); ?>">
 
     <div class="custom-auth0-info">
