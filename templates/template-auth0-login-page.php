@@ -29,7 +29,7 @@ add_filter('auth0_lock_options', 'auth0_docs_hook_lock_options', 10);
 <?php if ($_GET['account_created']) : ?>
     <div class="clearfix"></div>
     <div class="alert alert-success text-center">
-        <p><?php _e('You have successfully created your account! We will notify you once your account has been approved. Please log in to start using you account.', 'buddypress'); ?></p>
+        <p><?php _e('You have successfully created your account! We will notify you once your account has been approved. Until then, your account will have limited functionality, but you will still be able to submit case studies and use the Portfolio Exploration Tool. Please log in to start using your account.', 'buddypress'); ?></p>
         <!-- <h2><a href="<?php // echo get_permalink( get_page_by_path( 'case-study-form-open-government' ) ); ?>"><?php // _e( 'If your innovation is mostly related to Open Government, please use our specialised form here.', 'buddypress' ); ?></a></h2> -->
     </div>
 <?php endif; ?>
