@@ -3901,6 +3901,13 @@ article.bp_register .mc4wp-checkbox-buddypress {
   display: none;
 }
 
+@media screen and (max-width: 959px) {
+  #buddypress .standard-form #basic-details-section, #buddypress .standard-form #blog-details-section, #buddypress .standard-form #profile-details-section {
+    float: none;
+    width: 100%;
+  }
+}
+
 /* START Xfive Login Page Updates  */
 
 .page-template-template-auth0-login-page .custom-auth0-info {
