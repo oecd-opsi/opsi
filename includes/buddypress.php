@@ -2250,8 +2250,8 @@ function opsi_notify_pending_user( $user_id, $role, $old_roles ) {
 	if ( $role && $role != 'pending' ) {
 
 		// notify the user
-		$subject = 'Your account on OPSI has been approved';
-		$body    = 'Your account on the OPSI website has been approved. You may visit <a href="'. bp_core_get_user_domain( $user_id ) .'">your profile here</a>.';
+		$subject = get_field('approved_users_email_-_subject','option');
+		$body    = get_field('approved_users_email_-_body','option').'<br><a href="'. bp_core_get_user_domain( $user_id ) .'">Visit your profile here</a>.';
 		$headers = array('Content-Type: text/html; charset=UTF-8');
 		wp_mail( get_the_author_meta( 'user_email', $user_id ), $subject, $body, $headers );
 

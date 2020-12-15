@@ -78,6 +78,49 @@
             "maxlength": ""
         },
         {
+            "key": "field_5fc7393487414",
+            "label": "Approved users email - subject",
+            "name": "approved_users_email_-_subject",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "acfe_permissions": "",
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5fc7395f87415",
+            "label": "Approved users email - body",
+            "name": "approved_users_email_-_body",
+            "type": "textarea",
+            "instructions": "The body text will end with a fixed phrase, \"Visit your profile here\", linked to the profile page of the user.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "acfe_permissions": "",
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": "br",
+            "acfe_textarea_code": 0
+        },
+        {
             "key": "field_5e8d7daa5682b",
             "label": "Form Pages",
             "name": "",
@@ -1260,7 +1303,7 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
+    "active": true,
     "description": "",
     "acfe_display_title": "",
     "acfe_autosync": [
@@ -1270,5 +1313,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1599140630
+    "modified": 1606892037
 }
