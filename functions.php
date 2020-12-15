@@ -2973,7 +2973,6 @@ function opsi_export_serialize_media( $value ) {
 function opsi_export_serialize_checkbox_field( $value, $field_id ) {
 	$value = maybe_unserialize( $value );
 	$field = get_field_object( $field_id );
-	error_log( print_r( $field, true ));
 	if ( ! empty( $field['choices'] ) ) {
 		$choices = $field['choices'];
 		$value = array_map(
@@ -2986,11 +2985,30 @@ function opsi_export_serialize_checkbox_field( $value, $field_id ) {
 	}
 	return $value;
 }
+// Helper function to serialize taxonomy in export
+function opsi_export_serialize_term( $value, $taxonomy ) {
+	$value = maybe_unserialize( $value );
+	if ( is_array( $value ) ) {
+		$value = array_map( function ( $item ) use ( $taxonomy ) {
+			$term = get_term_by( 'id', $item, $taxonomy );
+			return $term->name ?? '';
+		}, $value );
+		$value = implode( '|', $value );
+	}
+	return $value;
+}
 // Helper function to serialize primary sector in export
 function opsi_export_serialize_primary_sector( $value ) {
 	return opsi_export_serialize_checkbox_field( $value, 'field_5ae73d9dc5ac6' );
 }
-
+// Helper function to serialize innovation status in export
+function opsi_export_serialize_innovation_status( $value ) {
+	return opsi_export_serialize_checkbox_field( $value, 'field_5ae77bca2bcf7' );
+}
+// Helper function to serialize innovation tags in export
+function opsi_export_serialize_innovation_tags( $value ) {
+	return opsi_export_serialize_term( $value, 'innovation-tag' );
+}
 // Helper function to add http:// prefix if missing
 function opsi_add_http( $link ) {
 	$scheme = parse_url( $link, PHP_URL_SCHEME );
