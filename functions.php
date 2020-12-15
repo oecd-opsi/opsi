@@ -2969,6 +2969,27 @@ function opsi_export_serialize_media( $value ) {
 	}
 	return $value;
 }
+// Helper function to serialize checkbox fields in export
+function opsi_export_serialize_checkbox_field( $value, $field_id ) {
+	$value = maybe_unserialize( $value );
+	$field = get_field_object( $field_id );
+	error_log( print_r( $field, true ));
+	if ( ! empty( $field['choices'] ) ) {
+		$choices = $field['choices'];
+		$value = array_map(
+				function( $item ) use ( $choices ) {
+					return $choices[ $item ] ?? '';
+				},
+				$value
+		);
+		$value = implode( '|', $value );
+	}
+	return $value;
+}
+// Helper function to serialize primary sector in export
+function opsi_export_serialize_primary_sector( $value ) {
+	return opsi_export_serialize_checkbox_field( $value, 'field_5ae73d9dc5ac6' );
+}
 
 // Helper function to add http:// prefix if missing
 function opsi_add_http( $link ) {
