@@ -2961,7 +2961,7 @@ function opsi_export_serialize_media( $value ) {
 	if ( is_array( $value ) ) {
 		$permalinks = array_map(
 				function ( $element ) {
-					return get_permalink( $element );
+					return wp_get_attachment_url( $element );
 				},
 			$value
 		);
