@@ -3003,7 +3003,7 @@ function opsi_export_serialize_primary_sector( $value ) {
 }
 // Helper function to serialize innovation status in export
 function opsi_export_serialize_innovation_status( $value ) {
-	return opsi_export_serialize_checkbox_field( $value, 'field_5ae77bca2bcf7' );
+	return strip_tags( opsi_export_serialize_checkbox_field( $value, 'field_5ae77bca2bcf7' ) );
 }
 // Helper function to serialize innovation tags in export
 function opsi_export_serialize_innovation_tags( $value ) {
