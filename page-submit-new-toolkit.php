@@ -25,7 +25,7 @@
 			'discipline-or-practice',
 			'user-type',
 			'license',
-			'featured_image',
+			'field_5bed8ebc0b1ed', // The "featured_image" field key in the "toolkit-fields" group.
 			'field_5b552c5ec7688', // The "Description" filed key in the "toolkit-fields" group.
 			'email',
 			'static_versions',
