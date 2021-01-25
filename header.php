@@ -194,7 +194,12 @@
 						<?php
 				        }
 			        }
+					$case_styudy_export_url =  'case_study_form_page_open_gov' == $form_page_setting ?
+						"https://oecd-opsi.org/wp-load.php?security_token=5cfa1374f2c6050b&export_id=11&action=get_data" :
+						"https://oecd-opsi.org/wp-load.php?security_token=ca1210d317b4601f&export_id=10&action=get_data";
+
 					?>
+					<a class="button btn btn-default btn-block big case-study-export-button" href="<?php echo $case_styudy_export_url . '&time=' . time(); ?>"><?php echo __( 'Export Case Studies', 'opsi' ); ?></a>
 					<h2><?php echo __( 'Filter innovations:', 'opsi' ); ?></h2>
 					<?php dynamic_sidebar( 'sidebar_case_study' ); ?>
 					<button class="button btn btn-default btn-block big reset-filters-button" onclick="FWP.reset()"><?php echo __( 'Clear All Filters', 'opsi' ); ?></button>
