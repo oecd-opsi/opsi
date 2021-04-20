@@ -56,6 +56,7 @@ require_once( 'includes/auth0-register-redirect.php' );
 require_once( 'includes/bp-remove-settings.php' );
 require_once( 'includes/password_validation.php' );
 require_once( 'includes/auth0-login-redirect.php' );
+require_once( 'includes/bi-code.php' );
 
 /*-----------------------------------------------------------------------------------*/
 /*	Sidebars
