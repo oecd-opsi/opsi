@@ -360,6 +360,26 @@ function opsi_acf_save_post_covid_response( $post_id ) {
 
 }
 
+// manipulate the BI project AFTER it has been saved
+add_action('acf/save_post', 'opsi_acf_save_post_bi_project', 11);
+function opsi_acf_save_post_bi_project( $post_id ) {
+
+	if ( get_post_type( $post_id ) != 'bi-project' ) {
+		return;
+	}
+
+  $summary = get_field( 'who_is_behind_the_project', $post_id );
+
+	$content = array(
+		'ID' => $post_id,
+		'post_title' => ( $summary['project_name'] == '' || empty( $summary['project_name'] ) ?  __( 'Untitled project', 'opsi' ) : $summary['project_name'] ) ,
+		'post_content' => ''
+	);
+
+	wp_update_post($content);
+
+}
+
 // Subscribes a user to Mailchimp
 function opsi_subscribe_to_mailchimp( $email_address ) {
 	if ( class_exists( 'MC4WP_MailChimp' ) ) {

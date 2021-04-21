@@ -4026,3 +4026,52 @@ article.bp_register .mc4wp-checkbox-buddypress {
 } */
 
 /* END Xfive Login Page Updates  */
+
+/* BI section */
+.bi-confidential-wrapper > .acf-label label {
+  display: none !important;
+}
+
+.acf-field.bi-confidential-field {
+  display: flex;
+  margin-top: -15px;
+}
+.acf-field.bi-confidential-field .acf-label {
+  margin-right: 16px;
+}
+.acf-field.bi-confidential-field .acf-label label {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+#bi-project-form > .acf-fields > .acf-field-group > .acf-label {
+  display: none;
+}
+
+#bi-project-form .acf-field-taxonomy > .acf-label {
+  text-align: left;
+}
+
+#bi-project-form .acf-field-taxonomy > .acf-input .acf-taxonomy-field {
+  padding-bottom: 50px;
+}
+
+#bi-project-form .acf-field-taxonomy > .acf-input .acf-taxonomy-field > .acf-actions {
+  display: block !important;
+  top: auto;
+  right: auto;
+  left: -5px;
+  bottom: 15px;
+}
+
+#bi-project-form .acf-field-taxonomy > .acf-input .acf-taxonomy-field .categorychecklist-holder {
+  max-height: unset;
+}
+
+#bi-project-form .acf-field-taxonomy > .acf-input .acf-taxonomy-field .acf-checkbox-list {
+  margin: 0;
+}
+
+#bi-project-form .acf-range-wrap {
+  max-width: 400px;
+}

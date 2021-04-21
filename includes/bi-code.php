@@ -42,7 +42,7 @@ function opsi_bi_post_types() {
 
   // BI project Methodology taxonomy
   $bi_proj_methodology_args = array(
-		'hierarchical'      => false,
+		'hierarchical'      => true,
 		'public'            => true,
 		'show_ui'           => true,
 		'show_admin_column' => false,

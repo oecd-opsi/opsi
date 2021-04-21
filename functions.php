@@ -726,7 +726,8 @@ function opsi_post_types() {
 	);
 	nitro_taxonomy_creator( __( 'Country', 'opsi' ), __( 'Countries', 'opsi' ), array(
 		'case',
-		'covid_response'
+		'covid_response',
+		'bi-project',
 	), 'opsi', $countries_args );
 	nitro_taxonomy_creator( __( 'Innovation Tag', 'opsi' ), __( 'Innovation Tags', 'opsi' ), 'case', 'opsi', $countries_args );
 	nitro_taxonomy_creator( __( 'Innovation Tag OpenGov', 'opsi' ), __( 'Innovation Tags OpenGov', 'opsi' ), 'case', 'opsi', $countries_args );
