@@ -123,6 +123,15 @@ if ( function_exists( 'register_sidebar' ) ) {
 			'after_title'   => '</h2><div class="widget_content collapse-xs">',
 		) );
 		register_sidebar( array(
+			'name'          => 'BI Project Archive Sidebar',
+			'id'            => 'sidebar_bi_project',
+			'description'   => 'Widgets in this area will be shown on right sidebar position on BI Project Archive only.',
+			'before_widget' => '<aside id="%1$s" class="widget sidebar-box sidebar-left csa_aside %2$s">',
+			'after_widget'  => '</div></aside>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2><div class="widget_content collapse-xs">',
+		) );
+		register_sidebar( array(
 			'name'          => 'Case Study Archive Sidebar for OpenGov branding',
 			'id'            => 'sidebar_case_study_opengov_brand',
 			'description'   => 'Widgets in this area will be shown on right sidebar position on OpenGov Case Study Archive only.',
