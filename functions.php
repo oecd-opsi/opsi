@@ -48,6 +48,7 @@ require_once( 'shortcodes/generic-shortcodes.php' );
 require_once( 'includes/acf-hooks.php' );
 require_once( 'includes/collaborators.php' );
 require_once( 'includes/map.php' );
+require_once( 'includes/map-bi.php' );
 require_once( 'includes/buddypress.php' );
 require_once( 'includes/redirect_whitelist.php' );
 require_once( 'includes/auth0-social-buttons.php');
@@ -220,7 +221,7 @@ function loadcss() {
 	wp_enqueue_style( 'bootstrap_theme' );
 	wp_enqueue_style( 'font_awesome' );
 
-	if ( is_post_type_archive( 'covid_response' ) || is_post_type_archive( 'case' ) || is_tax( 'case_type' ) || is_tax( 'innovation-tag' ) || is_tax( 'country' ) || is_tax( 'innovation-badge' ) || is_tax( 'innovation-tag-opengov' ) || is_tax( 'innovation-badge-opengov' ) || is_tax( 'response-badge' ) || is_tax( 'response-tag' ) ) {
+	if ( is_post_type_archive( 'covid_response' ) || is_post_type_archive( 'case' ) || is_tax( 'case_type' ) || is_tax( 'innovation-tag' ) || is_tax( 'country' ) || is_tax( 'innovation-badge' ) || is_tax( 'innovation-tag-opengov' ) || is_tax( 'innovation-badge-opengov' ) || is_tax( 'response-badge' ) || is_tax( 'response-tag' ) || is_post_type_archive( 'bi-project' ) ) {
 		wp_register_style( 'jve_css', get_template_directory_uri() . '/css/jquery-jvectormap-2.0.3.css', array(), false, 'screen' );
 		wp_enqueue_style( 'jve_css' );
 	}
@@ -261,7 +262,7 @@ function loadjs() {
 	wp_register_script( 'steps_js', get_template_directory_uri() . '/js/jquery.steps.min.js', array( 'jquery' ) );
 	wp_enqueue_script( 'steps_js' );
 
-	if ( is_post_type_archive( 'covid_response' ) || is_post_type_archive( 'case' ) || is_tax( 'case_type' ) || is_tax( 'innovation-tag' ) || is_tax( 'country' ) || is_tax( 'innovation-badge' ) || is_tax( 'innovation-tag-opengov' ) || is_tax( 'innovation-badge-opengov' ) || is_tax( 'response-badge' ) || is_tax( 'response-tag' ) ) {
+	if ( is_post_type_archive( 'covid_response' ) || is_post_type_archive( 'case' ) || is_tax( 'case_type' ) || is_tax( 'innovation-tag' ) || is_tax( 'country' ) || is_tax( 'innovation-badge' ) || is_tax( 'innovation-tag-opengov' ) || is_tax( 'innovation-badge-opengov' ) || is_tax( 'response-badge' ) || is_tax( 'response-tag' ) || is_post_type_archive( 'bi-project' ) ) {
 		// wp_register_script('google_charts_js', 'https://www.gstatic.com/charts/loader.js', array( 'jquery' ));
 		// wp_enqueue_script('google_charts_js');
 		wp_register_script( 'jve_js', get_template_directory_uri() . '/js/jquery-jvectormap-2.0.3.min.js', array( 'jquery' ) );
@@ -1923,6 +1924,15 @@ add_action( 'template_redirect', 'cs_form_template_redirect' );
 function cs_form_template_redirect() {
 	if ( is_page( 'case-study-form' ) && ! is_user_logged_in() ) {
 		wp_redirect( wp_login_url( get_permalink( get_page_by_path( 'case-study-form' ) ) ) );
+		die;
+	}
+}
+
+// force login for BI project archive and single
+add_action( 'template_redirect', 'bi_content_template_redirect' );
+function bi_content_template_redirect() {
+	if ( ( is_post_type_archive( 'bi-project' ) || is_singular( 'bi-project' ) ) && ! is_user_logged_in() ) {
+		wp_redirect( wp_login_url( get_permalink( get_post_type_archive_link( 'bi-project' ) ) ) );
 		die;
 	}
 }
