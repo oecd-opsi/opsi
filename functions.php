@@ -2994,7 +2994,7 @@ function opsi_export_serialize_media( $value ) {
 function opsi_export_serialize_checkbox_field( $value, $field_id ) {
 	$value = maybe_unserialize( $value );
 	$field = get_field_object( $field_id );
-	if ( ! empty( $field['choices'] ) ) {
+	if ( ! empty( $field['choices'] ) && is_array( $value ) ) {
 		$choices = $field['choices'];
 		$value = array_map(
 				function( $item ) use ( $choices ) {
@@ -3007,12 +3007,27 @@ function opsi_export_serialize_checkbox_field( $value, $field_id ) {
 	return $value;
 }
 // Helper function to serialize taxonomy in export
-function opsi_export_serialize_term( $value, $taxonomy ) {
+function opsi_export_serialize_term( $value, $taxonomy, $include_description = false ) {
 	$value = maybe_unserialize( $value );
+	if ( ! is_array( $value ) ) {
+		$value = [ $value ];
+	}
 	if ( is_array( $value ) ) {
-		$value = array_map( function ( $item ) use ( $taxonomy ) {
-			$term = get_term_by( 'id', $item, $taxonomy );
-			return $term->name ?? '';
+		$value = array_map( function ( $item ) use ( $taxonomy, $include_description ) {
+			if ( $item instanceof WP_Term ) {
+				$term = $item;
+			}
+			elseif ( is_int( $item ) ) {
+				$term = get_term_by( 'id', $item, $taxonomy );
+			}
+			else {
+				$term = get_term_by( 'name', $item, $taxonomy );
+			}
+			$result = $term->name ?? '';
+			if ( $include_description ) {
+				$result .= ': ' . $term->description;
+			}
+			return $result;
 		}, $value );
 		$value = implode( '|', $value );
 	}
@@ -3029,6 +3044,9 @@ function opsi_export_serialize_innovation_status( $value ) {
 // Helper function to serialize innovation tags in export
 function opsi_export_serialize_innovation_tags( $value ) {
 	return opsi_export_serialize_term( $value, 'innovation-tag' );
+}
+function opsi_export_serialize_toolkit_adaptability( $value ) {
+	return opsi_export_serialize_term( $value, 'adaptability', true );
 }
 // Helper function to add http:// prefix if missing
 function opsi_add_http( $link ) {
