@@ -785,7 +785,7 @@ if (!class_exists('nitro_bd_field_type_header'))
         }
 
         public function is_valid( $values ) {
-            $this->validation_whitelist = null;
+            $this->validation_allowed_values = null;
             return parent::is_valid($values);
         }
 
