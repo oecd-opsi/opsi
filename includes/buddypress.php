@@ -654,8 +654,8 @@ if (!class_exists('nitro_bd_field_type_header'))
 
             $this->name = __( 'Text field with Header', 'bxcft' );
 
-            $this->accepts_null_value = true;
-            $this->supports_options = true;
+            $this->accepts_null_value = false;
+            $this->supports_options = false;
             $this->supports_richtext = false;
 
             $this->set_format( '/.*?/', 'replace' );
