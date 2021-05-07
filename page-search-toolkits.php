@@ -24,7 +24,8 @@
 
 
               <div id="filters-section" class="filters-section col-md-4 col-sm-4 col-xs-12">
-
+	              <?php $toolkit_export_url = 'https://oecd-opsi.org/wp-load.php?security_token=ea4ac87b71ea0d18&export_id=12&action=get_data'; ?>
+	              <a class="button btn btn-default btn-block big toolkit-export-button" href="<?php echo $toolkit_export_url . '&time=' . time(); ?>"><?php echo __( 'Export Toolkits', 'opsi' ); ?></a>
               <?php
 
 
