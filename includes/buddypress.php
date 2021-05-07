@@ -2121,9 +2121,15 @@ function bs_toolkits_tab_content() {
 			'orderby' => 'title',
 			'order' => 'ASC',
 			'meta_query' => array(
+				'relation' => 'OR',
 				array(
 					'key' => 'saved',
-					'value' => 'i:'.get_current_user_id().';',
+					'value' => 'i:'.get_current_user_id().';', // old format
+					'compare' => 'LIKE'
+				),
+				array(
+					'key' => 'saved',
+					'value' => ':"'.get_current_user_id().'";', // new format
 					'compare' => 'LIKE'
 				)
 			)
