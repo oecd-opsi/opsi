@@ -3826,15 +3826,16 @@ article.bp_register #g-recaptcha-0 {
 }
 
 article.bp_register .submit {
-  position: absolute;
+  /* position: absolute;
   bottom: 0;
   right: 0;
-  width: 48%;
+  width: 48%; */
+  float: none;
 }
 
 article.bp_register .mc4wp-checkbox-buddypress {
   text-align: left !important;
-  padding-left: 52%;
+  /* padding-left: 52%; */
 }
 
 .mc4wp-checkbox-buddypress + .error {
@@ -3848,9 +3849,9 @@ article.bp_register .mc4wp-checkbox-buddypress {
 }
 
 .anr_captcha_field {
-    clear: both;
+    /* clear: both;
     float: right;
-    width: 48%;
+    width: 48%; */
 }
 
 .post-type-archive .pagination_wrap,
@@ -4027,6 +4028,27 @@ article.bp_register .mc4wp-checkbox-buddypress {
 } */
 
 /* END Xfive Login Page Updates  */
+
+/* Registration page  */
+#buddypress .standard-form #basic-details-section,
+#buddypress .standard-form #profile-details-section {
+  float: none;
+  width: 100%;
+}
+
+#buddypress .standard-form input[type="url"], #buddypress .standard-form input[type="email"],
+#buddypress .standard-form .wp-editor-wrap {
+  width: 90%;
+}
+
+#tandc-checkbox,
+#buddypress .standard-form#signup_form div.submit {
+  float: none !important;
+}
+
+#buddypress .standard-form [type="checkbox"] {
+  padding-right: 4px;
+}
 
 /* BI section */
 .bi-confidential-wrapper > .acf-label label {
