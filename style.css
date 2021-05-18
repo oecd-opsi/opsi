@@ -4098,3 +4098,8 @@ article.bp_register .mc4wp-checkbox-buddypress {
 #bi-project-form .acf-range-wrap {
   max-width: 400px;
 }
+
+#bi-project-form > .acf-fields > .acf-field > .acf-input > .acf-fields > .acf-field {
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 1em;
+}
