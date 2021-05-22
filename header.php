@@ -231,7 +231,7 @@
               }
               ?>
 
-              <h2><?php echo __( 'Filter innovations:', 'opsi' ); ?></h2>
+              <h2><?php echo __( 'Filter projects:', 'opsi' ); ?></h2>
               <?php dynamic_sidebar( 'sidebar_bi_project' ); ?>
               <button class="button btn btn-default btn-block big reset-filters-button" onclick="FWP.reset()"><?php echo __( 'Clear All Filters', 'opsi' ); ?></button>
             </div>

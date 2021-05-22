@@ -32,6 +32,19 @@ function bs_bi_form_first_page( $field ) {
 }
 add_filter( "acf/load_field/key=field_60a38051279c8", 'bs_bi_form_first_page' );
 
+// Hide Final report fields
+function bs_bi_hide_final_report($field) {
+	return;
+}
+add_filter( "acf/prepare_field/key=field_60a911bd5c04a", 'bs_bi_hide_final_report' );
+add_filter( "acf/prepare_field/key=field_60a911e85c04b", 'bs_bi_hide_final_report' );
+
+// Hide Additional Information group
+function bs_bi_hide_additional_information_group($field) {
+	return;
+}
+add_filter( "acf/prepare_field/key=field_60a91419e84bb", 'bs_bi_hide_additional_information_group' );
+
 /*
 ** Start the template
 */

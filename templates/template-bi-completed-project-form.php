@@ -33,10 +33,49 @@ function bs_bi_form_first_page( $field ) {
 add_filter( "acf/load_field/key=field_60a38051279c8", 'bs_bi_form_first_page' );
 
 // Hide Data Collection field
-function bs_project_form_data_collection($field) {
+function bs_bi_project_form_data_collection($field) {
   return;
 }
-add_filter('acf/prepare_field/key=field_60a41f69545e1', 'bs_project_form_data_collection', 20);
+add_filter('acf/prepare_field/key=field_60a41f69545e1', 'bs_bi_project_form_data_collection', 20);
+
+// Edit step 3 name
+function bs_bi_step3_name($field) {
+	$field['label'] 	= 'Detailed information';
+	return $field;
+}
+add_filter( "acf/load_field/key=field_607ea64ec38e5", 'bs_bi_step3_name' );
+
+// Edit step 3 heading
+function bs_bi_step3_heading($field) {
+	$field['message'] 	= '<h2>Detailed information</h2>';
+	return $field;
+}
+add_filter( "acf/load_field/key=field_607ea66dc38e6", 'bs_bi_step3_heading' );
+
+// Hide unuseful fields from step 3
+function bs_bi_hide_step3_fields($field) {
+	return;
+}
+add_filter( "acf/prepare_field/key=field_607ea799c38eb", 'bs_bi_hide_step3_fields' );
+add_filter( "acf/prepare_field/key=field_607ea80ec38ee", 'bs_bi_hide_step3_fields' );
+add_filter( "acf/prepare_field/key=field_607ea727c38e9", 'bs_bi_hide_step3_fields' );
+add_filter( "acf/prepare_field/key=field_607ea87cc38f1", 'bs_bi_hide_step3_fields' );
+add_filter( "acf/prepare_field/key=field_60a420f31fb78", 'bs_bi_hide_step3_fields' );
+add_filter( "acf/prepare_field/key=field_60a421941fb7a", 'bs_bi_hide_step3_fields' );
+add_filter( "acf/prepare_field/key=field_60a421c81fb7b", 'bs_bi_hide_step3_fields' );
+add_filter( "acf/prepare_field/key=field_60a422e089c14", 'bs_bi_hide_step3_fields' );
+add_filter( "acf/prepare_field/key=field_60a4231489c15", 'bs_bi_hide_step3_fields' );
+add_filter( "acf/prepare_field/key=field_60a4234289c16", 'bs_bi_hide_step3_fields' );
+add_filter( "acf/prepare_field/key=field_60a4236d89c17", 'bs_bi_hide_step3_fields' );
+add_filter( "acf/prepare_field/key=field_60a423a689c18", 'bs_bi_hide_step3_fields' );
+add_filter( "acf/prepare_field/key=field_60a424c789c1c", 'bs_bi_hide_step3_fields' );
+add_filter( "acf/prepare_field/key=field_60a424c789c1c", 'bs_bi_hide_step3_fields' );
+
+// Hide Review and Collaboration group
+function bs_bi_hide_review_collaboration_group($field) {
+	return;
+}
+add_filter( "acf/prepare_field/key=field_607ef2e47e55c", 'bs_bi_hide_review_collaboration_group' );
 
 /*
 ** Start the template
