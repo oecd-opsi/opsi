@@ -69,7 +69,6 @@ add_filter( "acf/prepare_field/key=field_60a4234289c16", 'bs_bi_hide_step3_field
 add_filter( "acf/prepare_field/key=field_60a4236d89c17", 'bs_bi_hide_step3_fields' );
 add_filter( "acf/prepare_field/key=field_60a423a689c18", 'bs_bi_hide_step3_fields' );
 add_filter( "acf/prepare_field/key=field_60a424c789c1c", 'bs_bi_hide_step3_fields' );
-add_filter( "acf/prepare_field/key=field_60a424c789c1c", 'bs_bi_hide_step3_fields' );
 
 // Hide Review and Collaboration group
 function bs_bi_hide_review_collaboration_group($field) {
