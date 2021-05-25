@@ -75,10 +75,10 @@ function opsi_bi_post_types() {
 		'show_tag_cloud'    => false,
 		'show_in_rest'      => true,
 	);
-	nitro_taxonomy_creator( __( 'BI Project Methodology', 'opsi' ), __( 'BI Project Methodology', 'opsi' ), 'bi-project', 'opsi', $bi_proj_methodology_args );
-  nitro_taxonomy_creator( __( 'BI Project Policy Area', 'opsi' ), __( 'BI Project Policy Area', 'opsi' ), 'bi-project', 'opsi', $bi_proj_methodology_args );
-  nitro_taxonomy_creator( __( 'BI Project Topic', 'opsi' ), __( 'BI Project Topic', 'opsi' ), 'bi-project', 'opsi', $bi_proj_methodology_args );
-  nitro_taxonomy_creator( __( 'BI Project Behavioural Tool', 'opsi' ), __( 'BI Project Behavioural Tool', 'opsi' ), 'bi-project', 'opsi', $bi_proj_methodology_args );
+	nitro_taxonomy_creator( __( 'BI Project Methodology', 'opsi' ), __( 'BI Project Methodologies', 'opsi' ), 'bi-project', 'opsi', $bi_proj_methodology_args );
+  nitro_taxonomy_creator( __( 'BI Project Policy Area', 'opsi' ), __( 'BI Project Policy Areas', 'opsi' ), array( 'bi-project', 'bi-unit' ), 'opsi', $bi_proj_methodology_args );
+  nitro_taxonomy_creator( __( 'BI Project Topic', 'opsi' ), __( 'BI Project Topics', 'opsi' ), 'bi-project', 'opsi', $bi_proj_methodology_args );
+  nitro_taxonomy_creator( __( 'BI Project Behavioural Tool', 'opsi' ), __( 'BI Project Behavioural Tools', 'opsi' ), 'bi-project', 'opsi', $bi_proj_methodology_args );
 
 	// Create Institution taxonomy
 	nitro_taxonomy_creator( __( 'BI Institution', 'opsi' ), __( 'BI Institution', 'opsi' ), 'bi-unit', 'opsi', $bi_proj_methodology_args );
