@@ -52,24 +52,24 @@
 
 				</div>
 
-        <div class="sliding_panel open">
+        <div class="sliding_panel">
 
           <?php if(  $project_status == 'Pre-registration' ): ?>
             <h2 class="active">Analysis Plan</h2>
           <?php else: ?>
             <h2 class="active">Detailed information</h2>
           <?php endif; ?>
-          <div class="panel_content">
+          <div class="panel_content" style="display:none;">
 
             <?php if(  $project_status == 'Completed' ): ?>
               <h3>Final report: Is there a final report presenting the results and conclusions of this project?</h3>
-              <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis'][' final_report:_is_there_a_final_report_presenting_the_results_and_conclusions_of_this_project']['text']['label']; ?></div>
+              <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['final_report_is_there_a_final_report_presenting_the_results_and_conclusions_of_this_project']['text']['label']; ?></div>
 
-              <?php if( $fields['hypothesis_outcomes_and_analysis'][' final_report:_is_there_a_final_report_presenting_the_results_and_conclusions_of_this_project']['text']['label'] == 'Yes' ) : ?>
-                <?php if( $fields['hypothesis_outcomes_and_analysis']['final_report_file_wrapper']['text'][' please_attach_your_report_here_or_add_a_link_to_the_report']['label'] == 'Attach a file' ) {
-                  $final_report_url = $fields['hypothesis_outcomes_and_analysis']['final_report_file_wrapper']['report_file']['text'];
+              <?php if( $fields['hypothesis_outcomes_and_analysis']['final_report_is_there_a_final_report_presenting_the_results_and_conclusions_of_this_project']['text']['label'] == 'Yes' ) : ?>
+                <?php if( $fields['hypothesis_outcomes_and_analysis']['final_report_file_wrapper']['text']['please_attach_your_report_here_or_add_a_link_to_the_report']['label'] == 'Attach a file' ) {
+                  $final_report_url = $fields['hypothesis_outcomes_and_analysis']['final_report_file_wrapper']['text']['report_file'];
                 } else {
-                  $final_report_url = $fields['hypothesis_outcomes_and_analysis']['final_report_file_wrapper']['link_to_the_report']['text'];
+                  $final_report_url = $fields['hypothesis_outcomes_and_analysis']['final_report_file_wrapper']['text']['link_to_the_report'];
                 }?>
                 <h3>Final report</h3>
                 <div class="csp"><a href="<?php echo $final_report_url ?>" target="_blank">See the final report</a></div>
@@ -80,14 +80,14 @@
             <h3>Pre-analysis plan: Is there a pre-analysis plan associated with this registration?</h3>
             <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['pre-analysis_plan_wrapper']['text']['pre-analysis_plan:_is_there_a_pre-analysis_plan_associated_with_this_registration']; ?></div>
               <?php if(
-                $fields['hypothesis_outcomes_and_analysis']['pre-analysis_file_wrapper']['text']['include_this_in_the_public_version'] == 'Yes' || ( $fields['hypothesis_outcomes_and_analysis']['pre-analysis_file_wrapper']['text']['include_this_in_the_public_version'] == 'Hide until embargo date' && !$embargo ) : ?>
-                <?php if ($fields['hypothesis_outcomes_and_analysis'][' please_attach_your_pre-analysis_plan']['text'] != '' )  : ?>
-                  <div class="csp"><a href="<?php echo $fields['hypothesis_outcomes_and_analysis'][' please_attach_your_pre-analysis_plan']['text'] ?>" target="_blank">See the Pre-analysis plan</a></div>
+                $fields['hypothesis_outcomes_and_analysis']['pre-analysis_file_wrapper']['text']['include_this_in_the_public_version'] == 'Yes' || ( $fields['hypothesis_outcomes_and_analysis']['pre-analysis_file_wrapper']['text']['include_this_in_the_public_version'] == 'Hide until embargo date' && !$embargo ) ) : ?>
+                <?php if ($fields['hypothesis_outcomes_and_analysis']['pre-analysis_file_wrapper']['text']['please_attach_your_pre-analysis_plan']['text'] != '' )  : ?>
+                  <div class="csp"><a href="<?php echo $fields['hypothesis_outcomes_and_analysis']['pre-analysis_file_wrapper']['text'][' please_attach_your_pre-analysis_plan']['text'] ?>" target="_blank">See the Pre-analysis plan</a></div>
                 <?php endif; ?>
               <?php endif; ?>
             <?php endif; ?>
 
-            <?php if( $project_status == 'Pre-registration') ?>
+            <?php if( $project_status == 'Pre-registration'): ?>
               <?php if( $fields['hypothesis_outcomes_and_analysis']['hypothesis_wrapper']['text']['include_this_in_the_public_version'] == 'Yes' || ( $fields['hypothesis_outcomes_and_analysis']['hypothesis_wrapper']['text']['include_this_in_the_public_version'] == 'Hide until embargo date' && !$embargo ) ) : ?>
                 <h3>Hypothesis</h3>
                 <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['hypothesis_wrapper']['text']['hypothesis']; ?></div>
@@ -114,9 +114,9 @@
                 <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['sample_size_wrapper']['text']['sample_size_how_many_observations_will_be_collected_or_what_will_determine_sample_size']; ?></div>
               <?php endif; ?>
 
-              <?php if( $fields['hypothesis_outcomes_and_analysis']['power_analysis_was_a_power_analysis_conducted_prior_to_data_collection']['text']['label'] != '' ) ?>
+              <?php if( $fields['hypothesis_outcomes_and_analysis']['power_analysis_was_a_power_analysis_conducted_prior_to_data_collection']['text']['label'] != '' ): ?>
                 <h3>Power analysis. Was a power analysis conducted prior to data collection?</h3>
-                <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['power_analysis_was_a_power_analysis_conducted_prior_to_data_collection']['text']['label'] ?></div>
+                <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['power_analysis_was_a_power_analysis_conducted_prior_to_data_collection']['text'] ?></div>
               <?php endif; ?>
 
               <?php if( $fields['hypothesis_outcomes_and_analysis']['third_party_implement_wrapper']['text']['include_this_in_the_public_version'] == 'Yes' || ( $fields['hypothesis_outcomes_and_analysis']['third_party_implement_wrapper']['text']['include_this_in_the_public_version'] == 'Hide until embargo date' && !$embargo ) ) : ?>
@@ -124,31 +124,31 @@
                 <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['third_party_implement_wrapper']['text']['does_a_third_party_implement_the_intervention_or_is_this_a_collaboration_with_another_team']; ?></div>
               <?php endif; ?>
 
-              <?php if(  $fields['hypothesis_outcomes_and_analysis']['data_exclusion']['text'] != '' ) ?>
+              <?php if(  $fields['hypothesis_outcomes_and_analysis']['data_exclusion']['text'] != '' ): ?>
                 <h3>Data Exclusion</h3>
                 <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['data_exclusion']['text'] ?></div>
               <?php endif; ?>
 
-              <?php if( $fields['hypothesis_outcomes_and_analysis']['treatment_of_missing_data']['text'] != '' ) ?>
+              <?php if( $fields['hypothesis_outcomes_and_analysis']['treatment_of_missing_data']['text'] != '' ): ?>
                 <h3>Treatment of Missing Data</h3>
                 <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['treatment_of_missing_data']['text'] ?></div>
               <?php endif; ?>
 
-              <?php if( $fields['hypothesis_outcomes_and_analysis']['analysis_codescript']['text'] != '' ) ?>
+              <?php if( $fields['hypothesis_outcomes_and_analysis']['analysis_codescript']['text'] != '' ): ?>
                 <h3>Analysis Code/Script</h3>
-                <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['analysis_codescript']['text'] ?></div>
+                <div class="csp"><a href="<?php echo $fields['hypothesis_outcomes_and_analysis']['analysis_codescript']['text'] ?>" target="_blank"><?php echo $fields['hypothesis_outcomes_and_analysis']['analysis_codescript']['text'] ?></a></div>
               <?php endif; ?>
 
-              <?php if( $fields['hypothesis_outcomes_and_analysis']['post-commitment_adjustments']['text'] != '' ) ?>
+              <?php if( $fields['hypothesis_outcomes_and_analysis']['post-commitment_adjustments']['text'] != '' ): ?>
                 <h3>Post-Commitment Adjustments</h3>
                 <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['post-commitment_adjustments']['text'] ?></div>
               <?php endif; ?>
             <?php endif; ?>
 
             <?php if(  $project_status == 'Pre-registration' ): ?>
-              <?php if( $fields['hypothesis_outcomes_and_analysis']['external_link']['text'] != '' ) ?>
+              <?php if( $fields['hypothesis_outcomes_and_analysis']['external_link']['text'] != '' ): ?>
                 <h3>External link</h3>
-                <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['external_link']['text'] ?></div>
+                <div class="csp"><a href="<?php echo $fields['hypothesis_outcomes_and_analysis']['external_link']['text'] ?>" target="_blank"><?php echo $fields['hypothesis_outcomes_and_analysis']['external_link']['text'] ?></a></div>
               <?php endif; ?>
             <?php endif; ?>
 
@@ -164,26 +164,26 @@
   					<!-- <div class="panel_content" <?php //echo ( $oi == 0 ? '' : 'style="display: none;"' ); ?>> -->
             <div class="panel_content" style="display:none;">
 
-              <?php if( $fields['additional_information']['third_party_implement_wrapper']['text']['include_this_in_the_public_version'] == 'Yes' || ( $fields['additional_information']['third_party_implement_wrapper']['text']['include_this_in_the_public_version'] == 'Hide until embargo date' && !$embargo ) ) : ?>
+              <?php if( $fields['additional_information']['third_party_wrapper']['text']['include_this_in_the_public_version'] == 'Yes' || ( $fields['additional_information']['third_party_wrapper']['text']['include_this_in_the_public_version'] == 'Hide until embargo date' && !$embargo ) ) : ?>
                 <h3>Does a third party implement the intervention or is this a collaboration with another team?</h3>
-                <div class="csp"><?php echo $fields['additional_information']['third_party_implement_wrapper']['text']['does_a_third_party_implement_the_intervention_or_is_this_a_collaboration_with_another_team']; ?></div>
+                <div class="csp"><?php echo $fields['additional_information']['third_party_wrapper']['text']['does_a_third_party_implement_the_intervention_or_is_this_a_collaboration_with_another_team']; ?></div>
               <?php endif; ?>
 
-              <?php if( $fields['additional_information']['analysis_codescript']['text'] != '' ) ?>
+              <?php if( $fields['additional_information']['analysis_codescript']['text'] != '' ): ?>
                 <h3>Analysis Code/Script</h3>
                 <div class="csp"><?php echo $fields['additional_information']['analysis_codescript']['text'] ?></div>
               <?php endif; ?>
 
               <?php if( $project_status == 'Pre-registration'): ?>
-              <?php if( $fields['additional_information']['additional_documentation']['text']['include_this_in_the_public_version'] == 'Yes' || ( $fields['additional_information']['additional_documentation']['text']['include_this_in_the_public_version'] == 'Hide until embargo date' && !$embargo ) ) : ?>
-                <h3>Additional Documentation</h3>
-                <div class="csp"><?php
-                foreach ($fields['additional_information']['additional_documentation']['text']['files'] as $file) {
-                  echo '<p><a href="'.$file['file']['url'].'">'.$file['file']['title'].'</a></p>';
-                }
-                ?></div>
+                <?php if( $fields['additional_information']['additional_documentation']['text']['include_this_in_the_public_version'] == 'Yes' || ( $fields['additional_information']['additional_documentation']['text']['include_this_in_the_public_version'] == 'Hide until embargo date' && !$embargo ) ) : ?>
+                  <h3>Additional Documentation</h3>
+                  <div class="csp"><?php
+                  foreach ($fields['additional_information']['additional_documentation']['text']['files'] as $file) {
+                    echo '<p><a href="'.$file['file']['url'].'">'.$file['file']['title'].'</a></p>';
+                  }
+                  ?></div>
+                <?php endif; ?>
               <?php endif; ?>
-            <?php endif; ?>
 
   				  </div>
 
@@ -203,7 +203,6 @@
 						<a href="<?php echo get_post_type_archive_link( 'bi-project' ); ?>?_countries=<?php echo $country[0]->slug; ?>" title="<?php echo __( 'All BI project by:', 'opsi' ); ?> <?php echo $country[0]->name; ?>" class="blacklink" target="_blank" >
 							<img src="<?php echo get_stylesheet_directory_uri().'/images/flags/'.$iso.'.png'; ?>" width="96" height="96" alt="<?php echo $country[0]->name; ?>" class="cs_flag" />
 						</a>
-            <p class="bi-project-city"><?php echo $fields['who_is_behind_the_project']['city']['text'] ?></p>
 					</div>
 					<?php } ?>
 					<?php if ( !empty( $country ) ) { ?>
@@ -226,11 +225,11 @@
 
             <div class="sidebar-generic-wrapper">
               <span class="sidebar_label">Institution: </span>
-              <span class="strong"><?php echo $fields['who_is_behind_the_project']['institution']['text'] ?></span>
+              <span class="strong"><?php echo get_term( $fields['who_is_behind_the_project']['institution']['text'] )->name ?></span>
             </div>
             <div class="sidebar-generic-wrapper">
               <span class="sidebar_label">Team: </span>
-              <span class="strong"><?php echo $fields['who_is_behind_the_project']['team']['text'] ?></span>
+              <span class="strong"><?php echo get_the_title( $fields['who_is_behind_the_project']['team']['text'] ) ?></span>
             </div>
             <?php if( $fields['who_is_behind_the_project']['authors_wrapper']['text']['include_this_in_the_public_version'] == 'Yes' || ( $fields['who_is_behind_the_project']['authors_wrapper']['text']['include_this_in_the_public_version'] == 'Hide until embargo date' && !$embargo ) ) : ?>
               <div class="sidebar-generic-wrapper">
@@ -261,7 +260,7 @@
               <span class="strong"><?php echo $method_list ?></span>
             </div>
 
-            <?php if( $fields['methods']['could_you_self-grade_the_strength_of_the_evidence_generated_by_this_study']['text'] > 0 ) ?>
+            <?php if( $fields['methods']['could_you_self-grade_the_strength_of_the_evidence_generated_by_this_study']['text'] > 0 ): ?>
               <div class="sidebar-generic-wrapper">
                 <span class="sidebar_label">Could you self-grade the strength of the evidence generated by this study?</span>
                 <span class="strong"><?php echo $fields['methods']['could_you_self-grade_the_strength_of_the_evidence_generated_by_this_study']['text'] ?></span>
@@ -271,13 +270,13 @@
             <?php if(  $project_status == 'Pre-registration' ): ?>
               <div class="sidebar-generic-wrapper">
                 <span class="sidebar_label">Data collection: Have any data been collected for this project already?</span>
-                <div class="csp"><?php echo $fields['methods']['data_collection:_have_any_data_been_collected_for_this_project_already']['text']['label'] ?></div>
+                <span class="strong"><?php echo $fields['methods']['data_collection:_have_any_data_been_collected_for_this_project_already']['text'] ?></span>
               </div>
             <?php endif; ?>
 
             <?php if( $fields['methods']['date_of_start_wrapper']['text']['include_this_in_the_public_version'] == 'Yes' || ( $fields['methods']['date_of_start_wrapper']['text']['include_this_in_the_public_version'] == 'Hide until embargo date' && !$embargo ) ) : ?>
-              <h3>Date of start</h3>
-              <div class="csp"><?php echo $fields['methods']['date_of_start_wrapper']['text']['date_of_start']; ?></div>
+              <span class="sidebar_label">Date of start: </span>
+              <span class="strong"><?php echo $fields['methods']['date_of_start_wrapper']['text']['date_of_start']; ?></span>
             <?php endif; ?>
 
 					</div>

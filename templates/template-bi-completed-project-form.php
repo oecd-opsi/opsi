@@ -120,9 +120,9 @@ if($layout != 'fullpage' && is_active_sidebar( 'sidebar' )) {
 						'post_content' => true,
 						'post_title' => true,
 					),
-					'submit_value'		=> __( 'Submit new pre-registration', 'opsi' ),
+					'submit_value'		=> __( 'Submit new project', 'opsi' ),
 					'form' 				=> true,
-					'updated_message' 	=> 'Your Pre-registration has been saved.',
+					'updated_message' 	=> 'Your project has been saved.',
 					// 'return' => '',
 				);
 

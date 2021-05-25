@@ -4103,3 +4103,11 @@ article.bp_register .mc4wp-checkbox-buddypress {
   border-bottom: 1px solid lightgray;
   padding-bottom: 1em;
 }
+
+.bi-project-status {
+  background: rgb(244, 244, 244);
+  padding: 4px 6px;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1;
+}
