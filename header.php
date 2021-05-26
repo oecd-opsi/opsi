@@ -158,7 +158,7 @@
             $layout = '';
           }
           // but not on registration
-          if ( is_page('register') || ( is_singular() && get_post_type( $post ) == 'case' ) || ( is_singular() && get_post_type( $post ) == 'covid_response' ) || ( is_singular() && get_post_type( $post ) == 'bi-project' ) ) {
+          if ( is_page('register') || ( is_singular() && get_post_type( $post ) == 'case' ) || ( is_singular() && get_post_type( $post ) == 'covid_response' ) || ( is_singular() && get_post_type( $post ) == 'bi-project' ) || ( is_singular() && get_post_type( $post ) == 'bi-unit' ) ) {
             $layout = 'fullpage';
           }
 
