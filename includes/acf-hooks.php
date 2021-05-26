@@ -380,6 +380,26 @@ function opsi_acf_save_post_bi_project( $post_id ) {
 
 }
 
+// manipulate the BI Unit AFTER it has been saved
+add_action('acf/save_post', 'opsi_acf_save_post_bi_unit', 11);
+function opsi_acf_save_post_bi_unit( $post_id ) {
+
+	if ( get_post_type( $post_id ) != 'bi-unit' ) {
+		return;
+	}
+
+  $general_info = get_field( 'general_information', $post_id );
+
+	$content = array(
+		'ID' => $post_id,
+		'post_title' => $general_info['the_name_of_your_unit'] ,
+		'post_content' => ''
+	);
+
+	wp_update_post($content);
+
+}
+
 // Subscribes a user to Mailchimp
 function opsi_subscribe_to_mailchimp( $email_address ) {
 	if ( class_exists( 'MC4WP_MailChimp' ) ) {
