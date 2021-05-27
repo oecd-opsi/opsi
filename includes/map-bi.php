@@ -53,9 +53,8 @@ function cs_jve_bi_map() {
 
 			jQuery('#map-bar .max').text(maxValue);
 
-			// console.log(data);
-			// console.log(coords);
-			console.log('test');
+			console.log(data);
+			console.log(coords);
 
 			jQuery('#regions_div').vectorMap({
 				map: 'world_mill',

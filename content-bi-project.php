@@ -29,6 +29,13 @@
 			<div class="col-md-3 col-sm-4">
 				<div class="post_tags_wrap">
 					<div class="post_tags">
+
+						<?php
+						$project_statuses = get_the_terms( $postid, 'bi-project-status' );
+					  $project_status = $project_statuses[0]->name;
+						 ?>
+						<p class="bi-project-status"><?php echo $project_status ?> project</p>
+
 						<?php
 						// Methodology terms
 						if ( !empty( get_field( 'methods_methodology' ) ) ) {

@@ -4071,27 +4071,32 @@ article.bp_register .mc4wp-checkbox-buddypress {
   display: none;
 }
 
-#bi-project-form .acf-field-taxonomy > .acf-label {
+#bi-project-form .acf-field-taxonomy > .acf-label,
+#bi-unit-form .acf-field-taxonomy > .acf-label {
   text-align: left;
 }
 
-#bi-project-form .acf-field-taxonomy > .acf-input .acf-taxonomy-field {
+#bi-project-form .acf-field-taxonomy > .acf-input .acf-taxonomy-field,
+#bi-unit-form .acf-field-taxonomy > .acf-input .acf-taxonomy-field {
   padding-bottom: 50px;
 }
 
-#bi-project-form .acf-field-taxonomy > .acf-input .acf-taxonomy-field > .acf-actions {
+#bi-project-form .acf-field-taxonomy > .acf-input .acf-taxonomy-field > .acf-actions,
+#bi-unit-form .acf-field-taxonomy > .acf-input .acf-taxonomy-field > .acf-actions {
   display: block !important;
   top: auto;
   right: auto;
-  left: -5px;
+  left: 7px;
   bottom: 15px;
 }
 
-#bi-project-form .acf-field-taxonomy > .acf-input .acf-taxonomy-field .categorychecklist-holder {
+#bi-project-form .acf-field-taxonomy > .acf-input .acf-taxonomy-field .categorychecklist-holder,
+#bi-unit-form .acf-field-taxonomy > .acf-input .acf-taxonomy-field .categorychecklist-holder {
   max-height: unset;
 }
 
-#bi-project-form .acf-field-taxonomy > .acf-input .acf-taxonomy-field .acf-checkbox-list {
+#bi-project-form .acf-field-taxonomy > .acf-input .acf-taxonomy-field .acf-checkbox-list,
+#bi-unit-form .acf-field-taxonomy > .acf-input .acf-taxonomy-field .acf-checkbox-list {
   margin: 0;
 }
 
@@ -4099,7 +4104,8 @@ article.bp_register .mc4wp-checkbox-buddypress {
   max-width: 400px;
 }
 
-#bi-project-form > .acf-fields > .acf-field > .acf-input > .acf-fields > .acf-field {
+#bi-project-form > .acf-fields > .acf-field > .acf-input > .acf-fields > .acf-field,
+#bi-unit-form > .acf-fields > .acf-field > .acf-input > .acf-fields > .acf-field {
   border-bottom: 1px solid lightgray;
   padding-bottom: 1em;
 }
