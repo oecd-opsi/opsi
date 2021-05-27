@@ -124,9 +124,18 @@ if ( function_exists( 'register_sidebar' ) ) {
 			'after_title'   => '</h2><div class="widget_content collapse-xs">',
 		) );
 		register_sidebar( array(
-			'name'          => 'BI Project Archive Sidebar',
+			'name'          => 'BI Projects Archive Sidebar',
 			'id'            => 'sidebar_bi_project',
-			'description'   => 'Widgets in this area will be shown on right sidebar position on BI Project Archive only.',
+			'description'   => 'Widgets in this area will be shown on right sidebar position on BI Projects Archive only.',
+			'before_widget' => '<aside id="%1$s" class="widget sidebar-box sidebar-left csa_aside %2$s">',
+			'after_widget'  => '</div></aside>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2><div class="widget_content collapse-xs">',
+		) );
+		register_sidebar( array(
+			'name'          => 'BI Units Archive Sidebar',
+			'id'            => 'sidebar_bi_unit',
+			'description'   => 'Widgets in this area will be shown on right sidebar position on BI Units Archive only.',
 			'before_widget' => '<aside id="%1$s" class="widget sidebar-box sidebar-left csa_aside %2$s">',
 			'after_widget'  => '</div></aside>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -1932,7 +1941,7 @@ function cs_form_template_redirect() {
 // force login for BI project archive and single
 add_action( 'template_redirect', 'bi_content_template_redirect' );
 function bi_content_template_redirect() {
-	if ( ( is_post_type_archive( 'bi-project' ) || is_singular( 'bi-project' ) ) && ! is_user_logged_in() ) {
+	if ( ( is_post_type_archive( array('bi-project','bi-unit') ) || is_singular( array('bi-project','bi-unit') ) ) && ! is_user_logged_in() ) {
 		wp_redirect( wp_login_url( get_permalink( get_post_type_archive_link( 'bi-project' ) ) ) );
 		die;
 	}
