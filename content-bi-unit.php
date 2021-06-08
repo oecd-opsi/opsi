@@ -52,7 +52,7 @@
 
 					$team_situated = get_field( 'your_team_where_is_your_team_situated' );
 					if ( $team_situated != '' ) { ?>
-						<p class="csp">The team is situated in <?php echo $team_situated['label']; ?></p>
+						<p class="csp">The team is <?php echo $team_situated['label']; ?></p>
 					<?php } ?>
 
 					<?php

@@ -34,7 +34,9 @@
 	</div>
 
 	<div class="cs_top_map hoverzoom-">
-		<div id="regions_div" style="width: 100%; height: 500px;"></div>
+		<div id="regions_div" style="width: 100%; height: 500px;">
+			<button class="back-global-view">Back to global view</button>
+		</div>
 		<div id="map-bar">
 			<div class="meter_label"><?php echo __( 'BI units:', 'opsi' ); ?></div>
 			<div class="min">0</div>

@@ -4117,3 +4117,25 @@ article.bp_register .mc4wp-checkbox-buddypress {
   display: inline-block;
   line-height: 1;
 }
+
+#regions_div {
+  position: relative;
+}
+
+.back-global-view {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+	font-size: .8em;
+	padding: 4px 8px;
+	line-height: 1;
+	border-radius: 0;
+	box-shadow: none;
+	border: 1px solid #000;
+  z-index: 99;
+  display: none;
+}
+
+.zoomed-map .back-global-view {
+  display: block;
+}
