@@ -1938,10 +1938,10 @@ function cs_form_template_redirect() {
 	}
 }
 
-// force login for BI project archive and single
-add_action( 'template_redirect', 'bi_content_template_redirect' );
-function bi_content_template_redirect() {
-	if ( ( is_post_type_archive( array('bi-project','bi-unit') ) || is_singular( array('bi-project','bi-unit') ) ) && ! is_user_logged_in() ) {
+// force login for BI pre-registration project form
+add_action( 'template_redirect', 'bi_preregistration_redirect' );
+function bi_preregistration_redirect() {
+	if ( is_page('bi-pre-registration-form') && ! is_user_logged_in() ) {
 		wp_redirect( wp_login_url( get_permalink( get_post_type_archive_link( 'bi-project' ) ) ) );
 		die;
 	}
