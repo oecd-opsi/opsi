@@ -376,6 +376,10 @@ function opsi_acf_save_post_bi_project( $post_id ) {
 		'post_content' => ''
 	);
 
+	if( isset( $_POST['csf_action'] ) && $_POST['csf_action'] == 'submit' &&!is_admin() ) {
+		$content['post_status'] = 'pending';
+	}
+
 	wp_update_post($content);
 
 }

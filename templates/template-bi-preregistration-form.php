@@ -45,6 +45,43 @@ function bs_bi_hide_additional_information_group($field) {
 }
 add_filter( "acf/prepare_field/key=field_60a91419e84bb", 'bs_bi_hide_additional_information_group' );
 
+// Add Save buttons
+function gen_info_save_btn($field) {
+	$field['message'] = '<div class="col-md-12 layout_hero_block ">
+	<div class="hb_inner text-left">Using the “save” option will save the data you have entered and allow you to return to data entry immediately or at a later time. You can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href="mailto:opsi@oecd.org" title="contact OPSI">opsi@oecd.org</a> (include a screenshot if possible).
+	<div class="text-center inlinep removebr formbuttons">
+	<a class="button btn btn-default big goback" title="Back" href="#step-0"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</a><a class="button btn btn-info big saveform" title="Save" href="#step-1">Save <i class="fa fa-floppy-o" aria-hidden="true"></i></a><a class="button btn btn-default big gonext" title="Next" href="#step-2">Next <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+	</div>
+	</div>
+	</div>';
+	return $field;
+}
+add_filter( 'acf/load_field/key=field_607f402365f67', 'gen_info_save_btn' );
+
+function methods_save_btn($field) {
+	$field['message'] = '<div class="col-md-12 layout_hero_block ">
+	<div class="hb_inner text-left">Using the “save” option will save the data you have entered and allow you to return to data entry immediately or at a later time. You can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href="mailto:opsi@oecd.org" title="contact OPSI">opsi@oecd.org</a> (include a screenshot if possible).
+	<div class="text-center inlinep removebr formbuttons">
+	<a class="button btn btn-default big goback" title="Back" href="#step-1"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</a><a class="button btn btn-info big saveform" title="Save" href="#step-2">Save <i class="fa fa-floppy-o" aria-hidden="true"></i></a><a class="button btn btn-default big gonext" title="Next" href="#step-3">Next <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+	</div>
+	</div>
+	</div>';
+	return $field;
+}
+add_filter( 'acf/load_field/key=field_607f41bc5f055', 'methods_save_btn' );
+
+function analysis_plan_save_btn($field) {
+	$field['message'] = '<div class="col-md-12 layout_hero_block ">
+	<div class="hb_inner text-left">Using the “save” option will save the data you have entered and allow you to return to data entry immediately or at a later time. You can click on previously completed sections in the sidebar to navigate back to them in order if you wish to revise your entry. If you have any problems, please contact us at <a href="mailto:opsi@oecd.org" title="contact OPSI">opsi@oecd.org</a> (include a screenshot if possible).
+	<div class="text-center inlinep removebr formbuttons">
+	<a class="button btn btn-default big goback" title="Back" href="#step-2"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</a><a class="button btn btn-info big saveform" title="Save" href="#step-3">Save <i class="fa fa-floppy-o" aria-hidden="true"></i></a><a class="button btn btn-default big gonext" title="Next" href="#step-4">Next <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+	</div>
+	</div>
+	</div>';
+	return $field;
+}
+add_filter( 'acf/load_field/key=field_607f40a865f68', 'analysis_plan_save_btn' );
+
 /*
 ** Start the template
 */
@@ -52,6 +89,61 @@ acf_form_head();
 get_header();
 
 global $post, $bp;
+
+if ( isset( $_GET['edit'] ) && intval( $_GET['edit'] ) > 0 && !can_edit_acf_form( intval( $_GET['edit'] ) ) ) {
+	?>
+	<div class="col-sm-12">
+		<div class="alert alert-warning text-center">
+			<h3><?php echo __( 'Sorry, you cannot edit a project that was submitted by someone else or a project that has already been published. If you need to make changes to a published project, please contact the OPSI team at', 'opsi' ); ?> <a href="mailto:opsi@oecd.org">opsi@oecd.org</a></h3>
+		</div>
+
+	</div>
+	<?php
+	get_footer();
+	return;
+}
+
+if ( isset( $_GET['delete'] ) && intval( $_GET['delete'] ) > 0 ) {
+
+	$can_delete_cs = can_delete_cs( intval( $_GET['delete'] ) );
+
+	if ( !can_delete_cs( intval( $_GET['delete'] ) ) ) {
+		?>
+		<div class="col-sm-12">
+			<div class="alert alert-warning text-center">
+				<h3><strong>Error!</strong> <?php echo __( 'You can not delete this project.', 'opsi' ); ?></h3>
+			</div>
+		</div>
+		<?php
+		get_footer();
+		return;
+	} else {
+		if ( isset( $_GET['confirm'] ) && intval( $_GET['confirm'] ) == 1 ) {
+
+			if ( $can_delete_cs == 'delete' ) {
+				wp_delete_post( intval( $_GET['delete'] ) );
+			}
+
+			if ( $can_delete_cs == 'request' ) {
+				 wp_update_post( array( 'ID' => intval( $_GET['delete'] ), 'post_status' => 'pending_deletion' ) );
+			}
+			$current_user = wp_get_current_user();
+			wp_safe_redirect( get_bloginfo('url') . '/members/'. $current_user->user_nicename . '/profile/');
+			exit();
+
+		} else {
+		?>
+			<div class="col-sm-12">
+				<div class="alert alert-warning text-center">
+					<h3><a href="<?php echo get_permalink( $post->ID ); ?>?delete=<?php echo intval( $_GET['delete'] ); ?>&confirm=1"><?php echo __( 'Please confirm deleting this project by clicking here.', 'opsi' ); ?></a></h3>
+				</div>
+			</div>
+		<?php
+		}
+	}
+	get_footer();
+	return;
+}
 
 $has_sidebar = 0;
 $layout = get_post_meta($post->ID, 'layout', true);
@@ -85,17 +177,27 @@ if($layout != 'fullpage' && is_active_sidebar( 'sidebar' )) {
 					'new_post'		=> array(
 						'post_type'		=> 'bi-project',
 						'post_status'	=> 'draft',
-						// 'post_author'	=> get_current_user_id(),
+						'post_author'	=> get_current_user_id(),
 						'post_content' => true,
 						'post_title' => true,
 					),
-					'submit_value'		=> __( 'Submit new pre-registration', 'opsi' ),
+					'submit_value'		=> __( 'Create a new pre-registration', 'opsi' ),
 					'form' 				=> true,
-					'updated_message' 	=> 'Your Pre-registration has been saved.',
+					'updated_message' 	=> '<span class="alert alert-success updatedalert" role="alert">'. __("Pre-registration saved on", 'acf') .' '. date_i18n( get_option('date_format') .' '.get_option('time_format') ) .'</span>',
 					// 'return' => '',
+					'html_before_fields' => '<input type="hidden" id="csf_action" name="csf_action" value="" style="display:none;"><input type="hidden" id="form_step_field" name="form_step" value="0" style="display:none;">',
 				);
 
+				if ( isset( $_GET['edit'] ) && intval( $_GET['edit'] ) > 0 ) {
+
+					$form_params['post_id'] 		= $_GET['edit'];
+					$form_params['new_post'] 		= false;
+					$form_params['submit_value'] 	= __( 'Save your case study', 'opsi' );
+
+				}
+
 				acf_form( $form_params );
+
 				?>
 			</div>
 	  </article>
