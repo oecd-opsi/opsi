@@ -203,7 +203,7 @@ function cs_jve_bi_unit_map() {
 			$related_projects = get_posts( array(
 				'numberposts'	=> -1,
 				'post_type'		=> 'bi-project',
-				'meta_key'		=> 'unit',
+				'meta_key'		=> 'who_is_behind_the_project_unit',
 				'meta_value'	=>  $id
 			) );
 			$projects_count = count( $related_projects );
