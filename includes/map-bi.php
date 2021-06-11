@@ -166,6 +166,7 @@ function cs_jve_bi_unit_map() {
 	}
 
 	$color_scale = 'bi-unit' == get_post_type() ? "['#d5bcf7', '#165580']" : "['#b4d5ed', '#0f1570']";
+	$unit_color_scale = "['#cd4cb2', '#165580', '#79aa7a', '#ead76c', '#e3583e', '#d5bcf7', '#7b7b8d']";
 
 	// WP_Query arguments
 	$args = array(
@@ -183,6 +184,9 @@ function cs_jve_bi_unit_map() {
 	$name = '';
 	$countries = '';
 	$values = '';
+	$institution_setup_array = '';
+	$institution_array = '';
+	$team_size_array = '';
 	$code_to_flag = '';
 	$code_to_slug = '';
 	$iso_slug= '';
@@ -198,6 +202,8 @@ function cs_jve_bi_unit_map() {
 			$country = get_the_terms( $id, 'country' );
 			$iso = get_field( 'iso_code', $country[0] );
 			$country_slug = $country[0]->slug;
+			$institution = get_the_terms( $id, 'bi-institution' );
+			$team_size = get_field( 'your_team_how_many_people_including_yourself_apply_behavioral_science_in_your_team', $id );
 
 			// Number of projects
 			$related_projects = get_posts( array(
@@ -227,6 +233,41 @@ function cs_jve_bi_unit_map() {
 			// $code_to_flag .= '"'. $iso .'": "<img src=\''. get_stylesheet_directory_uri().'/images/flags/'.$iso.'.png\' width=\'24\' height=\'24\' >",'; $code_to_flag .= "\n\t";
 			// $code_to_slug .= '"'. $iso .'": "'. $country_term->slug .'",'; $code_to_slug .= "\n\t";
 
+			// Institution setup
+			$institution_setup_index = 6;
+			$institution_setup_field_value = get_field( 'your_team_where_is_your_team_situated', $id );
+			switch ($institution_setup_field_value['label']) {
+				case 'Part of federal government':
+					$institution_setup_index = 0;
+					break;
+				case 'Part of state, province or local government':
+					$institution_setup_index = 1;
+					break;
+				case 'Government funded but independent entity':
+					$institution_setup_index = 2;
+					break;
+				case 'Academia':
+					$institution_setup_index = 3;
+					break;
+				case 'Private sector':
+					$institution_setup_index = 4;
+					break;
+				case 'Part of an international organization':
+					$institution_setup_index = 5;
+					break;
+
+				default:
+					$institution_setup_index = 6;
+					break;
+			}
+			$institution_setup_array .= '"'. $slug .'": "'. $institution_setup_index .'",';
+
+			// Institution
+			$institution_array .= '"'. $slug .'": "'. $institution[0]->name .'",';
+
+			// Team size
+			$team_size_array .= '"'. $slug .'": "'. $team_size .'",';
+
 			// Countries
 			$countries .= '"'. $iso .'": 1,';
 
@@ -254,6 +295,15 @@ function cs_jve_bi_unit_map() {
 			var names = {
 				<?php echo $names; ?>
 			};
+			var institutionSetup = {
+				<?php echo $institution_setup_array; ?>
+			};
+			var institution = {
+				<?php echo $institution_array; ?>
+			}
+			var teamSize = {
+				<?php echo $team_size_array; ?>
+			}
 			var countries = {
 				<?php echo $countries; ?>
 			};
@@ -263,18 +313,16 @@ function cs_jve_bi_unit_map() {
 			var maxValue = <?php echo $max_count;  ?>;
 			var country_to_add = '';
 
-			jQuery('#map-bar .max').text(maxValue);
-
 			jQuery('#regions_div').vectorMap({
 				map: 'world_mill',
 				markers: coords,
-				backgroundColor: "#D7FAFE",
+				backgroundColor: "#566f80",
 				zoomMax: 20,
 				regionStyle: {
 					initial: {
-						fill: 'white',
-						"fill-opacity": .95,
-						stroke: '#0f1570', "stroke-width": .05, "stroke-opacity": 1
+						fill: '#d3d3da',
+						"fill-opacity": 1,
+						stroke: '#d3d3da', "stroke-width": .05, "stroke-opacity": 1
 					},
 					hover: {
 						"fill-opacity": 1
@@ -287,13 +335,19 @@ function cs_jve_bi_unit_map() {
 				series: {
 					markers: [{
 	          attribute: 'fill',
-	          scale: <?php echo $color_scale; ?>,
-	          values: data,
-	          // min: 0,
-	          // max: maxValue
+	          scale: <?php echo $unit_color_scale; ?>,
+	          values: institutionSetup,
+	          min: 0,
+	          max: 6,
+	        },{
+	          attribute: 'stroke',
+	          scale: ['#ffffff'],
+	          values: institutionSetup,
+	          min: 0,
+	          max: 6
 	        },{
 	          attribute: 'r',
-	          scale: [0, 10],
+	          scale: [5, 20],
 	          values: data,
 	          // min: 0,
 	          // max: maxValue
@@ -318,7 +372,7 @@ function cs_jve_bi_unit_map() {
 						el.html('<div style="display:none; heigth: 0; width: 0; line-height: 0;  padding: 0;">' + el.html() + '</div>');
 						jQuery(el).hide();
 					} else {
-						el.html('<div class="opsi_tip clearfix">'+ el.html()+ '<br /><div class="pull-right inovcount">'+ names[code]+' </div></div>');
+						el.html('<div class="opsi_tip clearfix">'+ names[code] +'<br/><small>'+ institution[code] +'</small><br/><small>N. of project: '+ data[code] +'</small><br/><small>Team size: '+ teamSize[code] +'</small><br/><br/><small><em>>Click for details<</em></small></div>');
 					}
 				},
 				onMarkerLabelShow: function(e, el, code) {
@@ -328,6 +382,21 @@ function cs_jve_bi_unit_map() {
 						el.html('<div style="display:none heigth: 0; width: 0; line-height: 0; padding: 0;">' + el.html() + '</div>');
 						jQuery(el).hide();
 					}
+				},
+				onMarkerClick: function( e, code ) {
+					jQuery.ajax({
+		         type : "post",
+		         dataType : "json",
+		         url : "<?php echo admin_url( 'admin-ajax.php' ) ?>",
+		         data : {
+							 action: "unit_map_unit_info",
+							 slug: code
+						 },
+		         success: function(response) {
+		            var output = '<span class="bi-modal-title">'+response['unit_name']+'</span><br/><span class="bi-modal-institution">'+response['institution']+'</span><hr><span class="bi-modal-data">Pre-registration: <em>'+response['preregistration']+'</em></span><br/><span class="bi-modal-data">Completed project: <em>'+response['completed']+'</em></span><br/><span class="bi-modal-data">Total number of project: <em>'+response['total_projects']+'</em></span><br/><span class="bi-modal-data">Team size: <em>'+response['team_size']+'</em></span><br/><span class="bi-modal-data">Policy areas: <em>'+response['policy_areas']+'</em></span><br/><span class="bi-modal-data">Activities: <em>'+response['activities']+'</em></span><br/><br/><a href="'+response['url']+'">Read more</a>';
+								jQuery('#bi-modal').html(output).addClass('visible');
+		         }
+		      });
 				},
 				onRegionOver: function(e, code) {
 					if (data[code]) {
@@ -342,23 +411,6 @@ function cs_jve_bi_unit_map() {
 
 					jQuery('#regions_div').vectorMap('get','mapObject').setFocus({region: code, animate: true});
 					jQuery('#regions_div').addClass('zoomed-map');
-
-					jQuery.ajax({
-		         type : "post",
-		         dataType : "json",
-		         url : "<?php echo admin_url( 'admin-ajax.php' ) ?>",
-		         data : {
-							 action: "unit_map_country_info",
-							 iso: code
-						 },
-		         success: function(response) {
-		            // if ( response.type == "success" ) {
-		              console.log(response);
-		            // } else {
-		            //   console.log('error');
-		            // }
-		         }
-		      });
 
 					if ( countries[code] > 0 ) {
 						jQuery('.countries_widget .widget_content').show();
@@ -387,6 +439,14 @@ function cs_jve_bi_unit_map() {
 			jQuery('.back-global-view').on( 'click', function() {
 				jQuery('#regions_div').removeClass('zoomed-map');
 				jQuery('#regions_div').vectorMap('get','mapObject').setFocus({scale: 0, x: 0.5, y: 0.5, animate: true});
+			});
+
+			// Close modal if click is outside it
+			jQuery(document).click(function(event) {
+			  var $target = jQuery(event.target);
+			  if( !$target.closest('#menucontainer').length ) {
+			    jQuery('#bi-modal').removeClass('visible');
+			  }
 			});
 
 		});

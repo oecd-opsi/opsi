@@ -36,12 +36,19 @@
 	<div class="cs_top_map hoverzoom-">
 		<div id="regions_div" style="width: 100%; height: 500px;">
 			<button class="back-global-view">Back to global view</button>
+			<div id="bi-modal"></div>
 		</div>
-		<div id="map-bar">
-			<div class="meter_label"><?php echo __( 'BI units:', 'opsi' ); ?></div>
-			<div class="min">0</div>
-			<div class="rule"><div id="curs"></div></div>
-			<div class="max"></div>
+		<div id="unit-map-legend">
+			<p class="legend-title">Legend: Institution setup</p>
+			<ul>
+				<li>Part of federal government</li>
+				<li>Part of state, province or local government</li>
+				<li>Government funded but independent entity</li>
+				<li>Academia</li>
+				<li>Private sector</li>
+				<li>Part of an international organization</li>
+				<li>Other</li>
+			</ul>
 		</div>
 	</div>
 

@@ -87,73 +87,112 @@ function opsi_bi_post_types() {
 add_action( 'init', 'opsi_bi_post_types' );
 
 // AJAX for Units map
-add_action("wp_ajax_unit_map_country_info", "bs_unit_map_country_info");
-add_action("wp_ajax_nopriv_unit_map_country_info", "bs_unit_map_country_info");
+add_action("wp_ajax_unit_map_unit_info", "bs_unit_map_unit_info");
+add_action("wp_ajax_nopriv_unit_map_unit_info", "bs_unit_map_unit_info");
 // define the function to be fired for logged in users
-function bs_unit_map_country_info() {
+function bs_unit_map_unit_info() {
 
-	// Store ISO code in a variable
-	$iso_code = $_REQUEST["iso"];
+	// Store Unit slug in a variable
+	$unit_slug = $_REQUEST["slug"];
 
-	if( $iso_code == "" )
+	if( $unit_slug == "" )
 	 	return;
 
-	// Get the country term from ISO code
-	$country_term = get_terms( array(
-		'taxonomy'		=> 'country',
-		'meta_key'		=> 'iso_code',
-		'meta_value'	=> $iso_code,
+	// Get Unit post object
+	$args = array(
+		'name'						=> $unit_slug,
+		'post_type'				=> 'bi-unit',
+		'post_status' 		=> 'publish',
+    'posts_per_page'	=> 1
+	);
+	$units = get_posts( $args );
+	$unit = $units[0];
+
+	// Get the Unit name
+	$unit_name = $unit->post_title;
+
+	// Get the Institution
+	$institutions = get_the_terms( $unit->ID, 'bi-institution' );
+	$institution_name = $institutions[0]->name;
+
+	// Get the number of pre-registration projects of this Unit
+	$preregistration_projects = get_posts( array(
+		'numberposts'	=> -1,
+		'post_type'		=> 'bi-project',
+		'meta_key'		=> 'who_is_behind_the_project_unit',
+		'meta_value'	=>  $unit->ID,
+		'tax_query' => array(
+      array(
+        'taxonomy' => 'bi-project-status',
+        'field'    => 'slug',
+        'terms'    => 'pre-registration',
+      ),
+    ),
 	) );
-	// Country name
-	$country_name = $country_term[0]->name;
+	$preregistration_count = count( $preregistration_projects );
 
-	 // Number of units in the country
-	 $related_units = get_posts( array(
-		 'numberposts'	=> -1,
-		 'post_type'		=> 'bi-unit',
-		 'tax_query' => array(
-        array(
-            'taxonomy' => 'country',
-            'field'    => 'slug',
-            'terms'    => $country_term[0]->slug,
-        ),
-    	),
-	 ) );
-	 $units_count = count( $related_units );
+	// Get the number of completed projects of this Unit
+	$completed_projects = get_posts( array(
+		'numberposts'	=> -1,
+		'post_type'		=> 'bi-project',
+		'meta_key'		=> 'who_is_behind_the_project_unit',
+		'meta_value'	=>  $unit->ID,
+		'tax_query' => array(
+      array(
+        'taxonomy' => 'bi-project-status',
+        'field'    => 'slug',
+        'terms'    => 'completed',
+      ),
+    ),
+	) );
+	$completed_count = count( $completed_projects );
 
-	 // Number of people and Policy Areas
-	 $number_people = 0;
-	 $policy_areas = array();
-	 $main_policy_areas = '';
-	 foreach ( $related_units as $unit ) {
-		 // Number of people
-	 	$number = get_field( 'your_team_how_many_people_including_yourself_apply_behavioral_science_in_your_team', $unit );
-		$number_people += $number;
-		// Policy area
-		$policy_terms = get_the_terms( $unit, 'bi-project-policy-area' );
-		foreach ( $policy_terms as $policy_term) {
-			++$policy_areas[$policy_term->name];
-		}
-		arsort( $policy_terms );
-		$policy_terms = array_slice( $policy_terms, 0, 3 );
-		$main_policy_areas = implode( ', ', $policy_terms );
-	 }
+	// Total number of projects
+	$total_projects = get_posts( array(
+		'numberposts'	=> -1,
+		'post_type'		=> 'bi-project',
+		'meta_key'		=> 'who_is_behind_the_project_unit',
+		'meta_value'	=>  $unit->ID,
+	) );
+	$project_count = count( $total_projects );
 
-	 $result = array(
-		 'name'					=> $country_name,
-		 'unitsnum'			=> $units_count,
-		 'peoplenum'		=> $number_people,
-		 'policyareas'	=> $main_policy_areas,
-	 );
+	// Team size
+	$team_size = get_field( 'your_team_how_many_people_including_yourself_apply_behavioral_science_in_your_team', $unit->ID );
 
-   // Check if action was fired via Ajax call. If yes, JS code will be triggered, else the user is redirected to the post page
-   if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-      $result = json_encode($result);
-      echo $result;
-   }
+	// Policy Areas
+	$policy_areas = strip_tags( get_the_term_list( $unit->ID, 'bi-project-policy-area', '', ', ') );
 
-   // don't forget to end your scripts with a die() function - very important
-   die();
+	// Activities
+	$activity_list = '';
+	$activity_values = get_field( 'activities_ which_of_the_following_activities_has_your_unit_been_involved_in', $unit->ID );
+	foreach ($activity_values as $activity) {
+		$activity_list .= $activity['label'] . ', ';
+	}
+	$activity_list = rtrim( $activity_list, ', ' );
+
+	// Unit URL
+	$unit_url = get_permalink( $unit->ID );
+
+	$result = array(
+		'unit_name'				=> $unit_name,
+		'institution'			=> $institution_name,
+		'preregistration'	=> $preregistration_count,
+		'completed'				=> $completed_count,
+		'total_projects'	=> $project_count,
+		'team_size'				=> $team_size,
+		'policy_areas'		=> $policy_areas,
+		'activities'			=> $activity_list,
+		'url'							=> $unit_url,
+	);
+
+	// Check if action was fired via Ajax call. If yes, JS code will be triggered, else the user is redirected to the post page
+	if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+	  $result = json_encode($result);
+	  echo $result;
+	}
+
+	// don't forget to end your scripts with a die() function - very important
+	die();
 }
 
 // Add BI Projects BP subtab ***START***
