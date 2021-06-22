@@ -40,6 +40,15 @@
         <p class="bi-project-status"><?php echo $project_status ?> project</p>
         <?php endif; ?>
 
+        <?php
+        $image_id = $fields['additional_information'][' do_you_have_a_picture_you_would_like_to_feature_with_this_project__please_upload_it_here']['text'];
+        if( $image_id > 0 ) {
+          echo '<div class="bi-project-featured-image">';
+          wp_get_attachment_image( $image_id, 'full' );
+          echo '</div>';
+        }
+        ?>
+
 				<div class="sliding_panel open">
 
 					<h2 class="active">General Information</h2>

@@ -13,11 +13,15 @@
 
 ?>
 
+<div class="col-sm-12">
+	<div class="bi-section-false-tabs">
+		<a href="#">About Behavioural Insight</a>
+		<a href="/bi-units">Units</a>
+		<a href="/bi-projects">Projects</a>
+	</div>
+</div>
 
-
-
-<div class="col-sm-<?php echo 12 - $has_sidebar; ?> <?php echo ($has_sidebar > 0 ? 'col-sm-pull-3' : ''); ?>">
-
+<div class="col-sm-12">
 	<div class="cs_top_filters">
 		<div class="row">
 			<div class="col-sm-10">
@@ -56,6 +60,37 @@
 			</div>
 		</div>
 	</div>
+</div>
+
+<div class="col-sm-3 col-sm-push-9">
+	<div class="sidewrap sidewrap_csfilters">
+		<div class="">
+			<a href="/bi-completed-project-form/" class="bi-to-form-btn button btn btn-warning btn-md ">Add a project here</a>
+			<a href="/bi-pre-registration-form/" class="bi-to-form-btn button btn btn-warning btn-md ">Pre-register a project here</a>
+		</div>
+		<div class="cs_sidebar_wrap">
+			<?php echo __( 'Total projects:', 'opsi' ); ?> <span class="cs_counter"><?php echo wp_count_uncached_posts( 'bi-project' )['publish']; ?></span><br />
+			<?php echo __( 'Search results:', 'opsi' ); ?> <span class="cs_counter"><?php echo facetwp_display( 'counts' ); ?></span>
+		</div>
+		<?php
+		$bi_project_form_page = get_field( 'bi_project_form_page', 'option' );
+		if ( ! empty( $bi_project_form_page ) ) {
+			$bi_project_form_page_url = get_permalink( $bi_project_form_page );
+			if ( ! empty( $bi_project_form_page_url ) ) {
+			?>
+			<a class="button btn btn-default btn-block big covid-add-response-button" href="<?php echo $bi_project_form_page_url; ?>"><?php echo __( 'Add a Pre-registration', 'opsi' ); ?></a>
+			<?php
+			}
+		}
+		?>
+
+		<h2><?php echo __( 'Filter projects:', 'opsi' ); ?></h2>
+		<?php dynamic_sidebar( 'sidebar_bi_project' ); ?>
+		<button class="button btn btn-default btn-block big reset-filters-button" onclick="FWP.reset()"><?php echo __( 'Clear All Filters', 'opsi' ); ?></button>
+	</div>
+</div>
+
+<div class="col-sm-<?php echo 12 - $has_sidebar; ?> <?php echo ($has_sidebar > 0 ? 'col-sm-pull-3' : ''); ?>">
 
 	<div class="facetwp-template">
 

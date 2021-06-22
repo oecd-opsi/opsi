@@ -58,7 +58,13 @@
 					<?php
 					$people_number = get_field( 'your_team_how_many_people_including_yourself_apply_behavioral_science_in_your_team' );
 					if ( $people_number != '' ) { ?>
-						<p class="csp">Number of people applying behavioral science in the team: <?php echo $people_number; ?></p>
+						<p class="csp">Number of people that apply BI in the team: <?php echo $people_number; ?></p>
+					<?php } ?>
+
+					<?php
+					$creation_date = get_field( 'your_team_ approximately_when_was_your_team_created_at_your_organization_or_if_it’s_just_you_when_was_your_role_created' );
+					if ( $creation_date != '' ) { ?>
+						<p class="csp">Approximate date of team creation: <?php echo $creation_date; ?></p>
 					<?php } ?>
 
 					<p class="read_more">

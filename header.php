@@ -212,55 +212,8 @@
           } else {
             ?></div><?php
           }
-        } elseif ( is_active_sidebar( 'sidebar_bi_project' ) && ( is_post_type_archive( 'bi-project' ) ) ) { ?>
-          <div class="col-sm-3 col-sm-push-9">
-            <div class="sidewrap sidewrap_csfilters">
-              <div class="cs_sidebar_wrap">
-                <?php echo __( 'Total projects:', 'opsi' ); ?> <span class="cs_counter"><?php echo wp_count_uncached_posts( 'bi-project' )['publish']; ?></span><br />
-                <?php echo __( 'Search results:', 'opsi' ); ?> <span class="cs_counter"><?php echo facetwp_display( 'counts' ); ?></span>
-              </div>
-              <?php
-              $bi_project_form_page = get_field( 'bi_project_form_page', 'option' );
-              if ( ! empty( $bi_project_form_page ) ) {
-                $bi_project_form_page_url = get_permalink( $bi_project_form_page );
-                if ( ! empty( $bi_project_form_page_url ) ) {
-                ?>
-                <a class="button btn btn-default btn-block big covid-add-response-button" href="<?php echo $bi_project_form_page_url; ?>"><?php echo __( 'Add a Pre-registration', 'opsi' ); ?></a>
-                <?php
-                }
-              }
-              ?>
+        } elseif ( is_post_type_archive( 'bi-project' ) || is_post_type_archive( 'bi-unit' ) ) { ?>
 
-              <h2><?php echo __( 'Filter projects:', 'opsi' ); ?></h2>
-              <?php dynamic_sidebar( 'sidebar_bi_project' ); ?>
-              <button class="button btn btn-default btn-block big reset-filters-button" onclick="FWP.reset()"><?php echo __( 'Clear All Filters', 'opsi' ); ?></button>
-            </div>
-          </div>
-        <?php
-      } elseif ( is_active_sidebar( 'sidebar_bi_unit' ) && ( is_post_type_archive( 'bi-unit' ) ) ) { ?>
-        <div class="col-sm-3 col-sm-push-9">
-          <div class="sidewrap sidewrap_csfilters">
-            <div class="cs_sidebar_wrap">
-              <?php echo __( 'Total units:', 'opsi' ); ?> <span class="cs_counter"><?php echo wp_count_uncached_posts( 'bi-unit' )['publish']; ?></span><br />
-              <?php echo __( 'Search results:', 'opsi' ); ?> <span class="cs_counter"><?php echo facetwp_display( 'counts' ); ?></span>
-            </div>
-            <?php
-            $bi_unit_form_page = get_field( 'bi_unit_form_page', 'option' );
-            if ( ! empty( $bi_unit_form_page ) ) {
-              $bi_unit_form_page_url = get_permalink( $bi_unit_form_page );
-              if ( ! empty( $bi_unit_form_page_url ) ) {
-              ?>
-              <a class="button btn btn-default btn-block big covid-add-response-button" href="<?php echo $bi_unit_form_page_url; ?>"><?php echo __( 'Add a Unit', 'opsi' ); ?></a>
-              <?php
-              }
-            }
-            ?>
-
-            <h2><?php echo __( 'Filter units:', 'opsi' ); ?></h2>
-            <?php dynamic_sidebar( 'sidebar_bi_unit' ); ?>
-            <button class="button btn btn-default btn-block big reset-filters-button" onclick="FWP.reset()"><?php echo __( 'Clear All Filters', 'opsi' ); ?></button>
-          </div>
-        </div>
       <?php
     } elseif ( get_queried_object_id() == get_field( 'covid_response_form_thank_you_page_submit', 'options' ) ) {
         ?>

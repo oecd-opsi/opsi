@@ -62,14 +62,18 @@
             <h3>Where is the team situated</h3>
             <div class="csp"><?php echo $fields['your_team']['where_is_your_team_situated']['text']['label']; ?></div>
 
+            <?php if( $fields['your_team'][' do_you_work_with_governments_on_applying_bi_to_public_policy']['text']['label'] != '' ): ?>
+              <div class="csp">Does the team works with government(s) on applying BI to public policy? <?php echo $fields['your_team']['do_you_work_with_governments_on_applying_bi_to_public_policy']['text']['label']; ?></div>
+            <?php endif; ?>
+
             <?php if( $fields['your_team']['are_you_part_of']['text']['label'] != '' ): ?>
               <div class="csp">The team is part of <?php echo $fields['your_team']['where_is_your_team_situated']['text']['label']; ?></div>
             <?php endif; ?>
 
             <div class="csp"><strong>Number of people that apply behavioral science in the team:</strong> <?php echo $fields['your_team']['how_many_people_including_yourself_apply_behavioral_science_in_your_team']['text']; ?></div>
 
-            <?php if( $fields['your_team']['beyond_your_team_roughly_how_many_other_people_apply_behavioral_science_in_your_organization']['text'] != '' ): ?>
-              <div class="csp"><strong>Approximate date of team creation: </strong><?php echo $fields['your_team']['beyond_your_team_roughly_how_many_other_people_apply_behavioral_science_in_your_organization']['text']; ?></div>
+            <?php if( $fields['your_team']['approximately_when_was_your_team_created_at_your_organization_or_if_it’s_just_you_when_was_your_role_created']['text'] != '' ): ?>
+              <div class="csp"><strong>Approximate date of team creation: </strong><?php echo $fields['your_team']['approximately_when_was_your_team_created_at_your_organization_or_if_it’s_just_you_when_was_your_role_created']['text']; ?></div>
             <?php endif; ?>
 
 				  </div>
@@ -143,7 +147,7 @@
 							<a href="<?php echo get_post_type_archive_link( 'bi-project' ); ?>?_countries=<?php echo $country[0]->slug; ?>" title="<?php echo __( 'All BI project by:', 'opsi' ); ?> <?php echo $country[0]->name; ?>" class="blacklink" target="_blank" >
 							<?php echo $country[0]->name; ?></a>
             </h4>
-            <p class="bi-project-city"><?php echo $fields['general_information']['your_stateprovince']['text'] ?>, <?php echo $fields['general_information']['your_city']['text'] ?></p>
+            <p class="bi-project-city"><?php echo $fields['general_information']['your_city']['text'] ?></p>
 					</div>
 					<?php } ?>
 				</div>

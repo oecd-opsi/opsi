@@ -166,7 +166,7 @@ function cs_jve_bi_unit_map() {
 	}
 
 	$color_scale = 'bi-unit' == get_post_type() ? "['#d5bcf7', '#165580']" : "['#b4d5ed', '#0f1570']";
-	$unit_color_scale = "['#cd4cb2', '#165580', '#79aa7a', '#ead76c', '#e3583e', '#d5bcf7', '#7b7b8d']";
+	$unit_color_scale = "['#165580', '#3890cd', '#058056', '#e3583e', '#ead76c', '#d5bcf7', '#7b7b8d']";
 
 	// WP_Query arguments
 	$args = array(
@@ -347,7 +347,7 @@ function cs_jve_bi_unit_map() {
 	          max: 6
 	        },{
 	          attribute: 'r',
-	          scale: [5, 20],
+	          scale: [3, 15],
 	          values: data,
 	          // min: 0,
 	          // max: maxValue
@@ -393,7 +393,7 @@ function cs_jve_bi_unit_map() {
 							 slug: code
 						 },
 		         success: function(response) {
-		            var output = '<span class="bi-modal-title">'+response['unit_name']+'</span><br/><span class="bi-modal-institution">'+response['institution']+'</span><hr><span class="bi-modal-data">Pre-registration: <em>'+response['preregistration']+'</em></span><br/><span class="bi-modal-data">Completed project: <em>'+response['completed']+'</em></span><br/><span class="bi-modal-data">Total number of project: <em>'+response['total_projects']+'</em></span><br/><span class="bi-modal-data">Team size: <em>'+response['team_size']+'</em></span><br/><span class="bi-modal-data">Policy areas: <em>'+response['policy_areas']+'</em></span><br/><span class="bi-modal-data">Activities: <em>'+response['activities']+'</em></span><br/><br/><a href="'+response['url']+'">Read more</a>';
+		            var output = '<span class="bi-modal-title">'+response['unit_name']+'</span><br/><span class="bi-modal-institution">'+response['institution']+'</span><hr><span class="bi-modal-data">Total number of project: <em>'+response['total_projects']+'</em></span><br/><span class="bi-modal-data">Pre-registration: <em>'+response['preregistration']+'</em></span><br/><span class="bi-modal-data">Completed project: <em>'+response['completed']+'</em></span><br/><span class="bi-modal-data">Team size: <em>'+response['team_size']+'</em></span><br/><span class="bi-modal-data">Policy areas: <em>'+response['policy_areas']+'</em></span><br/><span class="bi-modal-data">Activities: <em>'+response['activities']+'</em></span><br/><br/><a href="'+response['url']+'">Read more</a>';
 								jQuery('#bi-modal').html(output).addClass('visible');
 		         }
 		      });
