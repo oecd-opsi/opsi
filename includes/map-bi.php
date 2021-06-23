@@ -372,7 +372,7 @@ function cs_jve_bi_unit_map() {
 						el.html('<div style="display:none; heigth: 0; width: 0; line-height: 0;  padding: 0;">' + el.html() + '</div>');
 						jQuery(el).hide();
 					} else {
-						el.html('<div class="opsi_tip clearfix">'+ names[code] +'<br/><small>'+ institution[code] +'</small><br/><small>N. of project: '+ data[code] +'</small><br/><small>Team size: '+ teamSize[code] +'</small><br/><br/><small><em>>Click for details<</em></small></div>');
+						el.html('<div class="opsi_tip clearfix">'+ names[code] +'<br/><small>'+ institution[code] +'</small><br/><small>N. of projects: '+ data[code] +'</small><br/><small>Team size: '+ teamSize[code] +'</small><br/><br/><small><em>>Click for details<</em></small></div>');
 					}
 				},
 				onMarkerLabelShow: function(e, el, code) {
@@ -393,7 +393,7 @@ function cs_jve_bi_unit_map() {
 							 slug: code
 						 },
 		         success: function(response) {
-		            var output = '<span class="bi-modal-title">'+response['unit_name']+'</span><br/><span class="bi-modal-institution">'+response['institution']+'</span><hr><span class="bi-modal-data">Total number of project: <em>'+response['total_projects']+'</em></span><br/><span class="bi-modal-data">Pre-registration: <em>'+response['preregistration']+'</em></span><br/><span class="bi-modal-data">Completed project: <em>'+response['completed']+'</em></span><br/><span class="bi-modal-data">Team size: <em>'+response['team_size']+'</em></span><br/><span class="bi-modal-data">Policy areas: <em>'+response['policy_areas']+'</em></span><br/><span class="bi-modal-data">Activities: <em>'+response['activities']+'</em></span><br/><br/><a href="'+response['url']+'">Read more</a>';
+		            var output = '<span class="bi-modal-title">'+response['unit_name']+'</span><br/><span class="bi-modal-institution">'+response['institution']+'</span><hr><span class="bi-modal-data">Total number of projects: <em>'+response['total_projects']+'</em></span><br/><span class="bi-modal-data">Pre-registration: <em>'+response['preregistration']+'</em></span><br/><span class="bi-modal-data">Completed project: <em>'+response['completed']+'</em></span><br/><span class="bi-modal-data">Team size: <em>'+response['team_size']+'</em></span><br/><span class="bi-modal-data">Policy areas: <em>'+response['policy_areas']+'</em></span><br/><span class="bi-modal-data">Activities: <em>'+response['activities']+'</em></span><br/><br/><a href="'+response['url']+'">Read more</a>';
 								jQuery('#bi-modal').html(output).addClass('visible');
 		         }
 		      });
