@@ -36,6 +36,22 @@
 						 ?>
 						<p class="bi-project-status"><?php echo $project_status ?> project</p>
 
+						<div>
+							<strong>Unit </strong><br>
+							<?php
+							$unit = get_field( 'who_is_behind_the_project_unit', get_the_ID() );
+							echo $unit->post_title;
+							 ?>
+						</div>
+
+						<div>
+							<strong>Institution </strong><br>
+							<?php
+							$institutions = get_the_terms( $unit->ID, 'bi-institution' );
+							echo $institutions[0]->name;
+							 ?>
+						</div>
+
 						<?php
 						// Methodology terms
 						if ( !empty( get_field( 'methods_methodology' ) ) ) {

@@ -59,9 +59,6 @@
           <h2 class="active">The Team</h2>
           <div class="panel_content" style="display:none;">
 
-            <h3>Where is the team situated</h3>
-            <div class="csp"><?php echo $fields['your_team']['where_is_your_team_situated']['text']['label']; ?></div>
-
             <?php if( $fields['your_team'][' do_you_work_with_governments_on_applying_bi_to_public_policy']['text']['label'] != '' ): ?>
               <div class="csp">Does the team works with government(s) on applying BI to public policy? <?php echo $fields['your_team']['do_you_work_with_governments_on_applying_bi_to_public_policy']['text']['label']; ?></div>
             <?php endif; ?>

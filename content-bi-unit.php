@@ -29,6 +29,13 @@
 			<div class="col-md-3 col-sm-4">
 				<div class="post_tags_wrap">
 					<div class="post_tags">
+						<div>
+							<strong>Institution </strong><br>
+							<?php
+							$institutions = get_the_terms( get_the_ID(), 'bi-institution' );
+							echo $institutions[0]->name;
+							 ?>
+						</div>
 						<?php
 						// Policy area terms
 						if ( !empty( get_field( 'activities_which_of_the_following_policy_areas_has_your_unit_been_involved_in' ) ) ) {

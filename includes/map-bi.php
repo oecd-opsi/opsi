@@ -352,21 +352,25 @@ function cs_jve_bi_unit_map() {
 	          // min: 0,
 	          // max: maxValue
 	        }],
-					regions: [
-						// {
-						// 	values: data,
-						// 	scale: <?php //echo $color_scale; ?>,
-						// 	normalizeFunction: 'linear',
-						// 	attribute: 'fill'
-						// },
-						// {
-						// 	values: data,
-						// 	scale: <?php //echo $color_scale; ?>,
-						// 	normalizeFunction: 'linear',
-						// 	attribute: 'stroke'
-						// },
-					]
 				},
+				onViewportChange: function(event, scaleFactor){
+		      var map = jQuery("#regions_div").vectorMap("get", "mapObject");
+		      if(map) {
+		        var markers = map.markers;
+		        for(var m in markers) {
+		          var el = markers[m].element,
+		              style = el.config.style,
+									r = style.current.r,
+									newR = Math.round( r * scaleFactor );
+									console.log(el);
+		          el.shape.node.setAttribute('r', newR);
+		          style.initial.r = newR;
+		          style.hover.r = newR;
+							style.selected.r = newR;
+							style.selectedHover.r = newR;
+		        }
+		      }
+		    },
 				onMarkerTipShow: function(e, el, code){
 					if ( names[code] == null ) {
 						el.html('<div style="display:none; heigth: 0; width: 0; line-height: 0;  padding: 0;">' + el.html() + '</div>');
@@ -407,20 +411,20 @@ function cs_jve_bi_unit_map() {
 				onRegionOut: function(e, code) {
 					jQuery("#curs").css("left", "-9999px");
 				},
-				onRegionClick: function(e, code, isSelected, selectedRegions) {
-
-					jQuery('#regions_div').vectorMap('get','mapObject').setFocus({region: code, animate: true});
-					jQuery('#regions_div').addClass('zoomed-map');
-
-					if ( countries[code] > 0 ) {
-						jQuery('.countries_widget .widget_content').show();
-						country_to_add = isoSlug[code];
-						FWP.refresh();
-					} else {
-						country_to_add = '';
-					}
-
-				}
+				// onRegionClick: function(e, code, isSelected, selectedRegions) {
+				//
+				// 	jQuery('#regions_div').vectorMap('get','mapObject').setFocus({region: code, animate: true});
+				// 	jQuery('#regions_div').addClass('zoomed-map');
+				//
+				// 	if ( countries[code] > 0 ) {
+				// 		jQuery('.countries_widget .widget_content').show();
+				// 		country_to_add = isoSlug[code];
+				// 		FWP.refresh();
+				// 	} else {
+				// 		country_to_add = '';
+				// 	}
+				//
+				// }
 			});
 
 			jQuery(document).on('facetwp-refresh', function() {
