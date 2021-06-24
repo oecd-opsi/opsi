@@ -120,7 +120,8 @@
                         "Real-time data collection, sharing, and analysis": "Real-time data collection, sharing, and analysis",
                         "Public service delivery under new circumstances": "Public service delivery under new circumstances",
                         "Crowdsourcing solutions": "Crowdsourcing solutions",
-                        "Social effects of the crisis": "Social effects of the crisis"
+                        "Social effects of the crisis": "Social effects of the crisis",
+                        "Vaccinations": "Vaccinations"
                     },
                     "allow_custom": 1,
                     "save_custom": 0,
@@ -430,7 +431,6 @@
                             },
                             "display_order": "",
                             "acfe_permissions": "",
-                            "acfe_uploader": "basic",
                             "acfe_thumbnail": 0,
                             "return_format": "array",
                             "preview_size": "medium",
@@ -441,7 +441,8 @@
                             "max_width": "",
                             "max_height": "",
                             "max_size": "",
-                            "mime_types": ".jpg,.jpeg,.png"
+                            "mime_types": ".jpg,.jpeg,.png",
+                            "uploader": "basic"
                         }
                     ]
                 },
@@ -482,12 +483,12 @@
                             },
                             "display_order": "",
                             "acfe_permissions": "",
-                            "acfe_uploader": "basic",
                             "return_format": "array",
                             "library": "uploadedTo",
                             "min_size": "",
                             "max_size": "",
-                            "mime_types": ".pdf,.doc,.docx,.ppt.,.pptx.,.odt,.xls,.xlsx,.txt,.mp3,.m4a,.ogg,.wav"
+                            "mime_types": ".pdf,.doc,.docx,.ppt.,.pptx.,.odt,.xls,.xlsx,.txt,.mp3,.m4a,.ogg,.wav",
+                            "uploader": "basic"
                         }
                     ]
                 },
@@ -594,15 +595,14 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
+    "active": true,
     "description": "",
     "acfe_display_title": "",
     "acfe_autosync": [
         "json"
     ],
-    "acfe_permissions": "",
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1586959015
+    "modified": 1621447592
 }

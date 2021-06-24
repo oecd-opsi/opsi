@@ -25,6 +25,46 @@
             "show_column_weight": 1000,
             "allow_quickedit": 1,
             "allow_bulkedit": 0
+        },
+        {
+            "key": "field_6081a920efe34",
+            "label": "Capital",
+            "name": "capital",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_6081a929efe35",
+            "label": "Latitude and Longitude",
+            "name": "latitude_and_longitude",
+            "type": "text",
+            "instructions": "Two numeric values divided by comma, e.g. <em>3.2, 73.22<\/em>",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_order": "",
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         }
     ],
     "location": [
@@ -42,7 +82,14 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1531060333
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1619110398
 }

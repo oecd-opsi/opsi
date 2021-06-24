@@ -1,0 +1,741 @@
+{
+    "key": "group_60ad5fddd151e",
+    "title": "BI Unit",
+    "fields": [
+        {
+            "key": "field_60ad6011c03af",
+            "label": "Intro",
+            "name": "intro",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "headertitle notinform stepgroup removetitle ",
+                "id": ""
+            },
+            "display_order": "",
+            "layout": "block",
+            "acfe_seamless_style": 0,
+            "acfe_group_modal": 0,
+            "sub_fields": [
+                {
+                    "key": "field_60ad6024c03b0",
+                    "label": "Intro page",
+                    "name": "",
+                    "type": "message",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "message": "",
+                    "new_lines": "wpautop",
+                    "esc_html": 0
+                },
+                {
+                    "key": "field_60ad603bc03b1",
+                    "label": "Next\/Prev placeholder",
+                    "name": "",
+                    "type": "message",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "removelabel submitmessage",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "message": "<div class=\"col-md-12 layout_hero_block \">\r\n<div class=\"hb_inner text-left\">\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big gonext\" title=\"Next\" href=\"#step-1\">Next <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"><\/i><\/a>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
+                    "new_lines": "wpautop",
+                    "esc_html": 0
+                }
+            ]
+        },
+        {
+            "key": "field_60ad6176f6a98",
+            "label": "General information",
+            "name": "general_information",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "stepgroup",
+                "id": ""
+            },
+            "display_order": "",
+            "layout": "block",
+            "acfe_seamless_style": 0,
+            "acfe_group_modal": 0,
+            "sub_fields": [
+                {
+                    "key": "field_60ad6199f6a99",
+                    "label": "The name of your \"unit\"",
+                    "name": "the_name_of_your_unit",
+                    "type": "text",
+                    "instructions": "Required.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_60ad61b7f6a9a",
+                    "label": "Your Organization's name",
+                    "name": "your_organizations_name",
+                    "type": "taxonomy",
+                    "instructions": "Required. The name of the parent organization, not just your team's name.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "taxonomy": "bi-institution",
+                    "field_type": "select",
+                    "allow_null": 0,
+                    "add_term": 1,
+                    "save_terms": 1,
+                    "load_terms": 0,
+                    "return_format": "object",
+                    "acfe_bidirectional": {
+                        "acfe_bidirectional_enabled": "0"
+                    },
+                    "multiple": 0
+                },
+                {
+                    "key": "field_60ad6246e41e3",
+                    "label": "Your country?",
+                    "name": "your_country",
+                    "type": "taxonomy",
+                    "instructions": "Required.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "taxonomy": "country",
+                    "field_type": "select",
+                    "allow_null": 0,
+                    "add_term": 0,
+                    "save_terms": 1,
+                    "load_terms": 0,
+                    "return_format": "object",
+                    "acfe_bidirectional": {
+                        "acfe_bidirectional_enabled": "0"
+                    },
+                    "multiple": 0
+                },
+                {
+                    "key": "field_60ad6271e41e4",
+                    "label": "Your State\/Province",
+                    "name": "your_stateprovince",
+                    "type": "text",
+                    "instructions": "Required.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_60ad6281e41e5",
+                    "label": "Your city?",
+                    "name": "your_city",
+                    "type": "text",
+                    "instructions": "Required.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_60ad6292e41e6",
+                    "label": "Your Team\/Organization's Website",
+                    "name": "your_teamorganizations_website",
+                    "type": "url",
+                    "instructions": "Optional.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "default_value": "",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_60ad62a5e41e7",
+                    "label": "Your first and last name?",
+                    "name": "your_first_and_last_name",
+                    "type": "text",
+                    "instructions": "Optional.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_60ad62c8e41e8",
+                    "label": "Your job title?",
+                    "name": "your_job_title",
+                    "type": "text",
+                    "instructions": "Optional.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_60ad62d7e41e9",
+                    "label": "E-mail address?",
+                    "name": "e-mail_address",
+                    "type": "email",
+                    "instructions": "Required.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_60ad62f8e41ea",
+                    "label": "Next\/Prev placeholder",
+                    "name": "",
+                    "type": "message",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "removelabel submitmessage",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "message": "<div class=\"col-md-12 layout_hero_block \">\r\n<div class=\"hb_inner text-left\">\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-0\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-default big gonext\" title=\"Next\" href=\"#step-2\">Next <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"><\/i><\/a>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
+                    "new_lines": "wpautop",
+                    "esc_html": 0
+                }
+            ]
+        },
+        {
+            "key": "field_60ad632ac2801",
+            "label": "Your team",
+            "name": "your_team",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "stepgroup",
+                "id": ""
+            },
+            "display_order": "",
+            "layout": "block",
+            "acfe_seamless_style": 0,
+            "acfe_group_modal": 0,
+            "sub_fields": [
+                {
+                    "key": "field_60ad6346c2802",
+                    "label": "Where is your team situated?",
+                    "name": "where_is_your_team_situated",
+                    "type": "radio",
+                    "instructions": "Required.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "choices": {
+                        "Part of federal government": "Part of federal government",
+                        "Part of state, province or local government": "Part of state, province or local government",
+                        "Government funded but independent entity": "Government funded but independent entity",
+                        "Academia": "Academia",
+                        "Private sector": "Private sector",
+                        "Part of an international organization": "Part of an international organization"
+                    },
+                    "allow_null": 1,
+                    "other_choice": 1,
+                    "save_other_choice": 0,
+                    "default_value": "",
+                    "layout": "vertical",
+                    "return_format": "array"
+                },
+                {
+                    "key": "field_60d1ffede393e",
+                    "label": "Do you work with government(s) on applying BI to public policy?",
+                    "name": "do_you_work_with_governments_on_applying_bi_to_public_policy",
+                    "type": "radio",
+                    "instructions": "Required.",
+                    "required": 1,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_60ad6346c2802",
+                                "operator": "!=",
+                                "value": "Part of federal government"
+                            },
+                            {
+                                "field": "field_60ad6346c2802",
+                                "operator": "!=",
+                                "value": "Part of state, province or local government"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "choices": {
+                        "Yes": "Yes",
+                        "No": "No"
+                    },
+                    "allow_null": 1,
+                    "other_choice": 1,
+                    "save_other_choice": 0,
+                    "default_value": "",
+                    "layout": "vertical",
+                    "return_format": "value"
+                },
+                {
+                    "key": "field_60ad638bc2803",
+                    "label": "Are you part of:",
+                    "name": "are_you_part_of",
+                    "type": "radio",
+                    "instructions": "Optional.",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_60ad6346c2802",
+                                "operator": "==",
+                                "value": "Part of federal government"
+                            }
+                        ],
+                        [
+                            {
+                                "field": "field_60ad6346c2802",
+                                "operator": "==",
+                                "value": "Part of state, province or local government"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "choices": {
+                        "Central government agency (e.g. Department of Prime Minister)": "Central government agency (e.g. Department of Prime Minister)",
+                        "Line government agency (e.g. Ministry of Environment)": "Line government agency (e.g. Ministry of Environment)"
+                    },
+                    "allow_null": 1,
+                    "other_choice": 1,
+                    "save_other_choice": 0,
+                    "default_value": "",
+                    "layout": "vertical",
+                    "return_format": "array"
+                },
+                {
+                    "key": "field_60ad63dfc2805",
+                    "label": "How many people, including yourself, apply behavioral science in your team?",
+                    "name": "how_many_people_including_yourself_apply_behavioral_science_in_your_team",
+                    "type": "number",
+                    "instructions": "Required. Please enter the number of full time employees or equivalents.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "min": 1,
+                    "max": "",
+                    "step": 1
+                },
+                {
+                    "key": "field_60ad6419c2806",
+                    "label": "Beyond your team, roughly how many other people apply behavioral science in your organization?",
+                    "name": "beyond_your_team_roughly_how_many_other_people_apply_behavioral_science_in_your_organization",
+                    "type": "number",
+                    "instructions": "Optional. Please enter the number of full time staff members (or equivalents).",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "min": "",
+                    "max": "",
+                    "step": ""
+                },
+                {
+                    "key": "field_60ad6451c2807",
+                    "label": "Approximately, when was your team created at your organization? Or if it’s just you, when was your role created?",
+                    "name": "approximately_when_was_your_team_created_at_your_organization_or_if_it’s_just_you_when_was_your_role_created",
+                    "type": "date_picker",
+                    "instructions": "If you don't know, leave this blank.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "display_format": "m Y",
+                    "return_format": "m Y",
+                    "first_day": 1
+                },
+                {
+                    "key": "field_60ad64ab93f6f",
+                    "label": "Next\/Prev placeholder",
+                    "name": "",
+                    "type": "message",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "removelabel submitmessage",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "message": "<div class=\"col-md-12 layout_hero_block \">\r\n<div class=\"hb_inner text-left\">\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-1\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-default big gonext\" title=\"Next\" href=\"#step-3\">Next <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"><\/i><\/a>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
+                    "new_lines": "wpautop",
+                    "esc_html": 0
+                }
+            ]
+        },
+        {
+            "key": "field_60ad664e3c5d7",
+            "label": "Activities",
+            "name": "activities",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "stepgroup",
+                "id": ""
+            },
+            "display_order": "",
+            "layout": "block",
+            "acfe_seamless_style": 0,
+            "acfe_group_modal": 0,
+            "sub_fields": [
+                {
+                    "key": "field_60ad66963c5d8",
+                    "label": "Which of the following activities has your unit been involved in?",
+                    "name": "which_of_the_following_activities_has_your_unit_been_involved_in",
+                    "type": "checkbox",
+                    "instructions": "Required.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "choices": {
+                        "Conducting experiments to measure behavioural impact": "Conducting experiments to measure behavioural impact",
+                        "Evaluating behavioural impact in other ways (beyond experiments)": "Evaluating behavioural impact in other ways (beyond experiments)",
+                        "Providing advice on policy implementation relying on existing evidence": "Providing advice on policy implementation relying on existing evidence",
+                        "Providing advice on policy design relying on existing evidence": "Providing advice on policy design relying on existing evidence",
+                        "Analyzing data about individual behavioura to look for patterns and\/or predict behaviors": "Analyzing data about individual behavioura to look for patterns and\/or predict behaviors",
+                        "Delivering training and education": "Delivering training and education"
+                    },
+                    "allow_custom": 1,
+                    "save_custom": 0,
+                    "default_value": [],
+                    "layout": "vertical",
+                    "toggle": 0,
+                    "return_format": "array"
+                },
+                {
+                    "key": "field_60ad67203c5d9",
+                    "label": "Which of the following policy areas has your unit been involved in?",
+                    "name": "which_of_the_following_policy_areas_has_your_unit_been_involved_in",
+                    "type": "taxonomy",
+                    "instructions": "Required.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "taxonomy": "bi-project-policy-area",
+                    "field_type": "checkbox",
+                    "add_term": 1,
+                    "save_terms": 1,
+                    "load_terms": 0,
+                    "return_format": "object",
+                    "acfe_bidirectional": {
+                        "acfe_bidirectional_enabled": "0"
+                    },
+                    "multiple": 0,
+                    "allow_null": 0
+                },
+                {
+                    "key": "field_60ad67d23c5da",
+                    "label": "How do you measure if your interventions have the desired effect?",
+                    "name": "how_do_you_measure_if_your_interventions_have_the_desired_effect",
+                    "type": "checkbox",
+                    "instructions": "Required.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "choices": {
+                        "Randomized control trials or A\/B tests": "Randomized control trials or A\/B tests",
+                        "Surveys": "Surveys",
+                        "Before and after comparisons of the target outcome": "Before and after comparisons of the target outcome",
+                        "Another type of statistical or machine learning model": "Another type of statistical or machine learning model"
+                    },
+                    "allow_custom": 1,
+                    "save_custom": 1,
+                    "default_value": [],
+                    "layout": "vertical",
+                    "toggle": 0,
+                    "return_format": "array"
+                },
+                {
+                    "key": "field_60ad68003c5db",
+                    "label": "How many experiments (field experiments, laboratory experiments, A\/B tests, or multi-armed bandits) has your team run in the last twelve months?",
+                    "name": "how_many_experiments_field_experiments_laboratory_experiments_ab_tests_or_multi-armed_bandits_has_your_team_run_in_the_last_twelve_months",
+                    "type": "number",
+                    "instructions": "Optional.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "min": "",
+                    "max": "",
+                    "step": ""
+                },
+                {
+                    "key": "field_60ad68243c5dc",
+                    "label": "Next\/Prev placeholder",
+                    "name": "",
+                    "type": "message",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "removelabel submitmessage",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "message": "<div class=\"col-md-12 layout_hero_block \">\r\n<div class=\"hb_inner text-left\">\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-2\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-default big gonext\" title=\"Next\" href=\"#step-4\">Next <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"><\/i><\/a>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
+                    "new_lines": "wpautop",
+                    "esc_html": 0
+                }
+            ]
+        },
+        {
+            "key": "field_60ad6840ccdad",
+            "label": "Review and submit",
+            "name": "review_and_submit",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "stepgroup",
+                "id": ""
+            },
+            "display_order": "",
+            "layout": "block",
+            "acfe_seamless_style": 0,
+            "acfe_group_modal": 0,
+            "sub_fields": [
+                {
+                    "key": "field_60ad685cccdae",
+                    "label": "What recommendations would you give to the OECD people who are curating this map?",
+                    "name": "what_recommendations_would_you_give_to_the_oecd_people_who_are_curating_this_map",
+                    "type": "textarea",
+                    "instructions": "Optional.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": "",
+                    "new_lines": "",
+                    "acfe_textarea_code": 0
+                },
+                {
+                    "key": "field_60ad6886ccdaf",
+                    "label": "Next\/Prev placeholder",
+                    "name": "",
+                    "type": "message",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "removelabel submitmessage",
+                        "id": ""
+                    },
+                    "display_order": "",
+                    "message": "<div class=\"col-md-12 layout_hero_block \">\r\n<div class=\"hb_inner text-left\">\r\n<div class=\"text-center inlinep removebr formbuttons\">\r\n<a class=\"button btn btn-default big goback\" title=\"Back\" href=\"#step-3\"><i class=\"fa fa-chevron-left\" aria-hidden=\"true\"><\/i> Back<\/a><a class=\"button btn btn-default big submitform\" id=\"submitcasestudy\" title=\"Submit\" href=\"#step-5\">Submit your unit<i class=\"fa fa-check-square-o\" aria-hidden=\"true\"><\/i><\/a> <span class=\"acf-spinner\"><\/span>\r\n<\/div>\r\n<\/div>\r\n<\/div>",
+                    "new_lines": "wpautop",
+                    "esc_html": 0
+                }
+            ]
+        },
+        {
+            "key": "field_60b8994ae0a93",
+            "label": "Unit Latitude and Longitude",
+            "name": "unit_latitude_and_longitude",
+            "type": "text",
+            "instructions": "Two numeric values divided by comma, e.g. <em>3.2, 73.22<\/em>",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "hidden",
+                "id": ""
+            },
+            "display_order": "",
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "bi-unit"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1624376243
+}
