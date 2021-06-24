@@ -1117,6 +1117,32 @@ hr.divline {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b4d5ed', endColorstr='#0f1570', GradientType=1);
     /* IE6-9 */
 }
+.post-type-archive-bi-project #map-bar .rule {
+    background: #165580;
+    background: #acc9e0;
+    /* Old browsers */
+
+    background: -moz-linear-gradient(left, #acc9e0 0%, #165580 100%);
+    /* FF3.6+ */
+
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, #acc9e0), color-stop(100%, #165580));
+    /* Chrome,Safari4+ */
+
+    background: -webkit-linear-gradient(left, #acc9e0 0%, #165580 100%);
+    /* Chrome10+,Safari5.1+ */
+
+    background: -o-linear-gradient(left, #acc9e0 0%, #165580 100%);
+    /* Opera 11.10+ */
+
+    background: -ms-linear-gradient(left, #acc9e0 0%, #165580 100%);
+    /* IE10+ */
+
+    background: linear-gradient(to right, #acc9e0 0%, #165580 100%);
+    /* W3C */
+
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#acc9e0', endColorstr='#165580', GradientType=1);
+    /* IE6-9 */
+}
 
 /* line 76, /Users/ezka/Documents/WRK/opsi/less/libraries/jquery-jvectormap.less */
 #map-bar #curs {
@@ -4196,7 +4222,8 @@ article.bp_register .mc4wp-checkbox-buddypress {
   background: #d5bcf7;
 }
 
-.post-type-archive-bi-unit .opsi_tip {
+.post-type-archive-bi-unit .opsi_tip,
+.post-type-archive-bi-project .opsi_tip {
 	padding: 3px 6px;
 	background: #FFFFFF;
 	color: #000000;
@@ -4205,7 +4232,8 @@ article.bp_register .mc4wp-checkbox-buddypress {
 	font-size: 14px;
   line-height: 1.2;
 }
-.post-type-archive-bi-unit .opsi_tip small {
+.post-type-archive-bi-unit .opsi_tip small,
+.post-type-archive-bi-project .opsi_tip small {
   font-size: 11px;
 }
 
