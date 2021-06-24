@@ -38,7 +38,9 @@
 	</div>
 
 	<div class="cs_top_map hoverzoom-">
-		<div id="regions_div" style="width: 100%; height: 500px;"></div>
+		<div id="regions_div" style="width: 100%; height: 500px;">
+			<div id="bi-modal"></div>
+		</div>
 		<div id="map-bar">
 			<div class="meter_label"><?php echo __( 'BI projects:', 'opsi' ); ?></div>
 			<div class="min">0</div>

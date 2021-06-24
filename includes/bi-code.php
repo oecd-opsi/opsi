@@ -195,6 +195,138 @@ function bs_unit_map_unit_info() {
 	die();
 }
 
+// AJAX for Projects map
+add_action("wp_ajax_project_map_country_info", "bs_project_map_country_info");
+add_action("wp_ajax_nopriv_project_map_country_info", "bs_project_map_country_info");
+// define the function to be fired for logged in users
+function bs_project_map_country_info() {
+
+	// Store Country slug in a variable
+	$country_iso = $_REQUEST["iso"];
+
+	if( $country_iso == "" )
+	 	return;
+
+	// Get Country term object
+	$countries = get_terms( array(
+		'taxonomy'               => array( 'country' ),
+		'meta_key'               => 'iso_code',
+		'meta_value'             => $country_iso,
+	) );
+	$country_obj = $countries[0];
+
+
+	// Get the Country name
+	$country_name = $country_obj->name;
+
+	// Get the number of pre-registration projects of this Country
+	$preregistration_projects = get_posts( array(
+		'numberposts'	=> -1,
+		'post_type'		=> 'bi-project',
+		'tax_query' => array(
+			'relation'	=> 'AND',
+      array(
+        'taxonomy' => 'bi-project-status',
+        'field'    => 'slug',
+        'terms'    => 'pre-registration',
+      ),
+			array(
+				'taxonomy' => 'country',
+				'field'		 => 'term_id',
+				'terms'		 => array($country_obj->term_id)
+			),
+    ),
+	) );
+	$preregistration_count = count( $preregistration_projects );
+
+	// Get the number of completed projects of this Country
+	$completed_projects = get_posts( array(
+		'numberposts'	=> -1,
+		'post_type'		=> 'bi-project',
+		'tax_query' => array(
+			'relation'	=> 'AND',
+      array(
+        'taxonomy' => 'bi-project-status',
+        'field'    => 'slug',
+        'terms'    => 'completed',
+      ),
+			array(
+				'taxonomy' => 'country',
+				'field'		 => 'term_id',
+				'terms'		 => array($country_obj->term_id)
+			),
+    ),
+	) );
+	$completed_count = count( $completed_projects );
+
+	// Total number of projects
+	$total_projects = get_posts( array(
+		'numberposts'	=> -1,
+		'post_type'		=> 'bi-project',
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'country',
+				'field'		 => 'term_id',
+				'terms'		 => array($country_obj->term_id)
+			),
+    ),
+	) );
+	$projects_count = count( $total_projects );
+
+	// Policy Areas
+	$policy_areas = '';
+	$policy_areas = strip_tags( get_the_term_list( $unit->ID, 'bi-project-policy-area', '', ', ') );
+	$policies_array = array();
+	foreach ($total_projects as $project) {
+		$project_policies = get_the_terms( $project, 'bi-project-policy-area' );
+		array_push( $policies_array, $project_policies );
+	}
+	$policies_array = my_array_unique( $policies_array );
+	foreach ($policies_array as $policy) {
+		$policy_areas .= $policy->name . ', ';
+	}
+	$policy_areas = rtrim( $policy_areas, ', ' );
+
+
+	$result = array(
+		'country_name'		=> $country_name,
+		'preregistration'	=> $preregistration_count,
+		'completed'				=> $completed_count,
+		'total_projects'	=> $projects_count,
+		'policy_areas'		=> $policy_areas,
+	);
+
+	// Check if action was fired via Ajax call. If yes, JS code will be triggered, else the user is redirected to the post page
+	if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+	  $result = json_encode($result);
+	  echo $result;
+	}
+
+	// don't forget to end your scripts with a die() function - very important
+	die();
+}
+
+function my_array_unique($array, $keep_key_assoc = false){
+    $duplicate_keys = array();
+    $tmp = array();
+
+    foreach ($array as $key => $val){
+        // convert objects to arrays, in_array() does not support objects
+        if (is_object($val))
+            $val = (array)$val;
+
+        if (!in_array($val, $tmp))
+            $tmp[] = $val;
+        else
+            $duplicate_keys[] = $key;
+    }
+
+    foreach ($duplicate_keys as $key)
+        unset($array[$key]);
+
+    return $keep_key_assoc ? $array : array_values($array);
+}
+
 // Add BI Projects BP subtab ***START***
 function profile_tab_bi_projects() {
   global $bp;

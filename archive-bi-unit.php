@@ -40,7 +40,6 @@
 
 	<div class="cs_top_map hoverzoom-">
 		<div id="regions_div" style="width: 100%; height: 500px;">
-			<button class="back-global-view">Back to global view</button>
 			<div id="bi-modal"></div>
 		</div>
 		<div id="unit-map-legend">

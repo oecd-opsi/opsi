@@ -247,32 +247,33 @@ function cs_jve_bi_map() {
 				},
 				onRegionClick: function(e, code) {
 
-					if ( data[code] > 0 ) {
-						jQuery('.countries_widget .widget_content').show();
-						country_to_add = code_to_slug[code];
-						FWP.refresh();
-					} else {
-						country_to_add = '';
-					}
+					jQuery.ajax({
+		         type : "post",
+		         dataType : "json",
+		         url : "<?php echo admin_url( 'admin-ajax.php' ) ?>",
+		         data : {
+							 action: "project_map_country_info",
+							 iso: code
+						 },
+		         success: function(response) {
+		            var output = '<span class="bi-modal-title">'+response['country_name']+'</span><br/><hr><span class="bi-modal-data">Total number of projects: <em>'+response['total_projects']+'</em></span><br/><span class="bi-modal-data">Pre-registration: <em>'+response['preregistration']+'</em></span><br/><span class="bi-modal-data">Completed project: <em>'+response['completed']+'</em></span><br/><span class="bi-modal-data">Policy areas: <em>'+response['policy_areas']+'</em></span><br/>';
+								jQuery('#bi-modal').html(output).addClass('visible');
+		         }
+		      });
 
 				}
 			});
 
-			jQuery(document).on('facetwp-refresh', function() {
-				if ( jQuery.inArray( country_to_add, FWP.facets['countries'] ) == -1 && country_to_add != '' ) {
-					FWP.facets['countries'].push( country_to_add );
-					country_to_add = '';
+			// Close modal if click is outside it
+			jQuery(document).click(function(event) {
+				var $target = jQuery(event.target);
+				if( !$target.closest('#bi-modal').length ) {
+					jQuery('#bi-modal').removeClass('visible');
 				}
-			});
-
-			jQuery('.facetwp-facet-countries select').on( 'fs:changed', function() {
-				// ptnewval = $( this ).val();
-				// console.log(FWP.facets);
-				// FWP.refresh();
 			});
 
 		});
-	</script>
+		</script>
 	<?php
 }
 add_action( 'wp_footer', 'cs_jve_bi_map', 1000 );
@@ -530,44 +531,12 @@ function cs_jve_bi_unit_map() {
 				onRegionOut: function(e, code) {
 					jQuery("#curs").css("left", "-9999px");
 				},
-				// onRegionClick: function(e, code, isSelected, selectedRegions) {
-				//
-				// 	jQuery('#regions_div').vectorMap('get','mapObject').setFocus({region: code, animate: true});
-				// 	jQuery('#regions_div').addClass('zoomed-map');
-				//
-				// 	if ( countries[code] > 0 ) {
-				// 		jQuery('.countries_widget .widget_content').show();
-				// 		country_to_add = isoSlug[code];
-				// 		FWP.refresh();
-				// 	} else {
-				// 		country_to_add = '';
-				// 	}
-				//
-				// }
-			});
-
-			jQuery(document).on('facetwp-refresh', function() {
-				if ( jQuery.inArray( country_to_add, FWP.facets['countries'] ) == -1 && country_to_add != '' ) {
-					FWP.facets['countries'].push( country_to_add );
-					country_to_add = '';
-				}
-			});
-
-			jQuery('.facetwp-facet-countries select').on( 'fs:changed', function() {
-				// ptnewval = $( this ).val();
-				// console.log(FWP.facets);
-				// FWP.refresh();
-			});
-
-			jQuery('.back-global-view').on( 'click', function() {
-				jQuery('#regions_div').removeClass('zoomed-map');
-				jQuery('#regions_div').vectorMap('get','mapObject').setFocus({scale: 0, x: 0.5, y: 0.5, animate: true});
 			});
 
 			// Close modal if click is outside it
 			jQuery(document).click(function(event) {
 			  var $target = jQuery(event.target);
-			  if( !$target.closest('#menucontainer').length ) {
+			  if( !$target.closest('#bi-modal').length ) {
 			    jQuery('#bi-modal').removeClass('visible');
 			  }
 			});
