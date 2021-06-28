@@ -68,7 +68,15 @@ add_filter( "acf/prepare_field/key=field_60a4231489c15", 'bs_bi_hide_step3_field
 add_filter( "acf/prepare_field/key=field_60a4234289c16", 'bs_bi_hide_step3_fields' );
 add_filter( "acf/prepare_field/key=field_60a4236d89c17", 'bs_bi_hide_step3_fields' );
 add_filter( "acf/prepare_field/key=field_60a423a689c18", 'bs_bi_hide_step3_fields' );
-add_filter( "acf/prepare_field/key=field_60a424c789c1c", 'bs_bi_hide_step3_fields' );
+
+// Hide Embargo related fields
+function bs_bi_hide_embargo_fields($field) {
+	return;
+}
+add_filter( "acf/prepare_field/key=field_60a8178424bdf", 'bs_bi_hide_embargo_fields' );
+add_filter( "acf/prepare_field/key=field_60a41eed6bb82", 'bs_bi_hide_embargo_fields' );
+add_filter( "acf/prepare_field/key=field_60a4201e545e4", 'bs_bi_hide_embargo_fields' );
+add_filter( "acf/prepare_field/key=field_60a9141ae84e2", 'bs_bi_hide_embargo_fields' );
 
 // Hide Review and Collaboration group
 function bs_bi_hide_review_collaboration_group($field) {

@@ -4170,6 +4170,7 @@ article.bp_register .mc4wp-checkbox-buddypress {
 #unit-map-legend {
   padding: 10px;
   font-size: .8em;
+  line-height: 1.05;
   border: 15px solid #566f80;
 }
 
@@ -4182,7 +4183,7 @@ article.bp_register .mc4wp-checkbox-buddypress {
   margin: 0;
   padding: 0;
   list-style: none;
-  columns: 3;
+  columns: 2;
   line-height: 1.5;
 }
 
@@ -4220,6 +4221,59 @@ article.bp_register .mc4wp-checkbox-buddypress {
 }
 #unit-map-legend ul li:nth-child(6)::before {
   background: #d5bcf7;
+}
+
+#project-map-legend {
+  padding: 10px;
+  font-size: .8em;
+  border: 15px solid #566f80;
+  background-color: #fff;
+}
+
+#project-map-legend .legend-title {
+  font-weight: bold;
+  line-height: 1;
+}
+
+#project-map-legend ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  columns: 3;
+  line-height: 1.5;
+}
+
+#project-map-legend ul li {
+  padding-left: 16px;
+  position: relative;
+}
+
+#project-map-legend ul li::before {
+  content: "";
+  background: #ffffff;
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 4px;
+  border-radius: 100%;
+  border: 1px solid #333;
+}
+
+#project-map-legend ul li:first-child::before {
+  background: #ead76c;
+}
+
+.map-legends-wrapper {
+  display: flex;
+  background-color: #566f80;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.map-legends-wrapper #map-bar {
+  position: static;
 }
 
 .post-type-archive-bi-unit .opsi_tip,
@@ -4309,4 +4363,16 @@ article.bp_register .mc4wp-checkbox-buddypress {
   white-space: normal;
   margin-bottom: 16px;
   font-weight: bold;
+}
+
+.post-type-archive-bi-project .btn.btn-default,
+.post-type-archive-bi-unit .btn.btn-default {
+    background-color: #0f1570;
+    padding-left: 12px;
+}
+.post-type-archive-bi-project .btn.btn-default:hover,
+.post-type-archive-bi-unit .btn.btn-default:hover {
+    color: #0f1570;
+    background-color: white;
+    border: 1px solid #0f1570;
 }

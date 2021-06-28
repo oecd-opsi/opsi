@@ -41,11 +41,20 @@
 		<div id="regions_div" style="width: 100%; height: 500px;">
 			<div id="bi-modal"></div>
 		</div>
-		<div id="map-bar">
-			<div class="meter_label"><?php echo __( 'BI projects:', 'opsi' ); ?></div>
-			<div class="min">0</div>
-			<div class="rule"><div id="curs"></div></div>
-			<div class="max"></div>
+		<div class="map-legends-wrapper">
+			<div id="map-bar">
+				<div class="meter_label"><?php echo __( 'Number of BI projects:', 'opsi' ); ?></div>
+				<div class="min">0</div>
+				<div class="rule"><div id="curs"></div></div>
+				<div class="max"></div>
+			</div>
+			<div id="project-map-legend" class="bi-map-legend">
+				<p class="legend-title">Legend: Projects status</p>
+				<ul>
+					<li>Pre-registered project</li>
+					<li>Completed project</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 
@@ -67,24 +76,13 @@
 <div class="col-sm-3 col-sm-push-9">
 	<div class="sidewrap sidewrap_csfilters">
 		<div class="">
-			<a href="/bi-completed-project-form/" class="bi-to-form-btn button btn btn-warning btn-md ">Add a project here</a>
-			<a href="/bi-pre-registration-form/" class="bi-to-form-btn button btn btn-warning btn-md ">Pre-register a project here</a>
+			<a href="/bi-completed-project-form/" class="bi-to-form-btn button btn btn-default btn-block big">Add a project here</a>
+			<a href="/bi-pre-registration-form/" class="bi-to-form-btn button btn btn-default btn-block big">Pre-register a project here</a>
 		</div>
 		<div class="cs_sidebar_wrap">
 			<?php echo __( 'Total projects:', 'opsi' ); ?> <span class="cs_counter"><?php echo wp_count_uncached_posts( 'bi-project' )['publish']; ?></span><br />
 			<?php echo __( 'Search results:', 'opsi' ); ?> <span class="cs_counter"><?php echo facetwp_display( 'counts' ); ?></span>
 		</div>
-		<?php
-		$bi_project_form_page = get_field( 'bi_project_form_page', 'option' );
-		if ( ! empty( $bi_project_form_page ) ) {
-			$bi_project_form_page_url = get_permalink( $bi_project_form_page );
-			if ( ! empty( $bi_project_form_page_url ) ) {
-			?>
-			<a class="button btn btn-default btn-block big covid-add-response-button" href="<?php echo $bi_project_form_page_url; ?>"><?php echo __( 'Add a Pre-registration', 'opsi' ); ?></a>
-			<?php
-			}
-		}
-		?>
 
 		<h2><?php echo __( 'Filter projects:', 'opsi' ); ?></h2>
 		<?php dynamic_sidebar( 'sidebar_bi_project' ); ?>

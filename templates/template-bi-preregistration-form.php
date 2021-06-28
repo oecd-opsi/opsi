@@ -32,6 +32,12 @@ function bs_bi_form_first_page( $field ) {
 }
 add_filter( "acf/load_field/key=field_60a38051279c8", 'bs_bi_form_first_page' );
 
+// Hide results field
+function bs_bi_hide_results($field) {
+	return;
+}
+add_filter( "acf/prepare_field/key=field_60da2bd0d59e8", 'bs_bi_hide_results' );
+
 // Hide Final report fields
 function bs_bi_hide_final_report($field) {
 	return;

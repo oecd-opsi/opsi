@@ -169,6 +169,8 @@ function cs_jve_bi_map() {
 
 			jQuery('#map-bar .max').text(maxValue);
 
+			console.log('test');
+
 			jQuery('#regions_div').vectorMap({
 				map: 'world_mill',
 				markers: coords,
@@ -197,8 +199,8 @@ function cs_jve_bi_map() {
 	          // max: maxValue
 	        },{
 	          attribute: 'r',
-	          scale: [0, 10],
-	          values: 3,
+	          scale: [1, 1],
+	          values: 1,
 	          // min: 0,
 	          // max: maxValue
 	        }],
@@ -234,7 +236,7 @@ function cs_jve_bi_map() {
 					}
 				},
 				onMarkerClick: function( e, code ) {
-					window.location.href = urls[code];
+					window.open( urls[code], '_blank' );
 				},
 				onRegionOver: function(e, code) {
 					if (data[code]) {
@@ -256,7 +258,7 @@ function cs_jve_bi_map() {
 							 iso: code
 						 },
 		         success: function(response) {
-		            var output = '<span class="bi-modal-title">'+response['country_name']+'</span><br/><hr><span class="bi-modal-data">Total number of projects: <em>'+response['total_projects']+'</em></span><br/><span class="bi-modal-data">Pre-registration: <em>'+response['preregistration']+'</em></span><br/><span class="bi-modal-data">Completed project: <em>'+response['completed']+'</em></span><br/><span class="bi-modal-data">Policy areas: <em>'+response['policy_areas']+'</em></span><br/>';
+		            var output = '<span class="bi-modal-title">'+response['country_name']+'</span><br/><hr><span class="bi-modal-data">Total number of projects: <em>'+response['total_projects']+'</em></span><br/><span class="bi-modal-data">Pre-registered projects: <em>'+response['preregistration']+'</em></span><br/><span class="bi-modal-data">Completed projects: <em>'+response['completed']+'</em></span><br/><span class="bi-modal-data">Policy areas: <em>'+response['policy_areas']+'</em></span><br/>';
 								jQuery('#bi-modal').html(output).addClass('visible');
 		         }
 		      });
@@ -473,24 +475,24 @@ function cs_jve_bi_unit_map() {
 	          // max: maxValue
 	        }],
 				},
-				onViewportChange: function(event, scaleFactor){
-		      var map = jQuery("#regions_div").vectorMap("get", "mapObject");
-		      if(map) {
-		        var markers = map.markers;
-		        for(var m in markers) {
-		          var el = markers[m].element,
-		              style = el.config.style,
-									r = style.current.r,
-									newR = Math.round( r * scaleFactor );
-									console.log(el);
-		          el.shape.node.setAttribute('r', newR);
-		          style.initial.r = newR;
-		          style.hover.r = newR;
-							style.selected.r = newR;
-							style.selectedHover.r = newR;
-		        }
-		      }
-		    },
+				// onViewportChange: function(event, scaleFactor){
+		    //   var map = jQuery("#regions_div").vectorMap("get", "mapObject");
+		    //   if(map) {
+		    //     var markers = map.markers;
+		    //     for(var m in markers) {
+		    //       var el = markers[m].element,
+		    //           style = el.config.style,
+				// 					r = style.current.r,
+				// 					newR = Math.round( r * scaleFactor );
+				// 					console.log(el);
+		    //       el.shape.node.setAttribute('r', newR);
+		    //       style.initial.r = newR;
+		    //       style.hover.r = newR;
+				// 			style.selected.r = newR;
+				// 			style.selectedHover.r = newR;
+		    //     }
+		    //   }
+		    // },
 				onMarkerTipShow: function(e, el, code){
 					if ( names[code] == null ) {
 						el.html('<div style="display:none; heigth: 0; width: 0; line-height: 0;  padding: 0;">' + el.html() + '</div>');
@@ -517,7 +519,7 @@ function cs_jve_bi_unit_map() {
 							 slug: code
 						 },
 		         success: function(response) {
-		            var output = '<span class="bi-modal-title">'+response['unit_name']+'</span><br/><span class="bi-modal-institution">'+response['institution']+'</span><hr><span class="bi-modal-data">Total number of projects: <em>'+response['total_projects']+'</em></span><br/><span class="bi-modal-data">Pre-registration: <em>'+response['preregistration']+'</em></span><br/><span class="bi-modal-data">Completed project: <em>'+response['completed']+'</em></span><br/><span class="bi-modal-data">Team size: <em>'+response['team_size']+'</em></span><br/><span class="bi-modal-data">Policy areas: <em>'+response['policy_areas']+'</em></span><br/><span class="bi-modal-data">Activities: <em>'+response['activities']+'</em></span><br/><br/><a href="'+response['url']+'">Read more</a>';
+		            var output = '<span class="bi-modal-title">'+response['unit_name']+'</span><br/><span class="bi-modal-institution">'+response['institution']+'</span><hr><span class="bi-modal-data">Total number of projects: <em>'+response['total_projects']+'</em></span><br/><span class="bi-modal-data">Pre-registration: <em>'+response['preregistration']+'</em></span><br/><span class="bi-modal-data">Completed project: <em>'+response['completed']+'</em></span><br/><span class="bi-modal-data">Team size: <em>'+response['team_size']+'</em></span><br/><span class="bi-modal-data">Policy areas: <em>'+response['policy_areas']+'</em></span><br/><span class="bi-modal-data">Activities: <em>'+response['activities']+'</em></span><br/><br/><a href="'+response['url']+'" target="_blank">Read more</a>';
 								jQuery('#bi-modal').html(output).addClass('visible');
 		         }
 		      });

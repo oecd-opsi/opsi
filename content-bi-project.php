@@ -111,12 +111,12 @@
 			</div>
 			<div class="col-md-9 col-sm-8">
 				<?php
-					$project_description = get_field( 'hypothesis_outcomes_and_analysis_project_description' );
+					$project_description = get_field( 'who_is_behind_the_project_project_description' );
 					if ( $project_description != '' ) { ?>
 						<p class="csp"><?php echo $project_description; ?></p>
 					<?php } ?>
 					<p class="read_more">
-						<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="button btn btn-info btn-sm">
+						<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="button btn btn-default btn-sm">
 							<?php echo __( 'Read BI project', 'opsi' ); ?>
 							<i class="fa fa-chevron-right" aria-hidden="true"></i>
 						</a>

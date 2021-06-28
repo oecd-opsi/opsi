@@ -75,7 +75,7 @@
 					<?php } ?>
 
 					<p class="read_more">
-						<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="button btn btn-info btn-sm">
+						<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="button btn btn-default btn-sm">
 							<?php echo __( 'Read BI Unit', 'opsi' ); ?>
 							<i class="fa fa-chevron-right" aria-hidden="true"></i>
 						</a>

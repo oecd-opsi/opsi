@@ -42,8 +42,9 @@
 		<div id="regions_div" style="width: 100%; height: 500px;">
 			<div id="bi-modal"></div>
 		</div>
-		<div id="unit-map-legend">
+		<div id="unit-map-legend" class="bi-map-legend">
 			<p class="legend-title">Legend: Institution setup</p>
+			<p>The size of the circles on the map is proportional to the number of <a href="/bi-projects/">projects</a> per each BI unit</p>
 			<ul>
 				<li>Part of federal government</li>
 				<li>Part of state, province or local government</li>
@@ -55,13 +56,15 @@
 			</ul>
 		</div>
 	</div>
+
+	<div class="">
+		<a href="/bi-unit-form/" class="bi-to-form-btn button btn btn-default btn-block big">Would you like to be on this map? Click here</a>
+	</div>
 </div>
+
 
 <div class="col-sm-3 col-sm-push-9">
 	<div class="sidewrap sidewrap_csfilters">
-		<div class="">
-			<a href="/bi-unit-form/" class="bi-to-form-btn button btn btn-warning btn-md ">Would you like to be on this map? Click here</a>
-		</div>
 		<div class="cs_sidebar_wrap">
 			<?php echo __( 'Total units:', 'opsi' ); ?> <span class="cs_counter"><?php echo wp_count_uncached_posts( 'bi-unit' )['publish']; ?></span><br />
 			<?php echo __( 'Search results:', 'opsi' ); ?> <span class="cs_counter"><?php echo facetwp_display( 'counts' ); ?></span>
