@@ -2264,3 +2264,19 @@ function opsi_notify_pending_user( $user_id, $role, $old_roles ) {
 	}
 
 }
+
+// Add consent column in admin users table
+add_filter( 'manage_users_columns', 'bs_modify_user_table' );
+function bs_modify_user_table( $column ) {
+	$column['consent'] = 'Terms and Privacy Policy – Informed Consent';
+	return $column;
+}
+add_filter( 'manage_users_custom_column', 'bs_modify_user_table_row', 10, 3 );
+function bs_modify_user_table_row( $val, $column_name, $user_id ) {
+	switch ($column_name) {
+		case 'consent' :
+			return '✔️';
+		default:
+	}
+	return $val;
+}
