@@ -169,8 +169,6 @@ function cs_jve_bi_map() {
 
 			jQuery('#map-bar .max').text(maxValue);
 
-			console.log('test');
-
 			jQuery('#regions_div').vectorMap({
 				map: 'world_mill',
 				markers: coords,
@@ -190,19 +188,16 @@ function cs_jve_bi_map() {
 					},
 					selectedHover: {}
 				},
+				markerStyle: {
+          initial: {
+            r: 3,
+          }
+        },
 				series: {
 					markers: [{
 	          attribute: 'fill',
 	          scale: <?php echo $status_scale; ?>,
-	          values: projects,
-	          // min: 0,
-	          // max: maxValue
-	        },{
-	          attribute: 'r',
-	          scale: [1, 1],
-	          values: 1,
-	          // min: 0,
-	          // max: maxValue
+	          values: projects
 	        }],
 					regions: [
 						{
