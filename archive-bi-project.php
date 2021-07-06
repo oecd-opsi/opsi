@@ -15,7 +15,7 @@
 
 <div class="col-sm-12">
 	<div class="bi-section-false-tabs">
-		<a href="#">About Behavioural Insights (BI)</a>
+		<a href="/behavioural-science/">About Behavioural Insights (BI)</a>
 		<a href="/bi-units">BI Units</a>
 		<a href="/bi-projects">BI Projects</a>
 	</div>
