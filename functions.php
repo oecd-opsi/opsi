@@ -30,7 +30,7 @@ function bs_block_users_init() {
 	}
 }
 
-add_filter( 'jpeg_quality', create_function( '', 'return 85;' ) );
+add_filter( 'jpeg_quality', function() { return 85; } );
 add_filter( 'acf-image-crop/image-quality', 85 );
 add_filter( 'widget_text', 'do_shortcode' );
 
