@@ -70,7 +70,7 @@
           <?php endif; ?>
           <div class="panel_content" style="display:none;">
 
-            <?php if(  $project_status == 'Completed' ): ?>
+            <?php if( $project_status == 'Completed' ): ?>
               <h3>Final report: Is there a final report presenting the results and conclusions of this project?</h3>
               <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['final_report_is_there_a_final_report_presenting_the_results_and_conclusions_of_this_project']['text']['label']; ?></div>
 
@@ -96,32 +96,41 @@
               <?php endif; ?>
             <?php endif; ?>
 
+            <?php if( $fields['hypothesis_outcomes_and_analysis']['hypothesis_wrapper']['text']['include_this_in_the_public_version'] == 'Yes' || ( $fields['hypothesis_outcomes_and_analysis']['hypothesis_wrapper']['text']['include_this_in_the_public_version'] == 'Hide until embargo date' && !$embargo ) ||
+            $project_status == 'Completed' ) : ?>
+              <h3>Hypothesis</h3>
+              <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['hypothesis_wrapper']['text']['hypothesis']; ?></div>
+            <?php endif; ?>
+
+            <?php if( $fields['hypothesis_outcomes_and_analysis']['test_hypothesis_wrapper']['text']['include_this_in_the_public_version'] == 'Yes' || ( $fields['hypothesis_outcomes_and_analysis']['test_hypothesis_wrapper']['text']['include_this_in_the_public_version'] == 'Hide until embargo date' && !$embargo ) ||
+            $project_status == 'Completed' ) : ?>
+              <?php if( $project_status == 'Pre-registration'): ?>
+              <h3>How hypothesis will be tested</h3>
+              <?php endif( $project_status == 'Completed' ): ?>
+              <h3>How hypothesis was tested</h3>
+              <?php endif; ?>
+              <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['test_hypothesis_wrapper']['text']['how_will_your_hypothesis_be_tested']; ?></div>
+            <?php endif; ?>
+
+            <?php if( $fields['hypothesis_outcomes_and_analysis']['dependent_variables_wrapper']['text']['include_this_in_the_public_version'] == 'Yes' || ( $fields['hypothesis_outcomes_and_analysis']['dependent_variables_wrapper']['text']['include_this_in_the_public_version'] == 'Hide until embargo date' && !$embargo ) ||
+            $project_status == 'Completed' ) : ?>
+              <h3>Dependent variables</h3>
+              <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['dependent_variables_wrapper']['text']['dependent_variables']; ?></div>
+            <?php endif; ?>
+
+            <?php if( $fields['hypothesis_outcomes_and_analysis']['analyses_wrapper']['text']['include_this_in_the_public_version'] == 'Yes' || ( $fields['hypothesis_outcomes_and_analysis']['analyses_wrapper']['text']['include_this_in_the_public_version'] == 'Hide until embargo date' && !$embargo ) ||
+            $project_status == 'Completed' ) : ?>
+              <h3>Analyses</h3>
+              <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['analyses_wrapper']['text']['analyses']; ?></div>
+            <?php endif; ?>
+
+            <?php if( $fields['hypothesis_outcomes_and_analysis']['sample_size_wrapper']['text']['include_this_in_the_public_version'] == 'Yes' || ( $fields['hypothesis_outcomes_and_analysis']['sample_size_wrapper']['text']['include_this_in_the_public_version'] == 'Hide until embargo date' && !$embargo ) ||
+            $project_status == 'Completed' ) : ?>
+              <h3>Sample Size. How many observations will be collected or what will determine sample size?</h3>
+              <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['sample_size_wrapper']['text']['sample_size_how_many_observations_will_be_collected_or_what_will_determine_sample_size']; ?></div>
+            <?php endif; ?>
+
             <?php if( $project_status == 'Pre-registration'): ?>
-              <?php if( $fields['hypothesis_outcomes_and_analysis']['hypothesis_wrapper']['text']['include_this_in_the_public_version'] == 'Yes' || ( $fields['hypothesis_outcomes_and_analysis']['hypothesis_wrapper']['text']['include_this_in_the_public_version'] == 'Hide until embargo date' && !$embargo ) ) : ?>
-                <h3>Hypothesis</h3>
-                <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['hypothesis_wrapper']['text']['hypothesis']; ?></div>
-              <?php endif; ?>
-
-
-              <?php if( $fields['hypothesis_outcomes_and_analysis']['test_hypothesis_wrapper']['text']['include_this_in_the_public_version'] == 'Yes' || ( $fields['hypothesis_outcomes_and_analysis']['test_hypothesis_wrapper']['text']['include_this_in_the_public_version'] == 'Hide until embargo date' && !$embargo ) ) : ?>
-                <h3>How hypothesis will be tested</h3>
-                <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['test_hypothesis_wrapper']['text']['how_will_your_hypothesis_be_tested']; ?></div>
-              <?php endif; ?>
-
-              <?php if( $fields['hypothesis_outcomes_and_analysis']['dependent_variables_wrapper']['text']['include_this_in_the_public_version'] == 'Yes' || ( $fields['hypothesis_outcomes_and_analysis']['dependent_variables_wrapper']['text']['include_this_in_the_public_version'] == 'Hide until embargo date' && !$embargo ) ) : ?>
-                <h3>Dependent variables</h3>
-                <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['dependent_variables_wrapper']['text']['dependent_variables']; ?></div>
-              <?php endif; ?>
-
-              <?php if( $fields['hypothesis_outcomes_and_analysis']['analyses_wrapper']['text']['include_this_in_the_public_version'] == 'Yes' || ( $fields['hypothesis_outcomes_and_analysis']['analyses_wrapper']['text']['include_this_in_the_public_version'] == 'Hide until embargo date' && !$embargo ) ) : ?>
-                <h3>Analyses</h3>
-                <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['analyses_wrapper']['text']['analyses']; ?></div>
-              <?php endif; ?>
-
-              <?php if( $fields['hypothesis_outcomes_and_analysis']['sample_size_wrapper']['text']['include_this_in_the_public_version'] == 'Yes' || ( $fields['hypothesis_outcomes_and_analysis']['sample_size_wrapper']['text']['include_this_in_the_public_version'] == 'Hide until embargo date' && !$embargo ) ) : ?>
-                <h3>Sample Size. How many observations will be collected or what will determine sample size?</h3>
-                <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['sample_size_wrapper']['text']['sample_size_how_many_observations_will_be_collected_or_what_will_determine_sample_size']; ?></div>
-              <?php endif; ?>
 
               <?php if( $fields['hypothesis_outcomes_and_analysis']['power_analysis_was_a_power_analysis_conducted_prior_to_data_collection']['text']['label'] != '' ): ?>
                 <h3>Power analysis. Was a power analysis conducted prior to data collection?</h3>
@@ -133,15 +142,19 @@
                 <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['third_party_implement_wrapper']['text']['does_a_third_party_implement_the_intervention_or_is_this_a_collaboration_with_another_team']; ?></div>
               <?php endif; ?>
 
-              <?php if(  $fields['hypothesis_outcomes_and_analysis']['data_exclusion']['text'] != '' ): ?>
-                <h3>Data Exclusion</h3>
-                <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['data_exclusion']['text'] ?></div>
-              <?php endif; ?>
+            <?php endif; ?>
 
-              <?php if( $fields['hypothesis_outcomes_and_analysis']['treatment_of_missing_data']['text'] != '' ): ?>
-                <h3>Treatment of Missing Data</h3>
-                <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['treatment_of_missing_data']['text'] ?></div>
-              <?php endif; ?>
+            <?php if(  $fields['hypothesis_outcomes_and_analysis']['data_exclusion']['text'] != '' ): ?>
+              <h3>Data Exclusion</h3>
+              <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['data_exclusion']['text'] ?></div>
+            <?php endif; ?>
+
+            <?php if( $fields['hypothesis_outcomes_and_analysis']['treatment_of_missing_data']['text'] != '' ): ?>
+              <h3>Treatment of Missing Data</h3>
+              <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['treatment_of_missing_data']['text'] ?></div>
+            <?php endif; ?>
+
+            <?php if( $project_status == 'Pre-registration'): ?>
 
               <?php if( $fields['hypothesis_outcomes_and_analysis']['analysis_codescript']['text'] != '' ): ?>
                 <h3>Analysis Code/Script</h3>
@@ -176,6 +189,16 @@
               <?php if( $fields['additional_information']['third_party_wrapper']['text']['include_this_in_the_public_version'] == 'Yes' || ( $fields['additional_information']['third_party_wrapper']['text']['include_this_in_the_public_version'] == 'Hide until embargo date' && !$embargo ) ) : ?>
                 <h3>Does a third party implement the intervention or is this a collaboration with another team?</h3>
                 <div class="csp"><?php echo $fields['additional_information']['third_party_wrapper']['text']['does_a_third_party_implement_the_intervention_or_is_this_a_collaboration_with_another_team']; ?></div>
+              <?php endif; ?>
+
+              <?php if( $fields['additional_information']['collaboration_with_another_BI_unit']['text'] != '' ): ?>
+                <h3>Collaboration with another BI unit</h3>
+                <div class="csp"><?php echo implode( array_column( $fields['additional_information']['collaboration_with_another_BI_unit']['text'], 'post_title'), ',') ?></span>) ?></div>
+              <?php endif; ?>
+
+              <?php if( $fields['additional_information']['collaboration_with_other_institutions']['text'] != '' ): ?>
+                <h3>Collaboration with other institutions</h3>
+                <div class="csp"><?php echo implode( array_column( $fields['additional_information']['collaboration_with_other_institutions']['text'], 'name'), ',') ?></span>) ?></div>
               <?php endif; ?>
 
               <?php if( $fields['additional_information']['analysis_codescript']['text'] != '' ): ?>

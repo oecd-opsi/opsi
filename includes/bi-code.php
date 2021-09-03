@@ -131,6 +131,29 @@ function bs_unit_map_unit_info() {
 	) );
 	$preregistration_count = count( $preregistration_projects );
 
+	// Get the number of pre-registration projects in which this Unit appear as collaborator
+	$preregistration_collaboration_projects = get_posts( array(
+		'numberposts'	=> -1,
+		'post_type'		=> 'bi-project',
+		'meta_key'		=> array(
+			array(
+				'key'		=> 'collaboration_with_another_BI_unit',
+				'value'	=>  $unit->ID,
+				'compare'			=> 'IN',
+			),
+		),
+		'tax_query' => array(
+      array(
+        'taxonomy' => 'bi-project-status',
+        'field'    => 'slug',
+        'terms'    => 'pre-registration',
+      ),
+    ),
+	) );
+	$preregistration_collaboration_count = count( $preregistration_collaboration_projects );
+
+	$preregistration_total_count = $preregistration_count + $preregistration_collaboration_count;
+
 	// Get the number of completed projects of this Unit
 	$completed_projects = get_posts( array(
 		'numberposts'	=> -1,
@@ -147,14 +170,38 @@ function bs_unit_map_unit_info() {
 	) );
 	$completed_count = count( $completed_projects );
 
-	// Total number of projects
-	$total_projects = get_posts( array(
+	// Get the number of completed projects in which this Unit appear as collaborator
+	$completed_collaboration_projects = get_posts( array(
 		'numberposts'	=> -1,
 		'post_type'		=> 'bi-project',
-		'meta_key'		=> 'who_is_behind_the_project_unit',
-		'meta_value'	=>  $unit->ID,
+		'meta_key'		=> array(
+			array(
+				'key'		=> 'collaboration_with_another_BI_unit',
+				'value'	=>  $unit->ID,
+				'compare'			=> 'IN',
+			),
+		),
+		'tax_query' => array(
+      array(
+        'taxonomy' => 'bi-project-status',
+        'field'    => 'slug',
+        'terms'    => 'completed',
+      ),
+    ),
 	) );
-	$project_count = count( $total_projects );
+	$completed_collaboration_count = count( $completed_collaboration_projects );
+
+	$completed_total_count = $completed_count + $completed_collaboration_count;
+
+	// Total number of projects
+	// $total_projects = get_posts( array(
+	// 	'numberposts'	=> -1,
+	// 	'post_type'		=> 'bi-project',
+	// 	'meta_key'		=> 'who_is_behind_the_project_unit',
+	// 	'meta_value'	=>  $unit->ID,
+	// ) );
+	// $project_count = count( $total_projects );
+	$project_count = $preregistration_total_count + $completed_total_count;
 
 	// Team size
 	$team_size = get_field( 'your_team_how_many_people_including_yourself_apply_behavioral_science_in_your_team', $unit->ID );
@@ -176,8 +223,8 @@ function bs_unit_map_unit_info() {
 	$result = array(
 		'unit_name'				=> $unit_name,
 		'institution'			=> $institution_name,
-		'preregistration'	=> $preregistration_count,
-		'completed'				=> $completed_count,
+		'preregistration'	=> $preregistration_total_count,
+		'completed'				=> $completed_total_count,
 		'total_projects'	=> $project_count,
 		'team_size'				=> $team_size,
 		'policy_areas'		=> $policy_areas,

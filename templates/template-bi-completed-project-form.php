@@ -52,21 +52,42 @@ function bs_bi_step3_heading($field) {
 }
 add_filter( "acf/load_field/key=field_607ea66dc38e6", 'bs_bi_step3_heading' );
 
+// Edit "test hypothesis" question label
+function bs_how_test_hyp_field($field) {
+	$field['label'] = 'How did you test your hypothesis?';
+	return $field;
+}
+add_filter( "acf/load_field/key=field_607ea821c38ef", 'bs_how_test_hyp_field' );
+
+// Edit "third party implementation" question label
+function bs_third_party_implementation_field($field) {
+	$field['label'] = 'Did a third party implement the intervention or was this a collaboration with another team?';
+	return $field;
+}
+add_filter( "acf/load_field/key=field_60a9141ae84d9", 'bs_third_party_implementation_field' );
+
+// Display "Post-commitment Adjustments" conditionally
+function display_post_committment_conditionally($field) {
+	$field['conditional_logic'] = array(
+		array(
+			array(
+				'field' => 'field_60a90f1dc4a15',
+				'operator' => '==',
+				'value' => 'Yes',
+			)
+		)
+	);
+	return $field;
+}
+add_filter( "acf/load_field/key=field_60a4236d89c17", 'display_post_committment_conditionally' );
+
 // Hide unuseful fields from step 3
 function bs_bi_hide_step3_fields($field) {
 	return;
 }
-add_filter( "acf/prepare_field/key=field_607ea799c38eb", 'bs_bi_hide_step3_fields' );
-add_filter( "acf/prepare_field/key=field_607ea80ec38ee", 'bs_bi_hide_step3_fields' );
-add_filter( "acf/prepare_field/key=field_607ea727c38e9", 'bs_bi_hide_step3_fields' );
-add_filter( "acf/prepare_field/key=field_607ea87cc38f1", 'bs_bi_hide_step3_fields' );
-add_filter( "acf/prepare_field/key=field_60a420f31fb78", 'bs_bi_hide_step3_fields' );
 add_filter( "acf/prepare_field/key=field_60a421941fb7a", 'bs_bi_hide_step3_fields' );
 add_filter( "acf/prepare_field/key=field_60a421c81fb7b", 'bs_bi_hide_step3_fields' );
-add_filter( "acf/prepare_field/key=field_60a422e089c14", 'bs_bi_hide_step3_fields' );
-add_filter( "acf/prepare_field/key=field_60a4231489c15", 'bs_bi_hide_step3_fields' );
 add_filter( "acf/prepare_field/key=field_60a4234289c16", 'bs_bi_hide_step3_fields' );
-add_filter( "acf/prepare_field/key=field_60a4236d89c17", 'bs_bi_hide_step3_fields' );
 add_filter( "acf/prepare_field/key=field_60a423a689c18", 'bs_bi_hide_step3_fields' );
 
 // Hide Embargo related fields
@@ -77,6 +98,12 @@ add_filter( "acf/prepare_field/key=field_60a8178424bdf", 'bs_bi_hide_embargo_fie
 add_filter( "acf/prepare_field/key=field_60a41eed6bb82", 'bs_bi_hide_embargo_fields' );
 add_filter( "acf/prepare_field/key=field_60a4201e545e4", 'bs_bi_hide_embargo_fields' );
 add_filter( "acf/prepare_field/key=field_60a9141ae84e2", 'bs_bi_hide_embargo_fields' );
+add_filter( "acf/prepare_field/key=field_607ea7dec38ed", 'bs_bi_hide_embargo_fields' );
+add_filter( "acf/prepare_field/key=field_607ea84ac38f0", 'bs_bi_hide_embargo_fields' );
+add_filter( "acf/prepare_field/key=field_607ea75dc38ea", 'bs_bi_hide_embargo_fields' );
+add_filter( "acf/prepare_field/key=field_607ea8abc38f3", 'bs_bi_hide_embargo_fields' );
+add_filter( "acf/prepare_field/key=field_60a4211b1fb79", 'bs_bi_hide_embargo_fields' );
+add_filter( "acf/prepare_field/key=field_60a90f50c4a16", 'bs_bi_hide_embargo_fields' );
 
 // Hide Review and Collaboration group
 function bs_bi_hide_review_collaboration_group($field) {

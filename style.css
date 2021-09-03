@@ -4376,3 +4376,10 @@ article.bp_register .mc4wp-checkbox-buddypress {
     background-color: white;
     border: 1px solid #0f1570;
 }
+
+@media (min-width: 768px) {
+
+  .options-on-two-cols .acf-checkbox-list{
+    columns: 2;
+  }
+}
