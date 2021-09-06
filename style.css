@@ -4383,3 +4383,20 @@ article.bp_register .mc4wp-checkbox-buddypress {
     columns: 2;
   }
 }
+
+.acf-taxonomy-field a.acf-icon.-plus {
+  width: 30px;
+  height: 30px;
+  line-height: 23px;
+  font-size: 18px;
+}
+
+.acf-taxonomy-field a.acf-icon.-plus::after {
+  content: attr(title);
+  position: absolute;
+  width: 300px;
+  font-size: 14px;
+  text-align: left;
+  padding-left: 12px;
+  padding-top: 2px;
+}
