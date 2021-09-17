@@ -3066,3 +3066,12 @@ function opsi_add_http( $link ) {
 	}
 	return $link;
 }
+
+// Prevent Fatal error on Customizzer (source: https://stackoverflow.com/questions/59080288/getting-a-fatal-error-when-i-try-to-customize-theme)
+add_filter( 'wp_get_nav_menu_items', 'opsi_wp_get_nav_menu_items', 10, 3 );
+function opsi_wp_get_nav_menu_items($items, $menu, $args) {
+	foreach ( $items as $key => $item ) {
+		$items[ $key ]->description = '';
+	}
+	return $items;
+}
