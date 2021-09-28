@@ -106,7 +106,7 @@
             $project_status == 'Completed' ) : ?>
               <?php if( $project_status == 'Pre-registration'): ?>
               <h3>How hypothesis will be tested</h3>
-              <?php endif( $project_status == 'Completed' ): ?>
+              <?php elseif( $project_status == 'Completed' ): ?>
               <h3>How hypothesis was tested</h3>
               <?php endif; ?>
               <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['test_hypothesis_wrapper']['text']['how_will_your_hypothesis_be_tested']; ?></div>
