@@ -4400,3 +4400,7 @@ article.bp_register .mc4wp-checkbox-buddypress {
   padding-left: 12px;
   padding-top: 2px;
 }
+
+body:not(.logged-in) #bi-project-form .button.saveform {
+  display: none;
+}
