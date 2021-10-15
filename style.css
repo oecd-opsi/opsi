@@ -4404,3 +4404,7 @@ article.bp_register .mc4wp-checkbox-buddypress {
 body:not(.logged-in) #bi-project-form .button.saveform {
   display: none;
 }
+
+body.logged-in .hide-for-logged-in-users {
+  display: none;
+}
