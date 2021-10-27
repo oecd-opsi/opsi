@@ -263,7 +263,7 @@
               <span class="sidebar_label">Team: </span>
               <span class="strong"><?php echo $fields['who_is_behind_the_project']['unit']['text']->post_title ?></span>
             </div>
-            <?php if( $fields['who_is_behind_the_project']['authors_wrapper']['text']['include_this_in_the_public_version'] == 'Yes' || ( $fields['who_is_behind_the_project']['authors_wrapper']['text']['include_this_in_the_public_version'] == 'Hide until embargo date' && !$embargo ) ) : ?>
+            <?php if( ( $fields['who_is_behind_the_project']['authors_wrapper']['text']['include_this_in_the_public_version'] == 'Yes' || ( $fields['who_is_behind_the_project']['authors_wrapper']['text']['include_this_in_the_public_version'] == 'Hide until embargo date' && !$embargo ) ) && $project_status == 'Pre-registration' ) : ?>
               <div class="sidebar-generic-wrapper">
                 <span class="sidebar_label">Authors: </span>
                 <span class="strong"><?php echo $fields['who_is_behind_the_project']['authors_wrapper']['text']['authors'] ?></span>

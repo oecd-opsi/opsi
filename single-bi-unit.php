@@ -45,11 +45,6 @@
               <div class="csp"><a href="<?php echo $fields['general_information']['your_teamorganizations_website']['text']; ?>" target="_blank"><?php echo $fields['general_information']['your_teamorganizations_website']['text']; ?></a></div>
             <?php endif; ?>
 
-            <?php if( $fields['general_information']['your_first_and_last_name']['text'] ): ?>
-              <h3>Contact person</h3>
-              <div class="csp"><?php echo $fields['general_information']['your_first_and_last_name']['text']; ?><?php if( $fields['general_information']['your_job_title']['text'] != '' ): ?> - <?php echo $fields['general_information']['your_job_title']['text']; ?><?php endif; ?></div>
-            <?php endif; ?>
-
 				  </div>
 
 				</div>
