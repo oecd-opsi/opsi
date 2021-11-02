@@ -38,7 +38,7 @@
           <div class="panel_content">
 
             <h3>Organization's name</h3>
-            <div class="csp"><?php echo $fields['general_information']['your_organizations_name']['text']->name; ?></div>
+            <div class="csp"><?php echo $fields['general_information']['organization_wrapper']['text']['your_organizations_name']->name; ?></div>
 
             <?php if( $fields['general_information']['your_teamorganizations_website']['text'] != '' ): ?>
               <h3>Organization's website</h3>
@@ -91,7 +91,7 @@
 
             <?php
             $policy_list = '';
-            foreach ( $fields['activities']['which_of_the_following_policy_areas_has_your_unit_been_involved_in']['text'] as $policy_item ) {
+            foreach ( $fields['activities']['policy_area_wrapper']['text']['which_of_the_following_policy_areas_has_your_unit_been_involved_in'] as $policy_item ) {
               $policy_list .= $policy_item->name . ', ';
             }
             $policy_list = rtrim( $policy_list, ', ' );
