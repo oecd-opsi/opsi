@@ -64,9 +64,9 @@
         <div class="sliding_panel">
 
           <?php if(  $project_status == 'Pre-registration' ): ?>
-            <h2 class="active">Analysis Plan</h2>
+            <h2>Analysis Plan</h2>
           <?php else: ?>
-            <h2 class="active">Detailed information</h2>
+            <h2>Detailed information</h2>
           <?php endif; ?>
           <div class="panel_content" style="display:none;">
 

@@ -51,7 +51,7 @@
 
         <div class="sliding_panel">
 
-          <h2 class="active">The Team</h2>
+          <h2>The Team</h2>
           <div class="panel_content" style="display:none;">
 
             <?php if( $fields['your_team'][' do_you_work_with_governments_on_applying_bi_to_public_policy']['text']['label'] != '' ): ?>
