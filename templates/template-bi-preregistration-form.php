@@ -189,7 +189,7 @@ if($layout != 'fullpage' && is_active_sidebar( 'sidebar' )) {
 					),
 					'submit_value'		=> __( 'Create a new pre-registration', 'opsi' ),
 					'form' 				=> true,
-					'updated_message' 	=> '<span class="alert alert-success updatedalert" role="alert">'. __("Pre-registration saved on", 'acf') .' '. date_i18n( get_option('date_format') .' '.get_option('time_format') ) .'</span>',
+					'updated_message' 	=> '<span class="alert alert-success updatedalert" role="alert">'. __("Pre-registration saved on", 'acf') .' '. date_i18n( get_option('date_format') .' '.get_option('time_format') ) .'. Thank you for submitting your application. Our team will carefully review it to ensure it meets the criteria to be featured on the OECD map. We thank you for your patience in the meantime.</span>',
 					// 'return' => '',
 					'html_before_fields' => '<input type="hidden" id="csf_action" name="csf_action" value="" style="display:none;"><input type="hidden" id="form_step_field" name="form_step" value="0" style="display:none;">',
 				);

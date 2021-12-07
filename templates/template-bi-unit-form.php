@@ -67,7 +67,7 @@ if($layout != 'fullpage' && is_active_sidebar( 'sidebar' )) {
 					),
 					'submit_value'		=> __( 'Submit new unit', 'opsi' ),
 					'form' 				=> true,
-					'updated_message' 	=> 'Your Unit has been saved.',
+					'updated_message' 	=> '<span class="alert alert-success updatedalert" role="alert">Thank you for submitting your application. Our team will carefully review it to ensure it meets the criteria to be featured on the OECD map. We thank you for your patience in the meantime.</span>',
 					// 'return' => '',
 				);
 
