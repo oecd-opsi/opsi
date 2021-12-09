@@ -669,3 +669,13 @@ function bi_form_submission_email( $post_id ) {
 	}
 
 }
+
+
+
+// Random order on BI archives
+function bi_random_post_order( $query ) {
+	if ( $query->is_main_query() && !is_admin() && is_post_type_archive( array( 'bi-project', 'bi-unit' ) ) ) {
+		$query->set( 'orderby', 'rand' );
+	}
+}
+add_action( 'pre_get_posts', 'bi_random_post_order' );
