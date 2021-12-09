@@ -321,18 +321,22 @@ function bs_project_map_country_info() {
 	$projects_count = count( $total_projects );
 
 	// Policy Areas
-	$policy_areas = '';
-	// $policy_areas = strip_tags( get_the_term_list( $unit->ID, 'bi-project-policy-area', '', ', ') );
 	$policies_array = array();
+	$policies_areas_array = array();
+	$policy_areas_list = '';
+	// $policy_areas = strip_tags( get_the_term_list( $unit->ID, 'bi-project-policy-area', '', ', ') );
 	foreach ($total_projects as $project) {
 		$project_policies = get_the_terms( $project, 'bi-project-policy-area' );
 		array_push( $policies_array, $project_policies );
 	}
-	$policies_array = my_array_unique( $policies_array );
 	foreach ($policies_array as $policy) {
-		$policy_areas .= $policy->name . ', ';
+		$policies_areas_array[] = $policy[0]->name;
 	}
-	$policy_areas = rtrim( $policy_areas, ', ' );
+	$policies_areas_array = array_unique($policies_areas_array);
+	foreach ($policies_areas_array as $policy_name) {
+		$policy_areas_list .= $policy_name . ', ';
+	}
+	$policy_areas_list = rtrim( $policy_areas_list, ', ' );
 
 
 	$result = array(
@@ -340,7 +344,7 @@ function bs_project_map_country_info() {
 		'preregistration'	=> $preregistration_count,
 		'completed'				=> $completed_count,
 		'total_projects'	=> $projects_count,
-		'policy_areas'		=> $policy_areas,
+		'policy_areas'		=> $policy_areas_list,
 	);
 
 	// Check if action was fired via Ajax call. If yes, JS code will be triggered, else the user is redirected to the post page
@@ -351,27 +355,6 @@ function bs_project_map_country_info() {
 
 	// don't forget to end your scripts with a die() function - very important
 	die();
-}
-
-function my_array_unique($array, $keep_key_assoc = false){
-    $duplicate_keys = array();
-    $tmp = array();
-
-    foreach ($array as $key => $val){
-        // convert objects to arrays, in_array() does not support objects
-        if (is_object($val))
-            $val = (array)$val;
-
-        if (!in_array($val, $tmp))
-            $tmp[] = $val;
-        else
-            $duplicate_keys[] = $key;
-    }
-
-    foreach ($duplicate_keys as $key)
-        unset($array[$key]);
-
-    return $keep_key_assoc ? $array : array_values($array);
 }
 
 // Add BI Projects BP subtab ***START***
