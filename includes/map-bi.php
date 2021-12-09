@@ -322,6 +322,7 @@ function cs_jve_bi_unit_map() {
 			$country_slug = $country[0]->slug;
 			$institution = get_the_terms( $id, 'bi-institution' );
 			$team_size = get_field( 'your_team_how_many_people_including_yourself_apply_behavioral_science_in_your_team', $id );
+			$dot_size = get_field( 'dot_size', $id );
 
 			// Number of projects
 			$related_projects = get_posts( array(
@@ -333,7 +334,11 @@ function cs_jve_bi_unit_map() {
 			$projects_count = count( $related_projects );
 
 			// Data
-			$data .= '"'. $slug .'": '. $projects_count .',';
+			// $data .= '"'. $slug .'": '. $projects_count .',';
+			if( !$dot_size ) {
+				$dot_size = 3;
+			}
+			$data .= '"'. $slug .'": '. $dot_size .',';
 
 			if ( $projects_count > $max_count ) {
 				$max_count = $projects_count;
@@ -465,7 +470,7 @@ function cs_jve_bi_unit_map() {
 	          max: 6
 	        },{
 	          attribute: 'r',
-	          scale: [3, 15],
+	          // scale: [1, 100],
 	          values: data,
 	          // min: 0,
 	          // max: maxValue
