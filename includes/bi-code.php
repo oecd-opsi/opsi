@@ -322,7 +322,7 @@ function bs_project_map_country_info() {
 
 	// Policy Areas
 	$policy_areas = '';
-	$policy_areas = strip_tags( get_the_term_list( $unit->ID, 'bi-project-policy-area', '', ', ') );
+	// $policy_areas = strip_tags( get_the_term_list( $unit->ID, 'bi-project-policy-area', '', ', ') );
 	$policies_array = array();
 	foreach ($total_projects as $project) {
 		$project_policies = get_the_terms( $project, 'bi-project-policy-area' );
@@ -649,3 +649,40 @@ function bp_bi_projects_list_guest() {
 
 }
 // Add BI Unit BP subtab ***END***
+
+// Send an email after the submission of a BI form
+add_action( 'acf/save_post', 'bi_form_submission_email', 10, 1 );
+function bi_form_submission_email( $post_id ) {
+
+	$post_type = get_post_type($post_id);
+
+	// bail early if not a BI post
+	if( !in_array( $post_type, array( 'bi-project', 'bi-unit' ) ) ) {
+		return;
+	}
+
+	// bail early if editing in admin
+	if( is_admin() ) {
+		return;
+	}
+
+	// get email address
+	if( $post_type == 'bi-project' ) {
+		$email = get_field( 'who_is_behind_the_project_contact_email', $post_id );
+	} elseif ( $post_type == 'bi-unit' ) {
+		$email = get_field( 'general_information_e-mail_address', $post_id );
+	}
+
+	if( $email ) {
+
+		$subject = 'Thank you for submitting your application.';
+		$mail_content = 'Thank you for submitting your application. Our team will carefully review it to ensure it meets the criteria to be featured on the OECD map. We thank you for your patience in the meantime.\n\n If you have any questions or concerns regarding the platform, please email Chiara Varazzani, OECD Lead Behavioural Scientist at Chiara.VARAZZANI@oecd.org';
+		$headers = array( 'Content-Type: text/html; charset=UTF-8' );
+		$headers[] = 'Cc: michaela.sullivan-paul@oecd.org, Chiara.VARAZZANI@oecd.org';
+		$headers[] = 'Reply-To: Chiara.VARAZZANI@oecd.org';
+
+		wp_mail( $email, $subject, $mail_content, $headers );
+
+	}
+
+}
