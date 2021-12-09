@@ -181,7 +181,8 @@ function cs_jve_bi_map() {
 						stroke: '#acc9e0', "stroke-width": .05, "stroke-opacity": 1
 					},
 					hover: {
-						"fill-opacity": 1
+						"fill-opacity": 1,
+						stroke: '#2b3840', "stroke-width": .7, "stroke-opacity": 1
 					},
 					selected: {
 						fill: 'yellow'
