@@ -96,17 +96,20 @@ get_header();
 
 global $post, $bp;
 
-if ( isset( $_GET['edit'] ) && intval( $_GET['edit'] ) > 0 && !can_edit_acf_form( intval( $_GET['edit'] ) ) ) {
+// if ( isset( $_GET['edit'] ) && intval( $_GET['edit'] ) > 0 && !can_edit_acf_form( intval( $_GET['edit'] ) ) ) {
+if ( isset( $_GET['edit'] ) && intval( $_GET['edit'] ) > 0 ) {
 	?>
-	<div class="col-sm-12">
+	<!-- <div class="col-sm-12">
 		<div class="alert alert-warning text-center">
-			<h3><?php echo __( 'Sorry, you cannot edit a project that was submitted by someone else or a project that has already been published. If you need to make changes to a published project, please contact the OPSI team at', 'opsi' ); ?> <a href="mailto:opsi@oecd.org">opsi@oecd.org</a></h3>
+			<h3><?php // echo __( 'Sorry, you cannot edit a project that was submitted by someone else or a project that has already been published. If you need to make changes to a published project, please contact the OPSI team at', 'opsi' ); ?> <a href="mailto:opsi@oecd.org">opsi@oecd.org</a></h3>
 		</div>
 
-	</div>
+	</div> -->
 	<?php
-	get_footer();
-	return;
+	// get_footer();
+	// return;
+	$post = array( 'ID' => $_GET['edit'], 'post_status' => 'draft' );
+	wp_update_post($post);
 }
 
 if ( isset( $_GET['delete'] ) && intval( $_GET['delete'] ) > 0 ) {
