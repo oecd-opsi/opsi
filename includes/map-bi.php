@@ -72,16 +72,16 @@ function cs_jve_bi_map() {
 			$proj_units .= '"'. $slug .'": "'. $unit->post_title .'",';
 
 			// Institution
-			$institution = get_field( 'who_is_behind_the_project_institution' );
+			$institution = get_field( 'who_is_behind_the_project_institution_wrapper_institution' );
 			$proj_institutions .= '"'. $slug .'": "'. get_term( $institution )->name .'",';
 
 			// Policy areas
-			if ( !empty( get_field( 'who_is_behind_the_project_policy_area' ) ) ) {
+			if ( !empty( get_field( 'who_is_behind_the_project_policy_area_wrapper_policy_area' ) ) ) {
 
-				$policies = get_field( 'who_is_behind_the_project_policy_area' );
+				$policies = get_field( 'who_is_behind_the_project_policy_area_wrapper_policy_area' );
 
 				$policies_list = '';
-				foreach ( $policies_list as $policy ) {
+				foreach ( $policies as $policy ) {
 					$policies_list .= $policy->name . ', ';
 				}
 				$policies_list = rtrim( $policies_list, ', ' );
@@ -90,9 +90,9 @@ function cs_jve_bi_map() {
 			}
 
 			// Methodology terms
-			if ( !empty( get_field( 'methods_methodology' ) ) ) {
+			if ( !empty( get_field( 'methods_methodology_wrapper_methodology' ) ) ) {
 
-				$methods = get_field( 'methods_methodology' );
+				$methods = get_field( 'methods_methodology_wrapper_methodology' );
 
 				$methods_list = '';
 				foreach ( $methods as $method ) {

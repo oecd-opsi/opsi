@@ -257,7 +257,7 @@
 
             <div class="sidebar-generic-wrapper">
               <span class="sidebar_label">Institution: </span>
-              <span class="strong"><?php echo get_term( $fields['who_is_behind_the_project']['institution']['text'] )->name ?></span>
+              <span class="strong"><?php echo get_term( $fields['who_is_behind_the_project']['institution_wrapper']['text']['institution'] )->name ?></span>
             </div>
             <div class="sidebar-generic-wrapper">
               <span class="sidebar_label">Team: </span>
@@ -284,7 +284,7 @@
               <span class="sidebar_label">Methodology: </span>
               <?php
               $method_list = '';
-              foreach ( $fields['methods']['methodology']['text'] as $method_item ) {
+              foreach ( $fields['methods']['methodology_wrapper']['text']['methodology'] as $method_item ) {
                 $method_list .= $method_item->name . ', ';
               }
               $method_list = rtrim( $method_list, ', ' );
@@ -325,7 +325,7 @@
               <span class="sidebar_label">Policy Area: </span>
               <?php
               $policy_list = '';
-              foreach ( $fields['who_is_behind_the_project']['policy_area']['text'] as $policy_item ) {
+              foreach ( $fields['who_is_behind_the_project']['policy_area_wrapper']['text']['policy_area'] as $policy_item ) {
                 $policy_list .= $policy_item->name . ', ';
               }
               $policy_list = rtrim( $policy_list, ', ' );
@@ -337,7 +337,7 @@
               <span class="sidebar_label">Topic: </span>
               <?php
               $topic_list = '';
-              foreach ( $fields['who_is_behind_the_project']['topic']['text'] as $topic_item ) {
+              foreach ( $fields['who_is_behind_the_project']['topic_wrapper']['text']['topic'] as $topic_item ) {
                 $topic_list .= $topic_item->name . ', ';
               }
               $topic_list = rtrim( $topic_list, ', ' );
