@@ -31,7 +31,7 @@
 					<div class="post_tags">
 
 						<?php
-						$project_statuses = get_the_terms( $postid, 'bi-project-status' );
+						$project_statuses = get_the_terms( get_the_ID(), 'bi-project-status' );
 					  $project_status = $project_statuses[0]->name;
 						 ?>
 						<p class="bi-project-status"><?php echo $project_status ?> project</p>
