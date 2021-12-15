@@ -302,6 +302,7 @@ function cs_jve_bi_unit_map() {
 	$name = '';
 	$countries = '';
 	$values = '';
+	$sizes = '';
 	$institution_setup_array = '';
 	$institution_array = '';
 	$team_size_array = '';
@@ -334,11 +335,13 @@ function cs_jve_bi_unit_map() {
 			$projects_count = count( $related_projects );
 
 			// Data
-			// $data .= '"'. $slug .'": '. $projects_count .',';
+			$data .= '"'. $slug .'": '. $projects_count .',';
+
+			// Size
 			if( !$dot_size ) {
 				$dot_size = 3;
 			}
-			$data .= '"'. $slug .'": '. $dot_size .',';
+			$sizes .= '"'. $slug .'": '. $dot_size .',';
 
 			if ( $projects_count > $max_count ) {
 				$max_count = $projects_count;
@@ -433,6 +436,9 @@ function cs_jve_bi_unit_map() {
 			var isoSlug = {
 				<?php echo $iso_slug; ?>
 			};
+			var sizes = {
+				<?php echo $sizes; ?>
+			};
 			var maxValue = <?php echo $max_count;  ?>;
 			var country_to_add = '';
 
@@ -471,7 +477,7 @@ function cs_jve_bi_unit_map() {
 	        },{
 	          attribute: 'r',
 	          // scale: [1, 100],
-	          values: data,
+	          values: sizes,
 	          // min: 0,
 	          // max: maxValue
 	        }],

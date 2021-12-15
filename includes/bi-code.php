@@ -659,7 +659,7 @@ function bi_form_submission_email( $post_id ) {
 	if( $email ) {
 
 		$subject = 'Thank you for submitting your application.';
-		$mail_content = 'Thank you for submitting your application. Our team will carefully review it to ensure it meets the criteria to be featured on the OECD map. We thank you for your patience in the meantime.\n\n If you have any questions or concerns regarding the platform, please email Chiara Varazzani, OECD Lead Behavioural Scientist at Chiara.VARAZZANI@oecd.org';
+		$mail_content = "Thank you for submitting your application. Our team will carefully review it to ensure it meets the criteria to be featured on the OECD map. We thank you for your patience in the meantime. If you have any questions or concerns regarding the platform, please email Chiara Varazzani, OECD Lead Behavioural Scientist at Chiara.VARAZZANI@oecd.org";
 		$headers = array( 'Content-Type: text/html; charset=UTF-8' );
 		$headers[] = 'Cc: michaela.sullivan-paul@oecd.org, Chiara.VARAZZANI@oecd.org';
 		$headers[] = 'Reply-To: Chiara.VARAZZANI@oecd.org';
