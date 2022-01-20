@@ -174,6 +174,11 @@
               <?php endif; ?>
             <?php endif; ?>
 
+            <?php if( $fields['methods']['results']['text'] != '' ): ?>
+              <h3>Results</h3>
+              <div class="csp"><?php echo $fields['methods']['results']['text'] ?></div>
+            <?php endif; ?>
+
 				  </div>
 
 				</div>
