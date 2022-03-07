@@ -96,14 +96,12 @@
               <?php endif; ?>
             <?php endif; ?>
 
-            <?php if( $fields['hypothesis_outcomes_and_analysis']['hypothesis_wrapper']['text']['include_this_in_the_public_version'] == 'Yes' || ( $fields['hypothesis_outcomes_and_analysis']['hypothesis_wrapper']['text']['include_this_in_the_public_version'] == 'Hide until embargo date' && !$embargo ) ||
-            $project_status == 'Completed' ) : ?>
+            <?php if( $fields['hypothesis_outcomes_and_analysis']['hypothesis_wrapper']['text']['include_this_in_the_public_version'] == 'Yes' || ( $fields['hypothesis_outcomes_and_analysis']['hypothesis_wrapper']['text']['include_this_in_the_public_version'] == 'Hide until embargo date' && !$embargo ) ) : ?>
               <h3>Hypothesis</h3>
               <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['hypothesis_wrapper']['text']['hypothesis']; ?></div>
             <?php endif; ?>
 
-            <?php if( $fields['hypothesis_outcomes_and_analysis']['test_hypothesis_wrapper']['text']['include_this_in_the_public_version'] == 'Yes' || ( $fields['hypothesis_outcomes_and_analysis']['test_hypothesis_wrapper']['text']['include_this_in_the_public_version'] == 'Hide until embargo date' && !$embargo ) ||
-            $project_status == 'Completed' ) : ?>
+            <?php if( $fields['hypothesis_outcomes_and_analysis']['test_hypothesis_wrapper']['text']['include_this_in_the_public_version'] == 'Yes' || ( $fields['hypothesis_outcomes_and_analysis']['test_hypothesis_wrapper']['text']['include_this_in_the_public_version'] == 'Hide until embargo date' && !$embargo ) ) : ?>
               <?php if( $project_status == 'Pre-registration'): ?>
               <h3>How hypothesis will be tested</h3>
               <?php elseif( $project_status == 'Completed' ): ?>
@@ -112,20 +110,17 @@
               <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['test_hypothesis_wrapper']['text']['how_will_your_hypothesis_be_tested']; ?></div>
             <?php endif; ?>
 
-            <?php if( $fields['hypothesis_outcomes_and_analysis']['dependent_variables_wrapper']['text']['include_this_in_the_public_version'] == 'Yes' || ( $fields['hypothesis_outcomes_and_analysis']['dependent_variables_wrapper']['text']['include_this_in_the_public_version'] == 'Hide until embargo date' && !$embargo ) ||
-            $project_status == 'Completed' ) : ?>
+            <?php if( $fields['hypothesis_outcomes_and_analysis']['dependent_variables_wrapper']['text']['include_this_in_the_public_version'] == 'Yes' || ( $fields['hypothesis_outcomes_and_analysis']['dependent_variables_wrapper']['text']['include_this_in_the_public_version'] == 'Hide until embargo date' && !$embargo ) ) : ?>
               <h3>Dependent variables</h3>
               <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['dependent_variables_wrapper']['text']['dependent_variables']; ?></div>
             <?php endif; ?>
 
-            <?php if( $fields['hypothesis_outcomes_and_analysis']['analyses_wrapper']['text']['include_this_in_the_public_version'] == 'Yes' || ( $fields['hypothesis_outcomes_and_analysis']['analyses_wrapper']['text']['include_this_in_the_public_version'] == 'Hide until embargo date' && !$embargo ) ||
-            $project_status == 'Completed' ) : ?>
+            <?php if( $fields['hypothesis_outcomes_and_analysis']['analyses_wrapper']['text']['include_this_in_the_public_version'] == 'Yes' || ( $fields['hypothesis_outcomes_and_analysis']['analyses_wrapper']['text']['include_this_in_the_public_version'] == 'Hide until embargo date' && !$embargo ) ) : ?>
               <h3>Analyses</h3>
               <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['analyses_wrapper']['text']['analyses']; ?></div>
             <?php endif; ?>
 
-            <?php if( $fields['hypothesis_outcomes_and_analysis']['sample_size_wrapper']['text']['include_this_in_the_public_version'] == 'Yes' || ( $fields['hypothesis_outcomes_and_analysis']['sample_size_wrapper']['text']['include_this_in_the_public_version'] == 'Hide until embargo date' && !$embargo ) ||
-            $project_status == 'Completed' ) : ?>
+            <?php if( $fields['hypothesis_outcomes_and_analysis']['sample_size_wrapper']['text']['include_this_in_the_public_version'] == 'Yes' || ( $fields['hypothesis_outcomes_and_analysis']['sample_size_wrapper']['text']['include_this_in_the_public_version'] == 'Hide until embargo date' && !$embargo ) ) : ?>
               <h3>Sample Size. How many observations will be collected or what will determine sample size?</h3>
               <div class="csp"><?php echo $fields['hypothesis_outcomes_and_analysis']['sample_size_wrapper']['text']['sample_size_how_many_observations_will_be_collected_or_what_will_determine_sample_size']; ?></div>
             <?php endif; ?>
